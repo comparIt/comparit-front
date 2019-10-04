@@ -1,0 +1,32 @@
+# Node.js with Angular
+# Build a Node.js project that uses Angular.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install -g @angular/cli
+    npm install
+    ng build --prod
+  displayName: 'npm install and build'
+
+- script: |
+    echo Build docker image
+    docker build -t compit.azurecr.io/compare-it-front:latest .
+    echo Login to docker repository
+    az acr login --name compit -u compit -p tXWXRnEk/VpId9aviPAwgM9wH8CButFQ
+    echo Push docker image
+    docker push compit.azurecr.io/compare-it-front:latest
+  displayName: 'Build and Push Docker Image for CompareIT Front'
+
