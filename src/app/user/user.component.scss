@@ -1,3 +1,62 @@
 /* Add application styles & imports to this file! */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bs-stepper/dist/css/bs-stepper.min.css';
+
+.active .bs-stepper-circle {
+    background-color:#ff4444;
+  }
+
+
+.text-title{
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Georgia", cursive, sans-serif;
+    font-size: 36px;
+    letter-spacing: -0.2px;
+    word-spacing: 2px;
+    color: #ff4444;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: italic;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
+.text-center{
+    margin-top:20px;
+    margin-bottom: 50px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    word-spacing: -0.6px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+
+.text-pseudo{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: -0.2px;
+    word-spacing: -3.4px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+}
+.btnNext{
+    background-color: #ff4444;
+}
+#dropdownMenu2{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    
+}
