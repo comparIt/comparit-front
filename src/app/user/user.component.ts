@@ -6,23 +6,8 @@ import Stepper from 'bs-stepper';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
-  private stepper: Stepper;
+export class UserComponent {
 
   constructor() { }
-
-  next() {
-    this.stepper.next();
-  }
-  onSubmit() {
-    return false;
-  }
-
-  ngOnInit() {
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
-      linear: false,
-      animation: true
-    })
-  }
 
 }
