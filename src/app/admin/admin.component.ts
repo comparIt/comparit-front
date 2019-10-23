@@ -27,12 +27,13 @@ export class AdminComponent implements OnInit {
     console.log(configurationForm.value);
     console.log(configurationForm.value['CPrincipal']);
     this.configuration.colorPrimary=configurationForm.value['CPrincipal'];
-    this.configuration
+
     console.log(this.configuration);
-    this.compareItAPIService.addConfiguration(this.configuration);
+    this.compareItAPIService.putwebsiteconfig(this.configuration).subscribe();
   }
 
   ngOnInit() {
+    this.configuration=new Configuration();
     this.stepper = new Stepper(document.querySelector('#stepper1'), {
       linear: false,
       animation: true
