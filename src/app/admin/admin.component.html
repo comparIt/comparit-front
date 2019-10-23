@@ -27,11 +27,11 @@
            
           </div>
           <div class="bs-stepper-content">
-            <form (ngSubmit)="onSubmit()">
+            <form #configurationForm="ngForm" (ngSubmit)="onSubmit(configurationForm)">
               <div id="test-l-1" class="content">
                 <p class='text-label'>Quels type de produits voulez vous comparer sur cette instance de Compare'It ?</p>
                 <!-- Type dropdown -->
-                <select class="browser-default custom-select" id="typeDropDown">
+                <select ngModel name="TypeProduit" class="browser-default custom-select" id="typeDropDown">
                   <option selected>Type de produit</option>
                   <option value="Téléphone">Téléphone</option>
                   <option value="Maison">Maison</option>
@@ -41,19 +41,19 @@
                 <p class='text-label'>Choisissez 3 couleurs principales pour le théme de votre site</p> 
                 <!-- couleur dropdown -->
                 <div class='selectColor'>
-                    <select class="browser-default custom-select" id="colorDropDown">
+                    <select ngModel name="CPrincipal" class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur principale</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <select class="browser-default custom-select" id="colorDropDown">
+                    <select ngModel name="CSrincipal" class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <select class="browser-default custom-select" id="colorDropDown">
+                    <select ngModel name="CS2rincipal" class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire 2</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
@@ -84,7 +84,7 @@
                 <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
               </div>
               <div id="test-l-3" class="content text-center">
-                  <button mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
+                  <button mdbBtn type="button" class="btnNext" (click)="onSubmit(configurationForm)" mdbWavesEffect>Submit</button>
               </div>
             </form>
           </div>

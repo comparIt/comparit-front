@@ -13,6 +13,7 @@ import { NotifComponent } from './user/components/notif/notif.component';
 import { FilterComponent } from './user/components/filter/filter.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {compareItAPIService} from './shared/services/compareItAPI.service';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {compareItAPIService} from './shared/services/compareItAPI.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     MDBBootstrapModule.forRoot()
   ],
   providers: [GlobalConfigurationService,compareItAPIService],
