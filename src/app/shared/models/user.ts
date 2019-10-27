@@ -1,4 +1,5 @@
 export interface User {
+    authdata: User;
     id: number;
     email: string;
     lastName: string;

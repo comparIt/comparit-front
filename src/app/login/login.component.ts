@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
-import {CompareItAPIService} from '../shared/services/compareItAPI.service';
+import {compareItAPIService} from '../shared/services/compareItAPI.service';
 
 
 
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private compareItAPIService: CompareItAPIService
+        private compareItAPIService: compareItAPIService
 
     ) {
         this.checkoutForm = this.formBuilder.group({
