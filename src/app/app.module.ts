@@ -12,8 +12,9 @@ import { ProfilComponent } from './user/components/profil/profil.component';
 import { NotifComponent } from './user/components/notif/notif.component';
 import { FilterComponent } from './user/components/filter/filter.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
-import {compareItAPIService} from './shared/services/compareItAPI.service';
-import {FormsModule} from '@angular/forms';
+import {CompareItAPIService} from './shared/services/compareItAPI.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -24,16 +25,18 @@ import {FormsModule} from '@angular/forms';
     AdminComponent,
     ProfilComponent,
     NotifComponent,
-    FilterComponent
+    FilterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [GlobalConfigurationService,compareItAPIService],
+  providers: [GlobalConfigurationService,CompareItAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
