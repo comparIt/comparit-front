@@ -5,7 +5,7 @@ import {Configuration} from '../models/configuration';
 @Injectable({
     providedIn: 'root',
 })
-export class compareItAPIService {
+export class CompareItAPIService {
 
     private DOMAIN = 'http://localhost:8080';
 
@@ -16,23 +16,22 @@ export class compareItAPIService {
     private modelController = '/model';
     private modelPropertyController = '/modelproperty';
     private userController = '/user';
-    private websiteconfigController='/websiteconfig/';
+    private websiteconfigController= '/websiteconfig/';
 
 
     constructor(private http: HttpClient) {
     }
 
      /**
-     * Returns the complete URL based on the domain, the endpoint and the parameters list.
-     * @param endPoint the endpoint to call
-     * @param params the parameters to add to the url
-     */
+      * Returns the complete URL based on the domain, the endpoint and the parameters list.
+      * @param endPoint the endpoint to call
+      * @param params the parameters to add to the url
+      */
      private getBuiltUrl(endPoint: string, params: {key: any, value: any}[]): any {
-         let paramString = '?';
          // add each param to paramString, and '&' between params (not after the last one)
-         paramString += params.map((kv) => kv.key + '=' + kv.value).join('&');
+         const paramString = '?' + params.map((kv) => kv.key + '=' + kv.value).join('&');
          // build complete URL with domain, controller and '?' + params if present
-         return this.DOMAIN + endPoint + (paramString !== '?' ? paramString : '');
+         return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '');
      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
@@ -43,28 +42,28 @@ export class compareItAPIService {
         return this.http.put(this.getBuiltUrl(endPoint, params), body);
     }
 
+    private post(endPoint: string, params: {key: any, value: any}[], body: any): any {
+        return this.http.post(this.getBuiltUrl(endPoint, params), body);
+    }
+
     private delete(endPoint: string, params: {key: any, value: any}[], body: any): any {
         return this.http.delete(this.getBuiltUrl(endPoint, params), body);
     }
 
 
-    //Authenticate
-
-    public authenticate(login:string , password: string) : any{
-         return this.put(this.jwtAuthenticationController,[],{
-             "username": login,
-             "password": password
-         })
+    // Authenticate
+    public authenticate(username: string , password: string): any {
+         return this.post(this.jwtAuthenticationController, [], {username, password});
     }
 
-    //WebsiteConfig
-    public putwebsiteconfig(configuration:Configuration): any{
-        return this.put(this.websiteconfigController,[],configuration);
+    // WebsiteConfig
+    public putwebsiteconfig(configuration: Configuration): any {
+        return this.put(this.websiteconfigController, [], configuration);
     }
 
 
-    //public addConfiguration(configuration:Configuration){
+    // public addConfiguration(configuration:Configuration){
     //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
-    //}
+    // }
 
 }

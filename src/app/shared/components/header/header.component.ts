@@ -7,7 +7,7 @@ import {GlobalConfigurationService} from '../../services/globalConfiguration.ser
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private config: GlobalConfigurationService) {
+  constructor(public config: GlobalConfigurationService) {
 
   }
 
