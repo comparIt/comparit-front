@@ -1,0 +1,15 @@
+<p>supplier works!</p>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+  URL:<br>
+  <input type="text" name="url" value="https://fonoapi.freshpixl.com/v1/getlatest?token=7a930907b8b87be0f464e1cc6366f751ae00efdb68313b40" ngModel>
+  <br>
+  <br>
+  Product Type:<br>
+  <input type="text" name="type" value="Phone" ngModel>
+  <br><br>
+  FournId:<br>
+  <input type="number" name="supplierId" ngModel>
+  <br><br>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
