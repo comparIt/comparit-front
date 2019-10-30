@@ -26,8 +26,6 @@ export class AuthenticationService {
         console.warn("Username " + username + " pwd " +password);
         return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
             .pipe(map(user => {
-                //TODO : RECUPERER LA RESPONSE
-
                 // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
                 user.authdata = window.btoa(username + ':' + password);
                 localStorage.setItem('currentUser', JSON.stringify(user));
