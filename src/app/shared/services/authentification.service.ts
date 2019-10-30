@@ -26,6 +26,7 @@ export class AuthenticationService {
         console.warn("Username " + username + " pwd " +password);
         return this.compareItAPIService.authenticate(username,password).subscribe(token => {
             this.accessToken = token;
+            console.warn("token reçu"+ this.accessToken);
         })
     }
 

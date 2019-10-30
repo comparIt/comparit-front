@@ -62,6 +62,10 @@ export class CompareItAPIService {
         return this.put(this.websiteconfigController, [], configuration);
     }
 
+    public getWebsiteConfiguration(websiteConfigurationId : number) : any {
+         return this.get(this.websiteconfigController , [{key :"websiteConfiguration",value : websiteConfigurationId}]);
+    }
+
 
     // public addConfiguration(configuration:Configuration){
     //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
