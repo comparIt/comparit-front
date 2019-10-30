@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
 
 @Injectable({
@@ -18,8 +18,10 @@ export class CompareItAPIService {
     private userController = '/user';
     private websiteconfigController= '/websiteconfig/';
 
+    private HEADERS;
 
     constructor(private http: HttpClient) {
+        //this.DEFAULT_HEADERS = this.createHeaderToken([{key: "Authorization", value: "Basic_token"}]);
     }
 
      /**
@@ -31,7 +33,13 @@ export class CompareItAPIService {
          // add each param to paramString, and '&' between params (not after the last one)
          const paramString = '?' + params.map((kv) => kv.key + '=' + kv.value).join('&');
          // build complete URL with domain, controller and '?' + params if present
-         return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '');
+         return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + "";
+     }
+
+     private createHeaderToken(params: {key: any, value: any}[]) : any{
+         let headers = new Headers();
+         params.map((kv) => headers.append(kv.key,kv.value));
+         return headers
      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {

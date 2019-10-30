@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../shared/services/authentification.service';
 
 
 
@@ -14,7 +16,9 @@ export class LoginComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private compareItAPIService: CompareItAPIService
+        private compareItAPIService: CompareItAPIService,
+        private router: Router,
+        public auth: AuthenticationService
 
     ) {
         this.checkoutForm = this.formBuilder.group({
@@ -28,8 +32,11 @@ export class LoginComponent implements OnInit {
 
 
     onSubmit(loginandpwd) {
-      console.warn('Your order has been submitted', loginandpwd);
       this.checkoutForm.reset();
-      this.compareItAPIService.authenticate(loginandpwd.login, loginandpwd.pwd).subscribe();
+        if (!this.auth.isAuthenticated()) {
+            this.auth.login(loginandpwd.login,loginandpwd.pwd);
+        } else {
+            this.router.navigate(['app/home']);
+        }
     }
 }
