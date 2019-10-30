@@ -21,7 +21,6 @@ export class CompareItAPIService {
     private HEADERS;
 
     constructor(private http: HttpClient) {
-        this.HEADERS = this.createHeaderToken([{key: "Authorization", value: ""}]);
     }
 
      /**
@@ -34,12 +33,6 @@ export class CompareItAPIService {
          const paramString = '?' + params.map((kv) => kv.key + '=' + kv.value).join('&');
          // build complete URL with domain, controller and '?' + params if present
          return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + "";
-     }
-
-     private createHeaderToken(params: {key: any, value: any}[]) : any{
-         let headers = new Headers();
-         params.map((kv) => headers.append(kv.key,kv.value));
-         return headers
      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
