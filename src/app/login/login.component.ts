@@ -34,9 +34,11 @@ export class LoginComponent implements OnInit {
 
     onSubmit(loginandpwd) {
       this.checkoutForm.reset();
-        if (!this.auth.isAuthenticated()) {
-            this.auth.login(loginandpwd.login,loginandpwd.pwd);
-        }
-        this.router.navigate(['app/home']);
+      if (!this.auth.isAuthenticated()) {
+          this.auth.login(loginandpwd.login, loginandpwd.pwd)
+              .then(() => {
+                  this.router.navigate(['app/home']);
+              });
+      }
     }
 }

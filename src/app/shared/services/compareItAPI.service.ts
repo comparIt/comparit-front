@@ -32,23 +32,23 @@ export class CompareItAPIService {
          // add each param to paramString, and '&' between params (not after the last one)
          const paramString = '?' + params.map((kv) => kv.key + '=' + kv.value).join('&');
          // build complete URL with domain, controller and '?' + params if present
-         return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + "";
+         return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
-        return this.http.get(this.getBuiltUrl(endPoint, params),this.HEADERS);
+        return this.http.get(this.getBuiltUrl(endPoint, params)).toPromise();
     }
 
     private put(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.put(this.getBuiltUrl(endPoint, params), body, this.HEADERS);
+        return this.http.put(this.getBuiltUrl(endPoint, params), body).toPromise();
     }
 
     private post(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.post(this.getBuiltUrl(endPoint, params), body , this.HEADERS);
+        return this.http.post(this.getBuiltUrl(endPoint, params), body).toPromise();
     }
 
     private delete(endPoint: string, params: {key: any, value: any}[]): any {
-        return this.http.delete(this.getBuiltUrl(endPoint, params), this.HEADERS);
+        return this.http.delete(this.getBuiltUrl(endPoint, params));
     }
 
 
@@ -62,8 +62,8 @@ export class CompareItAPIService {
         return this.put(this.websiteconfigController, [], configuration);
     }
 
-    public getWebsiteConfiguration(websiteConfigurationId : number) : any {
-         return this.get(this.websiteconfigController , [{key :"websiteConfiguration",value : websiteConfigurationId}]);
+    public getWebsiteConfiguration(): any {
+         return this.get(this.websiteconfigController + '1' , []);
     }
 
 

@@ -11,7 +11,7 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     private expiresAt: number;
-    accessToken: any;
+    accessToken: string;
 
     constructor(private http: HttpClient, private compareItAPIService: CompareItAPIService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -23,11 +23,12 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        console.warn("Username " + username + " pwd " +password);
-        return this.compareItAPIService.authenticate(username,password).subscribe(token => {
-            this.accessToken = token;
-            console.warn("token reçu"+ this.accessToken);
-        })
+        console.log('Username ', username, 'pwd ', password);
+        return this.compareItAPIService.authenticate(username, password).then(token => {
+            this.accessToken = token.token;
+            console.warn('token reçu', this.accessToken);
+            return this.accessToken;
+        });
     }
 
     logout() {
@@ -39,6 +40,6 @@ export class AuthenticationService {
     public isAuthenticated(): boolean {
         // Check whether the current time is past the
         // access token's expiry time
-        return (this.accessToken &&  Date.now() < this.expiresAt && this.expiresAt != undefined);
+        return (this.accessToken &&  Date.now() < this.expiresAt && this.expiresAt !== undefined);
     }
 }

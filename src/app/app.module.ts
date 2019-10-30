@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -15,6 +15,7 @@ import {GlobalConfigurationService} from './shared/services/globalConfiguration.
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,11 @@ import { LoginComponent } from './login/login.component';
   ],
   providers: [
     GlobalConfigurationService,
+      {
+          provide: HTTP_INTERCEPTORS,
+          useClass: BasicAuthInterceptor,
+          multi: true
+      },
     CompareItAPIService],
   bootstrap: [AppComponent]
 })

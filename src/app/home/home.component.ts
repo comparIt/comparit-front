@@ -18,10 +18,10 @@ export class HomeComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(){
-    this.compareItAPIService.getWebsiteConfiguration(1).subscribe(result => {
-      alert("Voici la configuration : " + result.toString());
-    })
+  ngOnInit() {
+    this.compareItAPIService.getWebsiteConfiguration().then((result) => {
+      alert('Voici la configuration : ' + result.toString());
+    });
   }
 
 
