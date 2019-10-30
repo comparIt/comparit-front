@@ -21,7 +21,7 @@ export class CompareItAPIService {
     private HEADERS;
 
     constructor(private http: HttpClient) {
-        //this.DEFAULT_HEADERS = this.createHeaderToken([{key: "Authorization", value: "Basic_token"}]);
+        this.HEADERS = this.createHeaderToken([{key: "Authorization", value: ""}]);
     }
 
      /**
@@ -43,19 +43,19 @@ export class CompareItAPIService {
      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
-        return this.http.get(this.getBuiltUrl(endPoint, params));
+        return this.http.get(this.getBuiltUrl(endPoint, params),this.HEADERS);
     }
 
     private put(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.put(this.getBuiltUrl(endPoint, params), body);
+        return this.http.put(this.getBuiltUrl(endPoint, params), body, this.HEADERS);
     }
 
     private post(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.post(this.getBuiltUrl(endPoint, params), body);
+        return this.http.post(this.getBuiltUrl(endPoint, params), body , this.HEADERS);
     }
 
-    private delete(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.delete(this.getBuiltUrl(endPoint, params), body);
+    private delete(endPoint: string, params: {key: any, value: any}[]): any {
+        return this.http.delete(this.getBuiltUrl(endPoint, params), this.HEADERS);
     }
 
 
