@@ -1,0 +1,84 @@
+/* Add application styles & imports to this file! */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
+
+.active .bs-stepper-circle {
+    background-color:#ff4444;
+  }
+
+
+.text-title{
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Georgia", cursive, sans-serif;
+    font-size: 36px;
+    letter-spacing: -0.2px;
+    word-spacing: 2px;
+    color: #ff4444;
+    font-weight: 900;
+    text-decoration: none solid rgb(68, 68, 68);
+    font-style: italic;
+    font-variant: normal;
+    text-transform: uppercase;
+}
+
+.text-center{
+    margin-top:20px;
+    margin-bottom: 50px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 23px;
+    letter-spacing: -0.6px;
+    word-spacing: 1.2px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-align:center;
+}
+
+.text-label{
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+    letter-spacing: -0.6px;
+    word-spacing: 1.2px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-align:center;
+}
+.btnNext{
+    background-color: #ff4444;
+}
+.selectColor{
+    display:flex;
+    justify-content: space-evenly; 
+    margin-bottom: 30px; 
+}
+#typeDropDown{
+    margin-bottom: 30px;  
+}
+
+#colorDropDown{
+    width:110px; 
+}
+.input-group{
+    margin-bottom: 40px; 
+}
+
+
+#btnAdd{
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #ff4444;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
