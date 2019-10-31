@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder} from '@angular/forms';
+import {CompareItAPIService} from '../shared/services/compareItAPI.service';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../shared/services/authentification.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private compareItAPIService: CompareItAPIService,
+      private router: Router,
+      public auth: AuthenticationService
+  ) {
+  }
 
   ngOnInit() {
+    this.compareItAPIService.getWebsiteConfiguration().then((result) => {
+      alert('Voici la configuration : ' + result.toString());
+    });
   }
+
+
+
 
 }

@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { environment } from '../../../environments/environment';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import { User } from '../models/user';
+import {CompareItAPIService} from './compareItAPI.service';
+import {environment} from '../../../environments/environment';
+import {map} from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    accessToken: any;
+    private expiresAt: number;
+    accessToken: string;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private compareItAPIService: CompareItAPIService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
@@ -22,19 +23,23 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
-                user.authdata = window.btoa(username + ':' + password);
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
-            }));
+        console.log('Username ', username, 'pwd ', password);
+        return this.compareItAPIService.authenticate(username, password).then(token => {
+            this.accessToken = token.token;
+            console.warn('token reçu', this.accessToken);
+            return this.accessToken;
+        });
     }
 
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+
+    public isAuthenticated(): boolean {
+        // Check whether the current time is past the
+        // access token's expiry time
+        return (this.accessToken &&  Date.now() < this.expiresAt && this.expiresAt !== undefined);
     }
 }
