@@ -15,6 +15,8 @@ import {GlobalConfigurationService} from './shared/services/globalConfiguration.
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { ModelComponent } from './admin/components/model/model.component';
+import { ModelPropertyComponent } from './admin/components/model-property/model-property.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { LoginComponent } from './login/login.component';
     ProfilComponent,
     NotifComponent,
     FilterComponent,
-    LoginComponent
+    LoginComponent,
+    ModelComponent,
+    ModelPropertyComponent
   ],
   imports: [
     BrowserModule,

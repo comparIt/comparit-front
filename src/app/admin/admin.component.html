@@ -78,9 +78,11 @@
               </div>
               <div id="test-l-2" class="content">
                 <div class="form-group">
-                  <label for="exampleInputPassword1">step2</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="step2" />
+                  <label class="text-label">Model :</label>
+                  <button mdbBtn type="button" id="btnAdd"><i class="fas fas fa-plus-circle pl-1"></i></button>
+                  <app-model></app-model>
                 </div>
+                
                 <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
               </div>
               <div id="test-l-3" class="content text-center">

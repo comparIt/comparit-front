@@ -36,7 +36,5 @@ export class GlobalConfigurationService {
   get logo(): string {
     return this.configuration.logo;
   }
-
   
-
 }
