@@ -1,22 +1,68 @@
-<div class="container">
-    <form class="border border-light p-5">
-       <div class="modelClass">
-            <div>
-                    <label for="textInput" class="labelText">Name</label>
-                    <input type="text" id="textInput" class="form-control mb-4" placeholder="Text input">
-            </div>
-           
-            <div>
-                    <label for="textInput"class="labelText">Technical Name</label>
-                    <input type="text" id="textInput" class="form-control mb-4" placeholder="Text input">
-            </div>
-         
-            <div>
-                    <div class="custom-control custom-checkbox mb-4">
-                            <input type="checkbox" class="custom-control-input" id="checkbox">
-                            <label class="custom-control-label" for="checkbox">Is Activated </label>
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+                <div class="card m-3">
+                    <h5 class="card-header">Model Forms </h5>
+                    <div class="card-body">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Model</label>
+                                <select formControlName="numberOfModels" class="form-control" (change)="onChangeModels($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfTickets.errors }">
+                                    <option value=""></option>
+                                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.numberOfModels.errors" class="invalid-feedback">
+                                    <div *ngIf="f.numberOfModels.errors.required">Number of Models is required</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-            </div>
-       </div> 
-    </form>   
-</div>
+                            <div *ngFor="let Model of t.controls; let i = index" class="list-group list-group-flush">
+                                    <div class="list-group-item">
+                                        <h5 class="card-title">Model {{i + 1}}</h5>
+                                        <div [formGroup]="Model" >
+                                        <!-- Model -->
+                                            <div class="classHorizo">
+                                                <div class="form-group col-4">
+                                                    <label>Name</label>
+                                                    <input type="text" formControlName="name" class="form-control"/>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                        <label>Technical Name</label>
+                                                        <input type="text" formControlName="name" class="form-control"/>
+                                                </div>
+                                                <div class="form-group col-4">
+                                                    <label>Is Activated</label>
+                                                    <mdb-checkbox [default]="true"></mdb-checkbox>
+                                                </div>
+                                            </div>
+                                            <!-- Model Proprety-->
+                                            <div class="classHorizo">
+                                                <div class="form-group col-3">
+                                                        <label>Type</label>
+                                                                <select ngModel name="type" class="browser-default custom-select" >
+                                                                <option value="NUMERIC"selected>Numeric</option>
+                                                                <option value="ENUMERATIVE" >Enumerative</option>
+                                                        </select>
+                                                </div>
+                                                <div class="form-group col-3">
+                                                                <label>Filtrable</label>
+                                                                <mdb-checkbox [default]="true"></mdb-checkbox>
+                                                </div>
+                                                <div class="form-group col-3">
+                                                                <label>filtrable Advanced</label>
+                                                                <mdb-checkbox [default]="true"></mdb-checkbox>
+                                                </div>
+                                                <div class="form-group col-3">
+                                                                <label>Mandatory</label>
+                                                                <mdb-checkbox [default]="true"></mdb-checkbox>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                    <div class="card-footer text-center">
+                        <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
+                        <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+                    </div>
+                </div>
+            </form>
