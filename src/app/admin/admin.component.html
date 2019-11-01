@@ -1,0 +1,94 @@
+<p class="text-title" >INITIALISATION DE COMPARE'IT</p>
+<p class="text-center" >Vous allez initializer cotre instance de Compare'IT selon vos besoins,suiver la procédure d'installation.</p>
+
+<div class="container">
+        <div id="stepper1" class="bs-stepper">
+          <div class="bs-stepper-header">
+            <div class="step" data-target="#test-l-1">
+              <button class="step-trigger">
+                <span class="bs-stepper-circle">1</span>
+                <span class="bs-stepper-label">ETAPE 1/3</span>
+              </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#test-l-2">
+              <button class="step-trigger">
+                <span class="bs-stepper-circle">2</span>
+                <span class="bs-stepper-label">ETAPE 2/3</span>
+              </button>
+            </div>
+            <div class="line"></div>
+            <div class="step" data-target="#test-l-3">
+              <button class="step-trigger">
+                <span class="bs-stepper-circle">3</span>
+                <span class="bs-stepper-label">ETAPE 3/3</span>
+              </button>
+            </div>
+
+          </div>
+          <div class="bs-stepper-content">
+            <form #configurationForm="ngForm" (ngSubmit)="onSubmit(configurationForm)">
+              <div id="test-l-1" class="content">
+                <p class='text-label'>Quels type de produits voulez vous comparer sur cette instance de Compare'It ?</p>
+                <!-- Type dropdown -->
+                <select ngModel name="TypeProduit" class="browser-default custom-select" id="typeDropDown">
+                  <option selected>Type de produit</option>
+                  <option value="Téléphone">Téléphone</option>
+                  <option value="Maison">Maison</option>
+                  <option value="Véhicule">Véhicule</option>
+                </select>
+                <!-- type dropdown -->
+                <p class='text-label'>Choisissez 3 couleurs principales pour le théme de votre site</p>
+                <!-- couleur dropdown -->
+                <div class='selectColor'>
+                    <select ngModel name="CPrincipal" class="browser-default custom-select" id="colorDropDown">
+                      <option selected>Couleur principale</option>
+                      <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
+                      <option value="#f44336" style="background-color:#f44336;">Red</option>
+                      <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
+                    </select>
+                    <select ngModel name="CSrincipal" class="browser-default custom-select" id="colorDropDown">
+                      <option selected>Couleur secondaire</option>
+                      <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
+                      <option value="#f44336" style="background-color:#f44336;">Red</option>
+                      <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
+                    </select>
+                    <select ngModel name="CS2rincipal" class="browser-default custom-select" id="colorDropDown">
+                      <option selected>Couleur secondaire 2</option>
+                      <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
+                      <option value="#f44336" style="background-color:#f44336;">Red</option>
+                      <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
+                    </select>
+                </div>
+                <!-- couleur dropdown -->
+                <p class='text-label'>Choisissez logo de votre site</p>
+                <!-- import image -->
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
+                  </div>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01"
+                      aria-describedby="inputGroupFileAddon01">
+                    <label class="custom-file-label" for="inputGroupFile01">choisir l'image</label>
+                  </div>
+                </div>
+                <!-- import image -->
+                <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
+              </div>
+              <div id="test-l-2" class="content">
+                <div class="form-group">
+                  <label class="text-label">Model :</label>
+                  <button mdbBtn type="button" id="btnAdd"><i class="fas fas fa-plus-circle pl-1"></i></button>
+                  <app-model></app-model>
+                </div>
+                
+                <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
+              </div>
+              <div id="test-l-3" class="content text-center">
+                  <button mdbBtn type="button" class="btnNext" (click)="onSubmit(configurationForm)" mdbWavesEffect>Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
