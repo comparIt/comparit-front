@@ -17,6 +17,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
+import { ProductComponent } from './product/product.component';
+import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
     NotifComponent,
     FilterComponent,
     LoginComponent,
-    ModelComponent
+    ModelComponent,
+    ProductComponent,
+    ResumeProductComponent,
   ],
   imports: [
     BrowserModule,
