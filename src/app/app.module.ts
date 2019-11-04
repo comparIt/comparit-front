@@ -16,7 +16,6 @@ import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
-import { ModelPropertyComponent } from './admin/components/model-property/model-property.component';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 
 @NgModule({
@@ -30,8 +29,7 @@ import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
     NotifComponent,
     FilterComponent,
     LoginComponent,
-    ModelComponent,
-    ModelPropertyComponent
+    ModelComponent
   ],
   imports: [
     BrowserModule,
