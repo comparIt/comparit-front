@@ -16,7 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
 import { ModelpropertyComponent } from './admin/components/model-property/model-property.component';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import {FileSelectDirective} from 'ng2-file-upload';
+import { ProductComponent } from './product/product.component';
+import {ResumeProductComponent} from './product/resume-product/resume-product.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
@@ -33,7 +35,6 @@ import {ResumeProductComponent} from './product/resume-product/resume-product.co
     FileSelectDirective,
     LoginComponent,
     ModelComponent,
-    ModelpropertyComponent,
     ProductComponent,
     ResumeProductComponent,
   ],

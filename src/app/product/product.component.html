@@ -1,3 +1,12 @@
+<div class="row">
+  <!--Grid column-->
+  <div
+    class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-2"
+    *ngFor="let product of products">
+    <app-resume-product [product]=product></app-resume-product>
+  </div>
+</div>
+
 <div class="container mt-5">
   <section>
     <app-resume-product *ngFor="let product of products" [product]=product></app-resume-product>
