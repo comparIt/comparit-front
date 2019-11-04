@@ -15,6 +15,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
+import { ProductComponent } from './product/product.component';
+import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
 
@@ -29,7 +31,9 @@ import {SliderModule} from 'primeng/primeng';
     NotifComponent,
     FileSelectDirective,
     LoginComponent,
-    ModelComponent
+    ModelComponent,
+    ProductComponent,
+    ResumeProductComponent,
   ],
   imports: [
     BrowserModule,

@@ -71,4 +71,8 @@ export class CompareItAPIService {
     //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
     // }
 
+  public getMockProduct(): any {
+       return this.get('/product/search', []);
+  }
+
 }

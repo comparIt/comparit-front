@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
 import {LoginComponent} from './login/login.component';
+import {ProductComponent} from './product/product.component';
 
 
 export const routes: Routes = [
@@ -27,6 +28,10 @@ export const routes: Routes = [
   {
     path      : 'app/login',
     component : LoginComponent,
+  },
+  {
+    path      : 'products',
+    component : ProductComponent,
   },
 ];
 
