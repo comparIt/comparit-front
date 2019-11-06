@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-model-proprety',
-  templateUrl: './model-proprety.component.html',
-  styleUrls: ['./model-proprety.component.scss']
+  selector: 'app-model-property',
+  templateUrl: './model-property.component.html',
+  styleUrls: ['./model-property.component.scss']
 })
-export class ModelPropretyComponent implements OnInit {
+export class ModelpropertyComponent implements OnInit {
     dynamicForm: FormGroup;
     
 

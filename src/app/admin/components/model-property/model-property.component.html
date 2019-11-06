@@ -1,6 +1,6 @@
 <form [formGroup]="dynamicForm">
         <div class="card m-3">
-            <h5 class="card-header">Model-Proprety Forms</h5>
+            <h5 class="card-header">Model-Property Forms</h5>
             <div class="card-body">
                         <div class="form-row">
                                 <div class="form-group">
@@ -17,7 +17,7 @@
                 </div>
                 <div *ngFor="let Model of t.controls; let i = index" class="list-group list-group-flush">
                         <div class="list-group-item" id="itemCard">
-                        <h5 class="card-title">Model-Proprety {{i + 1}}</h5>
+                        <h5 class="card-title">Model-Property {{i + 1}}</h5>
                         <div [formGroup]="Model" >
                                 <div>
                                         <div class="classHorizo">

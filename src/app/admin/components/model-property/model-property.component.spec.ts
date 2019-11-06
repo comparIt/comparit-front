@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelPropretyComponent } from './model-proprety.component';
+import { ModelPropertyComponent } from './model-property.component';
 
 describe('ModelPropretyComponent', () => {
-  let component: ModelPropretyComponent;
-  let fixture: ComponentFixture<ModelPropretyComponent>;
+  let component: ModelPropertyComponent;
+  let fixture: ComponentFixture<ModelPropertyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModelPropretyComponent ]
+      declarations: [ ModelPropertyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModelPropretyComponent);
+    fixture = TestBed.createComponent(ModelPropertyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
