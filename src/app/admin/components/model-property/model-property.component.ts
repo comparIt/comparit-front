@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { ModelProperty } from 'src/app/shared/models/model-property';
+import {GlobalConfigurationService} from 'src/app/shared/services/globalConfiguration.service';
 
 @Component({
   selector: 'app-model-property',
@@ -8,9 +10,13 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 })
 export class ModelpropertyComponent implements OnInit {
     dynamicForm: FormGroup;
-    
+    @Input() modelProperty: ModelProperty;
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private globalconfigurationService: GlobalConfigurationService
+    ) {}
 
   ngOnInit() {
     this.dynamicForm = this.formBuilder.group({
@@ -29,6 +35,9 @@ onChangeModels(e) {
         for (let i = this.t.length; i < numberOfModels; i++) {
             this.t.push(this.formBuilder.group({   
             }));
+            //let mp:ModelProperty = new ModelProperty;
+            //this.globalconfigurationService.model.push(mp);
+            
         }
     } else {
         for (let i = this.t.length; i >= numberOfModels; i--) {

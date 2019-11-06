@@ -27,11 +27,11 @@
 
           </div>
           <div class="bs-stepper-content">
-            <form #configurationForm="ngForm" (ngSubmit)="onSubmit(configurationForm)">
+            <form  (ngSubmit)="onSubmit(configurationForm)">
               <div id="test-l-1" class="content">
                 <p class='text-label'>Quels type de produits voulez vous comparer sur cette instance de Compare'It ?</p>
                 <!-- Type dropdown -->
-                <select ngModel name="TypeProduit" class="browser-default custom-select" id="typeDropDown">
+                <select   class="browser-default custom-select" id="typeDropDown">
                   <option selected>Type de produit</option>
                   <option value="Téléphone">Téléphone</option>
                   <option value="Maison">Maison</option>
@@ -78,9 +78,34 @@
               </div>
               <div id="test-l-2" class="content">
                 <div class="form-group">
+                    <form>
+                        <div class="card m-3">
+                            <h5 class="card-header">Model Forms </h5>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Number of Model</label>
+                                        <select formControlName="numberOfModels" class="form-control" (change)="onChangeModels($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfTickets.errors }">
+                                            <option value=""></option>
+                                            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
+                                        </select>
+                                        <div *ngIf="submitted && f.numberOfModels.errors" class="invalid-feedback">
+                                            <div *ngIf="f.numberOfModels.errors.required">Number of Models is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                <!--<label class="text-label">Model :</label> -->   
                <!--<button mdbBtn type="button" id="btnAdd"><i class="fas fas fa-plus-circle pl-1"></i></button> -->   
-                  <app-model></app-model>
+                  <app-model *ngFor="let model of globalconfigurationService.model;let i = index" [model]="model"></app-model>
+                  
+                  <div class="card-footer text-center">
+                      <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
+                      <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+                  </div>
+              </div>
+          </form>
+
                 </div>
                 
                 <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
