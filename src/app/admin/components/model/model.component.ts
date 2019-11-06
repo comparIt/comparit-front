@@ -28,9 +28,7 @@ onChangeModels(e) {
     const numberOfModels = e.target.value || 0;
     if (this.t.length < numberOfModels) {
         for (let i = this.t.length; i < numberOfModels; i++) {
-            this.t.push(this.formBuilder.group({
-                name: ['', Validators.required],
-                email: ['', [Validators.required, Validators.email]]
+            this.t.push(this.formBuilder.group({   
             }));
         }
     } else {

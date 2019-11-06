@@ -1,1 +1,59 @@
-<p>model-proprety works!</p>
+<form [formGroup]="dynamicForm">
+        <div class="card m-3">
+        <div class="form-group">
+                <h5 class="card-header">Model-Proprety Forms </h5>
+                <label>Number of Model</label>
+                <select formControlName="numberOfModels" class="form-control" (change)="onChangeModels($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfTickets.errors }">
+                    <option value=""></option>
+                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
+                </select>
+                <div *ngIf="submitted && f.numberOfModels.errors" class="invalid-feedback">
+                    <div *ngIf="f.numberOfModels.errors.required">Number of Models is required</div>
+                </div>
+        </div>
+        <div *ngFor="let Model of t.controls; let i = index" class="list-group list-group-flush">
+                <div class="list-group-item">
+                    <h5 class="card-title">Model-Proprety {{i + 1}}</h5>
+                    <div [formGroup]="Model" >
+                            <div>
+                                    <div class="classHorizo">
+                                            <div class="form-group col-4">
+                                                    <label>Name</label>
+                                                    <input type="text" formControlName="name" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-4">
+                                                    <label>Technical Name</label>
+                                                    <input type="text" formControlName="name" class="form-control"/>
+                                            </div>
+                                            <div class="form-group col-4">
+                                                    <label>Is Activated</label>
+                                                    <mdb-checkbox [default]="true"></mdb-checkbox>
+                                            </div>
+                                    </div>
+                                    <div class="classHorizo">
+                                            <div class="form-group col-3">
+                                                    <label>Type</label>
+                                                            <select ngModel name="type" class="browser-default custom-select" >
+                                                            <option value="NUMERIC"selected>Numeric</option>
+                                                            <option value="ENUMERATIVE" >Enumerative</option>
+                                                    </select>
+                                            </div>
+                                            <div class="form-group col-3">
+                                                            <label>Filtrable</label>
+                                                            <mdb-checkbox [default]="true"></mdb-checkbox>
+                                            </div>
+                                            <div class="form-group col-3">
+                                                            <label>filtrable Advanced</label>
+                                                            <mdb-checkbox [default]="true"></mdb-checkbox>
+                                            </div>
+                                            <div class="form-group col-3">
+                                                            <label>Mandatory</label>
+                                                            <mdb-checkbox [default]="true"></mdb-checkbox>
+                                            </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+            </div>   
+        </div>  
+</form>
