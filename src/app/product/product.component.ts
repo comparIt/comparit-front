@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit {
     this.api.getMockProduct().then((products: Product[]) => {
       this.products = products;
       console.log(this.products);
+      this.products.forEach(product => console.log(product.properties));
     });
 
   }
