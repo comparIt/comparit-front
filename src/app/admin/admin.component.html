@@ -27,7 +27,7 @@
 
           </div>
           <div class="bs-stepper-content">
-            <form  (ngSubmit)="onSubmit(configurationForm)">
+            <form  [formGroup]="configurationForm" >
               <div id="test-l-1" class="content">
                 <p class='text-label'>Quels type de produits voulez vous comparer sur cette instance de Compare'It ?</p>
                 <!-- Type dropdown -->
@@ -41,24 +41,26 @@
                 <p class='text-label'>Choisissez 3 couleurs principales pour le théme de votre site</p>
                 <!-- couleur dropdown -->
                 <div class='selectColor'>
-                    <select ngModel name="CPrincipal" class="browser-default custom-select" id="colorDropDown">
+                    <select type="text" [(ngModel)]="configuration.colorPrimary"  class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur principale</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <select ngModel name="CSrincipal" class="browser-default custom-select" id="colorDropDown">
+                    <p>{{configuration.colorPrimary}}</p>
+                    <select type="text" [(ngModel)]="configuration.colorSecondary"  class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <select ngModel name="CS2rincipal" class="browser-default custom-select" id="colorDropDown">
+                    <select type="text" [(ngModel)]="configuration.colorSecondary2" class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire 2</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
+                    
                 </div>
                 <!-- couleur dropdown -->
                 <p class='text-label'>Choisissez logo de votre site</p>
@@ -76,38 +78,32 @@
                 <!-- import image -->
                 <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
               </div>
+              <!-- Step 2 configuration Web-->
               <div id="test-l-2" class="content">
                 <div class="form-group">
-                    <form>
                         <div class="card m-3">
                             <h5 class="card-header">Model Forms </h5>
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label>Number of Model</label>
-                                        <select formControlName="numberOfModels" class="form-control" (change)="onChangeModels($event)" [ngClass]="{ 'is-invalid': submitted && f.numberOfTickets.errors }">
-                                            <option value=""></option>
-                                            <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]">{{i}}</option>
-                                        </select>
-                                        <div *ngIf="submitted && f.numberOfModels.errors" class="invalid-feedback">
-                                            <div *ngIf="f.numberOfModels.errors.required">Number of Models is required</div>
-                                        </div>
+                                        <button class="btn btn-primary m-1" type="button" (click)="addModel()">add</button>
                                     </div>
                                 </div>
                             </div>
-               <!--<label class="text-label">Model :</label> -->   
-               <!--<button mdbBtn type="button" id="btnAdd"><i class="fas fas fa-plus-circle pl-1"></i></button> -->   
-                  <app-model *ngFor="let model of globalconfigurationService.model;let i = index" [model]="model"></app-model>
-                  
-                  <div class="card-footer text-center">
-                      <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
-                      <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
-                  </div>
-              </div>
-          </form>
-
+                            <div formArrayName="models">
+                              <app-model *ngFor="let model of models.controls;let i = index;" [model]="model"></app-model>
+ 
+                              <div *ngFor="let model of models.controls;let i = index;" class="form-group col-12 text-right">
+                                  <button class="btn btn-danger" type="button" (click)="deleteModel(i)"> Remove </button>
+                              </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
+                                <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+                            </div>
+                        </div>
                 </div>
-                
                 <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
               </div>
               <div id="test-l-3" class="content text-center">

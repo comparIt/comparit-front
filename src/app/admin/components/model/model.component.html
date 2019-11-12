@@ -6,19 +6,19 @@
             <div class="classHorizo">
                 <div class="form-group col-4">
                     <label>Name</label>
-                    <input [(ngModel)]="model.name" type="text" class="form-control"/>
+                    <input type="text" [(ngModel)]="model.name" type="text" class="form-control"/>
                 </div>
                 <div class="form-group col-4">
-                        <label>Technical Name</label>
-                        <input [(ngModel)]="model.technicalName" class="form-control"/>
+                    <label>Technical Name</label>
+                    <input type="text" [(ngModel)]="model.technicalName" class="form-control"/>
+                    <p>{{model.technicalName}}</p>
                 </div>
                 <div class="form-group col-4">
                     <label>Is Activated</label>
-                    <mdb-checkbox [(ngModel)]="model.isActivited" [default]="true"></mdb-checkbox>
+                    <mdb-checkbox [(ngModel)]="model.isActivited" [default]="false"></mdb-checkbox>
                 </div>
             </div>
-            <!-- Model Property-->
-            <form>
+            <!-- Model Property
                     <div class="card m-3">
                         <h5 class="card-header">Model-Property Forms</h5>
                         <div class="card-body">
@@ -35,9 +35,8 @@
                                             </div>
                                     </div>
                             </div>
-                        </div>  
-            </form>
-            <app-model-property *ngFor="let modelProperty of model.modelProperty;let i = index" [modelProperty]="modelProperty" ></app-model-property>
+                        </div> 
+            <app-model-property *ngFor="let modelProperty of model.modelProperty;let i = index" [modelProperty]="modelProperty" ></app-model-property>-->
         </div>
     </div>
 </div>

@@ -12,7 +12,6 @@ import {GlobalConfigurationService} from 'src/app/shared/services/globalConfigur
 })
 export class ModelComponent implements OnInit {
   dynamicForm: FormGroup;
-  private configuration: Configuration;
   submitted = false;
   @Input() model: Model;
 
@@ -30,22 +29,4 @@ export class ModelComponent implements OnInit {
     // convenience getters for easy access to form fields
     get f() { return this.dynamicForm.controls; }
     get t() { return this.f.Models as FormArray; }
-
-    onChangeModels(e) {
-        const numberOfModels = e.target.value || 0;
-        if (this.t.length < numberOfModels) {
-            for (let i = this.t.length; i < numberOfModels; i++) {
-                this.t.push(this.formBuilder.group({   
-                }));
-            let m:Model = new Model;
-            this.globalconfigurationService.model.push(m);
-            }
-            
-        } else {
-            for (let i = this.t.length; i >= numberOfModels; i--) {
-                this.t.removeAt(i);
-            }
-        }
-    
-    }   
 }

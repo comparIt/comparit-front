@@ -3,7 +3,7 @@ import Stepper from 'bs-stepper';
 import { Configuration } from '../shared/models/configuration';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service'
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import { FormBuilder, FormGroup, FormArray, Validators,NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators, NgForm } from '@angular/forms';
 import { from } from 'rxjs';
 import { Model } from '../shared/models/model';
 @Component({
@@ -14,17 +14,32 @@ import { Model } from '../shared/models/model';
 
 export class AdminComponent implements OnInit {
   private stepper: Stepper;
-  private configuration: Configuration;
+  configuration: Configuration;
   submitted = false;
-  dynamicForm: FormGroup;
-  
+  configurationForm: FormGroup;
 
+ 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
-    private formBuilder: FormBuilder
-    ) { 
-    }
+    private fb: FormBuilder
+    ) {}
+
+  ngOnInit() {
+    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+      linear: false,
+      animation: true
+    });
+    this.configuration = new Configuration();
+    this.configurationForm = this.fb.group({
+      nomInstance: [null],
+      colorPrimary: [null],
+      colorSecondary: [null],
+      colorSecondary2: [null],
+      logo : [null],
+      models: this.fb.array([this.createModel()])
+  });
+  }
 
   next() {
     this.stepper.next();
@@ -38,37 +53,27 @@ export class AdminComponent implements OnInit {
     this.compareItAPIService.putwebsiteconfig(this.configuration).subscribe();
   }
 
-  ngOnInit() {
-    this.configuration = new Configuration();
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
-      linear: false,
-      animation: true
-    });
-    this.dynamicForm = this.formBuilder.group({
-      numberOfModels: ['', Validators.required],
-      Models: new FormArray([])
-  });
-  }
 
   // convenience getters for easy access to form fields
-  get f() { return this.dynamicForm.controls; }
-  get t() { return this.f.Models as FormArray; }
+  get configurationWeb() { return this.configurationForm.controls; }
+  get models() { return this.configurationForm.get('models') as FormArray; }
 
-  onChangeModels(e) {
-    const numberOfModels = e.target.value || 0;
-    if (this.t.length < numberOfModels) {
-        for (let i = this.t.length; i < numberOfModels; i++) {
-            this.t.push(this.formBuilder.group({   
-            }));
-        let m:Model = new Model;
-        this.globalconfigurationService.model.push(m);
-        }
-        
-    } else {
-        for (let i = this.t.length; i >= numberOfModels; i--) {
-            this.t.removeAt(i);
-        }
-    }
+createModel(): FormGroup {
+  return this.fb.group({
+    name: [null],
+    technicalName: [null],
+    isActivited: [null],
+    models: new FormArray([])
+  });
 }
+
+  addModel() {
+    //const m: Model = new Model();
+    this.models.push(this.fb.group(this.createModel()));
+  }
+
+  deleteModel(index) {
+    this.models.removeAt(index);
+  }
 
 }
