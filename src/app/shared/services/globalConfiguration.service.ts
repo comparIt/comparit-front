@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Configuration} from '../models/configuration';
 import { Model } from '../models/model';
-import { ModelProperty } from '../models/model-property';
+import { modelProperty } from '../models/modelProperty';
 
 @Injectable({
   providedIn: 'root',

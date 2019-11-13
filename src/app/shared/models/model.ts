@@ -1,9 +1,9 @@
-import { ModelProperty } from './model-property';
+import { modelProperty } from './modelProperty';
 
 export class Model {
     name: string;
     technicalName: string;
     isActivited: boolean;
-    modelProprety: ModelProperty[];
-    constructor() {}
+    modelPropreties: modelProperty[];
+
 }

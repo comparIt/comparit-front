@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Model } from 'src/app/shared/models/model';
-import { Configuration } from 'src/app/shared/models/configuration';
-import {GlobalConfigurationService} from 'src/app/shared/services/globalConfiguration.service';
+import { modelProperty } from 'src/app/shared/models/modelProperty';
 
 
 @Component({
@@ -11,22 +9,40 @@ import {GlobalConfigurationService} from 'src/app/shared/services/globalConfigur
   styleUrls: ['./model.component.scss']
 })
 export class ModelComponent implements OnInit {
-  dynamicForm: FormGroup;
   submitted = false;
   @Input() model: Model;
   @Input() index: number;
-  @Output() deleteOutput = new EventEmitter<Model>();
+  @Output() deleteModel = new EventEmitter<Model>();
 
- constructor(
-    private formBuilder: FormBuilder,
-    private globalconfigurationService: GlobalConfigurationService) {
+ constructor() {
   }
 
     ngOnInit() {
+      this.model.modelPropreties = [this.createModelProprety()];
     }
 
     delete(model: Model){
-      this.deleteOutput.emit(model);
+      this.deleteModel.emit(model);
     }
+
+    createModelProprety(): modelProperty {
+      let modelProprety: modelProperty = new modelProperty;
+      modelProprety.name = "";
+      modelProprety.technicalName = "",
+      modelProprety.isActivited =  false,
+      modelProprety.filtrable = false,
+      modelProprety.filtrableAdvanced = false;
+      modelProprety.mandatory = false;
+      return modelProprety;
+    }
+
+    addModelProperty() {
+      this.model.modelPropreties.push(this.createModelProprety());
+    }
+    
+    deleteModelProperty(event:modelProperty){
+      this.model.modelPropreties = this.model.modelPropreties.filter(obj => obj !== event);
+    }
+    
 
 }

@@ -46,7 +46,6 @@
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <p>{{configuration.colorPrimary}}</p>
                     <select type="text" [(ngModel)]="configuration.colorSecondary"  class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
@@ -94,7 +93,7 @@
                               <app-model *ngFor="let model of configuration.models;let i = index;" 
                               [index] = "i"
                               [model]="model"
-                              (deleteOutput)="deleteOutput($event)"
+                              (deleteModel)="deleteModel($event)"
                               ></app-model>
 
                             </div>
@@ -107,7 +106,7 @@
                 <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
               </div>
               <div id="test-l-3" class="content text-center">
-                  <button mdbBtn type="button" class="btnNext" (click)="onSubmit(configurationForm)" mdbWavesEffect>Submit</button>
+                  <button mdbBtn type="button" class="btnNext" (click)="onSubmit()" mdbWavesEffect>Submit</button>
               </div>
           </div>
         </div>
