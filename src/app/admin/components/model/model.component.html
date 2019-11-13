@@ -1,6 +1,6 @@
 <div class="list-group list-group-flush">
     <div class="list-group-item" id="itemCard">
-        <h5 class="card-title">Model {{i + 1}}</h5>
+        <h5 class="card-title">Model {{ model.name }}</h5>
         <div>
         <!-- Model -->
             <div class="classHorizo">
@@ -17,7 +17,9 @@
                     <label>Is Activated</label>
                     <mdb-checkbox [(ngModel)]="model.isActivited" [default]="false"></mdb-checkbox>
                 </div>
+                
             </div>
+            <button class="btn btn-danger" type="button" (click)="delete(model)"> Remove </button>
             <!-- Model Property
                     <div class="card m-3">
                         <h5 class="card-header">Model-Property Forms</h5>

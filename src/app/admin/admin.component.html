@@ -27,11 +27,10 @@
 
           </div>
           <div class="bs-stepper-content">
-            <form  [formGroup]="configurationForm" >
               <div id="test-l-1" class="content">
                 <p class='text-label'>Quels type de produits voulez vous comparer sur cette instance de Compare'It ?</p>
                 <!-- Type dropdown -->
-                <select   class="browser-default custom-select" id="typeDropDown">
+                <select   [(ngModel)]="configuration.nomInstance" class="browser-default custom-select" id="typeDropDown">
                   <option selected>Type de produit</option>
                   <option value="Téléphone">Téléphone</option>
                   <option value="Maison">Maison</option>
@@ -91,12 +90,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <div formArrayName="models">
-                              <app-model *ngFor="let model of models.controls;let i = index;" [model]="model"></app-model>
- 
-                              <div *ngFor="let model of models.controls;let i = index;" class="form-group col-12 text-right">
-                                  <button class="btn btn-danger" type="button" (click)="deleteModel(i)"> Remove </button>
-                              </div>
+                            <div >
+                              <app-model *ngFor="let model of configuration.models;let i = index;" 
+                              [index] = "i"
+                              [model]="model"
+                              (deleteOutput)="deleteOutput($event)"
+                              ></app-model>
+
                             </div>
                             <div class="card-footer text-center">
                                 <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
@@ -109,7 +109,6 @@
               <div id="test-l-3" class="content text-center">
                   <button mdbBtn type="button" class="btnNext" (click)="onSubmit(configurationForm)" mdbWavesEffect>Submit</button>
               </div>
-            </form>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Model } from 'src/app/shared/models/model';
 import { Configuration } from 'src/app/shared/models/configuration';
@@ -14,6 +14,8 @@ export class ModelComponent implements OnInit {
   dynamicForm: FormGroup;
   submitted = false;
   @Input() model: Model;
+  @Input() index: number;
+  @Output() deleteOutput = new EventEmitter<Model>();
 
  constructor(
     private formBuilder: FormBuilder,
@@ -21,12 +23,10 @@ export class ModelComponent implements OnInit {
   }
 
     ngOnInit() {
-        this.dynamicForm = this.formBuilder.group({
-            numberOfModels: ['', Validators.required],
-            Models: new FormArray([])
-        });
     }
-    // convenience getters for easy access to form fields
-    get f() { return this.dynamicForm.controls; }
-    get t() { return this.f.Models as FormArray; }
+
+    delete(model: Model){
+      this.deleteOutput.emit(model);
+    }
+
 }

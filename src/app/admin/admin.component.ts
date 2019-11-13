@@ -22,7 +22,6 @@ export class AdminComponent implements OnInit {
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
-    private fb: FormBuilder
     ) {}
 
   ngOnInit() {
@@ -31,14 +30,8 @@ export class AdminComponent implements OnInit {
       animation: true
     });
     this.configuration = new Configuration();
-    this.configurationForm = this.fb.group({
-      nomInstance: [null],
-      colorPrimary: [null],
-      colorSecondary: [null],
-      colorSecondary2: [null],
-      logo : [null],
-      models: this.fb.array([this.createModel()])
-  });
+    this.configuration.models = [];
+    
   }
 
   next() {
@@ -53,27 +46,21 @@ export class AdminComponent implements OnInit {
     this.compareItAPIService.putwebsiteconfig(this.configuration).subscribe();
   }
 
-
-  // convenience getters for easy access to form fields
-  get configurationWeb() { return this.configurationForm.controls; }
-  get models() { return this.configurationForm.get('models') as FormArray; }
-
-createModel(): FormGroup {
-  return this.fb.group({
-    name: [null],
-    technicalName: [null],
-    isActivited: [null],
-    models: new FormArray([])
-  });
+createModel(): Model {
+  let model: Model = new Model;
+  model.name = "";
+  model.isActivited = true;
+  model.technicalName = "",
+  model.modelProprety = []
+  return model;
 }
 
   addModel() {
-    //const m: Model = new Model();
-    this.models.push(this.fb.group(this.createModel()));
+    this.configuration.models.push(this.createModel());
   }
 
-  deleteModel(index) {
-    this.models.removeAt(index);
+  deleteOutput(event: Model) {
+    this.configuration.models = this.configuration.models.filter(obj => obj !== event);
   }
 
 }
