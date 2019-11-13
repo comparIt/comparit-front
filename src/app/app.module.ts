@@ -20,8 +20,9 @@ import { ProductComponent } from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
-import {ProductComponent} from './product/product.component';
-import {ResumeProductComponent} from './product/resume-product/resume-product.component';
+import { FilterComponent } from './user/components/filter/filter.component';
+import { SupplierComponent } from './supplier/supplier.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,10 @@ import {ResumeProductComponent} from './product/resume-product/resume-product.co
     ModelComponent,
     ProductComponent,
     ResumeProductComponent,
+    FilterComponent,
+    SupplierComponent,
+    FileSelectDirective,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,8 @@ import {ResumeProductComponent} from './product/resume-product/resume-product.co
     FormsModule,
     SliderModule,
     ReactiveFormsModule
+    SliderModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     GlobalConfigurationService,
