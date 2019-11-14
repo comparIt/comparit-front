@@ -19,9 +19,7 @@ export class ModelpropertyComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(modelProperty: modelProperty){
+  delete(modelProperty: modelProperty) {
     this.deleteModelProperty.emit(modelProperty);
   }
-  
-
 }

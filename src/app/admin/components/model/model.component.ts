@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Model } from 'src/app/shared/models/model';
 import { modelProperty } from 'src/app/shared/models/modelProperty';
 
@@ -14,6 +14,7 @@ export class ModelComponent implements OnInit {
   @Input() index: number;
   @Output() deleteModel = new EventEmitter<Model>();
 
+
  constructor() {
   }
 
@@ -21,14 +22,14 @@ export class ModelComponent implements OnInit {
       this.model.modelPropreties = [this.createModelProprety()];
     }
 
-    delete(model: Model){
+    delete(model: Model) {
       this.deleteModel.emit(model);
     }
 
     createModelProprety(): modelProperty {
       let modelProprety: modelProperty = new modelProperty;
-      modelProprety.name = "";
-      modelProprety.technicalName = "",
+      modelProprety.name = '';
+      modelProprety.technicalName = '',
       modelProprety.isActivited =  false,
       modelProprety.filtrable = false,
       modelProprety.filtrableAdvanced = false;
@@ -39,10 +40,9 @@ export class ModelComponent implements OnInit {
     addModelProperty() {
       this.model.modelPropreties.push(this.createModelProprety());
     }
-    
-    deleteModelProperty(event:modelProperty){
+
+    deleteModelProperty(event:modelProperty) {
       this.model.modelPropreties = this.model.modelPropreties.filter(obj => obj !== event);
     }
-    
 
 }

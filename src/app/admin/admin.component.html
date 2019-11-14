@@ -24,7 +24,6 @@
                 <span class="bs-stepper-label">ETAPE 3/3</span>
               </button>
             </div>
-
           </div>
           <div class="bs-stepper-content">
               <div id="test-l-1" class="content">
@@ -74,7 +73,7 @@
                   </div>
                 </div>
                 <!-- import image -->
-                <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
+                <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
               </div>
               <!-- Step 2 configuration Web-->
               <div id="test-l-2" class="content">
@@ -84,7 +83,7 @@
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <button class="btn btn-primary m-1" type="button" (click)="addModel()">add</button>
+                                        <button class="btn btn-primary" type="button" (click)="addModel()">add</button>
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +101,10 @@
                             </div>
                         </div>
                 </div>
-                <button (click)="next()" mdbBtn type="button" class="btnNext" mdbWavesEffect>Next</button>
+                <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
               </div>
               <div id="test-l-3" class="content text-center">
-                  <button mdbBtn type="button" class="btnNext" (click)="onSubmit()" mdbWavesEffect>Submit</button>
+                  <button (click)="onSubmit()" type="button" class="btn btn-primary" id="btnNext">Submit</button>
               </div>
           </div>
         </div>
