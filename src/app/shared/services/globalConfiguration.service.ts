@@ -19,7 +19,7 @@ export class GlobalConfigurationService {
 
   constructor( public compareItAPIService: CompareItAPIService) {
     this.fetchGlobalConfiguration();
-    this.configuration.colorPrimary = 'red lighten-1';
+    this.configuration.colorPrimary = '#ef5350';
   }
 
   get adminId(): BigInteger {
