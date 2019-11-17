@@ -13,7 +13,7 @@ export class TopFilterComponent implements OnInit {
 
   cities1: SelectItem[];
   selectedCities1 = [];
-  val: number;
+  val: number[] = [0, 100];
 
   ngOnInit() {
     this.cities1 = [
