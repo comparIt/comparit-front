@@ -1,28 +1,13 @@
-<mdb-card class="align-items-center my-2">
-
-  <!--Card image-->
-  <div class="view overlay waves-light" mdbWavesEffect>
-    <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" alt=""></mdb-card-img>
-    <a>
-      <div class="mask rgba-white-slight"></div>
-    </a>
+<section style="margin-top: 10px">
+  <div>
+    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" alt="" style="border: 1px solid rgba(0,0,0,0.125); border-radius: 0.35rem; width: 30%;">
+    <div style="border: 1px solid rgba(0,0,0,0.125); border-radius: 0.25rem; width: 70%; float: right">
+    <p class="dark-grey-text" *ngIf="product.properties['DeviceName']">{{product.properties['DeviceName']}} </p>
+    <p class="dark-grey-text" *ngIf="product.properties['prix'] " >{{product.properties['prix']}}€</p>
+    <p class="dark-grey-text" *ngIf="product.properties['dimensions']"> {{product.properties['dimensions']}} </p>
+    <p class="dark-grey-text" *ngIf="product.properties['description']">{{product.properties['description']}} </p>
+    </div>
   </div>
-  <!--Card image-->
 
-  <!--Card content-->
-  <mdb-card-body class="text-center">
-    <!--Category & Title-->
-    <p>
-      <strong>
-        <a href="" class="dark-grey-text">{{product.properties['DeviceName']}}</a>
-      </strong>
-    </p>
+</section>
 
-    <p class="font-weight-bold {{ config.colorPrimary+'text' }}">
-      <strong>120$</strong>
-    </p>
-
-  </mdb-card-body>
-  <!--Card content-->
-
-</mdb-card>

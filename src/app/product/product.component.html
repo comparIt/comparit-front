@@ -1,42 +1,15 @@
+<meta charset="UTF-8">
 <div class="container mt-5">
     <!--Section: Content-->
-    <section class="dark-grey-text">
-
+    <section class="dark-grey-text" style="width: 75%">
         <div class="card">
             <div class="card-body">
-
-                <!-- Shopping Cart table -->
-                <div class="table-responsive">
-
-                    <table class="table product-table mb-0">
-                        <!-- Table body -->
-                        <tbody *ngFor="let product of products">
-
-                        <!-- First row -->
-                        <tr>
-                            <th scope="row">
-                              <app-resume-product [product]=product></app-resume-product>
-                            </th>
-                            <td>
-                              <div *ngFor="let property of product.properties | keyvalue">
-                                <strong>{{property.key}}</strong>
-                                <p>{{property.value}}</p>
-                              </div>
-                            </td>
-                            <!-- /.First row -->
-                        </tr>
-                        </tbody>
-                        <!-- /.Table body -->
-                    </table>
-                </div>
-                <!-- /.Shopping Cart table -->
-
+                <table style="table-layout:fixed; width: 100%">
+                    <div *ngFor="let product of products">
+                    <app-resume-product [product]=product></app-resume-product>
+                    </div>
+                </table>
             </div>
-
         </div>
-
     </section>
-    <!--Section: Content-->
-
-
 </div>
