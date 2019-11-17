@@ -15,7 +15,7 @@ export class GlobalConfigurationService {
 
   constructor() {
     this.fetchGlobalConfiguration();
-    this.configuration.colorPrimary = 'red lighten-1';
+    this.configuration.colorPrimary = '#ef5350';
   }
 
   get adminId(): BigInteger {
@@ -36,5 +36,5 @@ export class GlobalConfigurationService {
   get logo(): string {
     return this.configuration.logo;
   }
-  
+
 }

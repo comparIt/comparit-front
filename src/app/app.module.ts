@@ -19,15 +19,13 @@ import { ProductComponent } from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
-import { FilterComponent } from './user/components/filter/filter.component';
-import { GlobalConfigurationService} from './shared/services/globalConfiguration.service';
-import { compareItAPIService} from './shared/services/compareItAPI.service';
-import { FormsModule} from '@angular/forms';
-import { SupplierComponent } from './supplier/supplier.component';
-import { FileSelectDirective } from 'ng2-file-upload';
-import { AppComponent } from './app.component';
-import { UploadComponent } from './upload/upload.component';
-import {SliderModule} from 'primeng/primeng';
+import {TopFilterComponent} from './product/top-filter/top-filter.component';
+import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
+import {CheckboxModule} from 'primeng/primeng';
+
+
 
 @NgModule({
   declarations: [
@@ -43,20 +41,23 @@ import {SliderModule} from 'primeng/primeng';
     ModelComponent,
     ProductComponent,
     ResumeProductComponent,
-    FilterComponent,
-    SupplierComponent,
+    LoginComponent,
+    ModelComponent,
+    ProductComponent,
+    ResumeProductComponent,
+    TopFilterComponent,
     FileSelectDirective,
-    UploadComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    SliderModule,
-    ReactiveFormsModule
-    SliderModule,
-    MDBBootstrapModule.forRoot()
+    ReactiveFormsModule,
+    NgbModule,
+    MultiSelectModule,
+    CheckboxModule
   ],
   providers: [
     GlobalConfigurationService,
