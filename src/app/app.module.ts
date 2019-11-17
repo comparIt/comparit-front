@@ -28,6 +28,7 @@ import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {CheckboxModule} from 'primeng/primeng';
+import {SliderModule} from './product/slider-filter/slider.component';
 
 
 
@@ -61,7 +62,8 @@ import {CheckboxModule} from 'primeng/primeng';
     ReactiveFormsModule,
     NgbModule,
     MultiSelectModule,
-    CheckboxModule
+    CheckboxModule,
+    SliderModule
   ],
   providers: [
     GlobalConfigurationService,
