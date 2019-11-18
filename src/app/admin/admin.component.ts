@@ -3,7 +3,7 @@ import Stepper from 'bs-stepper';
 import { Configuration } from '../shared/models/configuration';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service'
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import {NgForm} from '@angular/forms';
+import { Model } from '../shared/models/model';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,32 +12,48 @@ import {NgForm} from '@angular/forms';
 
 export class AdminComponent implements OnInit {
   private stepper: Stepper;
-  private configuration: Configuration;
-
+  configuration: Configuration;
+  submitted = false;
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
-    private compareItAPIService: CompareItAPIService
-    ) { }
+    private compareItAPIService: CompareItAPIService,
+    ) {}
+
+  ngOnInit() {
+    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+      linear: false,
+      animation: true
+    });
+    this.configuration = new Configuration();
+    this.configuration.models = [];
+  }
 
   next() {
     this.stepper.next();
   }
 
-  onSubmit(configurationForm: NgForm) {
-    console.log(configurationForm.value);
-    console.log(configurationForm.value['CPrincipal']);
-    this.configuration.colorPrimary = configurationForm.value['CPrincipal'];
+  onSubmit() {
     console.log(this.configuration);
     this.compareItAPIService.putwebsiteconfig(this.configuration).subscribe();
   }
 
-  ngOnInit() {
-    this.configuration = new Configuration()
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
-      linear: false,
-      animation: true
-    });
+createModel(): Model {
+  let model: Model = new Model;
+  model.name = "";
+  model.isActivited = false;
+  model.technicalName = "",
+  model.modelPropreties = []
+  return model;
+}
+
+  addModel() {
+    this.configuration.models.push(this.createModel());
+    console.log(this.configuration);
+  }
+
+  deleteModel(event: Model) {
+    this.configuration.models = this.configuration.models.filter(obj => obj !== event);
   }
 
 }

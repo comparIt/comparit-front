@@ -1,5 +1,4 @@
 /* Add application styles & imports to this file! */
-@import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bs-stepper/dist/css/bs-stepper.min.css';
 
 .active .bs-stepper-circle {
@@ -17,7 +16,6 @@
     color: #ff4444;
     font-weight: 900;
     text-decoration: none solid rgb(68, 68, 68);
-    font-style: italic;
     font-variant: normal;
     text-transform: uppercase;
 }
@@ -51,9 +49,21 @@
     text-transform: none;
     text-align:center;
 }
-.btnNext{
+#btnNext{
     background-color: #ff4444;
+    font-weight: bold;
+    border-color:#ffffff;
 }
+
+#btnNext:hover,
+#btnNext:active,
+#btnNext:focus,
+#btnNext:active{
+    background: rgba(255, 51, 0, 0.692);
+    color: #ffffff;
+    border-color:  rgba(255, 51, 0, 0.692);
+}
+
 .selectColor{
     display:flex;
     justify-content: space-evenly; 

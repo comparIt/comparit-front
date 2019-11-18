@@ -24,14 +24,12 @@
                 <span class="bs-stepper-label">ETAPE 3/3</span>
               </button>
             </div>
-
           </div>
           <div class="bs-stepper-content">
-            <form #configurationForm="ngForm" (ngSubmit)="onSubmit(configurationForm)">
               <div id="test-l-1" class="content">
                 <p class='text-label'>Quels type de produits voulez vous comparer sur cette instance de Compare'It ?</p>
                 <!-- Type dropdown -->
-                <select ngModel name="TypeProduit" class="browser-default custom-select" id="typeDropDown">
+                <select   [(ngModel)]="configuration.nomInstance" class="browser-default custom-select" id="typeDropDown">
                   <option selected>Type de produit</option>
                   <option value="Téléphone">Téléphone</option>
                   <option value="Maison">Maison</option>
@@ -41,24 +39,25 @@
                 <p class='text-label'>Choisissez 3 couleurs principales pour le théme de votre site</p>
                 <!-- couleur dropdown -->
                 <div class='selectColor'>
-                    <select ngModel name="CPrincipal" class="browser-default custom-select" id="colorDropDown">
+                    <select type="text" [(ngModel)]="configuration.colorPrimary"  class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur principale</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <select ngModel name="CSrincipal" class="browser-default custom-select" id="colorDropDown">
+                    <select type="text" [(ngModel)]="configuration.colorSecondary"  class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
-                    <select ngModel name="CS2rincipal" class="browser-default custom-select" id="colorDropDown">
+                    <select type="text" [(ngModel)]="configuration.colorSecondary2" class="browser-default custom-select" id="colorDropDown">
                       <option selected>Couleur secondaire 2</option>
                       <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
                       <option value="#f44336" style="background-color:#f44336;">Red</option>
                       <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
                     </select>
+                    
                 </div>
                 <!-- couleur dropdown -->
                 <p class='text-label'>Choisissez logo de votre site</p>
@@ -74,20 +73,39 @@
                   </div>
                 </div>
                 <!-- import image -->
-                <button (click)="next()"  type="button" class="btnNext" >Next</button>
+                <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
               </div>
+              <!-- Step 2 configuration Web-->
               <div id="test-l-2" class="content">
                 <div class="form-group">
-               <!--<label class="text-label">Model :</label> -->
-                  <app-model></app-model>
-                </div>
+                        <div class="card m-3">
+                            <h5 class="card-header">Model Forms </h5>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="button" (click)="addModel()">add</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div >
+                              <app-model *ngFor="let model of configuration.models;let i = index;" 
+                              [index] = "i"
+                              [model]="model"
+                              (deleteModel)="deleteModel($event)"
+                              ></app-model>
 
-                <button (click)="next()"  type="button" class="btnNext" >Next</button>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
+                                <button class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
+                            </div>
+                        </div>
+                </div>
+                <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
               </div>
               <div id="test-l-3" class="content text-center">
-                  <button  type="button" class="btnNext" (click)="onSubmit(configurationForm)" >Submit</button>
+                  <button (click)="onSubmit()" type="button" class="btn btn-primary" id="btnNext">Submit</button>
               </div>
-            </form>
           </div>
         </div>
       </div>

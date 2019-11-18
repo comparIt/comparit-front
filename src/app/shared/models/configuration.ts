@@ -1,3 +1,5 @@
+import { Model } from './model';
+
 export class Configuration {
   adminId: BigInteger;
   nomInstance: string;
@@ -5,4 +7,5 @@ export class Configuration {
   colorSecondary: string;
   colorSecondary2: string;
   logo: string;
+  models: Model[];
 }

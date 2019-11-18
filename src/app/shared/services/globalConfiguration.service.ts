@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Configuration} from '../models/configuration';
+import { Model } from '../models/model';
+import { modelProperty } from '../models/modelProperty';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +13,8 @@ export class GlobalConfigurationService {
 
   fetchGlobalConfiguration() {
     this.configuration = new Configuration();
+    this.configuration.models = [];
+    
   }
 
   constructor() {
@@ -36,5 +40,10 @@ export class GlobalConfigurationService {
   get logo(): string {
     return this.configuration.logo;
   }
+
+  get model(): Model[]{
+    return this.configuration.models;
+  }
+
   
 }

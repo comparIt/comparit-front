@@ -14,6 +14,7 @@ import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
+import { ModelpropertyComponent } from './admin/components/model-property/model-property.component';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import { FileSelectDirective } from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
@@ -29,7 +30,8 @@ import {SliderModule} from 'primeng/primeng';
     NotifComponent,
     FileSelectDirective,
     LoginComponent,
-    ModelComponent
+    ModelComponent,
+    ModelpropertyComponent
   ],
   imports: [
     BrowserModule,

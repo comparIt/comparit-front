@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-declare const myTest: any;
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Model } from 'src/app/shared/models/model';
+import { modelProperty } from 'src/app/shared/models/modelProperty';
+
 
 @Component({
   selector: 'app-model',
@@ -8,35 +9,41 @@ declare const myTest: any;
   styleUrls: ['./model.component.scss']
 })
 export class ModelComponent implements OnInit {
-  dynamicForm: FormGroup;
-    submitted = false;
+  submitted = false;
+  @Input() model: Model;
+  @Input() index: number;
+  @Output() deleteModel = new EventEmitter<Model>();
 
- 
-  constructor(private formBuilder: FormBuilder) { }
-  ngOnInit() {
-    this.dynamicForm = this.formBuilder.group({
-        numberOfModels: ['', Validators.required],
-        Models: new FormArray([])
-    });
-}
 
-// convenience getters for easy access to form fields
-get f() { return this.dynamicForm.controls; }
-get t() { return this.f.Models as FormArray; }
+ constructor() {
+  }
 
-onChangeModels(e) {
-    const numberOfModels = e.target.value || 0;
-    if (this.t.length < numberOfModels) {
-        for (let i = this.t.length; i < numberOfModels; i++) {
-            this.t.push(this.formBuilder.group({
-                name: ['', Validators.required],
-                email: ['', [Validators.required, Validators.email]]
-            }));
-        }
-    } else {
-        for (let i = this.t.length; i >= numberOfModels; i--) {
-            this.t.removeAt(i);
-        }
+    ngOnInit() {
+      this.model.modelPropreties.push(this.intiliazeModelProperty( 'Description', 'Description', true, 'Enumerative' , true, true, true));
+      this.model.modelPropreties.push(this.intiliazeModelProperty( 'Prix', 'Prix', true, 'Numeric' , true, true, true));
     }
-}
+
+    delete(model: Model) {
+      this.deleteModel.emit(model);
+    }
+
+    createModelProprety(): modelProperty {
+      const modelProprety: modelProperty = new modelProperty('' , '', false, '', false, false, false );
+      return modelProprety;
+    }
+
+    addModelProperty() {
+      this.model.modelPropreties.push(this.createModelProprety());
+    }
+
+    deleteModelProperty(event: modelProperty) {
+      this.model.modelPropreties = this.model.modelPropreties.filter(obj => obj !== event);
+    }
+
+    // tslint:disable-next-line: max-line-length
+    intiliazeModelProperty(name: string, technicalName: string, isActivited: boolean, type: string, filtrable: boolean, filtrableAdvanced: boolean, mandatory: boolean): modelProperty {
+    // tslint:disable-next-line: max-line-length
+      const modelProprety: modelProperty = new modelProperty(name , technicalName, isActivited, type, filtrable, filtrableAdvanced, mandatory );
+      return modelProprety;
+    }
 }
