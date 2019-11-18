@@ -1,13 +1,19 @@
-<section style="margin-top: 10px">
-  <div>
-    <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" alt="" style="border: 1px solid rgba(0,0,0,0.125); border-radius: 0.35rem; width: 30%;">
-    <div style="border: 1px solid rgba(0,0,0,0.125); border-radius: 0.25rem; width: 70%; float: right">
-    <p class="dark-grey-text" *ngIf="product.properties['DeviceName']">{{product.properties['DeviceName']}} </p>
-    <p class="dark-grey-text" *ngIf="product.properties['prix'] " >{{product.properties['prix']}}€</p>
-    <p class="dark-grey-text" *ngIf="product.properties['dimensions']"> {{product.properties['dimensions']}} </p>
-    <p class="dark-grey-text" *ngIf="product.properties['description']">{{product.properties['description']}} </p>
+<section style="">
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" *ngIf="product.properties['DeviceName']"> {{product.properties['DeviceName']}}</h5>
+          <p class="card-text" *ngIf="product.properties['prix'] " >{{product.properties['prix']}}€</p>
+          <p class="card-text" *ngIf="product.properties['dimensions']"> {{product.properties['dimensions']}} </p>
+          <p class="card-text" *ngIf="product.properties['description']">{{product.properties['description']}} </p>
+
+        </div>
+      </div>
     </div>
   </div>
-
 </section>
 
