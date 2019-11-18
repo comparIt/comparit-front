@@ -38,6 +38,14 @@ export const routes: Routes = [
     path      : 'app/login',
     component : LoginComponent,
   },
+  {
+    path      : 'app/supplier',
+    component : SupplierComponent,
+  },
+  {
+    path      : 'app/uploadCsv',
+    component : UploadComponent,
+  }
 ];
 
 @NgModule({
