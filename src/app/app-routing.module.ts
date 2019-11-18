@@ -23,6 +23,7 @@ export const routes: Routes = [
   {
     path      : 'app/admin/:userid',
     component : AdminComponent,
+
   },
   {
     path      : 'app/login',

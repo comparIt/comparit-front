@@ -35,15 +35,15 @@ export class AdminComponent implements OnInit {
 
   onSubmit() {
     console.log(this.configuration);
-    this.compareItAPIService.putwebsiteconfig(this.configuration).subscribe();
+    this.globalconfigurationService.putConfiguration(this.configuration);
   }
 
 createModel(): Model {
   let model: Model = new Model;
   model.name = "";
   model.isActivited = false;
-  model.technicalName = "",
-  model.modelPropreties = []
+  model.technicalName = "";
+  model.modelPropreties = [];
   return model;
 }
 

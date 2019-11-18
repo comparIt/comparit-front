@@ -58,7 +58,7 @@ export class CompareItAPIService {
     }
 
     // WebsiteConfig
-    public putwebsiteconfig(configuration: Configuration): any {
+    public putWebsiteconfig(configuration: Configuration): any {
         return this.put(this.websiteconfigController, [], configuration);
     }
 
