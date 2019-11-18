@@ -1,19 +1,16 @@
-<div class="card">
-  <div class="card-body">
-    This is some text within a card body.
-
-    <div ngbDropdown class="d-inline-block">
-      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-        <button ngbDropdownItem>Action - 1</button>
-        <button ngbDropdownItem>Another Action</button>
-        <button ngbDropdownItem>Something else is here</button>
-      </div>
+<div class="card m-1">
+  <div class="row m-1">
+    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
+      <app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
+    </div>
+    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
+      <app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
+    </div>
+    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
+      <app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
+    </div>
+    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
+      <app-slider [(ngModel)]="val" [range]="true" [min]="0" [max]="100"></app-slider>
     </div>
   </div>
 </div>
-
-<!--<p-multiSelect [options]="cities1" [(ngModel)]="selectedCities1"></p-multiSelect>-->
-<app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
-<!--<p-slider [(ngModel)]="val"></p-slider>-->
-<app-slider [(ngModel)]="val" [range]="true" [min]="0" [max]="100"></app-slider>
