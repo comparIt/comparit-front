@@ -33,6 +33,7 @@ import {ResumeProductComponent} from './product/resume-product/resume-product.co
     FileSelectDirective,
     LoginComponent,
     ModelComponent,
+    ModelpropertyComponent,
     ProductComponent,
     ResumeProductComponent,
   ],
