@@ -16,7 +16,7 @@ export class CompareItAPIService {
     private modelController = '/model';
     private modelPropertyController = '/modelproperty';
     private userController = '/user';
-    private websiteconfigController= '/websiteconfig/';
+    private websiteconfigController= '/websiteconfig';
 
     private HEADERS;
 
@@ -59,7 +59,7 @@ export class CompareItAPIService {
 
     // WebsiteConfig
     public putWebsiteconfig(configuration: Configuration): any {
-        return this.put(this.websiteconfigController, [], configuration);
+        return this.put(this.websiteconfigController+"/saveWebsiteConfiguration", [], configuration);
     }
 
     public getWebsiteConfiguration(): any {

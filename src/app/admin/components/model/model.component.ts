@@ -19,8 +19,8 @@ export class ModelComponent implements OnInit {
   }
 
     ngOnInit() {
-      this.model.modelPropreties.push(this.intiliazeModelProperty( 'Description', 'Description', true, 'Enumerative' , true, true, true));
-      this.model.modelPropreties.push(this.intiliazeModelProperty( 'Prix', 'Prix', true, 'Numeric' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( 'Description', 'Description', true, 'Enumerative' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( 'Prix', 'Prix', true, 'Numeric' , true, true, true));
     }
 
     delete(model: Model) {
@@ -33,11 +33,11 @@ export class ModelComponent implements OnInit {
     }
 
     addModelProperty() {
-      this.model.modelPropreties.push(this.createModelProprety());
+      this.model.modelProperties.push(this.createModelProprety());
     }
 
     deleteModelProperty(event: modelProperty) {
-      this.model.modelPropreties = this.model.modelPropreties.filter(obj => obj !== event);
+      this.model.modelProperties = this.model.modelProperties.filter(obj => obj !== event);
     }
 
     // tslint:disable-next-line: max-line-length

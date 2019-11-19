@@ -43,7 +43,7 @@ createModel(): Model {
   model.name = "";
   model.isActivited = false;
   model.technicalName = "";
-  model.modelPropreties = [];
+  model.modelProperties = [];
   return model;
 }
 
