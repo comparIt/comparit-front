@@ -17,20 +17,24 @@ export class UploadComponent {
   ) {
     this.types = [
       {label: 'Select type', value: null},
-      {label: 'Phone', value: {name: 'phone'}},
-      {label: 'Car', value: {name: 'car'}}
+      {label: 'Phone', value: {name: 'phonex'}},
+      {label: 'Car', value: {name: 'cars'}}
     ];
   }
 
   types: SelectItem[];
   uplo: File;
   selectedType: Model;
-  upload(event) {
+
+  url(): string {
+    return this.compareItAPIService.getUploadCsv(this.selectedType);
+  }
+
+  error(event) {
     console.log(event);
   }
 
-  url() {
-    console.log(this.compareItAPIService.getUploadCsv(this.selectedType));
-    return this.compareItAPIService.getUploadCsv(this.selectedType);
+  upload(event) {
+    console.log(event);
   }
 }

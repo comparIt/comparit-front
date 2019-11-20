@@ -42,13 +42,12 @@ export class CompareItAPIService {
          return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
      }
 
-     getUploadUrl(): string {
-       return this.DOMAIN + this.byUrlController;
+     getUploadUrl(model: Model): string {
+       return this.DOMAIN + this.byUrlController + '/' + model.name;
      }
 
       getUploadCsv(model: Model): string {
-        console.log('in getUploadCsv');
-        return this.DOMAIN + this.byCsvUploadController + model.name;
+        return this.DOMAIN + this.byCsvUploadController + '/' + model.name;
       }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
