@@ -1,21 +1,36 @@
 import {Component, OnInit} from '@angular/core';
-import {  FileUploader, FileSelectDirective } from 'ng2-file-upload';
-
-const apiSupplierUrl = 'http://localhost:8080/supplier/upload';
+import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
+import {CompareItAPIService} from '../shared/services/compareItAPI.service';
+import {Model} from '../shared/models/model';
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss']
 })
-export class UploadComponent implements OnInit {
-  title = 'compare-it-front-uploader';
-  public uploader: FileUploader = new FileUploader({ url: apiSupplierUrl, itemAlias: 'csv' });
-  ngOnInit() {
-    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
-    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      console.log('CsvUpload:uploaded:', item, status, response);
-      alert('File uploaded successfully');
-    };
+export class UploadComponent {
+
+  constructor(
+    private globalconfigurationService: GlobalConfigurationService,
+    private compareItAPIService: CompareItAPIService,
+  ) {
+    this.types = [
+      {label: 'Select type', value: null},
+      {label: 'Phone', value: {name: 'phone'}},
+      {label: 'Car', value: {name: 'car'}}
+    ];
+  }
+
+  types: SelectItem[];
+  uplo: File;
+  selectedType: Model;
+  upload(event) {
+    console.log(event);
+  }
+
+  url() {
+    console.log(this.compareItAPIService.getUploadCsv(this.selectedType));
+    return this.compareItAPIService.getUploadCsv(this.selectedType);
   }
 }

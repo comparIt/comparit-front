@@ -17,7 +17,7 @@ export class SupplierComponent implements OnInit {
   onSubmit(formData) {
     console.log(formData)
     console.log( this.httpClient.get(this.REST_API_SERVER +
-      '/company/byUrl?url=' + formData.url +
+      '/compagny/byUrl?url=' + formData.url +
       '&supplierId=' + formData.supplierId +
       '&type=' + formData.type ).subscribe());
   }
