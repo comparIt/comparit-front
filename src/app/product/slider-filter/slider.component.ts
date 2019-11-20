@@ -61,18 +61,26 @@ export const SLIDER_VALUE_ACCESSOR: any = {
             'bottom': orientation == 'vertical' ? handleValue + '%' : null}">
             </span>
       <span #sliderHandleStart *ngIf="range" [attr.tabindex]="tabindex" (keydown)="onHandleKeydown($event,0)"
+            [ngStyle]="hoverL === 0
+            ? {'border-color': conf.colorPrimary, 'left': rangeStartLeft, 'bottom': rangeStartBottom}
+            : {'border-color': '#666666','left': rangeStartLeft, 'bottom': rangeStartBottom}"
+            (mouseover)="hoverL = 0"
+            (mouseout)="hoverL = -1"
             (mousedown)="onMouseDown($event,0)"
             (touchstart)="onTouchStart($event,0)" (touchmove)="onTouchMove($event,0)" (touchend)="onTouchEnd($event)"
             [style.transition]="dragging ? 'none': null"
             class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
-            [ngStyle]="{'left': rangeStartLeft, 'bottom': rangeStartBottom, 'border-color':'red'}"
             [ngClass]="{'ui-slider-handle-active':handleIndex==0}"></span>
       <span #sliderHandleEnd *ngIf="range"
+            [ngStyle]="hoverR === 0
+            ? {'border-color': conf.colorPrimary, 'left': rangeEndLeft, 'bottom': rangeEndBottom}
+            : {'border-color': '#666666','left': rangeEndLeft, 'bottom': rangeEndBottom}"
+            (mouseover)="hoverR = 0"
+            (mouseout)="hoverR = -1"
             [attr.tabindex]="tabindex" (keydown)="onHandleKeydown($event,1)" (mousedown)="onMouseDown($event,1)"
             (touchstart)="onTouchStart($event,1)" (touchmove)="onTouchMove($event,1)" (touchend)="onTouchEnd($event)"
             [style.transition]="dragging ? 'none': null"
             class="ui-slider-handle ui-state-default ui-corner-all ui-clickable"
-            [ngStyle]="{'left': rangeEndLeft, 'bottom': rangeEndBottom}"
             [ngClass]="{'ui-slider-handle-active':handleIndex==1}"></span>
     </div>
   `,
@@ -80,7 +88,11 @@ export const SLIDER_VALUE_ACCESSOR: any = {
 })
 export class SliderComponent implements OnDestroy, ControlValueAccessor {
 
-  constructor(public el: ElementRef, public renderer: Renderer2, private ngZone: NgZone, public cd: ChangeDetectorRef, public conf: GlobalConfigurationService) {
+  constructor(public el: ElementRef,
+              public renderer: Renderer2,
+              private ngZone: NgZone,
+              public cd: ChangeDetectorRef,
+              public conf: GlobalConfigurationService) {
   }
 
   get rangeStartLeft() {
@@ -98,6 +110,9 @@ export class SliderComponent implements OnDestroy, ControlValueAccessor {
   get rangeEndBottom() {
     return this.isVertical() ? this.handleValues[1] + '%' : 'auto';
   }
+
+  hoverL: number;
+  hoverR: number;
 
   @Input() animate: boolean;
 
@@ -161,11 +176,9 @@ export class SliderComponent implements OnDestroy, ControlValueAccessor {
 
   public starty: number;
 
-  public onModelChange: Function = () => {
-  }
+  public onModelChange: Function = () => {}
 
-  public onModelTouched: Function = () => {
-  }
+  public onModelTouched: Function = () => {}
 
   onMouseDown(event, index?: number) {
     if (this.disabled) {
@@ -354,8 +367,7 @@ export class SliderComponent implements OnDestroy, ControlValueAccessor {
   writeValue(value: any): void {
     if (this.range) {
       this.values = value || [0, 0];
-    }
-    else {
+    } else {
       this.value = value || 0;
     }
 
@@ -390,8 +402,7 @@ export class SliderComponent implements OnDestroy, ControlValueAccessor {
   calculateHandleValue(event): number {
     if (this.orientation === 'horizontal') {
       return ((event.pageX - this.initX) * 100) / (this.barWidth);
-    }
-    else {
+    } else {
       return (((this.initY + this.barHeight) - event.pageY) * 100) / (this.barHeight);
     }
   }
@@ -403,11 +414,9 @@ export class SliderComponent implements OnDestroy, ControlValueAccessor {
     } else {
       if (this.value < this.min) {
         this.handleValue = 0;
-      }
-      else if (this.value > this.max) {
+      } else if (this.value > this.max) {
         this.handleValue = 100;
- }
-      else {
+ } else {
         this.handleValue = (this.value - this.min) * 100 / (this.max - this.min);
  }
     }

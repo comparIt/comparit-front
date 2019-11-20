@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {CheckboxModule} from 'primeng/primeng';
 import {SliderModule} from './product/slider-filter/slider.component';
+import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
 
 
 
@@ -47,6 +48,7 @@ import {SliderModule} from './product/slider-filter/slider.component';
     ResumeProductComponent,
     TopFilterComponent,
     FileSelectDirective,
+    AbstractFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,12 @@
-<div class="card m-1">
-  <div class="row m-1">
-    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
-      <app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
-    </div>
-    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
-      <app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
-    </div>
-    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
-      <app-multi-select [options]="cities1" [(ngModel)]="selectedCities1"></app-multi-select>
-    </div>
-    <div class="col-12 col-sm-8 col-md-2 col-lg-2 col-xl-2">
-      <app-slider [(ngModel)]="val" [range]="true" [min]="0" [max]="100"></app-slider>
+<section style="">
+  <div class="card">
+    <div class="row no-gutters">
+      <div class="row m-1">
+        <div *ngFor="let p of model.modelProprety" class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-2">
+          <app-abstract-filter [property]="p"></app-abstract-filter>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+

@@ -1,0 +1,7 @@
+<div >
+  Range: {{property.range[0] + ' - ' + property.range[1]}}
+  <app-slider [(ngModel)]="property.range" [range]="true" [min]="property.min" [max]="property.max"></app-slider>
+</div>
+<div>
+  <app-multi-select [options]="property.values" [(ngModel)]="property.selectedValues"></app-multi-select>
+</div>
