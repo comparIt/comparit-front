@@ -24,6 +24,7 @@ import {ColorPickerModule} from 'primeng/colorpicker';
 import {CheckboxModule} from 'primeng/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FileUploadModule} from 'primeng/fileupload';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import {FileUploadModule} from 'primeng/fileupload';
     ColorPickerModule,
     BrowserAnimationsModule,
     CheckboxModule,
-    FileUploadModule
+    FileUploadModule,
+    InputTextModule
   ],
   providers: [
     GlobalConfigurationService,

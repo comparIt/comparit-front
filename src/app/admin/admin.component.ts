@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
     this.configuration.colorPrimary="#c26d6d";
     this.configuration.colorSecondary="#50459c";
     this.configuration.colorSecondary2="#82bd2a";
-    this.configuration.logo="pictures";
+    this.configuration.logo="picture";
     this.configuration.featAnalytic=false;
   }
 

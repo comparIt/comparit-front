@@ -51,8 +51,11 @@
                 <p class='text-label'>Choisissez logo de votre site :</p>
                 
                 <!-- import image -->
-                <div style="margin-left: 45%;" class="input-group">
-                    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
+                <div style="margin-left: 25%;" class="input-group">
+                  <span class="ui-float-label">
+                    <input id="float-input" type="text" size="70" [(ngModel)]="configuration.logo" pInputText> 
+                    <label for="float-input">URL</label>
+                </span>
                 </div>
                 <!-- import image -->
                 <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
