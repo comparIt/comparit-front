@@ -39,38 +39,20 @@
                 <p class='text-label'>Choisissez 3 couleurs principales pour le théme de votre site</p>
                 <!-- couleur dropdown -->
                 <div class='selectColor'>
-                    <select type="text" [(ngModel)]="configuration.colorPrimary"  class="browser-default custom-select" id="colorDropDown">
-                      <option selected>Couleur principale</option>
-                      <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
-                      <option value="#f44336" style="background-color:#f44336;">Red</option>
-                      <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
-                    </select>
-                    <select type="text" [(ngModel)]="configuration.colorSecondary"  class="browser-default custom-select" id="colorDropDown">
-                      <option selected>Couleur secondaire</option>
-                      <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
-                      <option value="#f44336" style="background-color:#f44336;">Red</option>
-                      <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
-                    </select>
-                    <select type="text" [(ngModel)]="configuration.colorSecondary2" class="browser-default custom-select" id="colorDropDown">
-                      <option selected>Couleur secondaire 2</option>
-                      <option value="#2196f3" style="background-color:#2196f3;">Blue</option>
-                      <option value="#f44336" style="background-color:#f44336;">Red</option>
-                      <option value="#2BBBAD" style="background-color:#2BBBAD;">Cyan</option>
-                    </select>
-                    
+                    <p>Couleur principale :</p>
+                    <p-colorPicker class="colorPicker" [(ngModel)]="configuration.colorPrimary"></p-colorPicker>
+                    <p>Couleur secondaire :</p>
+                    <p-colorPicker class="colorPicker" [(ngModel)]="configuration.colorSecondary"></p-colorPicker>
+                    <p>Couleur secondaire 2: </p>
+                    <p-colorPicker class="colorPicker" [(ngModel)]="configuration.colorSecondary2"></p-colorPicker> 
                 </div>
+                
                 <!-- couleur dropdown -->
-                <p class='text-label'>Choisissez logo de votre site</p>
+                <p class='text-label'>Choisissez logo de votre site :</p>
+                
                 <!-- import image -->
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupFileAddon01">Image</span>
-                  </div>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                      aria-describedby="inputGroupFileAddon01">
-                    <label class="custom-file-label" for="inputGroupFile01">choisir l'image</label>
-                  </div>
+                <div style="margin-left: 45%;" class="input-group">
+                    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>
                 </div>
                 <!-- import image -->
                 <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
@@ -103,8 +85,16 @@
                 </div>
                 <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
               </div>
+              <!-- Step 3 configuration Web-->
               <div id="test-l-3" class="content text-center">
-                  <button (click)="onSubmit()" type="button" class="btn btn-primary" id="btnNext">Submit</button>
+                  <p class='text-label'>Souhaitez vous disposer d'une page Analytics ? </p>
+                  <p class='text-label'>Cette Page Vous permettra d'accéder à des informations sur vos utilisations, tels que les pages les plus consultées, les fournisseurs les plus actifs, les filtres les plus souvent réalisés<p>
+                      <label class='text-label'>Si oui cochez la case:     </label>
+                      <p-checkbox class="checkBoxComponent" [(ngModel)]="configuration.featAnalytic" binary="false"></p-checkbox> 
+                  <div>
+                      <button (click)="onSubmit()" type="button" class="btn btn-primary" id="btnNext">Submit</button>
+                  </div>
+              
               </div>
           </div>
         </div>
