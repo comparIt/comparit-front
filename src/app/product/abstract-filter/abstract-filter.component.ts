@@ -1,19 +1,20 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
 import {SelectItem} from 'primeng/api';
-import {Model} from '../../shared/models/model';
+import {ModelProperty} from '../../shared/models/model-property';
 
 @Component({
-  selector: 'app-top-filter',
-  templateUrl: './top-filter.component.html'
+  selector: 'app-abstract-filter',
+  templateUrl: './abstract-filter.component.html'
 })
-export class TopFilterComponent implements OnInit {
+export class AbstractFilterComponent implements OnInit {
 
   constructor(private config: GlobalConfigurationService) { }
 
-  @Input() model: Model;
+  @Input() property: ModelProperty;
 
   ngOnInit() {
+
   }
 
 }
