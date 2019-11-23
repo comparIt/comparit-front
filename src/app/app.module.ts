@@ -20,6 +20,11 @@ import {FileSelectDirective} from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
+import {ColorPickerModule} from 'primeng/colorpicker';
+import {CheckboxModule} from 'primeng/checkbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FileUploadModule} from 'primeng/fileupload';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,12 @@ import {ResumeProductComponent} from './product/resume-product/resume-product.co
     HttpClientModule,
     FormsModule,
     SliderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule,
+    BrowserAnimationsModule,
+    CheckboxModule,
+    FileUploadModule,
+    InputTextModule
   ],
   providers: [
     GlobalConfigurationService,

@@ -7,5 +7,6 @@ export class Configuration {
   colorSecondary: string;
   colorSecondary2: string;
   logo: string;
+  featAnalytic:boolean;
   models: Model[];
 }

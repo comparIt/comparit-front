@@ -4,6 +4,7 @@ import { Configuration } from '../shared/models/configuration';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service'
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import { Model } from '../shared/models/model';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -13,6 +14,7 @@ import { Model } from '../shared/models/model';
 export class AdminComponent implements OnInit {
   private stepper: Stepper;
   configuration: Configuration;
+  uploadedFiles: any[] = [];
   submitted = false;
 
   constructor(
@@ -27,6 +29,11 @@ export class AdminComponent implements OnInit {
     });
     this.configuration = new Configuration();
     this.configuration.models = [];
+    this.configuration.colorPrimary="#c26d6d";
+    this.configuration.colorSecondary="#50459c";
+    this.configuration.colorSecondary2="#82bd2a";
+    this.configuration.logo="picture";
+    this.configuration.featAnalytic=false;
   }
 
   next() {
@@ -54,6 +61,13 @@ createModel(): Model {
 
   deleteModel(event: Model) {
     this.configuration.models = this.configuration.models.filter(obj => obj !== event);
+  }
+
+  onUpload(event) {
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);   
+    }
+    
   }
 
 }
