@@ -59,7 +59,7 @@ export class CompareItAPIService {
 
     // WebsiteConfig
     public putWebsiteconfig(configuration: Configuration): any {
-        return this.put(this.websiteconfigController+"/saveWebsiteConfiguration", [], configuration);
+        return this.put(this.websiteconfigController + '/saveWebsiteConfiguration', [], configuration);
     }
 
     public getWebsiteConfiguration(): any {
@@ -73,6 +73,10 @@ export class CompareItAPIService {
 
   public getMockProduct(): any {
        return this.get('/product/search', []);
+  }
+
+  public getProducts(params: {key: string, value: string}[]): any {
+       return this.get('/product/search', params);
   }
 
 }

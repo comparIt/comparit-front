@@ -1,25 +1,60 @@
-export class modelProperty {
+export class ModelProperty {
 
-    name: string;
-    technicalName: string;
-    isActivited: boolean;
-    type: string;
-    filtrable: boolean;
-    filtrableAdvanced: boolean;
-    mandatory: boolean;
-    constructor( name: string,
-                 technicalName: string,
-                 isActivited: boolean,
-                 type: string,
-                 filtrable: boolean,
-                 filtrableAdvanced: boolean,
-                 mandatory: boolean) {
-        this.name = name;
-        this.technicalName = technicalName;
-        this.isActivited = isActivited;
-        this.type = type;
-        this.filtrable = filtrable;
-        this.filtrableAdvanced = filtrableAdvanced;
-        this.mandatory = mandatory;
-    }
+  name: string;
+  technicalName: string;
+  isActivited: boolean;
+  type: string;
+  filtrable: boolean;
+  filtrableAdvanced: boolean;
+  mandatory: boolean;
+
+  min: number;
+  max: number;
+  range: number[];
+
+  values: string[];
+  selectedValues: string[] = [];
+
+  constructor(name: string,
+              technicalName: string,
+              isActivited: boolean,
+              type: string,
+              filtrable: boolean,
+              filtrableAdvanced: boolean,
+              mandatory: boolean,
+              min: number,
+              max: number,
+              values: string[]) {
+    this.name = name;
+    this.technicalName = technicalName;
+    this.isActivited = isActivited;
+    this.type = type;
+    this.filtrable = filtrable;
+    this.filtrableAdvanced = filtrableAdvanced;
+    this.mandatory = mandatory;
+
+    this.min = min;
+    this.max = max;
+    this.range = [min, max];
+
+    this.values = values;
+  }
+
+  get isEnum(): boolean {
+    return this.type === 'ENUMERATIVE';
+  }
+
+  get isNumeric(): boolean {
+    return this.type === 'NUMERIC';
+  }
+
+  get asFilter(): {key: string, value: string} {
+    return {key: this.technicalName, value: this.filterValue};
+  }
+
+  get filterValue(): string {
+    return this.isNumeric ? this.range[0] + '-' + this.range[1] : this.selectedValues.join(',');
+  }
 }
+
+

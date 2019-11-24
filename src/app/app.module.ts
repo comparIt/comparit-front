@@ -19,17 +19,13 @@ import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import { ProductComponent } from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import { FileSelectDirective } from 'ng2-file-upload';
-import {SliderModule} from 'primeng/primeng';
-import { FilterComponent } from './user/components/filter/filter.component';
-import { SupplierComponent } from './supplier/supplier.component';
-import { UploadComponent } from './upload/upload.component';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {CheckboxModule} from 'primeng/primeng';
-import {SliderModule} from './product/slider-filter/slider.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
+import {SliderModule} from './product/slider-filter/slider.component';
 
 
 
@@ -53,7 +49,8 @@ import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter
     ResumeProductComponent,
     TopFilterComponent,
     FileSelectDirective,
-    AbstractFilterComponent
+    AbstractFilterComponent,
+    ModelpropertyComponent
   ],
   imports: [
     BrowserModule,

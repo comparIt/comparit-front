@@ -1,7 +1,19 @@
-<div >
-  Range: {{property.range[0] + ' - ' + property.range[1]}}
-  <app-slider [(ngModel)]="property.range" [range]="true" [min]="property.min" [max]="property.max"></app-slider>
-</div>
 <div>
-  <app-multi-select [options]="property.values" [(ngModel)]="property.selectedValues"></app-multi-select>
+  <div *ngIf="property.isNumeric">
+    Range: {{property.range[0] + ' - ' + property.range[1]}}
+    <app-slider
+      [(ngModel)]="property.range"
+      [range]="true"
+      [min]="property.min"
+      [max]="property.max">
+    </app-slider>
+  </div>
+  <div *ngIf="property.isEnum">
+    <app-multi-select
+      [defaultLabel]="property.name"
+      [panelStyle]="{minWidth:'12em'}"
+      [options]="valuesAsObject"
+      [(ngModel)]="property.selectedValues">
+    </app-multi-select>
+  </div>
 </div>

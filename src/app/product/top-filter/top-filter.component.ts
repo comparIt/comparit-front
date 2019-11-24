@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
 import {SelectItem} from 'primeng/api';
 import {Model} from '../../shared/models/model';
@@ -12,8 +12,10 @@ export class TopFilterComponent implements OnInit {
   constructor(private config: GlobalConfigurationService) { }
 
   @Input() model: Model;
+  @Output() searchEvent = new EventEmitter();
 
   ngOnInit() {
   }
+
 
 }

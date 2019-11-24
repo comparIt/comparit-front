@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
-import {SelectItem} from 'primeng/api';
-import {ModelProperty} from '../../shared/models/model-property';
+import {ModelProperty} from '../../shared/models/modelProperty';
 
 @Component({
   selector: 'app-abstract-filter',
@@ -14,7 +13,10 @@ export class AbstractFilterComponent implements OnInit {
   @Input() property: ModelProperty;
 
   ngOnInit() {
+  }
 
+  get valuesAsObject(): any[] {
+    return this.property.values.map(v => ({label: v, value : v}));
   }
 
 }

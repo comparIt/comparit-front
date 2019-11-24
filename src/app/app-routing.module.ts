@@ -31,7 +31,7 @@ export const routes: Routes = [
     component : LoginComponent,
   },
   {
-    path      : 'products',
+    path      : 'products/:type',
     component : ProductComponent,
   },
 ];
