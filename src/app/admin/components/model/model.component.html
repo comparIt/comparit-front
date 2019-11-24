@@ -6,20 +6,20 @@
             <div class="classHorizo">
                 <div class="form-group col-2">
                     <label>Name</label>
-                    <input type="text" [(ngModel)]="model.name" type="text" class="form-control"/>
+                    <input type="text" id="{{'inputNameM'+index}}" [(ngModel)]="model.name" type="text" class="form-control"/>
                 </div>
                 <div class="form-group col-2">
                     <label>Technical Name</label>
-                    <input type="text" [(ngModel)]="model.technicalName" class="form-control"/>
+                    <input type="text" id="{{'inputTechnicalNameM'+index}}" [(ngModel)]="model.technicalName" class="form-control"/>
                 </div>
                 <div class="form-group col-2">
                     <div class="custom-control custom-checkbox mb-3">
                             <label >Is Activated :</label>
-                            <p-checkbox class="checkBoxComponent" [(ngModel)]="model.isActivited" binary="false"></p-checkbox>   
+                            <p-checkbox id="{{'checkBoxIsActivatedM'+index}}" class="checkBoxComponent" [(ngModel)]="model.isActivited" binary="false"></p-checkbox>   
                     </div>
                 </div>
                 <div class="form-group col-2">
-                    <button class="btn btn-danger" type="button" (click)="delete(model)">Remove</button>
+                    <button id="{{'btnDeleteModel'+index}}" class="btn btn-danger" type="button" (click)="delete(model)">Remove</button>
                 </div>
             </div>
             <!-- Model Property -->
@@ -29,12 +29,13 @@
                                     <div class="form-row">
                                             <div class="form-group">
                                                     <div class="form-group">
-                                                        <button class="btn btn-primary m-1" type="button" (click)="addModelProperty()">add</button>
+                                                        <button id ="{{'btnAddModelProprety'+index}}"class="btn btn-primary m-1" type="button" (click)="addModelProperty()">add</button>
                                                     </div>
                                             </div>
                                     </div>
                         </div>
                         <app-model-property *ngFor="let modelProperty of model.modelProperties;let i = index;"
+                                id="{{'modelProperty'+ i}}"
                                 [index] = "i"
                                 [modelProperty]="modelProperty"
                                 (deleteModelProperty)="deleteModelProperty($event)"

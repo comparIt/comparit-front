@@ -19,12 +19,14 @@ export class ModelComponent implements OnInit {
   }
 
     ngOnInit() {
+      this.model.modelProperties.push(this.intiliazeModelProperty( 'DeviceName', 'DeviceName', true, 'Enumerative' , true, true, true));
       this.model.modelProperties.push(this.intiliazeModelProperty( 'Description', 'Description', true, 'Enumerative' , true, true, true));
       this.model.modelProperties.push(this.intiliazeModelProperty( 'Prix', 'Prix', true, 'Numeric' , true, true, true));
     }
 
     delete(model: Model) {
       this.deleteModel.emit(model);
+      
     }
 
     createModelProprety(): modelProperty {
