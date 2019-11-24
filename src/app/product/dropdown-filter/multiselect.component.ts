@@ -107,7 +107,7 @@ export class MultiSelectItem {
     <div #container
          [ngClass]="{'ui-multiselect ui-widget ui-state-default ui-corner-all':true,
          'ui-multiselect-open':overlayVisible,'ui-state-focus':focus,'ui-state-disabled': disabled}"
-         [ngStyle]="style" [class]="styleClass"
+         [ngStyle]="style" [class]="styleClass" style="display: block;"
          (click)="onMouseclick($event,in)">
       <div class="ui-helper-hidden-accessible">
         <input #in type="text" readonly="readonly" [attr.id]="inputId" [attr.name]="name" (focus)="onInputFocus($event)"

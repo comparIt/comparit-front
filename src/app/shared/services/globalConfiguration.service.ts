@@ -36,9 +36,19 @@ export class GlobalConfigurationService {
       1000,
       10000,
       []);
+    const typePropery = new ModelProperty('Moteur',
+      'motor',
+      true,
+      'ENUMERATIVE',
+      true,
+      false,
+      false,
+      0,
+      0,
+      ['thermique', 'Electrique'])
     const car = new Model();
     car.technicalName = 'car';
-    car.modelProperties = [colorProperty, priceProperty];
+    car.modelProperties = [colorProperty, priceProperty, typePropery];
 
     this.configuration.models.push(car);
     this.configuration.colorPrimary = '#ef5350';
