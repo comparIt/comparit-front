@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
-import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import {Model} from '../shared/models/model';
+import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
+import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
+import {Model} from '../../shared/models/model';
 import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+  templateUrl: './csv.component.html',
+  styleUrls: ['./csv.component.scss']
 })
-export class UploadComponent {
+export class UploadCsvComponent {
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
@@ -17,14 +17,14 @@ export class UploadComponent {
   ) {
     this.types = [
       {label: 'Select type', value: null},
-      {label: 'Phone', value: {name: 'phonex'}},
+      {label: 'Phone', value: {name: 'phones'}},
       {label: 'Car', value: {name: 'cars'}}
     ];
   }
 
   types: SelectItem[];
-  uplo: File;
   selectedType: Model;
+  showResult: boolean;
 
   url(): string {
     return this.compareItAPIService.getUploadCsv(this.selectedType);
@@ -35,6 +35,7 @@ export class UploadComponent {
   }
 
   upload(event) {
+    this.showResult = true;
     console.log(event);
   }
 }

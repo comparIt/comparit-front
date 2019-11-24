@@ -19,8 +19,8 @@ import { ModelpropertyComponent } from './admin/components/model-property/model-
 import { BasicAuthInterceptor } from './_helpers/basic-auth.interceptor';
 import { FileSelectDirective } from 'ng2-file-upload';
 import { SliderModule } from 'primeng/primeng';
-import { UploadComponent } from './upload/upload.component';
-import { SupplierComponent } from './supplier/supplier.component';
+import { UploadCsvComponent } from './upload/csv/csv.component';
+import { UploadUrlComponent } from './upload/url/url.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { DropdownModule } from 'primeng/dropdown';
 
@@ -37,8 +37,8 @@ import { DropdownModule } from 'primeng/dropdown';
     LoginComponent,
     ModelComponent,
     ModelpropertyComponent,
-    SupplierComponent,
-    UploadComponent
+    UploadCsvComponent,
+    UploadUrlComponent
   ],
   imports: [
     BrowserModule,

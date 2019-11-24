@@ -42,8 +42,8 @@ export class CompareItAPIService {
          return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
      }
 
-     getUploadUrl(model: Model): string {
-       return this.DOMAIN + this.byUrlController + '/' + model.name;
+     getUploadUrl(typeProduit: string): string {
+       return this.DOMAIN + this.byUrlController + '/' + typeProduit;
      }
 
       getUploadCsv(model: Model): string {
