@@ -20,14 +20,14 @@ export class ModelComponent implements OnInit {
   }
 
     ngOnInit() {
-      this.model.modelProperties.push(this.intiliazeModelProperty( 'DeviceName', 'DeviceName', true, 'Enumerative' , true, true, true));
-      this.model.modelProperties.push(this.intiliazeModelProperty( 'Description', 'Description', true, 'Enumerative' , true, true, true));
-      this.model.modelProperties.push(this.intiliazeModelProperty( 'Prix', 'Prix', true, 'Numeric' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( '', '', true, 'Enumerative' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( '', '', true, 'Enumerative' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( '', '', true, 'Numeric' , true, true, true));
     }
 
     delete(model: Model) {
       this.deleteModel.emit(model);
-      
+
     }
 
     createModelProprety(): modelProperty {
@@ -44,9 +44,9 @@ export class ModelComponent implements OnInit {
     }
 
     // tslint:disable-next-line: max-line-length
-    intiliazeModelProperty(name: string, technicalName: string, isActivited: boolean, type: string, filtrable: boolean, filtrableAdvanced: boolean, mandatory: boolean): modelProperty {
+    intiliazeModelProperty(name: string, technicalName: string, activated: boolean, type: string, filtrable: boolean, filtrableAdvanced: boolean, mandatory: boolean): modelProperty {
     // tslint:disable-next-line: max-line-length
-      const modelProprety: modelProperty = new modelProperty(name , technicalName, isActivited, type, filtrable, filtrableAdvanced, mandatory );
+      const modelProprety: modelProperty = new modelProperty(name , technicalName, activated, type, filtrable, filtrableAdvanced, mandatory );
       return modelProprety;
     }
 }
