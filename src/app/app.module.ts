@@ -15,16 +15,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
 import { ModelpropertyComponent } from './admin/components/model-property/model-property.component';
-import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import {FileSelectDirective} from 'ng2-file-upload';
-import {SliderModule} from 'primeng/primeng';
+import { UploadCsvComponent } from './upload/csv/csv.component';
+import { UploadUrlComponent } from './upload/url/url.component';
+import { DropdownModule } from 'primeng/dropdown';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {CheckboxModule} from 'primeng/checkbox';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FileUploadModule} from 'primeng/fileupload';
 import {InputTextModule} from 'primeng/inputtext';
+import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
+import {FileSelectDirective} from 'ng2-file-upload';
+import {SliderModule} from 'primeng/primeng';
+import {FileUploadModule} from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -39,15 +42,20 @@ import {InputTextModule} from 'primeng/inputtext';
     LoginComponent,
     ModelComponent,
     ModelpropertyComponent,
+    UploadCsvComponent,
+    UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent,
+    ResumeProductComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     SliderModule,
+    FileUploadModule,
+    DropdownModule,
     ReactiveFormsModule,
     ColorPickerModule,
     BrowserAnimationsModule,

@@ -1,0 +1,32 @@
+<div class="container">
+  <h1>Upload product by providing an Url</h1>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <div class="form-group">
+      <label for="type">Type</label>
+      <p-dropdown id ="type" name="type" [options]="types" [(ngModel)]="selectedType"></p-dropdown>
+    </div>
+
+    <ng-template [ngIf]="selectedType">
+
+      <div>
+        <div class="form-group">
+          <label for="url">Url to query</label>
+          https://fonoapi.freshpixl.com/v1/getlatest?token=7a930907b8b87be0f464e1cc6366f751ae00efdb68313b40
+          <input type="text" pInputText placeholder="Website url" id="url" name="url" ngModel>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+
+    </ng-template>
+
+    <ng-template [ngIf]="showResult">
+      <div class="alert alert-success" role="alert">
+        Import terminé
+      </div>
+    </ng-template>
+  </form>
+</div>
+
+
+

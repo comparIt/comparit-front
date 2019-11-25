@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
+import {Model} from "../models/model";
 
 @Injectable({
     providedIn: 'root',
 })
+
+
 export class CompareItAPIService {
 
     private DOMAIN = 'http://localhost:8080';
@@ -17,6 +20,10 @@ export class CompareItAPIService {
     private modelPropertyController = '/modelproperty';
     private userController = '/user';
     private websiteconfigController= '/websiteconfig';
+
+    /*products uploading*/
+    private byUrlController = '/compagny/byUrl';
+    private byCsvUploadController = '/compagny/byCsvUpload';
 
     private HEADERS;
 
@@ -34,6 +41,14 @@ export class CompareItAPIService {
          // build complete URL with domain, controller and '?' + params if present
          return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
      }
+
+     getUploadUrl(typeProduit: string): string {
+       return this.DOMAIN + this.byUrlController + '/' + typeProduit;
+     }
+
+      getUploadCsv(model: Model): string {
+        return this.DOMAIN + this.byCsvUploadController + '/' + model.name;
+      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
         return this.http.get(this.getBuiltUrl(endPoint, params)).toPromise();
