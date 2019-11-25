@@ -37,6 +37,7 @@
                         <app-model-property *ngFor="let modelProperty of model.modelProperties;let i = index;"
                                 id="{{'modelProperty'+ i}}"
                                 [index] = "i"
+                                [index1] = "index1"
                                 [modelProperty]="modelProperty"
                                 (deleteModelProperty)="deleteModelProperty($event)"
                         ></app-model-property>

@@ -75,6 +75,7 @@
                             <div>
                               <app-model *ngFor="let model of configuration.models;let i = index;" 
                               [index] = "i"
+                              [index1]="i"
                               id="{{'model'+ i}}"
                               [model]="model"
                               (deleteModel)="deleteModel($event)"

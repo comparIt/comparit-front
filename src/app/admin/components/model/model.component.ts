@@ -12,6 +12,7 @@ export class ModelComponent implements OnInit {
   submitted = false;
   @Input() model: Model;
   @Input() index: number;
+  @Input() index1: number;
   @Output() deleteModel = new EventEmitter<Model>();
 
 
