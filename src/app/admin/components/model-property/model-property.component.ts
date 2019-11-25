@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {ModelProperty } from 'src/app/shared/models/modelProperty';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {ModelProperty} from 'src/app/shared/models/modelProperty';
 
 @Component({
   selector: 'app-model-property',
@@ -8,17 +8,17 @@ import {ModelProperty } from 'src/app/shared/models/modelProperty';
 })
 export class ModelpropertyComponent implements OnInit {
 
-    @Input() modelProperty: ModelProperty;
-    @Input() index: number;
-    @Input() modelindex:number;
-    @Output() deleteModelProperty = new EventEmitter<modelProperty>();
+  @Input() modelProperty: ModelProperty;
+  @Input() index: number;
+  @Input() modelindex: number;
+  @Output() deleteModelProperty = new EventEmitter<ModelProperty>();
 
 
-  constructor(
-    ) {}
+  constructor() {
+  }
 
 
-    ngOnInit() {
+  ngOnInit() {
   }
 
   delete(modelProperty: ModelProperty) {

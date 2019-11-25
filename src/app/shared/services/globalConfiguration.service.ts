@@ -12,7 +12,8 @@ export class GlobalConfigurationService {
   configuration: Configuration;
 
   fetchGlobalConfiguration() {
-
+    this.configuration = new Configuration();
+    this.configuration.models = [];
   }
 
   constructor(public compareItAPIService: CompareItAPIService) {
