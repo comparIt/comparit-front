@@ -12,46 +12,7 @@ export class GlobalConfigurationService {
   configuration: Configuration;
 
   fetchGlobalConfiguration() {
-    this.configuration = new Configuration();
-    this.configuration.models = [];
-    const colorProperty = new ModelProperty(
-      'couleur',
-      'color',
-      true,
-      'ENUMERATIVE',
-      true,
-      false,
-      false,
-      0,
-      0,
-      ['rouge', 'noir']);
-    const priceProperty = new ModelProperty(
-      'Prix',
-      'price',
-      true,
-      'NUMERIC',
-      true,
-      false,
-      false,
-      1000,
-      10000,
-      []);
-    const typePropery = new ModelProperty('Moteur',
-      'motor',
-      true,
-      'ENUMERATIVE',
-      true,
-      false,
-      false,
-      0,
-      0,
-      ['thermique', 'Electrique'])
-    const car = new Model();
-    car.technicalName = 'car';
-    car.modelProperties = [colorProperty, priceProperty, typePropery];
 
-    this.configuration.models.push(car);
-    this.configuration.colorPrimary = '#ef5350';
   }
 
   constructor(public compareItAPIService: CompareItAPIService) {
