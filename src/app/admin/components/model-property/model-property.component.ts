@@ -10,13 +10,15 @@ export class ModelpropertyComponent implements OnInit {
 
     @Input() modelProperty: ModelProperty;
     @Input() index: number;
-    @Output() deleteModelProperty = new EventEmitter<ModelProperty>();
+    @Input() modelindex:number;
+    @Output() deleteModelProperty = new EventEmitter<modelProperty>();
 
 
   constructor(
     ) {}
 
-  ngOnInit() {
+
+    ngOnInit() {
   }
 
   delete(modelProperty: ModelProperty) {

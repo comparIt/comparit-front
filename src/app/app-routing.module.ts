@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
+import {UploadCsvComponent} from './upload/csv/csv.component';
+import {UploadUrlComponent} from './upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
 
@@ -27,13 +29,21 @@ export const routes: Routes = [
 
   },
   {
+    path      : 'app/uploadUrl',
+    component : UploadUrlComponent,
+  },
+  {
+    path      : 'app/uploadCsv',
+    component : UploadCsvComponent,
+  },
+  {
     path      : 'app/login',
     component : LoginComponent,
   },
   {
     path      : 'products/:type',
     component : ProductComponent,
-  },
+  }
 ];
 
 @NgModule({

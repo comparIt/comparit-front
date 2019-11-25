@@ -15,17 +15,19 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { ModelComponent } from './admin/components/model/model.component';
 import { ModelpropertyComponent } from './admin/components/model-property/model-property.component';
-import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import { ProductComponent } from './product/product.component';
+import { UploadCsvComponent } from './upload/csv/csv.component';
+import { UploadUrlComponent } from './upload/url/url.component';
+import { DropdownModule } from 'primeng/dropdown';
+import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
-import { FileSelectDirective } from 'ng2-file-upload';
-import {TopFilterComponent} from './product/top-filter/top-filter.component';
-import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
-import {CheckboxModule} from 'primeng/primeng';
-import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
-import {SliderModule} from './product/slider-filter/slider.component';
+import {ColorPickerModule} from 'primeng/colorpicker';
+import {CheckboxModule} from 'primeng/checkbox';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {InputTextModule} from 'primeng/inputtext';
+import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
+import {FileSelectDirective} from 'ng2-file-upload';
+import {SliderModule} from 'primeng/primeng';
+import {FileUploadModule} from 'primeng/fileupload';
 
 
 
@@ -41,16 +43,11 @@ import {SliderModule} from './product/slider-filter/slider.component';
     FileSelectDirective,
     LoginComponent,
     ModelComponent,
+    ModelpropertyComponent,
+    UploadCsvComponent,
+    UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent,
-    LoginComponent,
-    ModelComponent,
-    ProductComponent,
-    ResumeProductComponent,
-    TopFilterComponent,
-    FileSelectDirective,
-    AbstractFilterComponent,
-    ModelpropertyComponent
+    ResumeProductComponent
   ],
   imports: [
     BrowserModule,
@@ -58,11 +55,15 @@ import {SliderModule} from './product/slider-filter/slider.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    SliderModule,
+    FileUploadModule,
+    DropdownModule,
     ReactiveFormsModule,
-    NgbModule,
-    MultiSelectModule,
+    ColorPickerModule,
+    BrowserAnimationsModule,
     CheckboxModule,
-    SliderModule
+    FileUploadModule,
+    InputTextModule
   ],
   providers: [
     GlobalConfigurationService,
