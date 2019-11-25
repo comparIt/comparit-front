@@ -28,6 +28,7 @@ import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileSelectDirective} from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/fileupload';
+import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import {FileUploadModule} from 'primeng/fileupload';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent
+    ResumeProductComponent,
+    CategoryNavigatorComponent
   ],
   imports: [
     BrowserModule,
