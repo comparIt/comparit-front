@@ -31,6 +31,7 @@ import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {SliderModule} from './product/slider-filter/slider.component';
+import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
 
 
 
@@ -50,9 +51,10 @@ import {SliderModule} from './product/slider-filter/slider.component';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent,
     TopFilterComponent,
     AbstractFilterComponent
+    CategoryNavigatorComponent
+    ResumeProductComponent,
   ],
   imports: [
     BrowserModule,
