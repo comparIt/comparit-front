@@ -43,9 +43,9 @@ import {FileUploadModule} from 'primeng/fileupload';
     ModelComponent,
     ModelpropertyComponent,
     UploadCsvComponent,
-    UploadUrlComponent
+    UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent,
+    ResumeProductComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,7 @@ import {FileUploadModule} from 'primeng/fileupload';
     FormsModule,
     SliderModule,
     FileUploadModule,
-    DropdownModule
+    DropdownModule,
     ReactiveFormsModule,
     ColorPickerModule,
     BrowserAnimationsModule,
