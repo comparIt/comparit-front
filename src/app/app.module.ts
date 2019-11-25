@@ -51,11 +51,12 @@ import {CategoryNavigatorComponent} from './home/category-navigator/category-nav
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent,
     TopFilterComponent,
     AbstractFilterComponent
     ResumeProductComponent,
     CategoryNavigatorComponent
+    CategoryNavigatorComponent
+    ResumeProductComponent,
   ],
   imports: [
     BrowserModule,

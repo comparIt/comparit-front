@@ -66,17 +66,4 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
     this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = Configuration.buildConfiguration(json));
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
-    return this.configuration ? this.configuration :  this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
-      if (wsc) {
-        this.configuration = Configuration.buildConfiguration(wsc);
-        return this.configuration;
-      } else { // id not found
-        this.router.navigate(['/app/home']);
-        return false;
-      }
-    });
-  }
-
-
 }
