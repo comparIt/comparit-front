@@ -10,7 +10,7 @@ export class ModelpropertyComponent implements OnInit {
 
     @Input() modelProperty: modelProperty;
     @Input() index: number;
-    @Input() index1:number;
+    @Input() modelindex:number;
     @Output() deleteModelProperty = new EventEmitter<modelProperty>();
 
 

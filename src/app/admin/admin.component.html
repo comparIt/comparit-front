@@ -65,21 +65,24 @@
                 <div class="form-group">
                         <div class="card m-3">
                             <h5 class="card-header">Model Forms </h5>
-                            <div class="card-body">
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <button id ="btnAddModel" class="btn btn-primary" type="button" (click)="addModel()">add</button>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             <div>
                               <app-model *ngFor="let model of configuration.models;let i = index;" 
                               [index] = "i"
-                              [index1]="i"
+                              [modelindex]="i"
                               id="{{'model'+ i}}"
                               [model]="model"
                               (deleteModel)="deleteModel($event)"
                               ></app-model>
+
+                              <div class="card-body">
+                                <div class="form-row">
+                                    <div style="position: absolute; right: 70px;" class="form-group">
+                                        <button id ="btnAddModel" class="btn btn-primary" type="button" (click)="addModel()">add</button>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             </div>
                             <div class="card-footer text-center">

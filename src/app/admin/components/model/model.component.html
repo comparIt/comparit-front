@@ -25,22 +25,23 @@
             <!-- Model Property -->
                     <div class="card m-3">
                         <h5 class="card-header">Model-Property Details</h5>
-                        <div class="card-body">
-                                    <div class="form-row">
-                                            <div class="form-group">
-                                                    <div class="form-group">
-                                                        <button id ="{{'btnAddModelProprety'+index}}"class="btn btn-primary m-1" type="button" (click)="addModelProperty()">add</button>
-                                                    </div>
-                                            </div>
-                                    </div>
-                        </div>
+                       
                         <app-model-property *ngFor="let modelProperty of model.modelProperties;let i = index;"
                                 id="{{'modelProperty'+ i}}"
                                 [index] = "i"
-                                [index1] = "index1"
+                                [modelindex] = "modelindex"
                                 [modelProperty]="modelProperty"
                                 (deleteModelProperty)="deleteModelProperty($event)"
                         ></app-model-property>
+                        <div class="card-body">
+                            <div class="form-row">
+                                    <div class="form-group">
+                                            <div style="position: absolute; right: 70px;" class="form-group">
+                                                <button id ="{{'btnAddModelProprety'+index}}"class="btn btn-primary m-1" type="button" (click)="addModelProperty()">add</button>
+                                            </div>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
         </div>
     </div>
