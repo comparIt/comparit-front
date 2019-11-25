@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   configuration: Configuration;
   uploadedFiles: any[] = [];
   submitted = false;
+  showResult: boolean;
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
@@ -29,11 +30,12 @@ export class AdminComponent implements OnInit {
     });
     this.configuration = new Configuration();
     this.configuration.models = [];
-    this.configuration.colorPrimary="#c26d6d";
-    this.configuration.colorSecondary="#50459c";
-    this.configuration.colorSecondary2="#82bd2a";
-    this.configuration.logo="picture";
-    this.configuration.featAnalytic=false;
+    this.configuration.colorPrimary = '#c26d6d';
+    this.configuration.colorSecondary = '#50459c';
+    this.configuration.colorSecondary2 = '#82bd2a';
+    this.configuration.logo = 'picture';
+    this.configuration.featAnalytic = false;
+    this.showResult = false;
   }
 
   next() {
@@ -43,12 +45,13 @@ export class AdminComponent implements OnInit {
   onSubmit() {
     console.log(this.configuration);
     this.globalconfigurationService.putConfiguration(this.configuration);
+    this.showResult = true;
   }
 
 createModel(): Model {
   let model: Model = new Model;
   model.name = "";
-  model.isActivited = false;
+  model.activated = false;
   model.technicalName = "";
   model.modelProperties = [];
   return model;
@@ -65,9 +68,9 @@ createModel(): Model {
 
   onUpload(event) {
     for(let file of event.files) {
-        this.uploadedFiles.push(file);   
+        this.uploadedFiles.push(file);
     }
-    
+
   }
 
 }

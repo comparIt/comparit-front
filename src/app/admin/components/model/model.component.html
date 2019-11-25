@@ -14,8 +14,8 @@
                 </div>
                 <div class="form-group col-2">
                     <div class="custom-control custom-checkbox mb-3">
-                            <label >Is Activated :</label>
-                            <p-checkbox id="{{'checkBoxIsActivatedM'+index}}" class="checkBoxComponent" [(ngModel)]="model.isActivited" binary="false"></p-checkbox>   
+                            <label >Actif</label>
+                            <p-checkbox id="{{'checkBoxActivatedM'+index}}" class="checkBoxComponent" [(ngModel)]="model.activated" binary="true"></p-checkbox>
                     </div>
                 </div>
                 <div class="form-group col-2">
@@ -25,7 +25,7 @@
             <!-- Model Property -->
                     <div class="card m-3">
                         <h5 class="card-header">Model-Property Details</h5>
-                       
+
                         <app-model-property *ngFor="let modelProperty of model.modelProperties;let i = index;"
                                 id="{{'modelProperty'+ i}}"
                                 [index] = "i"

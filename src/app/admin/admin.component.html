@@ -1,5 +1,5 @@
 <p class="text-title" >INITIALISATION DE COMPARE'IT</p>
-<p class="text-center" >Vous allez initializer cotre instance de Compare'IT selon vos besoins,suiver la procédure d'installation.</p>
+<p class="text-center" >Vous allez initializer votre instance de Compare'IT selon vos besoins,suivez la procédure d'installation.</p>
 
 <div class="container">
         <div id="stepper1" class="bs-stepper">
@@ -44,30 +44,30 @@
                     <p>Couleur secondaire :</p>
                     <p-colorPicker id="colorPicker2"  class="colorPicker" [(ngModel)]="configuration.colorSecondary"></p-colorPicker>
                     <p>Couleur secondaire 2: </p>
-                    <p-colorPicker id="colorPicker3" class="colorPicker" [(ngModel)]="configuration.colorSecondary2"></p-colorPicker> 
+                    <p-colorPicker id="colorPicker3" class="colorPicker" [(ngModel)]="configuration.colorSecondary2"></p-colorPicker>
                 </div>
-                
+
                 <!-- couleur dropdown -->
                 <p class='text-label'>Choisissez logo de votre site :</p>
-                
+
                 <!-- import image -->
                 <div style="margin-left: 25%;" class="input-group">
                   <span class="ui-float-label">
-                    <input id="inputLogo" type="text" size="70" [(ngModel)]="configuration.logo" pInputText> 
+                    <input id="inputLogo" type="text" size="70" [(ngModel)]="configuration.logo" pInputText>
                     <label for="inputLogo">URL</label>
                 </span>
                 </div>
                 <!-- import image -->
-                <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Next</button>
+                <button (click)="next()" type="button" class="btn btn-primary" id="btnNext">Suivant</button>
               </div>
               <!-- Step 2 configuration Web-->
               <div id="test-l-2" class="content">
                 <div class="form-group">
                         <div class="card m-3">
                             <h5 class="card-header">Model Forms </h5>
-                            
+
                             <div>
-                              <app-model *ngFor="let model of configuration.models;let i = index;" 
+                              <app-model *ngFor="let model of configuration.models;let i = index;"
                               [index] = "i"
                               [modelindex]="i"
                               id="{{'model'+ i}}"
@@ -91,17 +91,26 @@
                             </div>
                         </div>
                 </div>
-                <button id="btnNext" (click)="next()" type="button" class="btn btn-primary" >Next</button>
+                <button id="btnNext" (click)="next()" type="button" class="btn btn-primary" >Suivant</button>
               </div>
               <!-- Step 3 configuration Web-->
               <div id="test-l-3" class="content text-center">
                   <p class='text-label'>Souhaitez vous disposer d'une page Analytics ? </p>
                   <p class='text-label'>Cette Page Vous permettra d'accéder à des informations sur vos utilisations, tels que les pages les plus consultées, les fournisseurs les plus actifs, les filtres les plus souvent réalisés<p>
                       <label class='text-label'>Si oui cochez la case:     </label>
-                      <p-checkbox class="checkBoxComponent" [(ngModel)]="configuration.featAnalytic" binary="false"></p-checkbox> 
+                      <p-checkbox class="checkBoxComponent" [(ngModel)]="configuration.featAnalytic" binary="false"></p-checkbox>
+                <ng-template [ngIf]="showResult == false">
                   <div>
-                      <button id="btnSubmit" (click)="onSubmit()" type="button" class="btn btn-primary" id="btnNext">Submit</button>
+                      <button id="btnSubmit" (click)="onSubmit()" type="button" class="btn btn-primary" id="btnNext">Valider</button>
                   </div>
+                </ng-template>
+
+
+                <ng-template [ngIf]="showResult">
+                  <div class="alert alert-success" role="alert">
+                    Le modèle a été pris en compte
+                  </div>
+                </ng-template>
               </div>
           </div>
         </div>

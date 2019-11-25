@@ -19,7 +19,7 @@ export class CompareItAPIService {
     private modelController = '/model';
     private modelPropertyController = '/modelproperty';
     private userController = '/user';
-    private websiteconfigController= '/websiteconfig';
+    private websiteconfigController = '/websiteconfig';
 
     /*products uploading*/
     private byUrlController = '/compagny/byUrl';
