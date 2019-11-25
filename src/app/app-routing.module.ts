@@ -6,6 +6,7 @@ import {AdminComponent} from './admin/admin.component';
 import {UploadCsvComponent} from './upload/csv/csv.component';
 import {UploadUrlComponent} from './upload/url/url.component';
 import {LoginComponent} from './login/login.component';
+import {ProductComponent} from './product/product.component';
 
 
 export const routes: Routes = [
@@ -25,6 +26,7 @@ export const routes: Routes = [
   {
     path      : 'app/admin/:userid',
     component : AdminComponent,
+
   },
   {
     path      : 'app/uploadUrl',
@@ -37,6 +39,11 @@ export const routes: Routes = [
   {
     path      : 'app/login',
     component : LoginComponent,
+  },
+  {
+    path      : 'products',
+    component : ProductComponent,
+  },
   }
 ];
 

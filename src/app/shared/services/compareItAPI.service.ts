@@ -19,7 +19,7 @@ export class CompareItAPIService {
     private modelController = '/model';
     private modelPropertyController = '/modelproperty';
     private userController = '/user';
-    private websiteconfigController = '/websiteconfig/';
+    private websiteconfigController= '/websiteconfig';
 
     /*products uploading*/
     private byUrlController = '/compagny/byUrl';
@@ -73,8 +73,8 @@ export class CompareItAPIService {
     }
 
     // WebsiteConfig
-    public putwebsiteconfig(configuration: Configuration): any {
-        return this.put(this.websiteconfigController, [], configuration);
+    public putWebsiteconfig(configuration: Configuration): any {
+        return this.put(this.websiteconfigController+"/saveWebsiteConfiguration", [], configuration);
     }
 
     public getWebsiteConfiguration(): any {
@@ -85,5 +85,9 @@ export class CompareItAPIService {
     // public addConfiguration(configuration:Configuration){
     //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
     // }
+
+  public getMockProduct(): any {
+       return this.get('/product/search', []);
+  }
 
 }

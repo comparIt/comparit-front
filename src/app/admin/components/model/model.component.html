@@ -14,13 +14,13 @@
                 </div>
                 <div class="form-group col-2">
                     <div class="custom-control custom-checkbox mb-3">
-                            <input [(ngModel)]="model.isActivited" type="checkbox" >
-                            <label >Is Activated</label>
+                            <label >Is Activated :</label>
+                            <p-checkbox class="checkBoxComponent" [(ngModel)]="model.isActivited" binary="false"></p-checkbox>   
                     </div>
                 </div>
                 <div class="form-group col-2">
-                    <button class="btn btn-danger" type="button" (click)="delete(model)"> Remove </button>
-                </div> 
+                    <button class="btn btn-danger" type="button" (click)="delete(model)">Remove</button>
+                </div>
             </div>
             <!-- Model Property -->
                     <div class="card m-3">
@@ -34,7 +34,7 @@
                                             </div>
                                     </div>
                         </div>
-                        <app-model-property *ngFor="let modelProperty of model.modelPropreties;let i = index;"
+                        <app-model-property *ngFor="let modelProperty of model.modelProperties;let i = index;"
                                 [index] = "i"
                                 [modelProperty]="modelProperty"
                                 (deleteModelProperty)="deleteModelProperty($event)"
@@ -43,4 +43,3 @@
         </div>
     </div>
 </div>
-                    
