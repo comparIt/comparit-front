@@ -2,6 +2,7 @@ export class ModelProperty {
 
   name: string;
   technicalName: string;
+  activated: boolean;
   type: string;
   filtrable: boolean;
   filtrableAdvanced: boolean;
