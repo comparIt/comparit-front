@@ -19,10 +19,15 @@ export class ModelComponent implements OnInit {
  constructor() {
   }
 
-    ngOnInit() {}
+    ngOnInit() {
+      this.model.modelProperties.push(this.intiliazeModelProperty( '', '', true, 'Enumerative' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( '', '', true, 'Enumerative' , true, true, true));
+      this.model.modelProperties.push(this.intiliazeModelProperty( '', '', true, 'Numeric' , true, true, true));
+    }
 
     delete(model: Model) {
       this.deleteModel.emit(model);
+
     }
 
 
@@ -33,4 +38,10 @@ export class ModelComponent implements OnInit {
       this.model.modelProperties = this.model.modelProperties.filter(obj => obj !== event);
     }
 
+    // tslint:disable-next-line: max-line-length
+    intiliazeModelProperty(name: string, technicalName: string, activated: boolean, type: string, filtrable: boolean, filtrableAdvanced: boolean, mandatory: boolean): modelProperty {
+    // tslint:disable-next-line: max-line-length
+      const modelProprety: modelProperty = new modelProperty(name , technicalName, activated, type, filtrable, filtrableAdvanced, mandatory );
+      return modelProprety;
+    }
 }

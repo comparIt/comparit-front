@@ -2,7 +2,6 @@ export class ModelProperty {
 
   name: string;
   technicalName: string;
-  isActivited: boolean;
   type: string;
   filtrable: boolean;
   filtrableAdvanced: boolean;
@@ -17,7 +16,7 @@ export class ModelProperty {
 
   constructor(name: string,
               technicalName: string,
-              isActivited: boolean,
+              activated: boolean,
               type: string,
               filtrable: boolean,
               filtrableAdvanced: boolean,
@@ -27,7 +26,7 @@ export class ModelProperty {
               values: string[]) {
     this.name = name;
     this.technicalName = technicalName;
-    this.isActivited = isActivited;
+    this.activated = activated;
     this.type = type;
     this.filtrable = filtrable;
     this.filtrableAdvanced = filtrableAdvanced;
