@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
-import {Model} from "../models/model";
+import {Model} from '../models/model';
 
 @Injectable({
     providedIn: 'root',
@@ -22,8 +22,8 @@ export class CompareItAPIService {
     private websiteconfigController = '/websiteconfig';
 
     /*products uploading*/
-    private byUrlController = '/compagny/byUrl';
-    private byCsvUploadController = '/compagny/byCsvUpload';
+    private byUrlController = '/company/byUrl';
+    private byCsvUploadController = '/company/byCsvUpload';
 
     private HEADERS;
 

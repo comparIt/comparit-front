@@ -1,27 +1,24 @@
 import {Injectable} from '@angular/core';
 import {Configuration} from '../models/configuration';
 import {Model} from '../models/model';
-import {ModelProperty} from '../models/modelProperty';
 import {CompareItAPIService} from './compareItAPI.service';
+import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GlobalConfigurationService {
+export class GlobalConfigurationService  implements Resolve<Configuration> {
 
   configuration: Configuration;
 
   fetchGlobalConfiguration() {
-    this.configuration = new Configuration();
-    this.configuration.models = [];
-
     this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
       this.configuration = new Configuration();
-      console.log('conf', this.configuration);
     });
   }
 
-  constructor(public compareItAPIService: CompareItAPIService) {
+  constructor(public compareItAPIService: CompareItAPIService, private router: Router) {
     this.fetchGlobalConfiguration();
   }
 
@@ -54,12 +51,23 @@ export class GlobalConfigurationService {
   }
 
   modelByType(type: string): Model {
-    console.log(this.configuration.models)
     return this.configuration.models.find(e => e.technicalName === type);
   }
 
   putConfiguration(configuration: Configuration) {
     this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = json);
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
+    return this.configuration ? this.configuration :  this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
+      if (wsc) {
+        this.configuration = wsc;
+        return this.configuration;
+      } else { // id not found
+        this.router.navigate(['/app/home']);
+        return false;
+      }
+    });
   }
 
 

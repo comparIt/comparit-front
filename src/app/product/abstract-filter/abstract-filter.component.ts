@@ -13,6 +13,7 @@ export class AbstractFilterComponent implements OnInit {
   @Input() property: ModelProperty;
 
   ngOnInit() {
+    this.property.range = [this.property.min, this.property.max];
   }
 
   get valuesAsObject(): any[] {

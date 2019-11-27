@@ -27,8 +27,8 @@ export class ProductComponent implements OnInit {
     this.api.getMockProduct()
       .then((products: Product[]) => {
         this.products = products;
-        console.log(this.products);
       });
+
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
       console.log('model', this.model);
@@ -36,7 +36,6 @@ export class ProductComponent implements OnInit {
   }
 
   search() {
-    console.log('serching')
     this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
       (products: Product[]) => {
         this.products = products;
