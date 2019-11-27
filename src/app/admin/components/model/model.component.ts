@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Model} from 'src/app/shared/models/model';
 import {ModelProperty} from 'src/app/shared/models/modelProperty';
+import {modelProperty} from "../../../shared/models/modelProperty";
 
 
 @Component({
@@ -30,11 +31,16 @@ export class ModelComponent implements OnInit {
 
   }
 
-
-  addModelProperty() {
+  createModelProprety(): ModelProperty {
+    const modelProprety: ModelProperty = new ModelProperty('' , '', false, '', false, false, false , 0,0, []);
+    return modelProprety;
   }
 
-  deleteModelProperty(event: ModelProperty) {
+  addModelProperty() {
+    this.model.modelProperties.push(this.createModelProprety());
+  }
+
+  deleteModelProperty(event: modelProperty) {
     this.model.modelProperties = this.model.modelProperties.filter(obj => obj !== event);
   }
 
