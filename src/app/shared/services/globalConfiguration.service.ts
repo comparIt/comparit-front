@@ -14,6 +14,11 @@ export class GlobalConfigurationService {
   fetchGlobalConfiguration() {
     this.configuration = new Configuration();
     this.configuration.models = [];
+
+    this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
+      this.configuration = new Configuration();
+      console.log('conf', this.configuration);
+    });
   }
 
   constructor(public compareItAPIService: CompareItAPIService) {
@@ -49,6 +54,7 @@ export class GlobalConfigurationService {
   }
 
   modelByType(type: string): Model {
+    console.log(this.configuration.models)
     return this.configuration.models.find(e => e.technicalName === type);
   }
 

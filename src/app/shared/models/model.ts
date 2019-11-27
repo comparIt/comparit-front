@@ -4,6 +4,6 @@ export class Model {
     name: string;
     technicalName: string;
     activated: boolean;
-    modelProperties: modelProperty[];
+    modelProperties: ModelProperty[];
 
 }

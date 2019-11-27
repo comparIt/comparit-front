@@ -21,7 +21,6 @@ export class ProductComponent implements OnInit {
     private route: ActivatedRoute,
     private conf: GlobalConfigurationService,
     private filterService: FilterMappingService) {
-    this.route.params.subscribe(params => this.model = conf.modelByType(params.type));
   }
 
   ngOnInit() {
@@ -30,7 +29,10 @@ export class ProductComponent implements OnInit {
         this.products = products;
         console.log(this.products);
       });
-
+    this.route.params.subscribe(params => {
+      this.model = this.conf.modelByType(params.type);
+      console.log('model', this.model);
+    });
   }
 
   search() {

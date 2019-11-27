@@ -78,7 +78,7 @@ export class CompareItAPIService {
     }
 
     public getWebsiteConfiguration(): any {
-         return this.get(this.websiteconfigController + '1' , []);
+         return this.get(this.websiteconfigController + '/1' , []);
     }
 
 
