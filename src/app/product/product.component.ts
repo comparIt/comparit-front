@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../shared/models/product';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
+import {ActivatedRoute, Params} from '@angular/router';
+import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
+import {Model} from '../shared/models/model';
+import {FilterMappingService} from '../shared/services/filterMapping.service';
 
 @Component({
   selector: 'app-product',
@@ -9,17 +13,35 @@ import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private api: CompareItAPIService) { }
-
   products: Product[];
+  model: Model;
+
+  constructor(
+    private api: CompareItAPIService,
+    private route: ActivatedRoute,
+    private conf: GlobalConfigurationService,
+    private filterService: FilterMappingService) {
+  }
 
   ngOnInit() {
-    this.api.getMockProduct().then((products: Product[]) => {
-      this.products = products;
-      console.log(this.products);
-      this.products.forEach(product => console.log(product.properties));
-    });
+    this.api.getMockProduct()
+      .then((products: Product[]) => {
+        this.products = products;
+      });
 
+    this.route.params.subscribe(params => {
+      this.model = this.conf.modelByType(params.type);
+      console.log('model', this.model);
+    });
+  }
+
+  search() {
+    this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
+      (products: Product[]) => {
+        this.products = products;
+        console.log(this.products);
+      }
+    );
   }
 
 }

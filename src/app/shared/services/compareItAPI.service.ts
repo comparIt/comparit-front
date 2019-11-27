@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
-import {Model} from "../models/model";
+import {Model} from '../models/model';
 
 @Injectable({
     providedIn: 'root',
@@ -22,8 +22,8 @@ export class CompareItAPIService {
     private websiteconfigController = '/websiteconfig';
 
     /*products uploading*/
-    private byUrlController = '/compagny/byUrl';
-    private byCsvUploadController = '/compagny/byCsvUpload';
+    private byUrlController = '/company/byUrl';
+    private byCsvUploadController = '/company/byCsvUpload';
 
     private HEADERS;
 
@@ -74,11 +74,11 @@ export class CompareItAPIService {
 
     // WebsiteConfig
     public putWebsiteconfig(configuration: Configuration): any {
-        return this.put(this.websiteconfigController+"/saveWebsiteConfiguration", [], configuration);
+        return this.put(this.websiteconfigController + '/saveWebsiteConfiguration', [], configuration);
     }
 
     public getWebsiteConfiguration(): any {
-         return this.get(this.websiteconfigController + '1' , []);
+         return this.get(this.websiteconfigController + '/1' , []);
     }
 
 
@@ -88,6 +88,10 @@ export class CompareItAPIService {
 
   public getMockProduct(): any {
        return this.get('/product/search', []);
+  }
+
+  public getProducts(params: {key: string, value: string}[]): any {
+       return this.get('/product/search', params);
   }
 
 }

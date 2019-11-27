@@ -7,6 +7,7 @@ import {UploadCsvComponent} from './upload/csv/csv.component';
 import {UploadUrlComponent} from './upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
+import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 
 
 export const routes: Routes = [
@@ -41,13 +42,18 @@ export const routes: Routes = [
     component : LoginComponent,
   },
   {
-    path      : 'products',
+    path      : 'products/:type',
     component : ProductComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
+
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [GlobalConfigurationService]
 })
 export class AppRoutingModule { }

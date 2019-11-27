@@ -1,3 +1,9 @@
+<div class="container my-2">
+  <section>
+    <app-top-filter [model]="model" (searchEvent)="search()"></app-top-filter>
+  </section>
+</div>
+
 <div class="container mt-5">
   <section>
     <app-resume-product *ngFor="let product of products" [product]=product></app-resume-product>
