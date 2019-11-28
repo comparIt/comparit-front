@@ -10,7 +10,7 @@ export class ModelProperty {
 
   min: number;
   max: number;
-  range: number[] = [0, 1];
+  range: number[];
 
   values: string[];
   selectedValues: string[] = [];
@@ -23,13 +23,26 @@ export class ModelProperty {
     return this.type === 'NUMERIC';
   }
 
-  get asFilter(): {key: string, value: string} {
-    return {key: this.technicalName, value: this.filterValue};
+  constructor() {
   }
 
-  get filterValue(): string {
-    return this.isNumeric ? this.range[0] + '-' + this.range[1] : this.selectedValues.join(',');
+  static buildProperty(property: any): ModelProperty {
+    const modelProperty = new ModelProperty();
+    modelProperty.name = property.name;
+    modelProperty.technicalName = property.technicalName;
+    modelProperty.activated = property.activated;
+    modelProperty.type = property.type;
+    modelProperty.filtrable = property.filtrable;
+    modelProperty.filtrableAdvanced = property.filtrableAdvanced;
+    modelProperty.mandatory = property.mandatory;
+    modelProperty.min = property.min;
+    modelProperty.max = property.max;
+    modelProperty.range = [modelProperty.min, modelProperty.max];
+    modelProperty.values = property.value;
+    modelProperty.selectedValues = [];
+    return modelProperty;
   }
+
 }
 
 
