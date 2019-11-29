@@ -33,6 +33,7 @@ import {ModelComponent} from './admin/components/model/model.component';
 import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FileUploadModule,
     InputTextModule,
     MultiSelectModule,
+    InputSwitchModule
   ],
   providers: [
     GlobalConfigurationService,

@@ -20,4 +20,15 @@ export class Configuration {
     newConfiguration.models = configuration.models.map(m => Model.buildModel(m));
     return newConfiguration;
   }
+
+  static defaultConfiguration(): Configuration {
+    const configuration = new Configuration();
+    configuration.colorPrimary = '#FFFFFF';
+    configuration.colorSecondary = '#FFFFFF';
+    configuration.colorSecondary2 = '#FFFFFF';
+    configuration.logo = '';
+    configuration.featAnalytic = false;
+    configuration.models = [];
+    return configuration;
+  }
 }

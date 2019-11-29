@@ -1,56 +1,64 @@
-<div class="list-group-item" id="itemCard">
-        <h5 class="card-title">Model-Property {{modelProperty.name}}</h5>
-        <div>
-                <div>
-                        <div class="classHorizo">
-                                <div class="form-group col-4">
-                                        <label>Name</label>
-                                        <input id="{{'inputNameMp'+modelindex+index}}"  type="text"  [(ngModel)]="modelProperty.name" class="form-control"/>
-                                </div>
-                                <div class="form-group col-4">
-                                        <label>Technical Name</label>
-                                        <input id="{{'inputTechnicalNameMp'+modelindex+index}}" type="text"  [(ngModel)]="modelProperty.technicalName" class="form-control"/>
-                                </div>
-                                <div class="form-group col-4">
-                                        <div class="custom-control custom-checkbox mb-3">
-                                                <label >Is Activated</label>
-                                                <p-checkbox id="{{'checkBoxActivatedMp'+modelindex+index}}" class="checkBoxComponent" [(ngModel)]="modelProperty.activated" binary="false"></p-checkbox>
-                                        </div>
-                                </div>
-                        </div>
-                        <div class="classHorizo">
-                                <div class="form-group col-2">
-                                        <label>Type</label>
-                                                <select id="{{'selectTypeMp'+modelindex+index}}" [(ngModel)]="modelProperty.type" name="type" class="browser-default custom-select">
-                                                <option value="NUMERIC"selected>Numeric</option>
-                                                <option value="ENUMERATIVE" >Enumerative</option>
-                                        </select>
-                                </div>
-                                <div class="form-group col-2">
-                                                <div class="custom-control custom-checkbox mb-3">
-                                                        <label>Filtrable :</label>
-                                                        <p-checkbox id="{{'checkBoxFiltrableMp'+modelindex+index}}" class="checkBoxComponent" [(ngModel)]="modelProperty.filtrable" binary="false"></p-checkbox>
-                                                </div>
-                                </div>
-                                <div class="form-group col-2">
-                                                <div class="custom-control custom-checkbox mb-3">
-                                                        <label>filtrable Advanced :</label>
-                                                        <p-checkbox id="{{'checkBoxFiltrableAdvancedMp'+modelindex+index}}" class="checkBoxComponent" [(ngModel)]="modelProperty.filtrableAdvanced" binary="false"></p-checkbox>
-                                                </div>
-                                </div>
-                                <div class="form-group col-2">
-                                                <div class="custom-control custom-checkbox mb-3">
-                                                        <label>Mandatory :</label>
-                                                        <p-checkbox id="{{'checkBoxMandatoryMp'+modelindex+index}}" class="checkBoxComponent" [(ngModel)]="modelProperty.mandatory" binary="false"></p-checkbox>
-                                                </div>
-                                </div>
-                                <div class="form-group col-2">
-                                        <button id="{{'btnDeleteModelProperty'+modelindex+index}}"  class="btn btn-danger" type="button" (click)="delete(modelProperty)"> Remove </button>
-                                </div>
-                        </div>
-
-                </div>
+<div>
+  <h5>Propriété {{modelProperty.name}}</h5>
+  <div>
+    <div>
+      <div class="classHorizo">
+        <div class="form-group col-4">
+          <label>Nom</label>
+          <input id="{{'inputNameMp'+modelindex+index}}" type="text" [(ngModel)]="modelProperty.name"
+                 class="form-control"/>
         </div>
+        <div class="form-group col-4">
+          <label>Nom technique</label>
+          <input id="{{'inputTechnicalNameMp'+modelindex+index}}" type="text" [(ngModel)]="modelProperty.technicalName"
+                 class="form-control"/>
+        </div>
+        <div class="form-group col-4">
+          <div class="custom-control custom-checkbox mb-3">
+            <label>Visible</label>
+            <p-checkbox id="{{'checkBoxActivatedMp'+modelindex+index}}" class="checkBoxComponent"
+                        [(ngModel)]="modelProperty.activated" binary="false"></p-checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="classHorizo">
+        <div class="form-group col-2">
+          <label>Type</label>
+          <select id="{{'selectTypeMp'+modelindex+index}}" [(ngModel)]="modelProperty.type" name="type"
+                  class="browser-default custom-select">
+            <option value="NUMERIC" selected>Numérique</option>
+            <option value="ENUMERATIVE">Enumératif</option>
+          </select>
+        </div>
+        <div class="form-group col-2">
+          <div class="custom-control custom-checkbox mb-3">
+            <label>Filtrable :</label>
+            <p-checkbox id="{{'checkBoxFiltrableMp'+modelindex+index}}" class="checkBoxComponent"
+                        [(ngModel)]="modelProperty.filtrable" binary="false"></p-checkbox>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <div class="custom-control custom-checkbox mb-3">
+            <label>Filtrable avancé :</label>
+            <p-checkbox id="{{'checkBoxFiltrableAdvancedMp'+modelindex+index}}" class="checkBoxComponent"
+                        [(ngModel)]="modelProperty.filtrableAdvanced" binary="false"></p-checkbox>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <div class="custom-control custom-checkbox mb-3">
+            <label>Obligatoire :</label>
+            <p-checkbox id="{{'checkBoxMandatoryMp'+modelindex+index}}" class="checkBoxComponent"
+                        [(ngModel)]="modelProperty.mandatory" binary="false"></p-checkbox>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <button id="{{'btnDeleteModelProperty'+modelindex+index}}" class="btn btn-danger" type="button"
+                  (click)="delete(modelProperty)"><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 

@@ -1,48 +1,58 @@
 <div class="list-group list-group-flush">
-    <div class="list-group-item" id="itemCard">
-        <h5 class="card-title">Model {{ model.name }}</h5>
-        <div>
-        <!-- Model -->
-            <div class="classHorizo">
-                <div class="form-group col-2">
-                    <label>Name</label>
-                    <input type="text" id="{{'inputNameM'+index}}" [(ngModel)]="model.name" type="text" class="form-control"/>
-                </div>
-                <div class="form-group col-2">
-                    <label>Technical Name</label>
-                    <input type="text" id="{{'inputTechnicalNameM'+index}}" [(ngModel)]="model.technicalName" class="form-control"/>
-                </div>
-                <div class="form-group col-2">
-                    <div class="custom-control custom-checkbox mb-3">
-                            <label >Actif</label>
-                            <p-checkbox id="{{'checkBoxActivatedM'+index}}" class="checkBoxComponent" [(ngModel)]="model.activated" binary="true"></p-checkbox>
-                    </div>
-                </div>
-                <div class="form-group col-2">
-                    <button id="{{'btnDeleteModel'+index}}" class="btn btn-danger" type="button" (click)="delete(model)">Remove</button>
-                </div>
-            </div>
-            <!-- Model Property -->
-                    <div class="card m-3">
-                        <h5 class="card-header">Model-Property Details</h5>
+  <div class="list-group-item" id="itemCard">
+    <h5 class="card-title">Catégorie {{ model.name }}</h5>
+    <div>
+      <!-- Model -->
+      <div class="classHorizo">
+        <div class="form-group col-2">
+          <label>Nom</label>
+          <input type="text" id="{{'inputNameM'+index}}" [(ngModel)]="model.name" type="text" class="form-control"/>
+        </div>
+        <div class="form-group col-2">
+          <label>Nom technique</label>
+          <input type="text" id="{{'inputTechnicalNameM'+index}}" [(ngModel)]="model.technicalName"
+                 class="form-control"/>
+        </div>
+        <div class="form-group col-2">
+          <div class="custom-control custom-checkbox mb-3">
+            <label>Actif</label>
+            <p-checkbox id="{{'checkBoxActivatedM'+index}}" class="checkBoxComponent" [(ngModel)]="model.activated"
+                        binary="true"></p-checkbox>
+          </div>
+        </div>
+        <div class="form-group col-2">
+          <button id="{{'btnDeleteModel'+index}}"
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="delete(model)"
+          ><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+      <!-- Model Property -->
+      <div class="card m-3">
+        <h5 class="card-header">Propriétés de la catégorie</h5>
 
-                        <app-model-property *ngFor="let modelProperty of model.modelProperties;let i = index;"
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
+            <app-model-property
                                 id="{{'modelProperty'+ i}}"
-                                [index] = "i"
-                                [modelindex] = "modelindex"
+                                [index]="i"
+                                [modelindex]="modelindex"
                                 [modelProperty]="modelProperty"
                                 (deleteModelProperty)="deleteModelProperty($event)"
-                        ></app-model-property>
-                        <div class="card-body">
-                            <div class="form-row">
-                                    <div class="form-group">
-                                            <div style="position: absolute; right: 70px;" class="form-group">
-                                                <button id ="{{'btnAddModelProprety'+index}}"class="btn btn-primary m-1" type="button" (click)="addModelProperty()">Ajouter une propriété</button>
-                                            </div>
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
+            ></app-model-property>
+          </li>
+        </ul>
+
+        <div class="card-footer">
+
+                <button id="{{'btnAddModelProprety'+index}}"
+                        class="btn btn-primary m-1"
+                        type="button"
+                        (click)="addModelProperty()"
+                >Ajouter une propriété</button>
         </div>
+      </div>
     </div>
+  </div>
 </div>

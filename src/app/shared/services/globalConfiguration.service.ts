@@ -61,6 +61,10 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     return this.configuration.models;
   }
 
+  get currentConfig(): Configuration {
+    return this.configuration;
+  }
+
   modelByType(type: string): Model {
     return this.configuration.models.find(e => e.technicalName === type);
   }
@@ -75,12 +79,10 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
         this.configuration = Configuration.buildConfiguration(wsc);
         return this.configuration;
       } else { // id not found
-        this.router.navigate(['/error/500']);
-        return false;
+        return Configuration.defaultConfiguration;
       }
     }).catch(() => {
-      this.router.navigate(['/error/500']);
-      return false;
+      return Configuration.defaultConfiguration;
     });
   }
 

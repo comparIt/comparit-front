@@ -31,6 +31,9 @@ export const routes: Routes = [
   {
     path      : 'admin/website',
     component : AdminComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
 
   },
   {
