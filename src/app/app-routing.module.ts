@@ -15,10 +15,7 @@ export const routes: Routes = [
   {
     path      : '',
     redirectTo: 'home',
-    pathMatch : 'full',
-    resolve   : {
-      config: GlobalConfigurationService
-    }
+    pathMatch : 'full'
   },
   {
     path      : 'home',

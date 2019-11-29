@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goToAdmin() {
-    this.router.navigate(['/app/admin/1']);
+    this.router.navigate(['/admin/website']);
   }
 
 }
