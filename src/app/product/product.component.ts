@@ -31,7 +31,6 @@ export class ProductComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
-      console.log('model', this.model);
     });
   }
 
@@ -39,7 +38,6 @@ export class ProductComponent implements OnInit {
     this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
       (products: Product[]) => {
         this.products = products;
-        console.log(this.products);
       }
     );
   }

@@ -10,16 +10,9 @@ import {Observable} from 'rxjs';
 })
 export class GlobalConfigurationService  implements Resolve<Configuration> {
 
-  configuration: Configuration;
-
-  fetchGlobalConfiguration() {
-    this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
-      this.configuration = new Configuration();
-    });
-  }
+  private configuration: Configuration;
 
   constructor(public compareItAPIService: CompareItAPIService, private router: Router) {
-    this.fetchGlobalConfiguration();
   }
 
   get adminId(): BigInteger {
@@ -55,13 +48,13 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
   }
 
   putConfiguration(configuration: Configuration) {
-    this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = json);
+    this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = Configuration.buildConfiguration(json));
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
     return this.configuration ? this.configuration :  this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
       if (wsc) {
-        this.configuration = wsc;
+        this.configuration = Configuration.buildConfiguration(wsc);
         return this.configuration;
       } else { // id not found
         this.router.navigate(['/app/home']);

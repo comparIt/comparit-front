@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="property.type === 'NUMERIC'">
+  <div *ngIf="property.isNumeric">
     Range: {{property.range[0] + ' - ' + property.range[1]}}
     <app-slider
       [(ngModel)]="property.range"
@@ -8,7 +8,7 @@
       [max]="property.max">
     </app-slider>
   </div>
-  <div *ngIf="property.type === 'ENUMERIVE'">
+  <div *ngIf="property.isEnum">
     <app-multi-select
       [defaultLabel]="property.name"
       [panelStyle]="{minWidth:'12em'}"
