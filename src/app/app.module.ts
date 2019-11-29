@@ -32,6 +32,7 @@ import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {SliderModule} from './product/slider-filter/slider.component';
 import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
+import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
 
 
 
@@ -55,6 +56,7 @@ import {CategoryNavigatorComponent} from './home/category-navigator/category-nav
     AbstractFilterComponent
     CategoryNavigatorComponent
     ResumeProductComponent,
+    CategoryNavigatorComponent
   ],
   imports: [
     BrowserModule,
