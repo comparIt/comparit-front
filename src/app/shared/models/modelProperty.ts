@@ -26,7 +26,7 @@ export class ModelProperty {
   constructor() {
   }
 
-  static buildProperty(property: any): ModelProperty {
+  static buildProperty(property: ModelProperty): ModelProperty {
     const modelProperty = new ModelProperty();
     modelProperty.name = property.name;
     modelProperty.technicalName = property.technicalName;
@@ -38,7 +38,7 @@ export class ModelProperty {
     modelProperty.min = property.min;
     modelProperty.max = property.max;
     modelProperty.range = [modelProperty.min, modelProperty.max];
-    modelProperty.values = property.value;
+    modelProperty.values = property.values;
     modelProperty.selectedValues = [];
     return modelProperty;
   }
