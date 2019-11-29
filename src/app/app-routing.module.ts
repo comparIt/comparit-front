@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
-import {UploadCsvComponent} from './upload/csv/csv.component';
-import {UploadUrlComponent} from './upload/url/url.component';
+import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
+import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
@@ -13,32 +13,32 @@ import {GlobalConfigurationService} from './shared/services/globalConfiguration.
 export const routes: Routes = [
   {
     path      : '',
-    redirectTo: 'app/home',
+    redirectTo: 'home',
     pathMatch : 'full',
   },
   {
-    path      : 'app/home',
+    path      : 'home',
     component : HomeComponent,
   },
   {
-    path      : 'app/user/:userid',
+    path      : 'user/:userid',
     component : UserComponent,
   },
   {
-    path      : 'app/admin/:userid',
+    path      : 'admin/website',
     component : AdminComponent,
 
   },
   {
-    path      : 'app/uploadUrl',
+    path      : 'admin/upload/url',
     component : UploadUrlComponent,
   },
   {
-    path      : 'app/uploadCsv',
+    path      : 'admin/upload/csv',
     component : UploadCsvComponent,
   },
   {
-    path      : 'app/login',
+    path      : 'login',
     component : LoginComponent,
   },
   {
