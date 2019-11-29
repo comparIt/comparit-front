@@ -8,9 +8,13 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GlobalConfigurationService  implements Resolve<Configuration> {
+export class GlobalConfigurationService implements Resolve<Configuration> {
 
   private configuration: Configuration;
+
+  constructor(public compareItAPIService: CompareItAPIService, private router: Router) {
+
+  }
 
   fetchGlobalConfiguration() {
     this.configuration = new Configuration();
@@ -65,5 +69,23 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
     return this.configuration.models.find(e => e.technicalName === type);
   }
 
+  putConfiguration(configuration: Configuration) {
+    this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = Configuration.buildConfiguration(json));
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
+    return this.configuration ? this.configuration : this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
+      if (wsc) {
+        this.configuration = Configuration.buildConfiguration(wsc);
+        return this.configuration;
+      } else { // id not found
+        this.router.navigate(['/error/500']);
+        return false;
+      }
+    }).catch(() => {
+      this.router.navigate(['/error/500']);
+      return false;
+    });
+  }
 
 }

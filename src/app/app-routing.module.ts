@@ -8,6 +8,7 @@ import {UploadUrlComponent} from './upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
+import {ErrorComponent} from './shared/components/errors/error.component';
 
 
 export const routes: Routes = [
@@ -15,10 +16,16 @@ export const routes: Routes = [
     path      : '',
     redirectTo: 'app/home',
     pathMatch : 'full',
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
     path      : 'app/home',
     component : HomeComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
     path      : 'app/user/:userid',
@@ -42,12 +49,15 @@ export const routes: Routes = [
     component : LoginComponent,
   },
   {
+    path      : 'error/:errorCode',
+    component : ErrorComponent,
+  },
+  {
     path      : 'products/:type',
     component : ProductComponent,
     resolve   : {
       config: GlobalConfigurationService
     }
-
   }
 ];
 

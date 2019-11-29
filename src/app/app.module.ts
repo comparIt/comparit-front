@@ -12,17 +12,17 @@ import {NotifComponent} from './user/components/notif/notif.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { ModelComponent } from './admin/components/model/model.component';
-import { ModelpropertyComponent } from './admin/components/model-property/model-property.component';
-import { UploadCsvComponent } from './upload/csv/csv.component';
-import { UploadUrlComponent } from './upload/url/url.component';
-import { DropdownModule } from 'primeng/dropdown';
+import {LoginComponent} from './login/login.component';
+import {ModelComponent} from './admin/components/model/model.component';
+import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
+import {UploadCsvComponent} from './upload/csv/csv.component';
+import {UploadUrlComponent} from './upload/url/url.component';
+import {DropdownModule} from 'primeng/dropdown';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import {ColorPickerModule} from 'primeng/colorpicker';
 import {CheckboxModule} from 'primeng/checkbox';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileSelectDirective} from 'ng2-file-upload';
@@ -32,8 +32,7 @@ import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {SliderModule} from './product/slider-filter/slider.component';
 import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
-import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
-
+import {ErrorComponent} from './shared/components/errors/error.component';
 
 
 @NgModule({
@@ -53,10 +52,10 @@ import {CategoryNavigatorComponent} from './home/category-navigator/category-nav
     UploadUrlComponent,
     ProductComponent,
     TopFilterComponent,
-    AbstractFilterComponent
-    CategoryNavigatorComponent
+    AbstractFilterComponent,
+    CategoryNavigatorComponent,
     ResumeProductComponent,
-    CategoryNavigatorComponent
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
