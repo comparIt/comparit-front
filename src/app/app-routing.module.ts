@@ -13,32 +13,32 @@ import {GlobalConfigurationService} from './shared/services/globalConfiguration.
 export const routes: Routes = [
   {
     path      : '',
-    redirectTo: 'app/home',
+    redirectTo: 'home',
     pathMatch : 'full',
   },
   {
-    path      : 'app/home',
+    path      : 'home',
     component : HomeComponent,
   },
   {
-    path      : 'app/user/:userid',
+    path      : 'user/:userid',
     component : UserComponent,
   },
   {
-    path      : 'app/admin/:userid',
+    path      : 'admin/model',
     component : AdminComponent,
 
   },
   {
-    path      : 'app/uploadUrl',
+    path      : 'admin/uploadUrl',
     component : UploadUrlComponent,
   },
   {
-    path      : 'app/uploadCsv',
+    path      : 'admin/uploadCsv',
     component : UploadCsvComponent,
   },
   {
-    path      : 'app/login',
+    path      : 'login',
     component : LoginComponent,
   },
   {
