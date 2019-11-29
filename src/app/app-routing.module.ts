@@ -25,16 +25,16 @@ export const routes: Routes = [
     component : UserComponent,
   },
   {
-    path      : 'admin/model',
+    path      : 'admin/website',
     component : AdminComponent,
 
   },
   {
-    path      : 'admin/uploadUrl',
+    path      : 'admin/upload/url',
     component : UploadUrlComponent,
   },
   {
-    path      : 'admin/uploadCsv',
+    path      : 'admin/upload/csv',
     component : UploadCsvComponent,
   },
   {
