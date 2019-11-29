@@ -19,10 +19,6 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
     return this.configuration.adminId;
   }
 
-  get nomInstance(): string {
-    return this.configuration.nomInstance;
-  }
-
   get colorPrimary(): string {
     return this.configuration.colorPrimary;
   }

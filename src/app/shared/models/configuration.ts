@@ -2,7 +2,6 @@ import {Model} from './model';
 
 export class Configuration {
   adminId: BigInteger;
-  nomInstance: string;
   colorPrimary: string;
   colorSecondary: string;
   colorSecondary2: string;
@@ -13,7 +12,6 @@ export class Configuration {
   static buildConfiguration(configuration: Configuration): Configuration {
     const newConfiguration = new Configuration();
     newConfiguration.adminId = configuration.adminId;
-    newConfiguration.nomInstance = configuration.nomInstance;
     newConfiguration.colorPrimary = configuration.colorPrimary;
     newConfiguration.colorSecondary = configuration.colorSecondary;
     newConfiguration.colorSecondary2 = configuration.colorSecondary2;
