@@ -84,8 +84,4 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     });
   }
 
-  putConfiguration(configuration: Configuration) {
-    this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = Configuration.buildConfiguration(json));
-  }
-
 }

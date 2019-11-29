@@ -15,6 +15,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {ModelComponent} from './admin/components/model/model.component';
 import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
+import {UploadCsvComponent} from './upload/csv/csv.component';
+import {UploadUrlComponent} from './upload/url/url.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {LoginComponent} from './login/login.component';
+import {ModelComponent} from './admin/components/model/model.component';
+import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
 import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {DropdownModule} from 'primeng/dropdown';
@@ -57,6 +63,11 @@ import {ErrorComponent} from './shared/components/errors/error.component';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
+    TopFilterComponent,
+    AbstractFilterComponent,
+    CategoryNavigatorComponent,
+    ResumeProductComponent,
+    ErrorComponent
     TopFilterComponent,
     AbstractFilterComponent
     AbstractFilterComponent,
