@@ -77,12 +77,13 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     return this.configuration ? this.configuration : this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
       if (wsc) {
         this.configuration = Configuration.buildConfiguration(wsc);
-        return this.configuration;
       } else { // id not found
-        return Configuration.defaultConfiguration;
+        this.configuration = Configuration.defaultConfiguration();
       }
+      return this.configuration;
     }).catch(() => {
-      return Configuration.defaultConfiguration;
+      this.configuration = Configuration.defaultConfiguration();
+      return this.configuration;
     });
   }
 
