@@ -42,7 +42,7 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
   }
 
   get colorPrimary(): string {
-    return this.configuration.colorPrimary;
+    return this.configuration ? this.configuration.colorPrimary : Configuration.defaultConfiguration().colorPrimary;
   }
 
   get colorSecondary(): string {

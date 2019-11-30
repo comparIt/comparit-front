@@ -34,6 +34,7 @@ import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 
 
 @NgModule({
@@ -83,7 +84,8 @@ import {InputSwitchModule} from 'primeng/inputswitch';
       useClass: BasicAuthInterceptor,
       multi: true
     },
-    CompareItAPIService],
+    CompareItAPIService,
+    CanActivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
