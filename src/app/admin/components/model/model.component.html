@@ -1,57 +1,70 @@
 <div class="list-group list-group-flush">
-  <div class="list-group-item" id="itemCard">
-    <h5 class="card-title">Catégorie {{ model.name }}</h5>
-    <div>
-      <!-- Model -->
-      <div class="classHorizo">
-        <div class="form-group col-2">
-          <label>Nom</label>
-          <input type="text" id="{{'inputNameM'+index}}" [(ngModel)]="model.name" type="text" class="form-control"/>
-        </div>
-        <div class="form-group col-2">
-          <label>Nom technique</label>
-          <input type="text" id="{{'inputTechnicalNameM'+index}}" [(ngModel)]="model.technicalName"
-                 class="form-control"/>
-        </div>
-        <div class="form-group col-2">
-          <div class="custom-control custom-checkbox mb-3">
-            <label>Actif</label>
-            <p-checkbox id="{{'checkBoxActivatedM'+index}}" class="checkBoxComponent" [(ngModel)]="model.activated"
-                        binary="true"></p-checkbox>
-          </div>
-        </div>
-        <div class="form-group col-2">
-          <button id="{{'btnDeleteModel'+index}}"
-                  class="btn btn-danger"
-                  type="button"
-                  (click)="delete(model)"
-          ><i class="fa fa-trash"></i></button>
-        </div>
+  <div class="list-group-item" id="{{'itemCard'+index}}">
+
+    <div class="row justify-content-between">
+      <div class="col-6">
+        <h5 class="card-title">Catégorie {{ model.name }}</h5>
       </div>
-      <!-- Model Property -->
-      <div class="card m-3">
-        <h5 class="card-header">Propriétés de la catégorie</h5>
+      <div class="col-1">
+        <button id="{{'btnDeleteModel'+index}}"
+                class="btn btn-danger"
+                type="button"
+                (click)="delete(model)"
+        ><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
 
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
-            <app-model-property
-                                id="{{'modelProperty'+ i}}"
-                                [index]="i"
-                                [modelindex]="modelindex"
-                                [modelProperty]="modelProperty"
-                                (deleteModelProperty)="deleteModelProperty($event)"
-            ></app-model-property>
-          </li>
-        </ul>
+    <div class="row">
+      <div class="col-6">
+        <label>Nom</label>
+        <input type="text"
+               id="{{'inputNameM'+index}}"
+               [(ngModel)]="model.name"
+               class="form-control"/>
+      </div>
+      <div class="col-6">
+        <label>Nom technique</label>
+        <input type="text"
+               id="{{'inputTechnicalNameM'+index}}"
+               [(ngModel)]="model.technicalName"
+               class="form-control"/>
+      </div>
+    </div>
 
-        <div class="card-footer">
+    <label>Lien de l'image</label>
+    <input type="text"
+           id="{{'inputImageUrl'+index}}"
+           [(ngModel)]="model.imageURL"
+           class="form-control"/>
 
-                <button id="{{'btnAddModelProprety'+index}}"
-                        class="btn btn-primary m-1"
-                        type="button"
-                        (click)="addModelProperty()"
-                >Ajouter une propriété</button>
-        </div>
+    <p-checkbox id="{{'checkBoxActivatedM'+index}}"
+                [(ngModel)]="model.activated"
+                [binary]="true"
+                label="Actif"></p-checkbox>
+    <!-- Model Property -->
+    <div class="card m-3">
+      <h5 class="card-header">Propriétés de la catégorie</h5>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
+          <app-model-property
+            id="{{'modelProperty'+ i}}"
+            [index]="i"
+            [modelindex]="modelindex"
+            [modelProperty]="modelProperty"
+            (deleteModelProperty)="deleteModelProperty($event)"
+          ></app-model-property>
+        </li>
+      </ul>
+
+      <div class="card-footer">
+
+        <button id="{{'btnAddModelProprety'+index}}"
+                class="btn btn-primary m-1"
+                type="button"
+                (click)="addModelProperty()"
+        >Ajouter une propriété
+        </button>
       </div>
     </div>
   </div>

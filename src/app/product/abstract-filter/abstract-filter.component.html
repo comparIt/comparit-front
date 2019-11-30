@@ -1,11 +1,13 @@
 <div>
   <div *ngIf="property.isNumeric">
-    Range: {{property.range[0] + ' - ' + property.range[1]}}
+    {{ property.name }} : {{property.range[0] + ' - ' + property.range[1]}}
     <app-slider
       [(ngModel)]="property.range"
       [range]="true"
       [min]="property.min"
-      [max]="property.max">
+      [max]="property.max"
+      [step]="1"
+    >
     </app-slider>
   </div>
   <div *ngIf="property.isEnum">
