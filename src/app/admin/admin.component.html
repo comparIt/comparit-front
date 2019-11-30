@@ -58,19 +58,15 @@
     <!-- Step 2 configuration Web-->
     <div id="test-l-2" class="content">
       <div class="form-group">
-        <div class="card m-3">
-          <h5 class="card-header">Configuration des catégories</h5>
+          <h5>Configuration des catégories</h5>
 
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item" *ngFor="let model of configuration.models;let i = index;">
-              <app-model [index]="i"
+              <app-model *ngFor="let model of configuration.models;let i = index;"
+                         [index]="i"
                          [modelindex]="i"
                          id="{{'model'+ i}}"
                          [model]="model"
                          (deleteModel)="deleteModel($event)"
               ></app-model>
-            </li>
-          </ul>
 
           <div class="card-body">
             <button id="btnAddModel"
@@ -81,11 +77,10 @@
             </button>
           </div>
 
-          <div class="card-footer text-center">
+          <div >
             <button id="btnReset" class="btn btn-secondary mr-1" type="reset" (click)="onReset()">Reset</button>
             <button id="btnClear" class="btn btn-secondary" type="button" (click)="onClear()">Clear</button>
           </div>
-        </div>
       </div>
       <button id="btnNext" (click)="next()" type="button" class="btn btn-primary">Suivant</button>
     </div>
