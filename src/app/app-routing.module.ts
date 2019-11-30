@@ -7,6 +7,7 @@ import {UploadCsvComponent} from './upload/csv/csv.component';
 import {UploadUrlComponent} from './upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 
 export const routes: Routes = [
@@ -39,6 +40,10 @@ export const routes: Routes = [
   {
     path      : 'app/login',
     component : LoginComponent,
+  },
+  {
+    path      : 'app/register-user',
+    component : RegisterUserComponent,
   },
   {
     path      : 'products',

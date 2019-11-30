@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Configuration} from '../models/configuration';
 import { Model } from '../models/model';
-import { modelProperty } from '../models/modelProperty';
 import {CompareItAPIService} from './compareItAPI.service';
 
 @Injectable({

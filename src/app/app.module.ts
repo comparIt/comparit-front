@@ -28,6 +28,14 @@ import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileSelectDirective} from 'ng2-file-upload';
 import {SliderModule} from 'primeng/primeng';
 import {FileUploadModule} from 'primeng/fileupload';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { MessageService } from 'primeng/api';
+import { MessagesModule} from 'primeng/primeng';
+import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
+
+
+
 
 @NgModule({
   declarations: [
@@ -45,7 +53,8 @@ import {FileUploadModule} from 'primeng/fileupload';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent
+    ResumeProductComponent,
+    RegisterUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,17 +70,23 @@ import {FileUploadModule} from 'primeng/fileupload';
     BrowserAnimationsModule,
     CheckboxModule,
     FileUploadModule,
-    InputTextModule
+    InputTextModule,
+    MessagesModule,
+    MessageModule,
+    PanelModule
   ],
   providers: [
     GlobalConfigurationService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BasicAuthInterceptor,
       multi: true
     },
     CompareItAPIService],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule {
 }

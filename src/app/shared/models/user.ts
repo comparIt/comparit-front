@@ -1,9 +1,10 @@
-export interface User {
+export class User {
     authdata: User;
     id: number;
     email: string;
     lastName: string;
     firstName: string;
+    password:string;
     filters: string[];
     company: string[];
     typeUser: string[];
