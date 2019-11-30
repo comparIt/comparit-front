@@ -6,14 +6,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" (click)="goToHome()">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
         <a class="nav-link" (click)="goToAdmin()">Administration</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form class="nav-item">
       <a *ngIf="!auth.isAuthenticated()" class="nav-link" (click)="goToConnexion()">Connexion</a>
       <a *ngIf="auth.isAuthenticated()" class="nav-link" (click)="auth.logout()">Déconnexion</a>
     </form>
