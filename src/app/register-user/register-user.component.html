@@ -1,26 +1,28 @@
 <div>
     <div style="margin:10px auto;width:360px;">
-      <div class="p-xl-3 p-lg-6 p-md-8 p-sm-10">
+      <div>
         <form [formGroup]="userform" (ngSubmit)="onClickRegisterUser()">
-          <p-panel header="User Registration" >
             <div >
               <div >
-                <img style="margin:0 auto;width:300px;" src="../../assets/images/logo-large.png" class="login-logo">
+                <img style="margin:0 auto;width:350px;length:350px;" src="../../assets/images/logo-large.png" class="login-logo">
               </div>
             <!-- first Name  -->
-              <div class="col-12">
-                <div class="ui-inputgroup">
+            <div style="margin:10px auto;width:300px" >
+              <div class="col-12" >
+                <div class="ui-inputgroup"   >
                   <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
                   <input id="float-input-fistname" type="text" size="30" pInputText formControlName="firstname"
-                    placeholder="user firstname" required [(ngModel)]="user.firstname">
+                    placeholder="user firstname" required [(ngModel)]="user.firstname" >
                 </div>
               </div>
               <div class="col-12" *ngIf="userform.controls['firstname'].errors && userform.controls['firstname'].dirty">
                 <p-message severity="error" text="User firstname is required"
                   *ngIf="userform.controls['firstname'].errors['required']"></p-message>
-              </div>
+              </div></div>
+            
             <!-- first Name  -->
             <!-- last Name  -->
+            <div style="margin:10px auto;width:300px;" >
               <div class="col-12">
                 <div class="ui-inputgroup">
                   <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
@@ -32,8 +34,10 @@
                 <p-message severity="error" text="User lastname is required"
                   *ngIf="userform.controls['lastname'].errors['required']"></p-message>
               </div>
+            </div>
+            
             <!-- last Name  -->
-
+            <div style="margin:10px auto;width:300px;" >
               <div class="col-12">
                 <div class="ui-inputgroup">
                   <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
@@ -47,6 +51,9 @@
                 <p-message severity="error" text="Minimum 6 characters required."
                   *ngIf="userform.controls['password'].errors['minlength'] "></p-message>
               </div>
+            </div>
+
+            <div style="margin:10px auto;width:300px;" >
               <div class="col-12">
                 <div class="ui-inputgroup">
                   <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
@@ -59,19 +66,21 @@
                   *ngIf="userform.controls['email'].errors['required']"></p-message>
                 <p-message severity="error" text="Email is invalid" *ngIf="userform.controls['email'].errors['email']">
                 </p-message>
-              </div>          
+              </div> 
             </div>
-            <div style="display:grid;">
-              <div class="col-6">
+                    
+            </div>
+            <div style="margin:10px auto;width:300px;" >
+              <div class="col-6" style="margin:10px auto;width:300px;" >
                 <button pButton type="button" label="Register" class="ui-button-raised"
                 (click)="onClickRegisterUser()" [disabled]="!userform.valid"></button>
               </div>
-              <div class="col-6">
+              <div class="col-6" style="margin:10px auto;width:300px;" >
                 <button pButton type="button" label="Login" class="ui-button-raised"
                 (click)="onClickGoToLogin()"></button>
               </div>
             </div>
-          </p-panel>
+         
         </form>
       </div>
     </div>

@@ -40,7 +40,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onClickGoToLogin() {
-    this.router.navigate(['app/login']);
+    this.router.navigate(['login']);
   }
 
 }
