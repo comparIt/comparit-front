@@ -8,11 +8,12 @@ import {Observable} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class GlobalConfigurationService  implements Resolve<Configuration> {
+export class GlobalConfigurationService implements Resolve<Configuration> {
 
   private configuration: Configuration;
 
   constructor(public compareItAPIService: CompareItAPIService, private router: Router) {
+
   }
 
   get adminId(): BigInteger {
@@ -20,7 +21,7 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
   }
 
   get colorPrimary(): string {
-    return this.configuration.colorPrimary;
+    return this.configuration ? this.configuration.colorPrimary : Configuration.defaultConfiguration().colorPrimary;
   }
 
   get colorSecondary(): string {
@@ -39,6 +40,10 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
     return this.configuration.models;
   }
 
+  get currentConfig(): Configuration {
+    return this.configuration;
+  }
+
   modelByType(type: string): Model {
     return this.configuration.models.find(e => e.technicalName === type);
   }
@@ -48,16 +53,17 @@ export class GlobalConfigurationService  implements Resolve<Configuration> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
-    return this.configuration ? this.configuration :  this.compareItAPIService.getWebsiteConfiguration().then( (wsc: Configuration) => {
+    return this.configuration ? this.configuration : this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
       if (wsc) {
         this.configuration = Configuration.buildConfiguration(wsc);
-        return this.configuration;
       } else { // id not found
-        this.router.navigate(['/app/home']);
-        return false;
+        this.configuration = Configuration.defaultConfiguration();
       }
+      return this.configuration;
+    }).catch(() => {
+      this.configuration = Configuration.defaultConfiguration();
+      return this.configuration;
     });
   }
-
 
 }

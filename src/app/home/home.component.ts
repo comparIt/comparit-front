@@ -19,9 +19,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.compareItAPIService.getWebsiteConfiguration().then((result) => {
-      alert('Voici la configuration : ' + result.toString());
-    });
   }
 
 

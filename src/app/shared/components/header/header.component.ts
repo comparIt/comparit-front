@@ -1,5 +1,7 @@
 import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import {GlobalConfigurationService} from '../../services/globalConfiguration.service';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../services/authentification.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +9,23 @@ import {GlobalConfigurationService} from '../../services/globalConfiguration.ser
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public config: GlobalConfigurationService) {
+  constructor(public config: GlobalConfigurationService, private router: Router, private auth: AuthenticationService) {
 
   }
 
   ngOnInit(): void {
+  }
+
+  goToHome() {
+    this.router.navigate(['']);
+  }
+
+  goToAdmin() {
+    this.router.navigate(['/admin/website']);
+  }
+
+  goToConnexion() {
+    this.router.navigate(['/login']);
   }
 
 }

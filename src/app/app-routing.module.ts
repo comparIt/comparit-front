@@ -8,17 +8,22 @@ import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
+import {ErrorComponent} from './shared/components/errors/error.component';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 
 
 export const routes: Routes = [
   {
     path      : '',
     redirectTo: 'home',
-    pathMatch : 'full',
+    pathMatch : 'full'
   },
   {
     path      : 'home',
     component : HomeComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
     path      : 'user/:userid',
@@ -27,6 +32,11 @@ export const routes: Routes = [
   {
     path      : 'admin/website',
     component : AdminComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
+
 
   },
   {
@@ -42,12 +52,15 @@ export const routes: Routes = [
     component : LoginComponent,
   },
   {
+    path      : 'error/:errorCode',
+    component : ErrorComponent,
+  },
+  {
     path      : 'products/:type',
     component : ProductComponent,
     resolve   : {
       config: GlobalConfigurationService
     }
-
   }
 ];
 

@@ -11,12 +11,7 @@ import {ProfilComponent} from './user/components/profil/profil.component';
 import {NotifComponent} from './user/components/notif/notif.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {LoginComponent} from './login/login.component';
-import {ModelComponent} from './admin/components/model/model.component';
 import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
-import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
-import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
@@ -31,7 +26,16 @@ import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
 import {SliderModule} from './product/slider-filter/slider.component';
-
+import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
+import {ErrorComponent} from './shared/components/errors/error.component';
+import {LoginComponent} from './login/login.component';
+import {ModelComponent} from './admin/components/model/model.component';
+import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
+import {UploadUrlComponent} from './admin/components/upload/url/url.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
+import {PaginatorModule} from './product/paginator/paginator.component';
 
 
 @NgModule({
@@ -50,9 +54,11 @@ import {SliderModule} from './product/slider-filter/slider.component';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
-    ResumeProductComponent,
     TopFilterComponent,
-    AbstractFilterComponent
+    AbstractFilterComponent,
+    CategoryNavigatorComponent,
+    ResumeProductComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +76,8 @@ import {SliderModule} from './product/slider-filter/slider.component';
     FileUploadModule,
     InputTextModule,
     MultiSelectModule,
+    InputSwitchModule,
+    PaginatorModule
   ],
   providers: [
     GlobalConfigurationService,
@@ -78,7 +86,8 @@ import {SliderModule} from './product/slider-filter/slider.component';
       useClass: BasicAuthInterceptor,
       multi: true
     },
-    CompareItAPIService],
+    CompareItAPIService,
+    CanActivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -5,8 +5,7 @@ import {ModelProperty} from 'src/app/shared/models/modelProperty';
 
 @Component({
   selector: 'app-model',
-  templateUrl: './model.component.html',
-  styleUrls: ['./model.component.scss']
+  templateUrl: './model.component.html'
 })
 export class ModelComponent implements OnInit {
   submitted = false;
