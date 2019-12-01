@@ -34,8 +34,8 @@ import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
-import {PaginatorModule} from 'primeng/paginator';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
+import {PaginatorModule} from './product/paginator/paginator.component';
 
 
 @NgModule({
@@ -60,25 +60,25 @@ import {CanActivateGuardService} from './shared/services/canActivateGuard.servic
     ResumeProductComponent,
     ErrorComponent
   ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        SliderModule,
-        FileUploadModule,
-        DropdownModule,
-        ReactiveFormsModule,
-        ColorPickerModule,
-        BrowserAnimationsModule,
-        CheckboxModule,
-        FileUploadModule,
-        InputTextModule,
-        MultiSelectModule,
-        InputSwitchModule,
-        PaginatorModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    SliderModule,
+    FileUploadModule,
+    DropdownModule,
+    ReactiveFormsModule,
+    ColorPickerModule,
+    BrowserAnimationsModule,
+    CheckboxModule,
+    FileUploadModule,
+    InputTextModule,
+    MultiSelectModule,
+    InputSwitchModule,
+    PaginatorModule
+  ],
   providers: [
     GlobalConfigurationService,
     {
