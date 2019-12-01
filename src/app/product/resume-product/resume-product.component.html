@@ -9,7 +9,7 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title" *ngIf="product.properties['DeviceName']"> {{product.properties['DeviceName']}}</h5>
+          <h5 class="card-title" *ngIf="product.properties['model']"> {{product.properties['model']}}</h5>
           <p class="card-text" *ngIf="product.properties['prix'] " >{{product.properties['prix']}}€</p>
           <p class="card-text" *ngIf="product.properties['dimensions']"> {{product.properties['dimensions']}} </p>
           <p class="card-text" *ngIf="product.properties['description']">{{product.properties['description']}} </p>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {GlobalConfigurationService} from "../../shared/services/globalConfiguration.service";
-import {CompareItAPIService} from "../../shared/services/compareItAPI.service";
+import {GlobalConfigurationService} from "../../../../shared/services/globalConfiguration.service";
+import {CompareItAPIService} from "../../../../shared/services/compareItAPI.service";
 import {SelectItem} from "primeng/api";
-import {Model} from "../../shared/models/model";
+import {Model} from "../../../../shared/models/model";
 
 @Component({
   selector: 'app-supplier',

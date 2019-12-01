@@ -1,27 +1,26 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {modelProperty } from 'src/app/shared/models/modelProperty';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {ModelProperty} from 'src/app/shared/models/modelProperty';
 
 @Component({
   selector: 'app-model-property',
-  templateUrl: './model-property.component.html',
-  styleUrls: ['./model-property.component.scss']
+  templateUrl: './model-property.component.html'
 })
 export class ModelpropertyComponent implements OnInit {
 
-    @Input() modelProperty: modelProperty;
-    @Input() index: number;
-    @Input() modelindex:number;
-    @Output() deleteModelProperty = new EventEmitter<modelProperty>();
+  @Input() modelProperty: ModelProperty;
+  @Input() index: number;
+  @Input() modelindex: number;
+  @Output() deleteModelProperty = new EventEmitter<ModelProperty>();
 
 
-  constructor(
-    ) {}
-
-
-    ngOnInit() {
+  constructor() {
   }
 
-  delete(modelProperty: modelProperty) {
+
+  ngOnInit() {
+  }
+
+  delete(modelProperty: ModelProperty) {
     this.deleteModelProperty.emit(modelProperty);
   }
 }

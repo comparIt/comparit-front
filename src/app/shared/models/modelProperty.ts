@@ -1,25 +1,48 @@
-export class modelProperty {
+export class ModelProperty {
 
-    name: string;
-    technicalName: string;
-    activated: boolean;
-    type: string;
-    filtrable: boolean;
-    filtrableAdvanced: boolean;
-    mandatory: boolean;
-    constructor( name: string,
-                 technicalName: string,
-                 activated: boolean,
-                 type: string,
-                 filtrable: boolean,
-                 filtrableAdvanced: boolean,
-                 mandatory: boolean) {
-        this.name = name;
-        this.technicalName = technicalName;
-        this.activated = activated;
-        this.type = type;
-        this.filtrable = filtrable;
-        this.filtrableAdvanced = filtrableAdvanced;
-        this.mandatory = mandatory;
-    }
+  name: string;
+  technicalName: string;
+  activated: boolean;
+  type: string;
+  filtrable: boolean;
+  filtrableAdvanced: boolean;
+  mandatory: boolean;
+
+  min: number;
+  max: number;
+  range: number[];
+
+  values: string[];
+  selectedValues: string[] = [];
+
+  get isEnum(): boolean {
+    return this.type === 'ENUMERATIVE';
+  }
+
+  get isNumeric(): boolean {
+    return this.type === 'NUMERIC';
+  }
+
+  constructor() {
+  }
+
+  static buildProperty(property: ModelProperty): ModelProperty {
+    const modelProperty = new ModelProperty();
+    modelProperty.name = property.name;
+    modelProperty.technicalName = property.technicalName;
+    modelProperty.activated = property.activated;
+    modelProperty.type = property.type;
+    modelProperty.filtrable = property.filtrable;
+    modelProperty.filtrableAdvanced = property.filtrableAdvanced;
+    modelProperty.mandatory = property.mandatory;
+    modelProperty.min = property.min;
+    modelProperty.max = property.max;
+    modelProperty.range = [modelProperty.min, modelProperty.max];
+    modelProperty.values = property.values;
+    modelProperty.selectedValues = [];
+    return modelProperty;
+  }
+
 }
+
+

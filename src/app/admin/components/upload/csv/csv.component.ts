@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
-import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
-import {Model} from '../../shared/models/model';
+import {GlobalConfigurationService} from '../../../../shared/services/globalConfiguration.service';
+import {CompareItAPIService} from '../../../../shared/services/compareItAPI.service';
+import {Model} from '../../../../shared/models/model';
 import {SelectItem} from 'primeng/api';
 
 @Component({
