@@ -5,6 +5,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
+import {ProductPagineDTO} from '../shared/models/productPagineDTO';
 
 @Component({
   selector: 'app-product',
@@ -15,6 +16,7 @@ export class ProductComponent implements OnInit {
 
   products: Product[];
   model: Model;
+  productPagineDTO: ProductPagineDTO;
 
   constructor(
     private api: CompareItAPIService,
@@ -25,8 +27,9 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.api.getMockProduct()
-      .then((products: Product[]) => {
-        this.products = products;
+      .then((productPagineDTO: ProductPagineDTO) => {
+        this.productPagineDTO = productPagineDTO;
+        this.products = productPagineDTO.productsToDisplay;
       });
 
     this.route.params.subscribe(params => {
@@ -36,10 +39,15 @@ export class ProductComponent implements OnInit {
 
   search() {
     this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
-      (products: Product[]) => {
-        this.products = products;
+      (productPagineDTO: ProductPagineDTO) => {
+        this.productPagineDTO = productPagineDTO;
+        this.products = productPagineDTO.productsToDisplay;
       }
     );
   }
 
+
+  paginate(event: any) {
+    this.productPagineDTO.pageActuelle = event.page;
+  }
 }
