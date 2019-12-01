@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {GlobalConfigurationService} from "../../../../shared/services/globalConfiguration.service";
-import {CompareItAPIService} from "../../../../shared/services/compareItAPI.service";
-import {SelectItem} from "primeng/api";
-import {Model} from "../../../../shared/models/model";
+import {GlobalConfigurationService} from '../../../../shared/services/globalConfiguration.service';
+import {CompareItAPIService} from '../../../../shared/services/compareItAPI.service';
+import {SelectItem} from 'primeng/api';
+import {Model} from '../../../../shared/models/model';
 
 @Component({
   selector: 'app-supplier',
@@ -11,19 +11,21 @@ import {Model} from "../../../../shared/models/model";
   styleUrls: ['./url.component.scss']
 })
 export class UploadUrlComponent implements OnInit {
+
+  types: SelectItem[];
+  selectedType: Model;
+  showResult: boolean;
+
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
     private httpClient: HttpClient
-  ) { this.types = [
-        {label: 'Select type', value: null},
-        {label: 'Phone', value: {name: 'phones'}},
-        {label: 'Car', value: {name: 'cars'}}
-      ];
+  ) {
+    this.types = this.globalconfigurationService.models.map(model => {
+      return {label: model.name, value: {name: model.technicalName}};
+    });
+    this.types.unshift({label: 'Select type', value: null});
   }
-  types: SelectItem[];
-  selectedType: Model;
-  showResult: boolean;
 
   ngOnInit() {
   }
@@ -33,7 +35,7 @@ export class UploadUrlComponent implements OnInit {
   }
 
   getUploadUrl(typeProduit: string, url: string) {
-    this.httpClient.get(this.compareItAPIService.getUploadUrl(typeProduit) + '?url=' + url )
+    this.httpClient.get(this.compareItAPIService.getUploadUrl(typeProduit) + '?url=' + url)
       .toPromise()
       .then(() => this.showResult = true)
       .catch(this.handleError);

@@ -24,6 +24,14 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/admin/website']);
   }
 
+  goToUploadCSV() {
+    this.router.navigate(['/admin/upload/csv']);
+  }
+
+  goToUploadURL() {
+    this.router.navigate(['/admin/upload/url']);
+  }
+
   goToConnexion() {
     this.router.navigate(['/login']);
   }

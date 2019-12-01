@@ -9,6 +9,12 @@
       <li class="nav-item" *ngIf="auth.isAuthenticated()">
         <a class="nav-link" (click)="goToAdmin()">Administration</a>
       </li>
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
+        <a class="nav-link" (click)="goToUploadCSV()">Charger des produits (CSV)</a>
+      </li>
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
+        <a class="nav-link" (click)="goToUploadURL()">Charger des produits (URL)</a>
+      </li>
     </ul>
     <form class="nav-item">
       <a *ngIf="!auth.isAuthenticated()" class="nav-link" (click)="goToConnexion()">Connexion</a>

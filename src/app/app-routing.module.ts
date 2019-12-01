@@ -28,6 +28,9 @@ export const routes: Routes = [
   {
     path      : 'user/:userid',
     component : UserComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
     path      : 'admin/website',
@@ -36,20 +39,26 @@ export const routes: Routes = [
       config: GlobalConfigurationService
     },
     canActivate: [CanActivateGuardService]
-
-
   },
   {
     path      : 'admin/upload/url',
     component : UploadUrlComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
     path      : 'admin/upload/csv',
     component : UploadCsvComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
     path      : 'login',
-    component : LoginComponent,
+    component : LoginComponent
   },
   {
     path      : 'error/:errorCode',
