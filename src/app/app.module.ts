@@ -35,6 +35,7 @@ import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {PaginatorModule} from 'primeng/paginator';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import {PaginatorModule} from 'primeng/paginator';
       useClass: BasicAuthInterceptor,
       multi: true
     },
-    CompareItAPIService],
+    CompareItAPIService,
+    CanActivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

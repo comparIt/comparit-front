@@ -9,6 +9,7 @@ import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {ErrorComponent} from './shared/components/errors/error.component';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 
 
 export const routes: Routes = [
@@ -33,7 +34,9 @@ export const routes: Routes = [
     component : AdminComponent,
     resolve   : {
       config: GlobalConfigurationService
-    }
+    },
+    canActivate: [CanActivateGuardService]
+
 
   },
   {

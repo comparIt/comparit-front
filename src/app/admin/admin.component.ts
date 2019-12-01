@@ -35,6 +35,10 @@ export class AdminComponent implements OnInit {
     this.stepper.next();
   }
 
+  previous() {
+    this.stepper.previous();
+  }
+
   onSubmit() {
     this.globalconfigurationService.putConfiguration(this.configuration);
     this.showResult = true;
