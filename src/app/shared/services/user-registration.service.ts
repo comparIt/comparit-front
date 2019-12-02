@@ -13,8 +13,8 @@ export class UserRegistrationService {
   constructor(public compareItAPIService: CompareItAPIService) 
   {}
 
-    postUserRegistration(user:User){
-      this.compareItAPIService.postRegisterUser(user).then((json)=>this.user=json);
+    putUserRegistration(user:User){
+      this.compareItAPIService.putRegisterUser(user).then((json)=>this.user=json);
     }
 
 }

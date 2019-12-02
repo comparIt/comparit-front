@@ -36,7 +36,7 @@ export class RegisterUserComponent implements OnInit {
 
   onClickRegisterUser() {
     console.log(this.user)
-    this.userRegistrationService.postUserRegistration(this.user);
+    this.userRegistrationService.putUserRegistration(this.user);
   }
 
   onClickGoToLogin() {

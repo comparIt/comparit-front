@@ -88,8 +88,8 @@ export class CompareItAPIService {
     // }
 
     //User
-    public postRegisterUser(user : User): any {
-        return this.post(this.userController, [], user);
+    public putRegisterUser(user : User): any {
+        return this.put(this.userController+'/saveUser', [], user);
     }
 
 
