@@ -23,9 +23,9 @@ npm-build:
 docker-build:
   stage: package
   script:
-  - docker build -t registry.gitlab.com/valentintartare59/compare-it-front .
+  - docker build -t registry.gitlab.com/compare-it/compare-it-front .
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
-  - docker push registry.gitlab.com/valentintartare59/compare-it-front
+  - docker push registry.gitlab.com/compare-it/compare-it-front
 
 docker-deploy:
   image: rastasheep/ubuntu-sshd
