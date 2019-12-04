@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { User } from '../shared/models/user';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
+import {User} from '../shared/models/user';
 import {UserRegistrationService} from '../shared/services/user-registration.service';
 
 @Component({
@@ -35,7 +35,6 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onClickRegisterUser() {
-    console.log(this.user)
     this.userRegistrationService.putUserRegistration(this.user);
   }
 
