@@ -19,9 +19,13 @@ export class ModelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.model.modelProperties.push(this.initializeModelProperty( 'Nom', 'name', true, 'Enumerative' , true, true, true));
-    this.model.modelProperties.push(this.initializeModelProperty( 'Description', 'description', true, 'Enumerative' , true, true, true));
-    this.model.modelProperties.push(this.initializeModelProperty( 'Prix', 'price', true, 'Numeric' , true, true, true));
+    if (this.model.modelProperties.length === 0) {
+      this.model.modelProperties.push(this.initializeModelProperty( 'Nom', 'name', true, 'ENUMERATIVE' , true, true, true));
+      this.model.modelProperties.push(this.initializeModelProperty( 'Description', 'description', true, 'ENUMERATIVE' , true, true, true));
+      this.model.modelProperties.push(this.initializeModelProperty( 'Prix', 'price', true, 'NUMERIC' , true, true, true));
+      this.model.modelProperties.push(this.initializeModelProperty( 'Image', 'imgUrl', false, 'ENUMERATIVE' , false, false, false));
+
+    }
   }
 
   delete(model: Model) {
