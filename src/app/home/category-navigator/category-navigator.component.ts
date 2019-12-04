@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 })
 export class CategoryNavigatorComponent implements OnInit {
 
-  constructor(private config: GlobalConfigurationService, private router: Router) {
+  constructor(public config: GlobalConfigurationService, private router: Router) {
   }
 
   ngOnInit() {

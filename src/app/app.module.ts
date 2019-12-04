@@ -20,7 +20,6 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import {FileSelectDirective} from 'ng2-file-upload';
 import {FileUploadModule} from 'primeng/fileupload';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { MessageService } from 'primeng/api';
@@ -39,6 +38,8 @@ import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
+import {PaginatorModule} from './product/paginator/paginator.component';
 
 
 @NgModule({
@@ -50,7 +51,6 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     AdminComponent,
     ProfilComponent,
     NotifComponent,
-    FileSelectDirective,
     LoginComponent,
     ModelComponent,
     ModelpropertyComponent,
@@ -84,7 +84,9 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     MessageModule,
     PanelModule,
     MultiSelectModule,
-    InputSwitchModule
+    InputSwitchModule,
+    PaginatorModule,
+    FileUploadModule
   ],
   providers: [
     GlobalConfigurationService,
@@ -94,10 +96,9 @@ import {InputSwitchModule} from 'primeng/inputswitch';
       useClass: BasicAuthInterceptor,
       multi: true
     },
-    CompareItAPIService],
-  bootstrap: [
-    AppComponent
-  ]
+    CompareItAPIService,
+    CanActivateGuardService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

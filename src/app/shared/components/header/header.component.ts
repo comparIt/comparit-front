@@ -1,6 +1,7 @@
 import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import {GlobalConfigurationService} from '../../services/globalConfiguration.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../services/authentification.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public config: GlobalConfigurationService, private router: Router) {
+  constructor(public config: GlobalConfigurationService, private router: Router, private auth: AuthenticationService) {
 
   }
 
@@ -23,4 +24,24 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/admin/website']);
   }
 
+  goToUploadCSV() {
+    this.router.navigate(['/admin/upload/csv']);
+  }
+
+  goToUploadURL() {
+    this.router.navigate(['/admin/upload/url']);
+  }
+
+  goToConnexion() {
+    this.router.navigate(['/login']);
+  }
+
+
+  logout() {
+    this.auth.logout();
+  }
+
+  get isAuthenticated(): boolean {
+    return this.auth.isAuthenticated();
+  }
 }

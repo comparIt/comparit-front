@@ -11,20 +11,19 @@ import {SelectItem} from 'primeng/api';
 })
 export class UploadCsvComponent {
 
+  types: SelectItem[];
+  selectedType: Model;
+  showResult: boolean;
+
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
   ) {
-    this.types = [
-      {label: 'Select type', value: null},
-      {label: 'Phone', value: {name: 'phones'}},
-      {label: 'Car', value: {name: 'cars'}}
-    ];
+    this.types = this.globalconfigurationService.models.map(model => {
+      return {label: model.name, value: {name: model.technicalName}};
+    });
+    this.types.unshift({label: 'Select type', value: null});
   }
-
-  types: SelectItem[];
-  selectedType: Model;
-  showResult: boolean;
 
   url(): string {
     return this.compareItAPIService.getUploadCsv(this.selectedType);

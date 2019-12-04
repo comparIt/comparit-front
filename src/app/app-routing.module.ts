@@ -10,6 +10,7 @@ import {ProductComponent} from './product/product.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {ErrorComponent} from './shared/components/errors/error.component';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 
 
 export const routes: Routes = [
@@ -28,26 +29,37 @@ export const routes: Routes = [
   {
     path      : 'user/:userid',
     component : UserComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
     path      : 'admin/website',
     component : AdminComponent,
     resolve   : {
       config: GlobalConfigurationService
-    }
-
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
     path      : 'admin/upload/url',
     component : UploadUrlComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
     path      : 'admin/upload/csv',
     component : UploadCsvComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
     path      : 'login',
-    component : LoginComponent,
+    component : LoginComponent
   },
   {
     path      : 'error/:errorCode',

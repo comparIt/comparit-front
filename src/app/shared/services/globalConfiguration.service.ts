@@ -16,33 +16,12 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
 
   }
 
-  fetchGlobalConfiguration() {
-    this.configuration = new Configuration();
-    this.configuration.models = [];
-    const m1: Model = new Model();
-    m1.name = 'Category 1';
-    m1.technicalName = 'p1';
-    const m2: Model = new Model();
-    m2.name = 'Category 2';
-    m2.technicalName = 'p2';
-    const m3: Model = new Model();
-    m3.name = 'Category 3';
-    m3.technicalName = 'p3';
-    const m4: Model = new Model();
-    m4.name = 'Category 4';
-    m4.technicalName = 'p4';
-    const m5: Model = new Model();
-    m5.name = 'Category 5';
-    m5.technicalName = 'p5';
-    this.configuration.models.push(m1, m2, m3, m4, m5);
-  }
-
   get adminId(): BigInteger {
     return this.configuration.adminId;
   }
 
   get colorPrimary(): string {
-    return this.configuration.colorPrimary;
+    return this.configuration ? this.configuration.colorPrimary : Configuration.defaultConfiguration().colorPrimary;
   }
 
   get colorSecondary(): string {

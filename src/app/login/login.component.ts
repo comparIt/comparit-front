@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       if (!this.auth.isAuthenticated()) {
           this.auth.login(loginandpwd.login, loginandpwd.pwd)
               .then(() => {
-                  this.router.navigate(['app/home']);
+                  this.router.navigate(['home']);
               });
       }
     }

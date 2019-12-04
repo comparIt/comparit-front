@@ -23,6 +23,7 @@ export class Model {
     model.activated = true;
     model.technicalName = '';
     model.modelProperties = [];
+    model.imageURL = '';
     return model;
   }
 
