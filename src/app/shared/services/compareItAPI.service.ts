@@ -82,14 +82,9 @@ export class CompareItAPIService {
          return this.get(this.websiteconfigController + '/1' , []);
     }
 
-
-    // public addConfiguration(configuration:Configuration){
-    //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
-    // }
-
     //User
     public putRegisterUser(user : User): any {
-        return this.put(this.userController+'/saveUser', [], user);
+        return this.put(this.userController + '/saveUser', [], user);
     }
 
 

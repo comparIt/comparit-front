@@ -12,7 +12,7 @@
                 <div class="ui-inputgroup"   >
                   <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
                   <input id="float-input-fistname" type="text" size="30" pInputText formControlName="firstname"
-                    placeholder="user firstname" required [(ngModel)]="user.firstname" >
+                    placeholder="user firstname" required [(ngModel)]="user.firstName" >
                 </div>
               </div>
               <div class="col-12" *ngIf="userform.controls['firstname'].errors && userform.controls['firstname'].dirty">
@@ -27,7 +27,7 @@
                 <div class="ui-inputgroup">
                   <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
                   <input id="float-input-lastname" type="text" size="30" pInputText formControlName="lastname"
-                    placeholder="user lastname" required [(ngModel)]="user.lastname">
+                    placeholder="user lastname" required [(ngModel)]="user.lastName">
                 </div>
               </div>
               <div class="col-12" *ngIf="userform.controls['lastname'].errors && userform.controls['lastname'].dirty">
