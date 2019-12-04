@@ -46,7 +46,6 @@ export class ProductComponent implements OnInit {
     );
   }
 
-
   paginate(event: any) {
     this.productPagineDTO.pageActuelle = event.page;
     console.log(event.page);
