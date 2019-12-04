@@ -4,8 +4,9 @@
   </section>
 </div>
 
-<div class="container mt-5">
+<div class="container my-5">
   <section>
-    <app-resume-product *ngFor="let product of products" [product]=product></app-resume-product>
+    <app-resume-product *ngFor="let product of products | slice:(productPagineDTO.pageActuelle)*10:(productPagineDTO.pageActuelle+1)*10" [product]=product></app-resume-product>
+    <app-paginator [rows]="10" [totalRecords]="productPagineDTO.productsToDisplay.length" [rowsPerPageOptions]="[10,20,30,40,50]" (onPageChange)="paginate($event)"></app-paginator>
   </section>
 </div>

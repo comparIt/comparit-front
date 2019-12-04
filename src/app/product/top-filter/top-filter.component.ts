@@ -9,7 +9,7 @@ import {Model} from '../../shared/models/model';
 })
 export class TopFilterComponent implements OnInit {
 
-  constructor(private config: GlobalConfigurationService) { }
+  constructor(public config: GlobalConfigurationService) { }
 
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
