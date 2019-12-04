@@ -21,6 +21,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { MessageService } from 'primeng/api';
+import { MessagesModule} from 'primeng/primeng';
+import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
@@ -52,6 +57,8 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
+    ResumeProductComponent,
+    RegisterUserComponent,
     TopFilterComponent,
     AbstractFilterComponent,
     CategoryNavigatorComponent,
@@ -73,6 +80,9 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     CheckboxModule,
     FileUploadModule,
     InputTextModule,
+    MessagesModule,
+    MessageModule,
+    PanelModule,
     MultiSelectModule,
     InputSwitchModule,
     PaginatorModule,
@@ -80,6 +90,7 @@ import {PaginatorModule} from './product/paginator/paginator.component';
   ],
   providers: [
     GlobalConfigurationService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BasicAuthInterceptor,

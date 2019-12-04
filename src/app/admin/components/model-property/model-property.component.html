@@ -17,14 +17,10 @@
     </div>
 
     <div class="col-3">
-      <label>Type</label>
-      <select id="{{'selectTypeMp'+modelindex+index}}"
-              [(ngModel)]="modelProperty.type"
-              name="type"
-              class="browser-default custom-select">
-        <option value="NUMERIC" selected>Numérique</option>
-        <option value="ENUMERATIVE">Enumératif</option>
-      </select>
+      <div class="col-3">
+        <label>Type</label>
+      </div>
+      <p-dropdown id="{{'selectTypeMp'+modelindex+index}}" [options]="typeList" [(ngModel)]="modelProperty.type"></p-dropdown>
     </div>
     <div class="col-1">
       <button id="{{'btnDeleteModelProperty'+modelindex+index}}"

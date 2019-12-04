@@ -7,6 +7,7 @@ import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {LoginComponent} from './login/login.component';
 import {ProductComponent} from './product/product.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {ErrorComponent} from './shared/components/errors/error.component';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
@@ -63,6 +64,10 @@ export const routes: Routes = [
   {
     path      : 'error/:errorCode',
     component : ErrorComponent,
+  },
+  {
+    path      : 'register-user',
+    component : RegisterUserComponent,
   },
   {
     path      : 'products/:type',

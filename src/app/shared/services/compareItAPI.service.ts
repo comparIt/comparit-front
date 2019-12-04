@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
-import {Model} from '../models/model';
+import {Model} from "../models/model";
+import { User } from '../models/user';
 
 @Injectable({
     providedIn: 'root',
@@ -81,10 +82,11 @@ export class CompareItAPIService {
          return this.get(this.websiteconfigController + '/1' , []);
     }
 
+    //User
+    public putRegisterUser(user : User): any {
+        return this.put(this.userController + '/saveUser', [], user);
+    }
 
-    // public addConfiguration(configuration:Configuration){
-    //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
-    // }
 
   public getMockProduct(): any {
        return this.get('/product/search', []);
