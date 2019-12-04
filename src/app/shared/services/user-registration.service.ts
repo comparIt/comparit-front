@@ -14,7 +14,7 @@ export class UserRegistrationService {
   {}
 
     putUserRegistration(user:User){
-      this.compareItAPIService.putRegisterUser(user).then((json)=>this.user=json);
+      this.compareItAPIService.putRegisterUser(user).then((json)=>this.user=User.buildUser(json));
     }
 
 }

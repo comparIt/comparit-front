@@ -10,4 +10,13 @@ export class User {
     typeUser: string[];
     createdAt: Date;
     updatedAt: Date;
+
+    static buildUser(user: User): User {
+        const newUser = new User();
+        newUser.email=user.email;
+        newUser.lastName=user.lastName;
+        newUser.firstName=user.firstName;
+        newUser.password=user.password;
+        return newUser;
+    }
 }
