@@ -44,9 +44,10 @@ export class AdminComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.showResult = false;
-    this.globalconfigurationService.putConfiguration(this.configuration).then(() => {
+    this.globalconfigurationService.putConfiguration(this.configuration).then((configuration: Configuration) => {
       this.submitted = false;
       this.showResult = true;
+      this.configuration = configuration;
     });
   }
 

@@ -27,7 +27,8 @@
         <input type="text"
                id="{{'inputTechnicalNameM'+index}}"
                [(ngModel)]="model.technicalName"
-               class="form-control"/>
+               class="form-control"
+               [disabled]="model.saved"/>
       </div>
     </div>
 

@@ -15,6 +15,8 @@ export class ModelProperty {
   values: string[];
   selectedValues: string[] = [];
 
+  isSaved = true;
+
   get isEnum(): boolean {
     return this.type === 'ENUMERATIVE';
   }
@@ -41,6 +43,25 @@ export class ModelProperty {
     modelProperty.values = property.values;
     modelProperty.selectedValues = [];
     return modelProperty;
+  }
+
+  static createModelProperty(name: string,
+                             technicalName: string,
+                             activated: boolean,
+                             type: string,
+                             filtrable: boolean,
+                             filtrableAdvanced: boolean,
+                             mandatory: boolean): ModelProperty {
+    const modelProprety: ModelProperty = new ModelProperty();
+    modelProprety.name = name;
+    modelProprety.technicalName = technicalName;
+    modelProprety.activated = activated;
+    modelProprety.type = type;
+    modelProprety.filtrable = filtrable;
+    modelProprety.filtrableAdvanced = filtrableAdvanced;
+    modelProprety.mandatory = mandatory;
+    modelProprety.isSaved = false;
+    return modelProprety;
   }
 
 }
