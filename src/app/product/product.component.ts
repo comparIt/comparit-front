@@ -26,14 +26,9 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.api.getMockProduct()
-      .then((productPagineDTO: ProductPagineDTO) => {
-        this.productPagineDTO = productPagineDTO;
-        this.products = productPagineDTO.productsToDisplay;
-      });
-
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
+      this.search();
     });
   }
 
