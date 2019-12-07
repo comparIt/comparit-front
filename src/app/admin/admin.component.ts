@@ -4,6 +4,7 @@ import {Configuration} from '../shared/models/configuration';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Model} from '../shared/models/model';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-admin',
@@ -21,6 +22,7 @@ export class AdminComponent implements OnInit {
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
+    private confirmationService: ConfirmationService
   ) {}
 
   ngOnInit() {
@@ -40,8 +42,12 @@ export class AdminComponent implements OnInit {
   }
 
   onSubmit() {
-    this.globalconfigurationService.putConfiguration(this.configuration);
-    this.showResult = true;
+    this.submitted = true;
+    this.showResult = false;
+    this.globalconfigurationService.putConfiguration(this.configuration).then(() => {
+      this.submitted = false;
+      this.showResult = true;
+    });
   }
 
   addModel() {
@@ -49,7 +55,12 @@ export class AdminComponent implements OnInit {
   }
 
   deleteModel(event: Model) {
-    this.configuration.models = this.configuration.models.filter(obj => obj !== event);
+    this.confirmationService.confirm({
+      message: 'Voulez-vous supprimer cette catégorie ?',
+      accept: () => {
+        this.configuration.models = this.configuration.models.filter(obj => obj !== event);
+      }
+    });
   }
 
   onUpload(event) {

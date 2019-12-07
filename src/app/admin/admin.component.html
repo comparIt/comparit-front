@@ -91,19 +91,20 @@
       <p class='text-label'>Activer l'analytique</p>
       <p-inputSwitch [(ngModel)]="configuration.featAnalytic"></p-inputSwitch>
 
-      <div *ngIf="showResult" class="alert alert-success" role="alert">
-        La configuration a bien été enregistrée.
-      </div>
 
       <div class="row justify-content-between">
         <div class="col-2">
           <button (click)="previous()" type="button" class="btn btn-primary btnNav">Précédant</button>
         </div>
         <div class="col-2">
-          <button (click)="onSubmit()" type="button" class="btn btn-primary btnNav" id="btnNext">Valider</button>
+          <button (click)="onSubmit()" [disabled]="submitted" type="button" class="btn btn-primary btnNav" id="btnNext">Valider</button>
         </div>
       </div>
 
+    </div>
+
+    <div *ngIf="showResult" class="text-center alert alert-success" role="alert">
+      La configuration a bien été enregistrée.
     </div>
   </div>
 

@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Model} from 'src/app/shared/models/model';
 import {ModelProperty} from 'src/app/shared/models/modelProperty';
+import {ConfirmationService} from 'primeng/api';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ModelComponent implements OnInit {
   @Output() deleteModel = new EventEmitter<Model>();
 
 
-  constructor() {
+  constructor(private confirmationService: ConfirmationService) {
   }
 
   ngOnInit() {
@@ -42,7 +43,12 @@ export class ModelComponent implements OnInit {
   }
 
   deleteModelProperty(event: ModelProperty) {
-    this.model.modelProperties = this.model.modelProperties.filter(obj => obj !== event);
+    this.confirmationService.confirm({
+      message: 'Voulez-vous supprimer cette propriété ?',
+      accept: () => {
+        this.model.modelProperties = this.model.modelProperties.filter(obj => obj !== event);
+      }
+    });
   }
 
   // tslint:disable-next-line:max-line-length
