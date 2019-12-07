@@ -20,7 +20,6 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import {FileSelectDirective} from 'ng2-file-upload';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
@@ -49,7 +48,6 @@ import {ConfirmationService} from 'primeng/api';
     AdminComponent,
     ProfilComponent,
     NotifComponent,
-    FileSelectDirective,
     LoginComponent,
     ModelComponent,
     ModelpropertyComponent,

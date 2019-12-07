@@ -107,7 +107,7 @@ export class PaginatorComponent implements OnInit, OnChanges {
 
   _first = 0;
 
-  constructor(private cd: ChangeDetectorRef, private conf: GlobalConfigurationService) {
+  constructor(private cd: ChangeDetectorRef, public conf: GlobalConfigurationService) {
   }
 
   ngOnInit() {
