@@ -15,4 +15,10 @@
       Import terminé
     </div>
   </ng-template>
+
+  <ng-template [ngIf]="!showResult">
+    <div class="alert alert-danger" role="alert">
+      Erreur d'importation du fichier
+    </div>
+  </ng-template>
 </div>
