@@ -37,6 +37,7 @@ import {CanActivateGuardService} from './shared/services/canActivateGuard.servic
 import {PaginatorModule} from './product/paginator/paginator.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import {ConfirmationService} from 'primeng/api';
     InputSwitchModule,
     PaginatorModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    NgbModule
   ],
   providers: [
     GlobalConfigurationService,
