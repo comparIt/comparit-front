@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
 import {Model} from "../models/model";
 import { User } from '../models/user';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
@@ -11,7 +12,7 @@ import { User } from '../models/user';
 
 export class CompareItAPIService {
 
-    private DOMAIN = 'http://localhost:8080';
+    private DOMAIN = environment.apiUrl;
 
     private alertController = '/alert';
     private companyController = '/company';
