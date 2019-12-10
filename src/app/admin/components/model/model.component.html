@@ -1,15 +1,10 @@
-<p>
-  <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-    {{model.name}}
-  </button>
-</p>
-
-  <div class="card my-2">
+ <div class="card my-2">
     <div class="card-header">
       <div class="row justify-content-between">
         <div class="col-6">
-          <h5 class="card-title">Catégorie {{ model.name }}</h5>
+          <span class="fa fa-folder-o"></span>
+          <a href="{{'#categorie'+index}}"  data-toggle="collapse" >Catégorie {{ model.name }}</a>
+          <h5 class="card-title"></h5>
         </div>
         <div class="col-1">
           <button id="{{'btnDeleteModel'+index}}"
@@ -20,7 +15,7 @@
         </div>
       </div>
     </div>
-  <div  id="collapseExample" [ngbCollapse]="isCollapsed">
+
     <div class="card-body" id="{{'itemCard'+index}}">
       <div class="row">
         <div class="col-6">
@@ -52,27 +47,28 @@
       <br>
     </div>
 
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item"><label>Propriétés : </label></li>
-      <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
-        <app-model-property
-          id="{{'modelProperty'+ i}}"
-          [index]="i"
-          [modelindex]="modelindex"
-          [modelProperty]="modelProperty"
-          (deleteModelProperty)="deleteModelProperty($event)"
-        ></app-model-property>
-      </li>
-    </ul>
+    <div  id="{{'categorie'+index}}" class="collapse">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><label>Propriétés : </label></li>
+        <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
+          <app-model-property
+            id="{{'modelProperty'+ i}}"
+            [index]="i"
+            [modelindex]="modelindex"
+            [modelProperty]="modelProperty"
+            (deleteModelProperty)="deleteModelProperty($event)"
+          ></app-model-property>
+        </li>
+      </ul>
 
-    <div class="card-footer">
-      <button id="{{'btnAddModelProprety'+index}}"
-              class="btn btn-primary m-1"
-              type="button"
-              (click)="addModelProperty()"
-      >Ajouter une propriété
-      </button>
-    </div>
+      <div class="card-footer">
+        <button id="{{'btnAddModelProprety'+index}}"
+                class="btn btn-primary m-1"
+                type="button"
+                (click)="addModelProperty()"
+        >Ajouter une propriété
+        </button>
+      </div>
   </div>
 </div>
 
