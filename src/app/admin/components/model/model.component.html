@@ -1,10 +1,14 @@
  <div class="card my-2">
     <div class="card-header">
       <div class="row justify-content-between">
-        <div class="col-6">
-          <div class="panel-heading">
-            <h5>Catégorie {{ model.name }}<a class="accordion-toggle collapsed" href="{{'#categorie'+index}}"  data-toggle="collapse" ></a></h5>
-          </div>
+        <div class="col-10">
+                <h5>Catégorie : {{ model.name }}</h5>
+        </div>
+        <div class="col-1">
+            <button  type="button"  class="btn btn-primary">
+              <a class="accordion-toggle collapsed" href="{{'#categorie'+index}}"  data-toggle="collapse" >
+              </a>
+            </button>
         </div>
         <div class="col-1">
           <button id="{{'btnDeleteModel'+index}}"
@@ -14,7 +18,9 @@
           ><i class="fa fa-trash"></i></button>
         </div>
       </div>
+
     </div>
+
 
     <div class="card-body" id="{{'itemCard'+index}}">
       <div class="row">
@@ -45,11 +51,11 @@
                   [binary]="true"
                   label="Actif"></p-checkbox>
       <br>
-    </div>
+
 
     <div  id="{{'categorie'+index}}" class="collapse">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><h5>Propriétés : </h5></li>
+      <br>
+      <ul class="list-group list-group-flush"><h5>Propriétés : </h5>
         <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
           <app-model-property
             id="{{'modelProperty'+ i}}"
@@ -69,6 +75,7 @@
         >Ajouter une propriété
         </button>
       </div>
-  </div>
+    </div>
+    </div>
 </div>
 

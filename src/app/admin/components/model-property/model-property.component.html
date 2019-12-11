@@ -1,17 +1,24 @@
-<div>
-  <div class="row">
-    <div class="col-10">
-        <div class="panel-heading">
-          <h6>Propriété :  {{ modelProperty.name }}<a class="accordion-toggle collapsed" href="{{'#property'+modelindex+index}}"  data-toggle="collapse" ></a></h6>
+<div class="card my-2">
+    <div class="card-header">
+        <div class="row">
+          <div class="col-8">
+                <h6>Propriété :  {{ modelProperty.name }}</h6>
+          </div>
+          <div class="col-1">
+            <button  type="button"  class="btn btn-primary">
+              <a class="accordion-toggle collapsed" href="{{'#property'+modelindex+index}}"  data-toggle="collapse" ></a>
+            </button>
+          </div>
+          <div class="col-1">
+            <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
+                    class="btn btn-danger"
+                    type="button"
+                    (click)="delete(modelProperty)">
+              <i class="fa fa-trash"></i></button>
+          </div>
         </div>
     </div>
-    <div class="col-1">
-      <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
-              class="btn btn-danger"
-              type="button"
-              (click)="delete(modelProperty)"><i class="fa fa-trash"></i></button>
-    </div>
-  </div>
+
 
   <div  id="{{'property'+modelindex+index}}" class="collapse">
       <div class="row">
@@ -65,4 +72,4 @@
                   label="Obligatoire"></p-checkbox>
 
         </div>
-</div>
+  </div>

@@ -73,15 +73,11 @@
   margin-left: 2%;
 }
 
-.panel-heading .accordion-toggle:after {
-  font-family: 'Glyphicons Halflings';
+.accordion-toggle:after {
   content:url("https://img.icons8.com/ios-filled/24/000000/chevron-down.png");
-
 }
 
-.panel-heading .accordion-toggle.collapsed:after {
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
+.accordion-toggle.collapsed:after {
   content:url("https://img.icons8.com/ios-filled/24/000000/chevron-right.png");
 
 }
