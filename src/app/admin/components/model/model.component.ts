@@ -6,7 +6,8 @@ import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-model',
-  templateUrl: './model.component.html'
+  templateUrl: './model.component.html',
+  styleUrls: ['../../admin.component.scss']
 })
 export class ModelComponent implements OnInit {
   submitted = false;
