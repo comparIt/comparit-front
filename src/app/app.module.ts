@@ -40,6 +40,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {PaginatorModule} from './product/paginator/paginator.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 
 @NgModule({
@@ -86,7 +88,8 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     MultiSelectModule,
     InputSwitchModule,
     PaginatorModule,
-    FileUploadModule
+    FileUploadModule,
+    ConfirmDialogModule
   ],
   providers: [
     GlobalConfigurationService,
@@ -97,7 +100,9 @@ import {PaginatorModule} from './product/paginator/paginator.component';
       multi: true
     },
     CompareItAPIService,
-    CanActivateGuardService],
+    CanActivateGuardService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,8 +2,8 @@ import {Product} from './product';
 
 export class ProductPagineDTO {
     productsToDisplay: Product[];
-    nbPagesTotal: number;
-    pageActuelle: number;
+    nbPagesTotal = 1;
+    pageActuelle = 1;
 
     constructor(data: any) {
         this.productsToDisplay = data.productsToDisplay;

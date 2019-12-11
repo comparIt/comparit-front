@@ -13,7 +13,8 @@
       <input id="{{'inputTechnicalNameMp'+modelindex+index}}"
              type="text"
              [(ngModel)]="modelProperty.technicalName"
-             class="form-control"/>
+             class="form-control"
+             [disabled]="modelProperty.isSaved"/>
     </div>
 
     <div class="col-3">

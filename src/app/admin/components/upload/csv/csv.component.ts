@@ -30,7 +30,11 @@ export class UploadCsvComponent {
   }
 
   error(event) {
-    console.log(event);
+
+    console.log(event.error);
+    console.log(event.files);
+    console.log(' Echec de l\'import du fichier: ' + event.files.toString());
+
   }
 
   upload(event) {
