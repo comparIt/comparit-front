@@ -1,6 +1,16 @@
 <div>
-  <div class="panel-heading">
-    <h5>Propriété :  {{ modelProperty.name }}<a class="accordion-toggle collapsed" href="{{'#property'+modelindex+index}}"  data-toggle="collapse" ></a></h5>
+  <div class="row">
+    <div class="col-10">
+        <div class="panel-heading">
+          <h6>Propriété :  {{ modelProperty.name }}<a class="accordion-toggle collapsed" href="{{'#property'+modelindex+index}}"  data-toggle="collapse" ></a></h6>
+        </div>
+    </div>
+    <div class="col-1">
+      <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
+              class="btn btn-danger"
+              type="button"
+              (click)="delete(modelProperty)"><i class="fa fa-trash"></i></button>
+    </div>
   </div>
 
   <div  id="{{'property'+modelindex+index}}" class="collapse">
@@ -28,13 +38,7 @@
           </div>
           <p-dropdown id="{{'selectTypeMp'+modelindex+index}}" [options]="typeList" [(ngModel)]="modelProperty.type"></p-dropdown>
         </div>
-        <div class="col-1">
-          <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
-                  class="btn btn-danger"
-                  type="button"
-                  (click)="delete(modelProperty)"><i class="fa fa-trash"></i></button>
-        </div>
-      </div>
+  </div>
 
       <p-checkbox id="{{'checkBoxActivatedMp'+modelindex+index}}"
                   class="checkBoxComponent"
