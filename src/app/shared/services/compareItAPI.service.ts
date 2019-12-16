@@ -1,10 +1,13 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
+import {Model} from '../models/model';
 
 @Injectable({
     providedIn: 'root',
 })
+
+
 export class CompareItAPIService {
 
     private DOMAIN = 'http://localhost:8080';
@@ -16,7 +19,11 @@ export class CompareItAPIService {
     private modelController = '/model';
     private modelPropertyController = '/modelproperty';
     private userController = '/user';
-    private websiteconfigController= '/websiteconfig/';
+    private websiteconfigController = '/websiteconfig';
+
+    /*products uploading*/
+    private byUrlController = '/company/byUrl';
+    private byCsvUploadController = '/company/byCsvUpload';
 
     private HEADERS;
 
@@ -34,6 +41,14 @@ export class CompareItAPIService {
          // build complete URL with domain, controller and '?' + params if present
          return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
      }
+
+     getUploadUrl(typeProduit: string): string {
+       return this.DOMAIN + this.byUrlController + '/' + typeProduit;
+     }
+
+      getUploadCsv(model: Model): string {
+        return this.DOMAIN + this.byCsvUploadController + '/' + model.name;
+      }
 
     private get(endPoint: string, params: {key: any, value: any}[]): any {
         return this.http.get(this.getBuiltUrl(endPoint, params)).toPromise();
@@ -58,17 +73,25 @@ export class CompareItAPIService {
     }
 
     // WebsiteConfig
-    public putwebsiteconfig(configuration: Configuration): any {
-        return this.put(this.websiteconfigController, [], configuration);
+    public putWebsiteconfig(configuration: Configuration): any {
+        return this.put(this.websiteconfigController + '/saveWebsiteConfiguration', [], configuration);
     }
 
     public getWebsiteConfiguration(): any {
-         return this.get(this.websiteconfigController + '1' , []);
+         return this.get(this.websiteconfigController + '/1' , []);
     }
 
 
     // public addConfiguration(configuration:Configuration){
     //    return this.http.post<Configuration>(this.DOMAIN+'/',JSON.stringify(configuration));
     // }
+
+  public getMockProduct(): any {
+       return this.get('/product/search', []);
+  }
+
+  public getProducts(params: {key: string, value: string}[]): any {
+       return this.get('/product/search', params);
+  }
 
 }

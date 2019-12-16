@@ -1,33 +1,24 @@
-<mdb-navbar SideClass="navbar sticky-top navbar-expand-sm navbar-dark {{ config.colorPrimary }}" [containerInside]="false">
+<nav class="navbar navbar-expand-lg navbar-light" [ngStyle]="{'background-color': config.colorPrimary}">
+  <a class="navbar-brand" (click)="goToHome()">CompareIT</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-  <!-- Navbar brand -->
-  <mdb-navbar-brand>
-    <a class="navbar-brand" href="#">Navbar</a>
-
-  </mdb-navbar-brand>
-
-  <!-- Collapsible content -->
-  <links>
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
-        <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" (click)="goToAdmin()">Administration</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <div class="btn-group" mdbDropdown>
-            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
-            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="divider dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-          </div>
-        </a>
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" (click)="goToUploadCSV()">Charger des produits (CSV)</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated">
+        <a class="nav-link" (click)="goToUploadURL()">Charger des produits (URL)</a>
       </li>
     </ul>
-  </links>
-  <!-- Collapsible content -->
-
-</mdb-navbar>
+    <form class="nav-item">
+      <a *ngIf="!isAuthenticated" class="nav-link" (click)="goToConnexion()">Connexion</a>
+      <a *ngIf="isAuthenticated" class="nav-link" (click)="logout()">Déconnexion</a>
+    </form>
+  </div>
+</nav>

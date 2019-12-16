@@ -1,22 +1,70 @@
-<div class="container">
-    <form class="border border-light p-5">
-       <div class="modelClass">
-            <div>
-                    <label for="textInput" class="labelText">Name</label>
-                    <input type="text" id="textInput" class="form-control mb-4" placeholder="Text input">
-            </div>
-           
-            <div>
-                    <label for="textInput"class="labelText">Technical Name</label>
-                    <input type="text" id="textInput" class="form-control mb-4" placeholder="Text input">
-            </div>
-         
-            <div>
-                    <div class="custom-control custom-checkbox mb-4">
-                            <input type="checkbox" class="custom-control-input" id="checkbox">
-                            <label class="custom-control-label" for="checkbox">Is Activated </label>
-                    </div>
-            </div>
-       </div> 
-    </form>   
+<div class="card my-2">
+  <div class="card-header">
+    <div class="row justify-content-between">
+      <div class="col-6">
+        <h5 class="card-title">Catégorie {{ model.name }}</h5>
+      </div>
+      <div class="col-1">
+        <button id="{{'btnDeleteModel'+index}}"
+                class="btn btn-danger"
+                type="button"
+                (click)="delete(model)"
+        ><i class="fa fa-trash"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" id="{{'itemCard'+index}}">
+    <div class="row">
+      <div class="col-6">
+        <label>Nom</label>
+        <input type="text"
+               id="{{'inputNameM'+index}}"
+               [(ngModel)]="model.name"
+               class="form-control"/>
+      </div>
+      <div class="col-6">
+        <label>Nom technique</label>
+        <input type="text"
+               id="{{'inputTechnicalNameM'+index}}"
+               [(ngModel)]="model.technicalName"
+               class="form-control"
+               [disabled]="model.saved"/>
+      </div>
+    </div>
+
+    <label>Lien de l'image</label>
+    <input type="text"
+           id="{{'inputImageUrl'+index}}"
+           [(ngModel)]="model.imageURL"
+           class="form-control"/>
+
+    <p-checkbox id="{{'checkBoxActivatedM'+index}}"
+                [(ngModel)]="model.activated"
+                [binary]="true"
+                label="Actif"></p-checkbox>
+    <br>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><label>Propriétés : </label></li>
+    <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
+      <app-model-property
+        id="{{'modelProperty'+ i}}"
+        [index]="i"
+        [modelindex]="modelindex"
+        [modelProperty]="modelProperty"
+        (deleteModelProperty)="deleteModelProperty($event)"
+      ></app-model-property>
+    </li>
+  </ul>
+
+  <div class="card-footer">
+    <button id="{{'btnAddModelProprety'+index}}"
+            class="btn btn-primary m-1"
+            type="button"
+            (click)="addModelProperty()"
+    >Ajouter une propriété
+    </button>
+  </div>
 </div>
+

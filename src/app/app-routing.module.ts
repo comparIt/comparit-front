@@ -3,35 +3,82 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {UserComponent} from './user/user.component';
 import {AdminComponent} from './admin/admin.component';
+import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
+import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {LoginComponent} from './login/login.component';
+import {ProductComponent} from './product/product.component';
+import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
+import {ErrorComponent} from './shared/components/errors/error.component';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 
 
 export const routes: Routes = [
   {
     path      : '',
-    redirectTo: 'app/home',
+    redirectTo: 'home',
     pathMatch : 'full',
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
-    path      : 'app/home',
+    path      : 'home',
     component : HomeComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
-    path      : 'app/user/:userid',
+    path      : 'user/:userid',
     component : UserComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
   },
   {
-    path      : 'app/admin/:userid',
+    path      : 'admin/website',
     component : AdminComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
-    path      : 'app/login',
-    component : LoginComponent,
+    path      : 'admin/upload/url',
+    component : UploadUrlComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
   },
+  {
+    path      : 'admin/upload/csv',
+    component : UploadCsvComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    },
+    canActivate: [CanActivateGuardService]
+  },
+  {
+    path      : 'login',
+    component : LoginComponent
+  },
+  {
+    path      : 'error/:errorCode',
+    component : ErrorComponent,
+  },
+  {
+    path      : 'products/:type',
+    component : ProductComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [GlobalConfigurationService]
 })
 export class AppRoutingModule { }

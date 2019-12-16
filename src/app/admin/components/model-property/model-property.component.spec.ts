@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModelPropertyComponent } from './model-property.component';
 
-describe('ModelPropertyComponent', () => {
+describe('ModelPropretyComponent', () => {
   let component: ModelPropertyComponent;
   let fixture: ComponentFixture<ModelPropertyComponent>;
 

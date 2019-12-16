@@ -1,23 +1,44 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
 import {HeaderComponent} from './shared/components/header/header.component';
-import { UserComponent } from './user/user.component';
-import { AdminComponent } from './admin/admin.component';
-import { ProfilComponent } from './user/components/profil/profil.component';
-import { NotifComponent } from './user/components/notif/notif.component';
-import { FilterComponent } from './user/components/filter/filter.component';
+import {UserComponent} from './user/user.component';
+import {AdminComponent} from './admin/admin.component';
+import {ProfilComponent} from './user/components/profil/profil.component';
+import {NotifComponent} from './user/components/notif/notif.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { ModelComponent } from './admin/components/model/model.component';
-import { ModelPropertyComponent } from './admin/components/model-property/model-property.component';
+import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {ProductComponent} from './product/product.component';
+import {ResumeProductComponent} from './product/resume-product/resume-product.component';
+import {ColorPickerModule} from 'primeng/colorpicker';
+import {CheckboxModule} from 'primeng/checkbox';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
+import {FileUploadModule} from 'primeng/fileupload';
+import {TopFilterComponent} from './product/top-filter/top-filter.component';
+import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
+import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
+import {SliderModule} from './product/slider-filter/slider.component';
+import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
+import {ErrorComponent} from './shared/components/errors/error.component';
+import {LoginComponent} from './login/login.component';
+import {ModelComponent} from './admin/components/model/model.component';
+import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
+import {UploadUrlComponent} from './admin/components/upload/url/url.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InputSwitchModule} from 'primeng/inputswitch';
+import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
+import {PaginatorModule} from './product/paginator/paginator.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
@@ -28,27 +49,53 @@ import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
     AdminComponent,
     ProfilComponent,
     NotifComponent,
-    FilterComponent,
     LoginComponent,
     ModelComponent,
-    ModelPropertyComponent
+    ModelpropertyComponent,
+    UploadCsvComponent,
+    UploadUrlComponent,
+    ProductComponent,
+    TopFilterComponent,
+    AbstractFilterComponent,
+    CategoryNavigatorComponent,
+    ResumeProductComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    SliderModule,
+    FileUploadModule,
+    DropdownModule,
     ReactiveFormsModule,
-    MDBBootstrapModule.forRoot()
+    ColorPickerModule,
+    BrowserAnimationsModule,
+    CheckboxModule,
+    FileUploadModule,
+    InputTextModule,
+    MultiSelectModule,
+    InputSwitchModule,
+    PaginatorModule,
+    FileUploadModule,
+    ConfirmDialogModule,
+    ToastModule,
   ],
   providers: [
     GlobalConfigurationService,
-      {
-          provide: HTTP_INTERCEPTORS,
-          useClass: BasicAuthInterceptor,
-          multi: true
-      },
-    CompareItAPIService],
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicAuthInterceptor,
+      multi: true
+    },
+    CompareItAPIService,
+    CanActivateGuardService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

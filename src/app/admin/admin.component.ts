@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import Stepper from 'bs-stepper';
-import { Configuration } from '../shared/models/configuration';
-import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service'
+import {Configuration} from '../shared/models/configuration';
+import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import {NgForm} from '@angular/forms';
+import {Model} from '../shared/models/model';
+import {ConfirmationService} from 'primeng/api';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -12,32 +14,61 @@ import {NgForm} from '@angular/forms';
 
 export class AdminComponent implements OnInit {
   private stepper: Stepper;
-  private configuration: Configuration;
-
+  configuration: Configuration;
+  uploadedFiles: any[] = [];
+  submitted = false;
+  showResult = false;
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
-    private compareItAPIService: CompareItAPIService
-    ) { }
+    private compareItAPIService: CompareItAPIService,
+    private confirmationService: ConfirmationService
+  ) {}
+
+  ngOnInit() {
+    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+      linear: false,
+      animation: true
+    });
+    this.configuration = this.globalconfigurationService.currentConfig;
+  }
 
   next() {
     this.stepper.next();
   }
 
-  onSubmit(configurationForm: NgForm) {
-    console.log(configurationForm.value);
-    console.log(configurationForm.value['CPrincipal']);
-    this.configuration.colorPrimary = configurationForm.value['CPrincipal'];
-    console.log(this.configuration);
-    this.compareItAPIService.putwebsiteconfig(this.configuration).subscribe();
+  previous() {
+    this.stepper.previous();
   }
 
-  ngOnInit() {
-    this.configuration = new Configuration()
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
-      linear: false,
-      animation: true
+  onSubmit() {
+    this.submitted = true;
+    this.showResult = false;
+    this.globalconfigurationService.putConfiguration(this.configuration).then((configuration: Configuration) => {
+      this.submitted = false;
+      this.showResult = true;
+      this.configuration = configuration;
     });
+  }
+
+  addModel() {
+    this.configuration.models.push(Model.defaultModel());
+  }
+
+  deleteModel(event: Model) {
+    this.confirmationService.confirm({
+      message: 'Voulez-vous supprimer cette catégorie ?',
+      accept: () => {
+        this.configuration.models = this.configuration.models.filter(obj => obj !== event);
+      }
+    });
+  }
+
+  onUpload(event) {
+    for (const file of event.files) {
+      this.uploadedFiles.push(file);
+    }
+
   }
 
 }

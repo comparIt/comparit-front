@@ -1,0 +1,20 @@
+<div class="container my-2">
+  <section>
+    <app-top-filter [model]="model" (searchEvent)="search()"></app-top-filter>
+  </section>
+</div>
+
+<div class="container my-5">
+  <section *ngIf="this.productPagineDTO">
+    <app-resume-product
+      *ngFor="let product of productPagineDTO.productsToDisplay | slice:(productPagineDTO.pageActuelle) * 10 : (productPagineDTO.pageActuelle) * 10 + productPagineDTO.productsPerPage"
+      [product]=product>
+    </app-resume-product>
+    <app-paginator
+      [rows]="productPagineDTO.productsPerPage"
+      [totalRecords]="productPagineDTO.productsToDisplay.length"
+      [rowsPerPageOptions]="[10,20,30,40,50]"
+      (onPageChange)="paginate($event)">
+    </app-paginator>
+  </section>
+</div>

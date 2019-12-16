@@ -1,1 +1,61 @@
-<p>model-property works!</p>
+<div>
+  <div class="row">
+    <div class="col-4">
+      <label>Nom</label>
+      <input id="{{'inputNameMp'+modelindex+index}}"
+             type="text"
+             [(ngModel)]="modelProperty.name"
+             class="form-control"/>
+    </div>
+
+    <div class="col-4">
+      <label>Nom technique</label>
+      <input id="{{'inputTechnicalNameMp'+modelindex+index}}"
+             type="text"
+             [(ngModel)]="modelProperty.technicalName"
+             class="form-control"
+             [disabled]="modelProperty.isSaved"/>
+    </div>
+
+    <div class="col-3">
+      <div class="col-3">
+        <label>Type</label>
+      </div>
+      <p-dropdown id="{{'selectTypeMp'+modelindex+index}}" [options]="typeList" [(ngModel)]="modelProperty.type"></p-dropdown>
+    </div>
+    <div class="col-1">
+      <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
+              class="btn btn-danger"
+              type="button"
+              (click)="delete(modelProperty)"><i class="fa fa-trash"></i></button>
+    </div>
+  </div>
+
+  <p-checkbox id="{{'checkBoxActivatedMp'+modelindex+index}}"
+              class="checkBoxComponent"
+              [(ngModel)]="modelProperty.activated"
+              binary="false"
+              label="Visible"></p-checkbox>
+  <br>
+  <p-checkbox id="{{'checkBoxFiltrableMp'+modelindex+index}}"
+              class="checkBoxComponent"
+              [(ngModel)]="modelProperty.filtrable"
+              binary="false"
+              label="Filtrable"></p-checkbox>
+  <br>
+  <p-checkbox id="{{'checkBoxFiltrableAdvancedMp'+modelindex+index}}"
+              class="checkBoxComponent"
+              [(ngModel)]="modelProperty.filtrableAdvanced"
+              binary="false"
+              label="Filtrable avancé"></p-checkbox>
+  <br>
+  <p-checkbox id="{{'checkBoxMandatoryMp'+modelindex+index}}"
+              class="checkBoxComponent"
+              [(ngModel)]="modelProperty.mandatory"
+              binary="false"
+              label="Obligatoire"></p-checkbox>
+
+
+</div>
+
+

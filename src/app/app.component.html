@@ -1,2 +1,18 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+
+<p-confirmDialog #cd header="Confirmation" icon="pi pi-exclamation-triangle" acceptLabel="Supprimer" rejectLabel="Annuler">
+  <p-footer>
+    <button type="button" class="btn btn-danger" (click)=cd.accept()>
+      <span class="fas fa-check"></span>
+      Confirmer
+    </button>
+    <button type="button" class="btn btn-primary" (click)="cd.reject()">
+      <span class="fas fa-times"></span>
+      Annuler
+    </button>
+  </p-footer>
+</p-confirmDialog>
+
+<div class="container mx-auto">
+  <router-outlet class="mx-auto"></router-outlet>
+</div>
