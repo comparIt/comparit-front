@@ -14,7 +14,6 @@ import {ProductPagineDTO} from '../shared/models/productPagineDTO';
 })
 export class ProductComponent implements OnInit {
 
-  products: Product[];
   model: Model;
   productPagineDTO: ProductPagineDTO;
 
@@ -35,15 +34,13 @@ export class ProductComponent implements OnInit {
   search() {
     this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
       (productPagineDTO: ProductPagineDTO) => {
-        this.productPagineDTO = productPagineDTO;
-        this.products = productPagineDTO.productsToDisplay;
+        this.productPagineDTO = new ProductPagineDTO(productPagineDTO);
       }
     );
   }
 
   paginate(event: any) {
     this.productPagineDTO.pageActuelle = event.page;
-    console.log(event.page);
-    console.log(this.productPagineDTO.productsToDisplay);
+    this.productPagineDTO.productsPerPage = event.rows;
   }
 }
