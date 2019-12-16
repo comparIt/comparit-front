@@ -363,7 +363,7 @@ export class MultiSelect implements OnInit, AfterViewInit, AfterContentInit, Aft
 
   documentResizeListener: any;
 
-  constructor(public el: ElementRef, public renderer: Renderer2, private cd: ChangeDetectorRef, private conf: GlobalConfigurationService) {
+  constructor(public el: ElementRef, public renderer: Renderer2, private cd: ChangeDetectorRef, public conf: GlobalConfigurationService) {
   }
 
   bgColor() {

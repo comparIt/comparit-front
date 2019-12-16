@@ -48,12 +48,15 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     return this.configuration.models.find(e => e.technicalName === type);
   }
 
-  putConfiguration(configuration: Configuration) {
-    this.compareItAPIService.putWebsiteconfig(configuration).then((json) => this.configuration = Configuration.buildConfiguration(json));
+  putConfiguration(configuration: Configuration): Promise<Configuration> {
+    return this.compareItAPIService.putWebsiteconfig(configuration).then((json) => {
+      this.configuration = Configuration.buildConfiguration(json);
+      return this.configuration;
+    });
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
-    return this.configuration ? this.configuration : this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
+    return this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
       if (wsc) {
         this.configuration = Configuration.buildConfiguration(wsc);
       } else { // id not found

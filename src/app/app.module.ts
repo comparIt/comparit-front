@@ -20,7 +20,6 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
-import {FileSelectDirective} from 'ng2-file-upload';
 import {FileUploadModule} from 'primeng/fileupload';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
@@ -36,6 +35,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {PaginatorModule} from './product/paginator/paginator.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -47,7 +49,6 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     AdminComponent,
     ProfilComponent,
     NotifComponent,
-    FileSelectDirective,
     LoginComponent,
     ModelComponent,
     ModelpropertyComponent,
@@ -77,17 +78,23 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     InputTextModule,
     MultiSelectModule,
     InputSwitchModule,
-    PaginatorModule
+    PaginatorModule,
+    FileUploadModule,
+    ConfirmDialogModule,
+    ToastModule,
   ],
   providers: [
     GlobalConfigurationService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BasicAuthInterceptor,
       multi: true
     },
     CompareItAPIService,
-    CanActivateGuardService],
+    CanActivateGuardService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
