@@ -15,7 +15,6 @@ export class ModelComponent implements OnInit {
   @Input() index: number;
   @Input() modelindex: number;
   @Output() deleteModel = new EventEmitter<Model>();
-  public isCollapsed = false;
 
 
   constructor(private confirmationService: ConfirmationService) {

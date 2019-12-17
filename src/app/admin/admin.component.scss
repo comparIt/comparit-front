@@ -72,12 +72,3 @@
 .checkBoxComponent {
   margin-left: 2%;
 }
-
-.accordion-toggle:after {
-  content:url("https://img.icons8.com/ios-filled/24/000000/chevron-down.png");
-}
-
-.accordion-toggle.collapsed:after {
-  content:url("https://img.icons8.com/ios-filled/24/000000/chevron-right.png");
-
-}
