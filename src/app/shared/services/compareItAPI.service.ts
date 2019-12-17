@@ -1,100 +1,105 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../models/configuration';
-import {Model} from "../models/model";
-import { User } from '../models/user';
+import {User} from '../models/user';
 import {environment} from '../../../environments/environment';
+import {Model} from '../models/model';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 
 
 export class CompareItAPIService {
 
-    private DOMAIN = environment.apiUrl;
+  private DOMAIN = environment.apiUrl;
 
-    private alertController = '/alert';
-    private companyController = '/company';
-    private filterController = '/filter';
-    private jwtAuthenticationController = '/authenticate';
-    private modelController = '/model';
-    private modelPropertyController = '/modelproperty';
-    private userController = '/user';
-    private websiteconfigController = '/websiteconfig';
+  private alertController = '/alert';
+  private companyController = '/company';
+  private filterController = '/filter';
+  private jwtAuthenticationController = '/authenticate';
+  private modelController = '/model';
+  private modelPropertyController = '/modelproperty';
+  private userController = '/user';
+  private websiteconfigController = '/websiteconfig';
 
-    /*products uploading*/
-    private byUrlController = '/company/byUrl';
-    private byCsvUploadController = '/company/byCsvUpload';
+  /*products uploading*/
+  private byUrlController = '/company/byUrl';
+  private byCsvUploadController = '/company/byCsvUpload';
 
-    private HEADERS;
+  private HEADERS;
 
-    constructor(private http: HttpClient) {
-    }
+  constructor(private http: HttpClient) {
+  }
 
-     /**
-      * Returns the complete URL based on the domain, the endpoint and the parameters list.
-      * @param endPoint the endpoint to call
-      * @param params the parameters to add to the url
-      */
-     private getBuiltUrl(endPoint: string, params: {key: any, value: any}[]): any {
-         // add each param to paramString, and '&' between params (not after the last one)
-         const paramString = '?' + params.map((kv) => kv.key + '=' + kv.value).join('&');
-         // build complete URL with domain, controller and '?' + params if present
-         return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
-     }
+  /**
+   * Returns the complete URL based on the domain, the endpoint and the parameters list.
+   * @param endPoint the endpoint to call
+   * @param params the parameters to add to the url
+   */
+  private getBuiltUrl(endPoint: string, params: { key: any, value: any }[]): any {
+    // add each param to paramString, and '&' between params (not after the last one)
+    const paramString = '?' + params.map((kv) => kv.key + '=' + kv.value).join('&');
+    // build complete URL with domain, controller and '?' + params if present
+    return this.DOMAIN + endPoint + (params.length !== 0 ? paramString : '') + '';
+  }
 
-     getUploadUrl(typeProduit: string): string {
-       return this.DOMAIN + this.byUrlController + '/' + typeProduit;
-     }
+  getUploadUrl(typeProduit: string): string {
+    return this.DOMAIN + this.byUrlController + '/' + typeProduit;
+  }
 
-      getUploadCsv(model: Model): string {
-        return this.DOMAIN + this.byCsvUploadController + '/' + model.name;
-      }
+  getUploadCsv(model: Model): string {
+    return this.DOMAIN + this.byCsvUploadController + '/' + model.name;
+  }
 
-    private get(endPoint: string, params: {key: any, value: any}[]): any {
-        return this.http.get(this.getBuiltUrl(endPoint, params)).toPromise();
-    }
+  private get(endPoint: string, params: { key: any, value: any }[]): any {
+    return this.http.get(this.getBuiltUrl(endPoint, params)).toPromise();
+  }
 
-    private put(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.put(this.getBuiltUrl(endPoint, params), body).toPromise();
-    }
+  private put(endPoint: string, params: { key: any, value: any }[], body: any): any {
+    return this.http.put(this.getBuiltUrl(endPoint, params), body).toPromise();
+  }
 
-    private post(endPoint: string, params: {key: any, value: any}[], body: any): any {
-        return this.http.post(this.getBuiltUrl(endPoint, params), body).toPromise();
-    }
+  private post(endPoint: string, params: { key: any, value: any }[], body: any): any {
+    return this.http.post(this.getBuiltUrl(endPoint, params), body).toPromise();
+  }
 
-    private delete(endPoint: string, params: {key: any, value: any}[]): any {
-        return this.http.delete(this.getBuiltUrl(endPoint, params));
-    }
+  private delete(endPoint: string, params: { key: any, value: any }[]): any {
+    return this.http.delete(this.getBuiltUrl(endPoint, params));
+  }
 
 
-    // Authenticate
-    public authenticate(username: string , password: string): any {
-         return this.post(this.jwtAuthenticationController, [], {username, password});
-    }
+  // Authenticate
+  public authenticate(username: string, password: string): any {
+    return this.post(this.jwtAuthenticationController, [], {username, password});
+  }
 
-    // WebsiteConfig
-    public putWebsiteconfig(configuration: Configuration): any {
-        return this.put(this.websiteconfigController + '/saveWebsiteConfiguration', [], configuration);
-    }
+  // WebsiteConfig
+  public putWebsiteconfig(configuration: Configuration): any {
+    return this.put(this.websiteconfigController + '/saveWebsiteConfiguration', [], configuration);
+  }
 
-    public getWebsiteConfiguration(): any {
-         return this.get(this.websiteconfigController + '/1' , []);
-    }
+  public getWebsiteConfiguration(): any {
+    return this.get(this.websiteconfigController + '/1', []);
+  }
 
-    //User
-    public putRegisterUser(user : User): any {
-        return this.put(this.userController + '/saveUser', [], user);
-    }
+  // User
+  public putRegisterUser(user: User): any {
+    return this.put(this.userController + '/saveUser', [], user);
+  }
 
 
   public getMockProduct(): any {
-       return this.get('/product/search', []);
+    return this.get('/product/search', []);
   }
 
-  public getProducts(params: {key: string, value: string}[]): any {
-       return this.get('/product/search', params);
+  public getProducts(params: { key: string, value: string }[]): any {
+    return this.get('/product/search', params);
   }
+
+  public getProductById(id: string): any {
+    return this.get('/product/' + id, []);
+  }
+
 
 }

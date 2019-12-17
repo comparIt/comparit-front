@@ -8,7 +8,8 @@
   <section *ngIf="this.productPagineDTO">
     <app-resume-product
       *ngFor="let product of productPagineDTO.productsToDisplay | slice:(productPagineDTO.pageActuelle) * 10 : (productPagineDTO.pageActuelle) * 10 + productPagineDTO.productsPerPage"
-      [product]=product>
+      [product]=product
+      [model]=model>
     </app-resume-product>
     <app-paginator
       [rows]="productPagineDTO.productsPerPage"

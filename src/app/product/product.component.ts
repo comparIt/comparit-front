@@ -15,7 +15,7 @@ import {ProductPagineDTO} from '../shared/models/productPagineDTO';
 export class ProductComponent implements OnInit {
 
   model: Model;
-  productPagineDTO: ProductPagineDTO;
+  productPagineDTO: ProductPagineDTO = new ProductPagineDTO({});
 
   constructor(
     private api: CompareItAPIService,
@@ -32,9 +32,13 @@ export class ProductComponent implements OnInit {
   }
 
   search() {
+    this.productPagineDTO = new ProductPagineDTO({});
     this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
       (productPagineDTO: ProductPagineDTO) => {
         this.productPagineDTO = new ProductPagineDTO(productPagineDTO);
+      }
+    ).catch( () => {
+        this.productPagineDTO = new ProductPagineDTO({});
       }
     );
   }
