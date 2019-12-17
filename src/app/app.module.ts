@@ -90,7 +90,9 @@ import {ConfirmationService, MessageService} from 'primeng/api';
     InputSwitchModule,
     PaginatorModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    AccordionModule,
+    ToastModule
   ],
   providers: [
     GlobalConfigurationService,
