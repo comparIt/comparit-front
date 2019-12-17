@@ -22,7 +22,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
 import {RegisterUserComponent} from './register-user/register-user.component';
-import {MessagesModule} from 'primeng/primeng';
+import {ConfirmDialogModule, MessagesModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
@@ -39,10 +39,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {PaginatorModule} from './product/paginator/paginator.component';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {AccordionModule} from 'primeng/accordion';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 
 
 @NgModule({
@@ -66,7 +66,8 @@ import {ConfirmationService, MessageService} from 'primeng/api';
     AbstractFilterComponent,
     CategoryNavigatorComponent,
     ResumeProductComponent,
-    ErrorComponent
+    ErrorComponent,
+    CompleteProductComponent
   ],
   imports: [
     BrowserModule,

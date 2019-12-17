@@ -11,6 +11,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {ErrorComponent} from './shared/components/errors/error.component';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
+import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 
 
 export const routes: Routes = [
@@ -75,6 +76,13 @@ export const routes: Routes = [
   {
     path      : 'products/:type',
     component : ProductComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
+  },
+  {
+    path      : 'products/:type/:id',
+    component : CompleteProductComponent,
     resolve   : {
       config: GlobalConfigurationService
     }

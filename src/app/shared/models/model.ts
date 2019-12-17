@@ -35,4 +35,8 @@ export class Model {
     return model;
   }
 
+  get filterableProperties(): ModelProperty[] {
+    return this.modelProperties.filter((p) => p.filtrable);
+  }
+
 }
