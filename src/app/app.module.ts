@@ -21,6 +21,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
+import {RegisterUserComponent} from './register-user/register-user.component';
+import {MessagesModule} from 'primeng/primeng';
+import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
 import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
@@ -36,8 +40,9 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {PaginatorModule} from './product/paginator/paginator.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService} from 'primeng/api';
 import {AccordionModule} from 'primeng/accordion';
+import {ToastModule} from 'primeng/toast';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 
 @NgModule({
@@ -55,6 +60,8 @@ import {AccordionModule} from 'primeng/accordion';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
+    ResumeProductComponent,
+    RegisterUserComponent,
     TopFilterComponent,
     AbstractFilterComponent,
     CategoryNavigatorComponent,
@@ -76,15 +83,18 @@ import {AccordionModule} from 'primeng/accordion';
     CheckboxModule,
     FileUploadModule,
     InputTextModule,
+    MessagesModule,
+    MessageModule,
+    PanelModule,
     MultiSelectModule,
     InputSwitchModule,
     PaginatorModule,
     FileUploadModule,
-    ConfirmDialogModule,
-    AccordionModule
+    ConfirmDialogModule
   ],
   providers: [
     GlobalConfigurationService,
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BasicAuthInterceptor,

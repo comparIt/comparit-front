@@ -1,0 +1,41 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  DOCKER_HOST: "tcp://docker:2375"
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - build
+  - package
+  - deploy
+
+npm-build:
+    stage: build
+    image: trion/ng-cli
+    script:
+      - npm install
+      - ng build
+
+
+docker-build:
+  stage: package
+  script:
+  - docker build -t registry.gitlab.com/compare-it/compare-it-front .
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+  - docker push registry.gitlab.com/compare-it/compare-it-front
+
+docker-deploy:
+  image: rastasheep/ubuntu-sshd
+  stage: deploy
+  script:
+  - pwd
+  - ls
+  - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@35.180.27.13 './start_project'
+  only:
+  - develop
+
+
