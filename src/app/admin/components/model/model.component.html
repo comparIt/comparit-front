@@ -36,6 +36,9 @@
                           [(ngModel)]="model.activated"
                           [binary]="true"
                           label="Actif"></p-checkbox>
+              <br>
+              <hr>
+              <h5> Propriétés : </h5>
               <hr>
               <div *ngFor="let modelProperty of model.modelProperties;let i = index;">
                     <app-model-property
@@ -47,10 +50,7 @@
                     ></app-model-property>
                     <hr />
                   </div>
-
-                  <br>
-                  <br>
-
+              <br>
                     <button id="{{'btnAddModelProprety'+index}}"
                             class="btn btn-primary m-1"
                             type="button"
