@@ -4,7 +4,8 @@ import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-model-property',
-  templateUrl: './model-property.component.html'
+  templateUrl: './model-property.component.html',
+  styleUrls: ['../../admin.component.scss']
 })
 export class ModelpropertyComponent implements OnInit {
 

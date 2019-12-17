@@ -60,29 +60,31 @@
     <!-- Step 2 configuration Web-->
     <div id="test-l-2" class="content">
       <h5>Configuration des catégories</h5>
-
-      <app-model *ngFor="let model of configuration.models;let i = index;"
-                 [index]="i"
-                 [modelindex]="i"
-                 id="{{'model'+ i}}"
-                 [model]="model"
-                 (deleteModel)="deleteModel($event)"
-      ></app-model>
-
-      <button id="btnAddModel"
-              class="btn btn-primary"
-              type="button"
-              (click)="addModel()"
-      >Ajouter un modèle
-      </button>
+      <div >
+        <app-model *ngFor="let model of configuration.models;let i = index;"
+                   [index]="i"
+                   [modelindex]="i"
+                   id="{{'model'+ i}}"
+                   [model]="model"
+                   (deleteModel)="deleteModel($event)"
+        ></app-model>
+        <br>
+      </div>
 
       <div class="row justify-content-between">
         <div class="col-2">
           <button (click)="previous()" type="button" class="btn btn-primary btnNav">Précédant</button>
         </div>
+        <button id="btnAddModel"
+                class="btn btn-primary col-2"
+                type="button"
+                (click)="addModel()"
+        >Ajouter un modèle
+        </button>
         <div class="col-2">
           <button (click)="next()" type="button" class="btn btn-primary btnNav">Suivant</button>
         </div>
+
       </div>
     </div>
 

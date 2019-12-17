@@ -40,8 +40,9 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {PaginatorModule} from './product/paginator/paginator.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService, MessageService} from 'primeng/api';
+import {AccordionModule} from 'primeng/accordion';
 import {ToastModule} from 'primeng/toast';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 
 @NgModule({
@@ -89,8 +90,7 @@ import {ToastModule} from 'primeng/toast';
     InputSwitchModule,
     PaginatorModule,
     FileUploadModule,
-    ConfirmDialogModule,
-    ToastModule,
+    ConfirmDialogModule
   ],
   providers: [
     GlobalConfigurationService,
