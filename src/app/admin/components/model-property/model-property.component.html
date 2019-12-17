@@ -1,26 +1,5 @@
-<div class="card my-2">
-    <div class="card-header">
-        <div class="row">
-          <div class="col-8">
-                <h6>Propriété :  {{ modelProperty.name }}</h6>
-          </div>
-          <div class="col-1">
-            <button  type="button"  class="btn btn-primary">
-              <a class="accordion-toggle collapsed" href="{{'#property'+modelindex+index}}"  data-toggle="collapse" ></a>
-            </button>
-          </div>
-          <div class="col-1">
-            <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
-                    class="btn btn-danger"
-                    type="button"
-                    (click)="delete(modelProperty)">
-              <i class="fa fa-trash"></i></button>
-          </div>
-        </div>
-    </div>
 
-
-  <div  id="{{'property'+modelindex+index}}" class="collapse">
+  <div  id="{{'property'+modelindex+index}}" >
       <div class="row">
         <div class="col-4">
           <label>Nom</label>
@@ -44,6 +23,13 @@
             <label>Type</label>
           </div>
           <p-dropdown id="{{'selectTypeMp'+modelindex+index}}" [options]="typeList" [(ngModel)]="modelProperty.type"></p-dropdown>
+        </div>
+        <div class="col-1">
+          <button id="{{'btnDeleteModelProperty'+modelindex+index}}"
+                  class="btn btn-danger"
+                  type="button"
+                  (click)="delete(modelProperty)">
+            <i class="fa fa-trash"></i></button>
         </div>
   </div>
 
@@ -72,4 +58,4 @@
                   label="Obligatoire"></p-checkbox>
 
         </div>
-  </div>
+

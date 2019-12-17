@@ -1,81 +1,73 @@
- <div class="card my-2">
-    <div class="card-header">
-      <div class="row justify-content-between">
-        <div class="col-10">
-                <h5>Catégorie : {{ model.name }}</h5>
-        </div>
-        <div class="col-1">
-            <button  type="button"  class="btn btn-primary">
-              <a class="accordion-toggle collapsed" href="{{'#categorie'+index}}"  data-toggle="collapse" >
-              </a>
-            </button>
-        </div>
-        <div class="col-1">
-          <button id="{{'btnDeleteModel'+index}}"
-                  class="btn btn-danger"
-                  type="button"
-                  (click)="delete(model)"
-          ><i class="fa fa-trash"></i></button>
-        </div>
+ <div>
+        <p-accordion [multiple]="true">
+          <p-accordionTab header="Catégorie : {{ model.name }}">
+            <div id="{{'itemCard'+index}}">
+              <div class="row">
+                <div class="col-6">
+                  <label>Nom</label>
+                  <input type="text"
+                         id="{{'inputNameM'+index}}"
+                         [(ngModel)]="model.name"
+                         class="form-control"/>
+                </div>
+                <div class="col-5">
+                  <label>Nom technique</label>
+                  <input type="text"
+                         id="{{'inputTechnicalNameM'+index}}"
+                         [(ngModel)]="model.technicalName"
+                         class="form-control"
+                         [disabled]="model.saved"/>
+                </div>
+                <div class="col-1">
+                  <button id="{{'btnDeleteModel'+index}}"
+                          class="btn btn-danger"
+                          type="button"
+                          (click)="delete(model)"
+                  ><i class="fa fa-trash"></i></button>
+                </div>
+              </div>
+              <label>Lien de l'image</label>
+              <input type="text"
+                     id="{{'inputImageUrl'+index}}"
+                     [(ngModel)]="model.imageURL"
+                     class="form-control"/>
+
+              <p-checkbox id="{{'checkBoxActivatedM'+index}}"
+                          [(ngModel)]="model.activated"
+                          [binary]="true"
+                          label="Actif"></p-checkbox>
+              <hr>
+              <div *ngFor="let modelProperty of model.modelProperties;let i = index;">
+                    <app-model-property
+                      id="{{'modelProperty'+ i}}"
+                      [index]="i"
+                      [modelindex]="modelindex"
+                      [modelProperty]="modelProperty"
+                      (deleteModelProperty)="deleteModelProperty($event)"
+                    ></app-model-property>
+                    <hr />
+                  </div>
+
+                  <br>
+                  <br>
+
+                    <button id="{{'btnAddModelProprety'+index}}"
+                            class="btn btn-primary m-1"
+                            type="button"
+                            (click)="addModelProperty()"
+                    >Ajouter une propriété
+                    </button>
+
+
+              <br>
+            </div>
+          </p-accordionTab>
+        </p-accordion>
+
       </div>
 
-    </div>
 
 
-    <div class="card-body" id="{{'itemCard'+index}}">
-      <div class="row">
-        <div class="col-6">
-          <label>Nom</label>
-          <input type="text"
-                id="{{'inputNameM'+index}}"
-                [(ngModel)]="model.name"
-                class="form-control"/>
-        </div>
-        <div class="col-6">
-          <label>Nom technique</label>
-          <input type="text"
-                id="{{'inputTechnicalNameM'+index}}"
-                [(ngModel)]="model.technicalName"
-                class="form-control"
-                [disabled]="model.saved"/>
-        </div>
-      </div>
-      <label>Lien de l'image</label>
-      <input type="text"
-            id="{{'inputImageUrl'+index}}"
-            [(ngModel)]="model.imageURL"
-            class="form-control"/>
-
-      <p-checkbox id="{{'checkBoxActivatedM'+index}}"
-                  [(ngModel)]="model.activated"
-                  [binary]="true"
-                  label="Actif"></p-checkbox>
-      <br>
 
 
-    <div  id="{{'categorie'+index}}" class="collapse">
-      <br>
-      <ul class="list-group list-group-flush"><h5>Propriétés : </h5>
-        <li class="list-group-item" *ngFor="let modelProperty of model.modelProperties;let i = index;">
-          <app-model-property
-            id="{{'modelProperty'+ i}}"
-            [index]="i"
-            [modelindex]="modelindex"
-            [modelProperty]="modelProperty"
-            (deleteModelProperty)="deleteModelProperty($event)"
-          ></app-model-property>
-        </li>
-      </ul>
-
-      <div class="card-footer">
-        <button id="{{'btnAddModelProprety'+index}}"
-                class="btn btn-primary m-1"
-                type="button"
-                (click)="addModelProperty()"
-        >Ajouter une propriété
-        </button>
-      </div>
-    </div>
-    </div>
-</div>
 

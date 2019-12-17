@@ -31,7 +31,7 @@ export class UploadCsvComponent {
 
   error(event) {
     console.log(event);
-  }
+}
 
   upload(event) {
     this.showResult = true;

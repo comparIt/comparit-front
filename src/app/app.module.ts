@@ -38,6 +38,7 @@ import {PaginatorModule} from './product/paginator/paginator.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AccordionModule} from 'primeng/accordion';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     PaginatorModule,
     FileUploadModule,
     ConfirmDialogModule,
-    NgbModule
+    NgbModule,
+    AccordionModule
   ],
   providers: [
     GlobalConfigurationService,
