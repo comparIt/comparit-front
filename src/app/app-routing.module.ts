@@ -37,8 +37,8 @@ export const routes: Routes = [
     component : AdminComponent,
     resolve   : {
       config: GlobalConfigurationService
-    }
-    //canActivate: [CanActivateGuardService]
+    },
+    canActivate: [CanActivateGuardService]
   },
   {
     path      : 'admin/upload/url',
