@@ -4,26 +4,51 @@
     <p class="h4 mb-4">Sign in</p>
 
     <!-- Email -->
-    <input type="email" id="login" class="form-control mb-4" placeholder="E-mail"  formControlName="login">
+    <div >
+        <div >
+          <div class="ui-inputgroup text-center p-1 ">
+            <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
+            <input class="col-12" id="login" type="email" size="30" pInputText formControlName="login"
+              placeholder="Email">
+          </div>
+        </div>
+        <div *ngIf="checkoutForm.controls['login'].errors && checkoutForm.controls['login'].dirty">
+          <p-message severity="error" text="Email is required"
+            *ngIf="checkoutForm.controls['login'].errors['required']"></p-message>
+          <p-message severity="error" text="Email is invalid" *ngIf="checkoutForm.controls['login'].errors['email']">
+          </p-message>
+        </div> 
+      </div>
 
     <!-- Password -->
-    <input type="password" id="pwd" class="form-control mb-4" placeholder="Password" formControlName="pwd" >
-
-    <div class="d-flex justify-content-around">
-        <div>
-            <!-- Remember me -->
+    <div  >
+        <div >
+          <div class="ui-inputgroup text-center p-1">
+            <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+            <input class="col-12" id="pwd" type="password" size="30" pInputText formControlName="pwd"
+              placeholder="Password">
+          </div>
         </div>
-        <div>
-            <!-- Forgot password -->
-            <a href="">Forgot password?</a>
+        <div *ngIf="checkoutForm.controls['pwd'].errors && checkoutForm.controls['pwd'].dirty">
+          <p-message severity="error" text="Password is required"
+            *ngIf="checkoutForm.controls['pwd'].errors['required']"></p-message>
+          <p-message severity="error" text="Minimum 6 characters required."
+            *ngIf="checkoutForm.controls['pwd'].errors['minlength'] "></p-message>
         </div>
-    </div>
+      </div>
 
     <!-- Sign in button -->
-    <button color="info" block="true" class="my-4" type="submit">Sign in</button>
-    <button color="info" block="true" class="my-4" type="submit" (click)="onClickGoToRegister()">Register</button>
-
-    
+    <br> 
+    <div class="row justify-content-between">
+      <div class="col-3">
+        <button  pButton type="button" label="Sign in" class="ui-button-raised"
+        type="submit" ></button>
+      </div>
+      <div class="col-2">
+        <button  pButton type="button" label="Register" class="ui-button-raised"
+        (click)="onClickGoToRegister()"></button>
+      </div>
+    </div>    
 
 </form>
 <!-- Default form login -->

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators, FormControl, FormGroup} from '@angular/forms';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../shared/services/authentification.service';
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
 
     ) {
         this.checkoutForm = this.formBuilder.group({
-            login: '',
-            pwd: ''
+            login: new FormControl('', [Validators.required, Validators.email]),
+            pwd: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
         });
     }
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       }
     }
 
-    onClickGoToRegister(){
+    onClickGoToRegister() {
         this.router.navigate(['register-user']);
     }
 }
