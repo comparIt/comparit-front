@@ -2,12 +2,13 @@ import {Product} from './product';
 
 export class ProductPagineDTO {
     productsToDisplay: Product[];
-    nbPagesTotal: number;
-    pageActuelle: number;
+    nbPagesTotal = 1;
+    pageActuelle = 0;
+    productsPerPage = 10;
 
     constructor(data: any) {
-        this.productsToDisplay = data.productsToDisplay;
-        this.nbPagesTotal = data.nbPagesTotal;
-        this.pageActuelle = data.pageActuelle;
+        this.productsToDisplay = data.productsToDisplay ? data.productsToDisplay.map((p) => new Product(p)) : [];
+        this.nbPagesTotal = 1;
+        this.pageActuelle = 0;
     }
 }

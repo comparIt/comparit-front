@@ -21,9 +21,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
-import { RegisterUserComponent } from './register-user/register-user.component';
-import { MessageService } from 'primeng/api';
-import { MessagesModule} from 'primeng/primeng';
+import {RegisterUserComponent} from './register-user/register-user.component';
+import {ConfirmDialogModule, MessagesModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
@@ -40,6 +39,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {PaginatorModule} from './product/paginator/paginator.component';
+import {AccordionModule} from 'primeng/accordion';
+import {ToastModule} from 'primeng/toast';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 
 
 @NgModule({
@@ -63,7 +66,8 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     AbstractFilterComponent,
     CategoryNavigatorComponent,
     ResumeProductComponent,
-    ErrorComponent
+    ErrorComponent,
+    CompleteProductComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,10 @@ import {PaginatorModule} from './product/paginator/paginator.component';
     MultiSelectModule,
     InputSwitchModule,
     PaginatorModule,
-    FileUploadModule
+    FileUploadModule,
+    ConfirmDialogModule,
+    AccordionModule,
+    ToastModule
   ],
   providers: [
     GlobalConfigurationService,
@@ -97,7 +104,9 @@ import {PaginatorModule} from './product/paginator/paginator.component';
       multi: true
     },
     CompareItAPIService,
-    CanActivateGuardService],
+    CanActivateGuardService,
+    ConfirmationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

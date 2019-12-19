@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {GlobalConfigurationService} from '../../../../shared/services/globalConfiguration.service';
 import {CompareItAPIService} from '../../../../shared/services/compareItAPI.service';
 import {Model} from '../../../../shared/models/model';
-import {SelectItem} from 'primeng/api';
+import {SelectItem, MessageService} from 'primeng/api';
+
 
 @Component({
   selector: 'app-upload',
@@ -13,11 +14,11 @@ export class UploadCsvComponent {
 
   types: SelectItem[];
   selectedType: Model;
-  showResult: boolean;
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
+    private messageService: MessageService,
   ) {
     this.types = this.globalconfigurationService.models.map(model => {
       return {label: model.name, value: {name: model.technicalName}};
@@ -30,11 +31,24 @@ export class UploadCsvComponent {
   }
 
   error(event) {
-    console.log(event);
+
+    console.log(event.error);
+    console.log(event.files);
+    console.log(' Echec de l\'import du fichier: ' + event.files.toString());
+    this.messageService.add({severity: 'error', summary: 'Echec de l\'import du fichier', detail: event.error.error.message, life: 60000});
+
   }
 
   upload(event) {
-    this.showResult = true;
     console.log(event);
+    this.messageService.add({severity: 'success', summary: 'Import terminé', detail: 'Données importées', life: 10000});
+  }
+
+  showWarn() {
+    this.messageService.add({severity: 'warn', summary: 'Warn Message', detail: 'There are unsaved changes', life: 60000});
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 }

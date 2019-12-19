@@ -6,6 +6,7 @@ export class Model {
   activated: boolean;
   modelProperties: ModelProperty[];
   imageURL: string;
+  saved = true;
 
   static buildModel(model: Model): Model {
     const newModel = new Model();
@@ -24,7 +25,18 @@ export class Model {
     model.technicalName = '';
     model.modelProperties = [];
     model.imageURL = '';
+    model.saved = false;
+
+    model.modelProperties.push(ModelProperty.createModelProperty( 'Nom', 'name', true, 'ENUMERATIVE' , true, true, true));
+    model.modelProperties.push(ModelProperty.createModelProperty( 'Description', 'description', true, 'ENUMERATIVE' , true, true, true));
+    model.modelProperties.push(ModelProperty.createModelProperty( 'Prix', 'price', true, 'NUMERIC' , true, true, true));
+    model.modelProperties.push(ModelProperty.createModelProperty( 'Image', 'imgUrl', false, 'ENUMERATIVE' , false, false, false));
+
     return model;
+  }
+
+  get filterableProperties(): ModelProperty[] {
+    return this.modelProperties.filter((p) => p.filtrable);
   }
 
 }

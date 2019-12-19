@@ -1,10 +1,11 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {ModelProperty} from 'src/app/shared/models/modelProperty';
-import {SelectItem} from "primeng/api";
+import {SelectItem} from 'primeng/api';
 
 @Component({
   selector: 'app-model-property',
-  templateUrl: './model-property.component.html'
+  templateUrl: './model-property.component.html',
+  styleUrls: ['../../admin.component.scss']
 })
 export class ModelpropertyComponent implements OnInit {
 
