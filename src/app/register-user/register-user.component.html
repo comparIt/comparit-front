@@ -1,87 +1,84 @@
-<div>
-    <div style="margin:10px auto;width:360px;">
-      <div>
-        <form [formGroup]="userform" (ngSubmit)="onClickRegisterUser()">
-            <div >
+        <form class="text-center border border-light p-5"[formGroup]="userform" (ngSubmit)="onClickRegisterUser()">
+            <div>
               <div >
-                <img style="margin:0 auto;width:350px;length:350px;" src="../../assets/images/logo-large.png" class="login-logo">
+                <img class="mw-100" src="../../assets/images/logo-large.png" class="login-logo">
               </div>
             <!-- first Name  -->
-            <div style="margin:10px auto;width:300px" >
-              <div class="col-12" >
-                <div class="ui-inputgroup"   >
+            <div>
+              <div>
+                <div class="ui-inputgroup text-center p-1">
                   <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                  <input id="float-input-fistname" type="text" size="30" pInputText formControlName="firstname"
+                  <input class="col-12" id="float-input-fistname" type="text" size="30" pInputText formControlName="firstname"
                     placeholder="user firstname" required [(ngModel)]="user.firstName" >
                 </div>
               </div>
-              <div class="col-12" *ngIf="userform.controls['firstname'].errors && userform.controls['firstname'].dirty">
+              <div *ngIf="userform.controls['firstname'].errors && userform.controls['firstname'].dirty">
                 <p-message severity="error" text="User firstname is required"
-                  *ngIf="userform.controls['firstname'].errors['required']"></p-message>
+               *ngIf="userform.controls['firstname'].errors['required']"></p-message>
               </div></div>
             
             <!-- first Name  -->
             <!-- last Name  -->
-            <div style="margin:10px auto;width:300px;" >
-              <div class="col-12">
-                <div class="ui-inputgroup">
+            <div >
+              <div>
+                <div class="ui-inputgroup text-center p-1">
                   <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-                  <input id="float-input-lastname" type="text" size="30" pInputText formControlName="lastname"
+                  <input class="col-12" id="float-input-lastname" type="text" size="30" pInputText formControlName="lastname"
                     placeholder="user lastname" required [(ngModel)]="user.lastName">
                 </div>
               </div>
-              <div class="col-12" *ngIf="userform.controls['lastname'].errors && userform.controls['lastname'].dirty">
+              <div   *ngIf="userform.controls['lastname'].errors && userform.controls['lastname'].dirty">
                 <p-message severity="error" text="User lastname is required"
-                  *ngIf="userform.controls['lastname'].errors['required']"></p-message>
+                *ngIf="userform.controls['lastname'].errors['required']"></p-message>
               </div>
             </div>
             
             <!-- last Name  -->
-            <div style="margin:10px auto;width:300px;" >
-              <div class="col-12">
-                <div class="ui-inputgroup">
+            <!-- Password  -->
+            <div  >
+              <div >
+                <div class="ui-inputgroup text-center p-1">
                   <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
-                  <input id="float-input-password" type="password" size="30" pInputText formControlName="password"
+                  <input class="col-12" id="float-input-password" type="password" size="30" pInputText formControlName="password"
                     placeholder="password" required [(ngModel)]="user.password">
                 </div>
               </div>
-              <div class="col-12" *ngIf="userform.controls['password'].errors && userform.controls['password'].dirty">
+              <div *ngIf="userform.controls['password'].errors && userform.controls['password'].dirty">
                 <p-message severity="error" text="Password is required"
                   *ngIf="userform.controls['password'].errors['required']"></p-message>
                 <p-message severity="error" text="Minimum 6 characters required."
                   *ngIf="userform.controls['password'].errors['minlength'] "></p-message>
               </div>
             </div>
-
-            <div style="margin:10px auto;width:300px;" >
-              <div class="col-12">
-                <div class="ui-inputgroup">
+            <!-- Password  -->
+            <!-- Email  -->
+            <div >
+              <div >
+                <div class="ui-inputgroup text-center p-1 ">
                   <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
-                  <input id="float-input-email" type="email" size="30" pInputText formControlName="email"
+                  <input class="col-12" id="float-input-email" type="email" size="30" pInputText formControlName="email"
                     placeholder="Email" required [(ngModel)]="user.email">
                 </div>
               </div>
-              <div class="col-12" *ngIf="userform.controls['email'].errors && userform.controls['email'].dirty">
+              <div *ngIf="userform.controls['email'].errors && userform.controls['email'].dirty">
                 <p-message severity="error" text="Email is required"
                   *ngIf="userform.controls['email'].errors['required']"></p-message>
                 <p-message severity="error" text="Email is invalid" *ngIf="userform.controls['email'].errors['email']">
                 </p-message>
               </div> 
             </div>
-                    
-            </div>
-            <div style="margin:10px auto;width:300px;" >
-              <div class="col-6" style="margin:10px auto;width:300px;" >
-                <button pButton type="button" label="Register" class="ui-button-raised"
-                (click)="onClickRegisterUser()" [disabled]="!userform.valid"></button>
-              </div>
-              <div class="col-6" style="margin:10px auto;width:300px;" >
-                <button pButton type="button" label="Login" class="ui-button-raised"
-                (click)="onClickGoToLogin()"></button>
-              </div>
-            </div>
-         
-        </form>
-      </div>
-    </div>
-  </div>
+            <!-- Email  -->
+               <br> 
+               <div class="row justify-content-between">
+                <div class="col-2">
+                  <button  pButton type="button" label="Register" class="ui-button-raised"
+                  (click)="onClickRegisterUser()" [disabled]="!userform.valid"></button>
+                </div>
+                <div class="col-2">
+                  <button  pButton type="button" label="Login" class="ui-button-raised"
+                  (click)="onClickGoToLogin()"></button>
+                </div>
+              </div>    
+            </div> 
+</form>
+    
