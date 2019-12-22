@@ -4,7 +4,7 @@ import {Configuration} from '../shared/models/configuration';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Model} from '../shared/models/model';
-import {ConfirmationService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-admin',
@@ -17,12 +17,12 @@ export class AdminComponent implements OnInit {
   configuration: Configuration;
   uploadedFiles: any[] = [];
   submitted = false;
-  showResult = false;
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
   ) {}
 
   ngOnInit() {
@@ -43,11 +43,13 @@ export class AdminComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.showResult = false;
     this.globalconfigurationService.putConfiguration(this.configuration).then((configuration: Configuration) => {
       this.submitted = false;
-      this.showResult = true;
       this.configuration = configuration;
+      this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Configuration enregistrée', life: 1000});
+    }).catch(() => {
+      this.submitted = false;
+      this.messageService.add({severity: 'error', summary: 'Echec', detail: 'Echec de l\'enregistrement', life: 1000});
     });
   }
 
