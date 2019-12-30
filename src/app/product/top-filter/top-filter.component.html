@@ -2,19 +2,27 @@
 
   <div class="card-body">
     <div class="row m-1">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3" *ngFor="let property of model.filterableProperties">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1" *ngFor="let property of model.filterableProperties">
         <app-abstract-filter [property]="property"></app-abstract-filter>
       </div>
     </div>
   </div>
 
   <div class="card-footer">
-    <div class="row m-1 justify-content-end">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3">
+    <div class="row m-1 justify-content-between">
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
+        <app-dropdown
+          [options]="orderOptions"
+          [(ngModel)]="order"
+          [autofocus]="true"
+          [ngStyle]="{'width': '100%'}"
+        ></app-dropdown>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
         <button type="button"
-                class="btn btn-primary"
+                class="btn"
                 [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
-                (click)="searchEvent.emit()"
+                (click)="search()"
         >Rechercher
         </button>
       </div>

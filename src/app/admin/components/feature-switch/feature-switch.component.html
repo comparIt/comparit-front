@@ -1,0 +1,32 @@
+
+<div class="card my-1">
+  <div class="card-body">
+    <div class="row m-1">
+      <div class="col-11">Analytique</div>
+      <div class="col-1"><p-inputSwitch [(ngModel)]="config.currentConfig.featAnalytic"></p-inputSwitch></div>
+    </div>
+  </div>
+</div>
+
+<div class="card my-1">
+
+  <div class="card-header">
+    <div class="row m-1">
+      <div class="col-11">Comptes utilisateur</div>
+      <div class="col-1"><p-inputSwitch [(ngModel)]="config.currentConfig.featUser"></p-inputSwitch></div>
+    </div>
+  </div>
+
+  <div class="card-body"
+       [@smoothCollapse]="config.currentConfig.featUser ? 'final' : 'initial'">
+    <div class="row m-1">
+      <div class="col-11">Sauvegarde de filtres</div>
+      <div class="col-1"><p-inputSwitch [(ngModel)]="config.currentConfig.featSaveFilter"></p-inputSwitch></div>
+    </div>
+    <div class="row m-1">
+      <div class="col-11">Alertes</div>
+      <div class="col-1"><p-inputSwitch [(ngModel)]="config.currentConfig.featAlerte"></p-inputSwitch></div>
+    </div>
+  </div>
+
+</div>

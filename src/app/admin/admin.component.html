@@ -1,4 +1,4 @@
-<p class="text-title">Configuration de CompareIT</p>
+<p class="text-title">Configuration du site</p>
 
 <div id="stepper1" class="bs-stepper">
   <div class="bs-stepper-header">
@@ -26,7 +26,7 @@
 
   <div class="bs-stepper-content">
     <div id="test-l-1" class="content">
-      <p>Thème du site</p>
+      <p>Thème du site :</p>
       <!-- couleur dropdown -->
       <div class='selectColor'>
         <p>Couleur principale :</p>
@@ -46,13 +46,28 @@
         ></p-colorPicker>
       </div>
 
-      <!-- couleur dropdown -->
-      <p>Logo du site :</p>
-      <input id="inputLogo" type="text" size="70" [(ngModel)]="configuration.logo" placeholder="URL" pInputText>
+      <div class="row m-1">
+        <div class="col-2">Logo du site :</div>
+        <div class="col-10">
+          <input style="width: 100%" id="inputLogo" type="text" [(ngModel)]="configuration.logo" placeholder="URL">
+        </div>
+      </div>
+
+      <div class="row m-1">
+        <div class="col-2">Nom du site :</div>
+        <div class="col-10">
+          <input style="width: 100%" id="inputName" type="text" [(ngModel)]="configuration.name" placeholder="Nom">
+        </div>
+      </div>
 
       <div class="row justify-content-end">
         <div class="col-2">
-          <button (click)="next()" type="button" class="btn btn-primary btnNav">Suivant</button>
+          <button (click)="next()"
+                  type="button"
+                  class="btn btnNav"
+                  [ngStyle]="{'background-color': configuration.colorPrimary}">
+            Suivant
+          </button>
         </div>
       </div>
     </div>
@@ -73,33 +88,56 @@
 
       <div class="row justify-content-between">
         <div class="col-2">
-          <button (click)="previous()" type="button" class="btn btn-primary btnNav">Précédant</button>
+          <button (click)="previous()"
+                  type="button"
+                  class="btn btnNav"
+                  [ngStyle]="{'background-color': configuration.colorPrimary}">
+            Précédant
+          </button>
         </div>
-        <button id="btnAddModel"
-                class="btn btn-primary col-2"
-                type="button"
-                (click)="addModel()"
-        >Ajouter un modèle
-        </button>
+        <div class="col-3">
+          <button id="btnAddModel"
+                  class="btn"
+                  type="button"
+                  (click)="addModel()"
+                  [ngStyle]="{'background-color': configuration.colorPrimary}">
+            Ajouter un modèle
+          </button>
+        </div>
         <div class="col-2">
-          <button (click)="next()" type="button" class="btn btn-primary btnNav">Suivant</button>
+          <button (click)="next()"
+                  type="button"
+                  class="btn btnNav"
+                  [ngStyle]="{'background-color': configuration.colorPrimary}">
+            Suivant
+          </button>
         </div>
 
       </div>
     </div>
 
     <!-- Step 3 configuration Web-->
-    <div id="test-l-3" class="content text-center">
-      <p class='text-label'>Activer l'analytique</p>
-      <p-inputSwitch [(ngModel)]="configuration.featAnalytic"></p-inputSwitch>
-
+    <div id="test-l-3" class="content">
+      <app-feature-switch></app-feature-switch>
 
       <div class="row justify-content-between">
         <div class="col-2">
-          <button (click)="previous()" type="button" class="btn btn-primary btnNav">Précédant</button>
+          <button (click)="previous()"
+                  type="button"
+                  class="btn btnNav"
+                  [ngStyle]="{'background-color': configuration.colorPrimary}">
+            Précédant
+          </button>
         </div>
         <div class="col-2">
-          <button (click)="onSubmit()" [disabled]="submitted" type="button" class="btn btn-primary btnNav" id="btnNext">Valider</button>
+          <button (click)="onSubmit()"
+                  [disabled]="submitted"
+                  type="button"
+                  class="btn btnNav"
+                  [ngStyle]="{'background-color': configuration.colorPrimary}"
+                  id="btnNext">
+            Valider
+          </button>
         </div>
       </div>
 
