@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelComponent } from './model.component';
+import { FeatureSwitchComponent } from './feature-switch.component';
 
 describe('FeatureSwitchComponent', () => {
-  let component: ModelComponent;
-  let fixture: ComponentFixture<ModelComponent>;
+  let component: FeatureSwitchComponent;
+  let fixture: ComponentFixture<FeatureSwitchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModelComponent ]
+      declarations: [ FeatureSwitchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModelComponent);
+    fixture = TestBed.createComponent(FeatureSwitchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

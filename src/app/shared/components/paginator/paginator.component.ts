@@ -15,8 +15,8 @@ import {FormsModule} from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {SelectItem} from 'primeng/api';
 import {SharedModule} from 'primeng/shared';
-import {Configuration} from '../../shared/models/configuration';
-import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
+import {Configuration} from '../../models/configuration';
+import {GlobalConfigurationService} from '../../services/globalConfiguration.service';
 
 @Component({
   selector: 'app-paginator',

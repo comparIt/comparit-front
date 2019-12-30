@@ -15,12 +15,28 @@ export class TopFilterComponent implements OnInit {
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
 
+  order: string;
+  orderOptions: SelectItem[];
+
+  ngOnInit() {
+    this.orderOptions =  this.model.filterableProperties.filter((p) => p.isNumeric)
+      .map((p) => {
+          return  [
+            {label: p.name + ' croissant', value: p.technicalName},
+            {label: p.name + ' décroissant', value: '-' + p.technicalName}
+          ];
+        }
+      )
+      .reduceRight((previousValue, currentValue) => previousValue.concat(currentValue));
+    this.orderOptions.unshift({label: 'Trier par :', value: null});
+  }
+
   get filterableProperties(): ModelProperty[] {
     return this.model.modelProperties.filter((p: ModelProperty) => p.activated && p.filtrable);
   }
 
-  ngOnInit() {
+  search() {
+    this.searchEvent.emit({order: this.order});
   }
-
 
 }

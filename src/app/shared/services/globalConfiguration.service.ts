@@ -21,31 +21,31 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
   }
 
   get colorPrimary(): string {
-    return this.configuration ? this.configuration.colorPrimary : Configuration.defaultConfiguration().colorPrimary;
+    return this.currentConfig.colorPrimary;
   }
 
   get colorSecondary(): string {
-    return this.configuration.colorSecondary;
+    return this.currentConfig.colorSecondary;
   }
 
   get colorSecondary2(): string {
-    return this.configuration.colorSecondary;
+    return this.currentConfig.colorSecondary;
   }
 
   get logo(): string {
-    return this.configuration.logo;
+    return this.currentConfig.logo;
   }
 
   get models(): Model[] {
-    return this.configuration.models;
+    return this.currentConfig.models;
   }
 
   get currentConfig(): Configuration {
-    return this.configuration;
+    return this.configuration ? this.configuration : Configuration.defaultConfiguration();
   }
 
   modelByType(type: string): Model {
-    return this.configuration.models.find(e => e.technicalName === type);
+    return this.currentConfig.models.find(e => e.technicalName === type);
   }
 
   putConfiguration(configuration: Configuration): Promise<Configuration> {

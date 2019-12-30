@@ -17,7 +17,7 @@ import {CommonModule} from '@angular/common';
 import {DomHandler} from 'primeng/components/dom/domhandler';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
 import {Footer} from 'primeng/shared';
-import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
+import {GlobalConfigurationService} from '../../services/globalConfiguration.service';
 
 export const SLIDER_VALUE_ACCESSOR: any = {
   provide: NG_VALUE_ACCESSOR,

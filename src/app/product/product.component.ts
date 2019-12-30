@@ -27,13 +27,13 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
-      this.search();
+      this.search({});
     });
   }
 
-  search() {
+  search(event) {
     this.productPagineDTO = new ProductPagineDTO({});
-    this.api.getProducts(this.filterService.filterToApi(this.model, undefined, undefined, undefined)).then(
+    this.api.getProducts(this.filterService.filterToApi(this.model, event.order, undefined, undefined)).then(
       (productPagineDTO: ProductPagineDTO) => {
         this.productPagineDTO = new ProductPagineDTO(productPagineDTO);
       }

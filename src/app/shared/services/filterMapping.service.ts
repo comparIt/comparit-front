@@ -29,6 +29,9 @@ export class FilterMappingService {
     if (page) {
       filters.push({key: 'page', value: page});
     }
+    if (order) {
+      filters.push({key: 'order', value: order});
+    }
     return filters;
   }
 

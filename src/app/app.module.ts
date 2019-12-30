@@ -12,7 +12,6 @@ import {NotifComponent} from './user/components/notif/notif.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
-import {DropdownModule} from 'primeng/dropdown';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import {ColorPickerModule} from 'primeng/colorpicker';
@@ -27,8 +26,8 @@ import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
-import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
-import {SliderModule} from './product/slider-filter/slider.component';
+import {MultiSelectModule} from './shared/components/multiselect/multiselect.component';
+import {SliderModule} from './shared/components/slider-filter/slider.component';
 import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
 import {ErrorComponent} from './shared/components/errors/error.component';
 import {LoginComponent} from './login/login.component';
@@ -38,11 +37,13 @@ import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
-import {PaginatorModule} from './product/paginator/paginator.component';
+import {PaginatorModule} from './shared/components/paginator/paginator.component';
 import {AccordionModule} from 'primeng/accordion';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
+import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
+import {DropdownModule} from './shared/components/dropdown/dropdown.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import {CompleteProductComponent} from './product/complete-product/complete-prod
     CategoryNavigatorComponent,
     ResumeProductComponent,
     ErrorComponent,
-    CompleteProductComponent
+    CompleteProductComponent,
+    FeatureSwitchComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,7 @@ import {CompleteProductComponent} from './product/complete-product/complete-prod
     FileUploadModule,
     ConfirmDialogModule,
     AccordionModule,
-    ToastModule
+    ToastModule,
   ],
   providers: [
     GlobalConfigurationService,
