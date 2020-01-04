@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {GlobalConfigurationService} from './globalConfiguration.service';
 import {Model} from '../models/model';
 import {ModelProperty} from '../models/modelProperty';
+import {SavedFilter} from "../models/savedFilter";
 
 @Injectable({
   providedIn: 'root',
@@ -41,6 +42,16 @@ export class FilterMappingService {
 
   filterValue(property: ModelProperty): string {
     return property.isNumeric ? property.range[0] + '-' + property.range[1] : property.selectedValues.join(',');
+  }
+
+  filterToSavedFilter(model: Model, order: string, isAlerte: boolean) {
+    const filter = new SavedFilter();
+    filter.criterias = new Map(model.modelProperties
+      .map(p => this.asFilter(p))
+      .filter(value => value && value.value)
+      .map(i => [i.key, i.value]));
+    filter.isAlert = isAlerte;
+    return filter;
   }
 
 
