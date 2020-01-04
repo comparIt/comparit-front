@@ -3,6 +3,7 @@ import {GlobalConfigurationService} from '../../shared/services/globalConfigurat
 import {SelectItem} from 'primeng/api';
 import {Model} from '../../shared/models/model';
 import {ModelProperty} from '../../shared/models/modelProperty';
+import {AuthenticationService} from '../../shared/services/authentification.service';
 
 @Component({
   selector: 'app-top-filter',
@@ -10,10 +11,11 @@ import {ModelProperty} from '../../shared/models/modelProperty';
 })
 export class TopFilterComponent implements OnInit {
 
-  constructor(public config: GlobalConfigurationService) { }
+  constructor(public config: GlobalConfigurationService, public authenticationService: AuthenticationService) { }
 
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
+  @Output() saveFilterEvent = new EventEmitter();
 
   order: string;
   orderOptions: SelectItem[];
@@ -37,6 +39,10 @@ export class TopFilterComponent implements OnInit {
 
   search() {
     this.searchEvent.emit({order: this.order});
+  }
+
+  save() {
+    this.saveFilterEvent.emit({});
   }
 
 }
