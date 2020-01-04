@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from '../shared/models/product';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
 import {ProductPagineDTO} from '../shared/models/productPagineDTO';
-import {MessageService} from "primeng/api";
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-product',
