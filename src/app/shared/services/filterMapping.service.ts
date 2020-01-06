@@ -55,9 +55,10 @@ export class FilterMappingService {
       .map(i => {
         return [i.key, i.value];
       }));
+    filter.orderBy = order;
+
     filter.isAlert = isAlerte;
     if (filter.isAlert) {
-
     } else {
       filter.alertType = 'AUCUNE';
     }
