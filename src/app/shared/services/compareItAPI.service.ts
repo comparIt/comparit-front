@@ -105,7 +105,7 @@ export class CompareItAPIService {
   // Filters & alerts
 
   public createFilter(filter: SavedFilter): any {
-    return this.post(this.filterController, [], filter);
+    return this.post(this.filterController, [], filter.toJSON());
   }
 
 
