@@ -46,11 +46,21 @@ export class FilterMappingService {
 
   filterToSavedFilter(model: Model, order: string, isAlerte: boolean) {
     const filter = new SavedFilter();
+    filter.category = model.technicalName;
     filter.criterias = new Map(model.modelProperties
-      .map(p => this.asFilter(p))
+      .map(p => {
+        return {key: p.id, value: this.filterValue(p)};
+      })
       .filter(value => value && value.value)
-      .map(i => [i.key, i.value]));
+      .map(i => {
+        return [i.key, i.value];
+      }));
     filter.isAlert = isAlerte;
+    if (filter.isAlert) {
+
+    } else {
+      filter.alertType = 'AUCUNE';
+    }
     return filter;
   }
 
