@@ -42,7 +42,7 @@ export class TopFilterComponent implements OnInit {
   }
 
   save() {
-    this.saveFilterEvent.emit({});
+    this.saveFilterEvent.emit({order: this.order});
   }
 
 }

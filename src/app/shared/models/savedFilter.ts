@@ -1,17 +1,19 @@
 export class SavedFilter {
-  alertType: string;
   category: string;
   criterias: Map<number, string>;
+  orderBy: string;
   isAlert: boolean;
+  alertType: string;
 
   toJSON(): any {
     const obj = {};
     this.criterias.forEach ((v, k) => { obj[k] = v; });
     return {
-      alertType: this.alertType,
       category: this.category,
+      criterias: obj,
+      orderBy: this.orderBy,
       isAlert: this.isAlert,
-      criterias: obj
+      alertType: this.alertType
     };
   }
 
