@@ -89,6 +89,10 @@ export class CompareItAPIService {
     return this.put(this.userController + '/saveUser', [], user);
   }
 
+  public getCurrentUser(): any {
+    return this.get(this.userController + '/currentUser', []);
+  }
+
 
   public getMockProduct(): any {
     return this.get('/product/search', []);
