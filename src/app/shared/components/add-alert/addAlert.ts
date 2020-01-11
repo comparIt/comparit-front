@@ -27,7 +27,7 @@ export class AddAlertComponent implements OnInit {
   @Output() saveAlerte = new EventEmitter();
   @Output() onClose = new EventEmitter();
 
-  constructor(private config: GlobalConfigurationService) {
+  constructor(public config: GlobalConfigurationService) {
   }
 
   ngOnInit(): void {
