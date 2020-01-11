@@ -48,7 +48,7 @@ export class ProductComponent implements OnInit {
   }
 
   saveFilter(event) {
-    this.api.createFilter(this.filterService.filterToSavedFilter(this.model, event.order, false))
+    this.api.createFilter(this.filterService.filterToSavedFilter(this.model, event.order, event.alert))
       .then(() => {
         this.messageService.add({severity: 'success', summary: 'Filtre', detail: 'Enregistrement réussi', life: 500});
       }).catch(() => {

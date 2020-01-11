@@ -9,7 +9,7 @@
   </div>
 
   <div class="card-footer">
-    <div class="row m-1 justify-content-between">
+    <div class="row m-1">
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
         <app-dropdown
           [options]="orderOptions"
@@ -19,28 +19,38 @@
         ></app-dropdown>
       </div>
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1"></div>
-
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
-        <button *ngIf="config.currentConfig.featSaveFilter && authenticationService.isAuthenticated()"
-                type="button"
-                class="btn float-right"
-                [ngStyle]="{'background-color': config.colorPrimary, 'width': '25%'}"
-                (click)="save()"
-        >
-          <i class="fas fa-save" aria-hidden="true"></i>
+      <div class="col-6 col-sm-6 col-md-2 col-lg-1 col-xl-1 my-1 offset-lg-4">
+        <button type="button"
+                class="btn mx-1"
+                [ngStyle]="{'background-color': config.colorPrimary}"
+                (click)="save({})"
+        ><i class="fas fa-save" aria-hidden="true"></i>
         </button>
       </div>
-
+      <div class="col-6 col-sm-6 col-md-2 col-lg-1 col-xl-1 my-1">
+        <button type="button"
+                class="btn mx-1"
+                [ngStyle]="{'background-color': config.colorPrimary}"
+                (click)="alert()"
+        ><i class="fas fa-bell" aria-hidden="true"></i>
+        </button>
+      </div>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
-       <button type="button"
-                class="btn"
-                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+        <button type="button"
+                class="btn mx-1"
+                [ngStyle]="{'background-color': config.colorPrimary}"
                 (click)="search()"
         >Rechercher
         </button>
       </div>
     </div>
   </div>
+
+  <app-add-alert
+    [visible]="modalSaveAlertVisible"
+    [alertFrequency]="'AUCUNE'"
+    (saveAlerte)="save($event)"
+    (onClose)="modalSaveAlertVisible = false">
+  </app-add-alert>
 
 </div>
