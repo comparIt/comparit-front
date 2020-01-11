@@ -16,6 +16,7 @@ export class TopFilterComponent implements OnInit {
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
   @Output() saveFilterEvent = new EventEmitter();
+  modalSaveAlertVisible = false;
 
   order: string;
   orderOptions: SelectItem[];
@@ -41,8 +42,13 @@ export class TopFilterComponent implements OnInit {
     this.searchEvent.emit({order: this.order});
   }
 
-  save() {
-    this.saveFilterEvent.emit({order: this.order});
+  save(event) {
+    this.modalSaveAlertVisible = false;
+    this.saveFilterEvent.emit({order: this.order, alert: event.alert});
+  }
+
+  alert() {
+    this.modalSaveAlertVisible = true;
   }
 
 }

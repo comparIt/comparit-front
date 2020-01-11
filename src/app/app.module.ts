@@ -21,7 +21,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
 import {RegisterUserComponent} from './register-user/register-user.component';
-import {ConfirmDialogModule, MessagesModule} from 'primeng/primeng';
+import {ConfirmDialogModule, DialogModule, MessagesModule, RadioButtonModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
@@ -44,6 +44,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
 import {DropdownModule} from './shared/components/dropdown/dropdown.component';
+import {AddAlertComponent} from "./shared/components/add-alert/addAlert";
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import {DropdownModule} from './shared/components/dropdown/dropdown.component';
     ResumeProductComponent,
     ErrorComponent,
     CompleteProductComponent,
-    FeatureSwitchComponent
+    FeatureSwitchComponent,
+    AddAlertComponent
   ],
   imports: [
     BrowserModule,
@@ -96,6 +98,8 @@ import {DropdownModule} from './shared/components/dropdown/dropdown.component';
     ConfirmDialogModule,
     AccordionModule,
     ToastModule,
+    DialogModule,
+    RadioButtonModule,
   ],
   providers: [
     GlobalConfigurationService,

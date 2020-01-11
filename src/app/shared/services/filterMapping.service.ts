@@ -44,7 +44,7 @@ export class FilterMappingService {
     return property.isNumeric ? property.range[0] + '-' + property.range[1] : property.selectedValues.join(',');
   }
 
-  filterToSavedFilter(model: Model, order: string, isAlerte: boolean) {
+  filterToSavedFilter(model: Model, order: string, alertType: string) {
     const filter = new SavedFilter();
     filter.category = model.technicalName;
     filter.criterias = new Map(model.modelProperties
@@ -57,11 +57,14 @@ export class FilterMappingService {
       }));
     filter.orderBy = order;
 
-    filter.isAlert = isAlerte;
-    if (filter.isAlert) {
+    if (alertType) {
+      filter.isAlert = true;
+      filter.alertType = alertType;
     } else {
+      filter.isAlert = false;
       filter.alertType = 'AUCUNE';
     }
+    console.log('filter: ', filter)
     return filter;
   }
 
