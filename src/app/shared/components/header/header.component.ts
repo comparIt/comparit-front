@@ -44,4 +44,8 @@ export class HeaderComponent implements OnInit {
   get isAdmin(): boolean {
     return this.auth.isAdmin();
   }
+
+  get isAuthenticated(): boolean {
+    return this.auth.isAuthenticated();
+  }
 }
