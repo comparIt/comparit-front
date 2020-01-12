@@ -4,6 +4,7 @@ import {Configuration} from '../models/configuration';
 import {User} from '../models/user';
 import {environment} from '../../../environments/environment';
 import {Model} from '../models/model';
+import {SavedFilter} from '../models/savedFilter';
 
 @Injectable({
   providedIn: 'root',
@@ -88,6 +89,10 @@ export class CompareItAPIService {
     return this.put(this.userController + '/saveUser', [], user);
   }
 
+  public getCurrentUser(): any {
+    return this.get(this.userController + '/currentUser', []);
+  }
+
 
   public getMockProduct(): any {
     return this.get('/product/search', []);
@@ -99,6 +104,12 @@ export class CompareItAPIService {
 
   public getProductById(id: string): any {
     return this.get('/product/' + id, []);
+  }
+
+  // Filters & alerts
+
+  public createFilter(filter: SavedFilter): any {
+    return this.post(this.filterController, [], filter.toJSON());
   }
 
 

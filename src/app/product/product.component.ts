@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from '../shared/models/product';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
 import {ProductPagineDTO} from '../shared/models/productPagineDTO';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-product',
@@ -21,7 +21,8 @@ export class ProductComponent implements OnInit {
     private api: CompareItAPIService,
     private route: ActivatedRoute,
     private conf: GlobalConfigurationService,
-    private filterService: FilterMappingService) {
+    private filterService: FilterMappingService,
+    private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -37,8 +38,18 @@ export class ProductComponent implements OnInit {
       (productPagineDTO: ProductPagineDTO) => {
         this.productPagineDTO = new ProductPagineDTO(productPagineDTO);
       }
-    ).catch( () => {
+    ).catch(() => {
         this.productPagineDTO = new ProductPagineDTO({});
+      }
+    );
+  }
+
+  saveFilter(event) {
+    this.api.createFilter(this.filterService.filterToSavedFilter(this.model, event.order, event.alert))
+      .then(() => {
+        this.messageService.add({severity: 'success', summary: 'Filtre', detail: 'Enregistrement réussi', life: 500});
+      }).catch(() => {
+        this.messageService.add({severity: 'error', summary: 'Filtre', detail: 'Echec de l\'enregirstrement', life: 500});
       }
     );
   }

@@ -3,6 +3,7 @@ import {GlobalConfigurationService} from '../../shared/services/globalConfigurat
 import {SelectItem} from 'primeng/api';
 import {Model} from '../../shared/models/model';
 import {ModelProperty} from '../../shared/models/modelProperty';
+import {AuthenticationService} from '../../shared/services/authentification.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -11,11 +12,12 @@ import {Router} from '@angular/router';
 })
 export class TopFilterComponent implements OnInit {
 
-  constructor(public config: GlobalConfigurationService,
-              private router: Router) { }
+  constructor(public config: GlobalConfigurationService, public authenticationService: AuthenticationService, public router: Router) { }
 
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
+  @Output() saveFilterEvent = new EventEmitter();
+  modalSaveAlertVisible = false;
 
   order: string;
   orderOptions: SelectItem[];
@@ -41,7 +43,14 @@ export class TopFilterComponent implements OnInit {
     this.searchEvent.emit({order: this.order});
   }
 
-  filters() {
+  save(event) {
+    this.modalSaveAlertVisible = false;
+    this.saveFilterEvent.emit({order: this.order, alert: event.alert});
+  }
+
+  alert() {
+    this.modalSaveAlertVisible = true;
     this.router.navigate(['filter']);
   }
+
 }

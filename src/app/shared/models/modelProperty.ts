@@ -1,5 +1,6 @@
 export class ModelProperty {
 
+  id: number;
   name: string;
   technicalName: string;
   activated: boolean;
@@ -30,6 +31,7 @@ export class ModelProperty {
 
   static buildProperty(property: ModelProperty): ModelProperty {
     const modelProperty = new ModelProperty();
+    modelProperty.id = property.id;
     modelProperty.name = property.name;
     modelProperty.technicalName = property.technicalName;
     modelProperty.activated = property.activated;

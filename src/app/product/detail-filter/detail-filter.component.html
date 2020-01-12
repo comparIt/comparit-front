@@ -29,6 +29,9 @@
 
   <div class="card-body"
          [@smoothCollapse]="checked ? 'final' : 'initial'">
-      <p>frequency</p>
+    <app-add-alert
+      [visible]="true"
+      [alertFrequency]="'AUCUNE'">
+    </app-add-alert>
 </div>
 

@@ -8,6 +8,7 @@ import {CompareItAPIService} from './compareItAPI.service';
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+  public user: User;
   private expiresAt: number;
   accessToken: string;
 
@@ -23,6 +24,11 @@ export class AuthenticationService {
   login(username: string, password: string) {
     return this.compareItAPIService.authenticate(username, password).then(token => {
       this.accessToken = token.token;
+      return this.compareItAPIService.getCurrentUser();
+    }).then((user: User) => {
+      this.user = User.buildUser(user);
+      this.currentUserSubject = new BehaviorSubject<User>(user);
+      this.currentUser = this.currentUserSubject.asObservable();
       return this.accessToken;
     });
   }
@@ -38,5 +44,9 @@ export class AuthenticationService {
     // Check whether the current time is past the
     // access token's expiry time
     return this.accessToken !== undefined && this.accessToken !== null;
+  }
+
+  public isAdmin(): boolean {
+    return this.user && this.user.role === 'ROLE_ADMIN';
   }
 }

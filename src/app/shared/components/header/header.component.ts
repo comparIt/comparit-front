@@ -41,6 +41,10 @@ export class HeaderComponent implements OnInit {
     this.auth.logout();
   }
 
+  get isAdmin(): boolean {
+    return this.auth.isAdmin();
+  }
+
   get isAuthenticated(): boolean {
     return this.auth.isAuthenticated();
   }

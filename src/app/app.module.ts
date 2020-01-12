@@ -44,9 +44,11 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
 import {DropdownModule} from './shared/components/dropdown/dropdown.component';
-import { FilterComponent } from './product/filter/filter.component';
-import { DetailFilterComponent } from './product/detail-filter/detail-filter.component';
-
+import {FilterComponent} from './product/filter/filter.component';
+import {DetailFilterComponent} from './product/detail-filter/detail-filter.component';
+import {AddAlertComponent} from './shared/components/add-alert/addAlert';
+import {DialogModule} from 'primeng/dialog';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ import { DetailFilterComponent } from './product/detail-filter/detail-filter.com
     ErrorComponent,
     CompleteProductComponent,
     FeatureSwitchComponent,
+    AddAlertComponent,
     FilterComponent,
     DetailFilterComponent
   ],
@@ -100,6 +103,8 @@ import { DetailFilterComponent } from './product/detail-filter/detail-filter.com
     ConfirmDialogModule,
     AccordionModule,
     ToastModule,
+    DialogModule,
+    RadioButtonModule
   ],
   providers: [
     GlobalConfigurationService,

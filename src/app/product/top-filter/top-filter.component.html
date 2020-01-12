@@ -18,22 +18,33 @@
           [ngStyle]="{'width': '100%'}"
         ></app-dropdown>
       </div>
+
+      <div class="col-6 col-sm-6 col-md-2 col-lg-1 col-xl-1 my-1 offset-lg-4" *ngIf="authenticationService.isAuthenticated()">
+        <button type="button"
+                class="btn mx-1"
+                [ngStyle]="{'background-color': config.colorPrimary}"
+                (click)="save({})"
+        ><i class="fas fa-save" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="col-6 col-sm-6 col-md-2 col-lg-1 col-xl-1 my-1" *ngIf="authenticationService.isAuthenticated()">
+        <button type="button"
+                class="btn mx-1"
+                [ngStyle]="{'background-color': config.colorPrimary}"
+                (click)="alert()"
+        ><i class="fas fa-bell" aria-hidden="true"></i>
+        </button>
+      </div>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
         <button type="button"
-                class="btn mb-2"
-                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+                class="btn mx-1"
+                [ngStyle]="{'background-color': config.colorPrimary}"
                 (click)="search()"
         >Rechercher
-        </button>
-
-        <button type="button"
-                class="btn"
-                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
-                (click)="filters()"
-        >Mes Filtres
         </button>
       </div>
     </div>
   </div>
+
 
 </div>
