@@ -1,0 +1,34 @@
+<div class="w-100 mb-2">
+    <h5>alertType</h5>
+    <h6>createdat</h6>
+    <h5>category</h5>
+
+    <div class="row w-100">
+
+      <div class="col-3">
+        <button class="btn btn-primary"> voir les annonces</button>
+      </div>
+
+      <div class="col-1 ">
+        <button class="btn btn-primary" type="button"><i class="far fa-edit"></i></button>
+      </div>
+
+      <div class="col-1 offset-md-7">
+          <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+      </div>
+
+    </div>
+
+</div>
+<hr>
+
+<div class="row ">
+      <div class="col-1"><p-inputSwitch [(ngModel)]="checked"></p-inputSwitch></div>
+      <p class="col-1">Alert</p>
+</div>
+
+  <div class="card-body"
+         [@smoothCollapse]="checked ? 'final' : 'initial'">
+      <p>frequency</p>
+</div>
+

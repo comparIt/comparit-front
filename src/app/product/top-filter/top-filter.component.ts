@@ -3,6 +3,7 @@ import {GlobalConfigurationService} from '../../shared/services/globalConfigurat
 import {SelectItem} from 'primeng/api';
 import {Model} from '../../shared/models/model';
 import {ModelProperty} from '../../shared/models/modelProperty';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-top-filter',
@@ -10,7 +11,8 @@ import {ModelProperty} from '../../shared/models/modelProperty';
 })
 export class TopFilterComponent implements OnInit {
 
-  constructor(public config: GlobalConfigurationService) { }
+  constructor(public config: GlobalConfigurationService,
+              private router: Router) { }
 
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
@@ -39,4 +41,7 @@ export class TopFilterComponent implements OnInit {
     this.searchEvent.emit({order: this.order});
   }
 
+  filters() {
+    this.router.navigate(['filter']);
+  }
 }

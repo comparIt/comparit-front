@@ -1,3 +1,5 @@
+import {Filter} from './filter';
+
 export class User {
     authdata: User;
     id: number;
@@ -5,7 +7,7 @@ export class User {
     lastName: string;
     firstName: string;
     password: string;
-    filters: string[];
+    filters: Filter[];
     company: string[];
     typeUser: string[];
     createdAt: Date;
@@ -13,10 +15,10 @@ export class User {
 
     static buildUser(user: User): User {
         const newUser = new User();
-        newUser.email=user.email;
-        newUser.lastName=user.lastName;
-        newUser.firstName=user.firstName;
-        newUser.password=user.password;
+        newUser.email = user.email;
+        newUser.lastName = user.lastName;
+        newUser.firstName = user.firstName;
+        newUser.password = user.password;
         return newUser;
     }
 }

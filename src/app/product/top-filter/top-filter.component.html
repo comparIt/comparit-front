@@ -20,10 +20,17 @@
       </div>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
         <button type="button"
-                class="btn"
+                class="btn mb-2"
                 [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
                 (click)="search()"
         >Rechercher
+        </button>
+
+        <button type="button"
+                class="btn"
+                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+                (click)="filters()"
+        >Mes Filtres
         </button>
       </div>
     </div>
