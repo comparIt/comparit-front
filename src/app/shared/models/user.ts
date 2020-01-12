@@ -1,3 +1,5 @@
+import {Filter} from './filter';
+
 export class User {
   authdata: User;
   id: number;

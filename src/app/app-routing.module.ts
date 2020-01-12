@@ -12,6 +12,7 @@ import {GlobalConfigurationService} from './shared/services/globalConfiguration.
 import {ErrorComponent} from './shared/components/errors/error.component';
 import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
+import {FilterComponent} from './product/filter/filter.component';
 
 
 export const routes: Routes = [
@@ -83,6 +84,13 @@ export const routes: Routes = [
   {
     path      : 'products/:type/:id',
     component : CompleteProductComponent,
+    resolve   : {
+      config: GlobalConfigurationService
+    }
+  },
+  {
+    path      : 'filter',
+    component : FilterComponent,
     resolve   : {
       config: GlobalConfigurationService
     }

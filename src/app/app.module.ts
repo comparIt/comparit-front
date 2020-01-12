@@ -47,6 +47,8 @@ import {DropdownModule} from './shared/components/dropdown/dropdown.component';
 import {AddAlertComponent} from './shared/components/add-alert/addAlert';
 import { NgxHotjarModule } from 'ngx-hotjar';
 import { MatomoModule } from 'ngx-matomo';
+import { FilterComponent } from './product/filter/filter.component';
+import { DetailFilterComponent } from './product/detail-filter/detail-filter.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,9 @@ import { MatomoModule } from 'ngx-matomo';
     CompleteProductComponent,
     FeatureSwitchComponent,
     AddAlertComponent
+    FeatureSwitchComponent,
+    FilterComponent,
+    DetailFilterComponent
   ],
   imports: [
     BrowserModule,
