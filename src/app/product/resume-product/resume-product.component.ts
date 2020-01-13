@@ -3,6 +3,7 @@ import {Product} from '../../shared/models/product';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
 import {Router} from '@angular/router';
 import {Model} from '../../shared/models/model';
+import {NgxHotjarService} from "ngx-hotjar";
 
 @Component({
   selector: 'app-resume-product',
@@ -14,13 +15,13 @@ export class ResumeProductComponent implements OnInit {
   @Input() model: Model;
 
   constructor(
+    protected $hotjar: NgxHotjarService,
     private router: Router,
     private config: GlobalConfigurationService) { }
 
 
   ngOnInit() {
-
-
+    this.$hotjar.virtualPageView('/products/one');
   }
 
 
