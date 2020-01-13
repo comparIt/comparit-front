@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from '../shared/models/product';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
 import {ProductPagineDTO} from '../shared/models/productPagineDTO';
+import {NgxHotjarService} from 'ngx-hotjar';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +18,7 @@ export class ProductComponent implements OnInit {
   productPagineDTO: ProductPagineDTO = new ProductPagineDTO({});
 
   constructor(
+    protected $hotjar: NgxHotjarService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
     private conf: GlobalConfigurationService,
@@ -29,6 +30,7 @@ export class ProductComponent implements OnInit {
       this.model = this.conf.modelByType(params.type);
       this.search({});
     });
+    this.$hotjar.virtualPageView('/product');
   }
 
   search(event) {
