@@ -44,7 +44,7 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
 import {DropdownModule} from './shared/components/dropdown/dropdown.component';
-
+import { NgxHotjarModule } from 'ngx-hotjar';
 
 @NgModule({
   declarations: [
@@ -96,6 +96,7 @@ import {DropdownModule} from './shared/components/dropdown/dropdown.component';
     ConfirmDialogModule,
     AccordionModule,
     ToastModule,
+    NgxHotjarModule.forRoot('1640364'),
   ],
   providers: [
     GlobalConfigurationService,
