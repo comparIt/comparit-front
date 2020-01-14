@@ -59,5 +59,11 @@ export class DetailFilterComponent implements OnInit {
     this.router.navigateByUrl('/products/' + this.filter.category + '?' + this.filterMappingService.criteriasToUrl(this.criterias));
   }
 
+  get order() {
+    return this.config.propertyByModelAndName(
+      this.filter.category,
+      this.filter.orderBy.startsWith('-') ? this.filter.orderBy.substr(1) : this.filter.orderBy
+    ).name + ' ' + (this.filter.orderBy.startsWith('-') ? 'décroissant' : 'croissant');
+  }
 
 }
