@@ -16,6 +16,7 @@ export class CompleteProductComponent implements OnInit {
 
   @Input() model: Model;
   product: Product;
+  properties: {key: ModelProperty, value: string}[]
   id: string;
 
   constructor(
@@ -29,8 +30,12 @@ export class CompleteProductComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
       this.id = params.id;
-      this.api.getProductById(this.id).then((p: Product) => this.product = new Product(p));
-      // Analytics Tracking
+      this.api.getProductById(this.id).then((p: Product) => {
+        this.product = new Product(p);
+        this.properties = Object.keys(this.product.properties).map((key: string) => {
+          return {key: this.conf.propertyByModelAndName(this.model.technicalName, key), value: this.product.properties[key]};
+        });
+      });
       this.matomoTracker.trackEvent('Product', 'showCompletProduct', this.id );
     });
   }

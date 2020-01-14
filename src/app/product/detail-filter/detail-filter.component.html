@@ -1,34 +1,59 @@
-<div class="w-100 mb-2">
-    <h5>alertType</h5>
-    <h6>createdat</h6>
-    <h5>category</h5>
+<div class="card my-1">
 
-    <div class="row w-100">
+  <div class="card-body">
+    <h5>{{config.modelByType(filter.category).name}}</h5>
 
-      <div class="col-3">
-        <button class="btn btn-primary"> voir les annonces</button>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Critère</th>
+        <th scope="col">Valeur</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let kv of formattedMap">
+        <th scope="row">{{kv.key.name}}</th>
+        <td>{{kv.value}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-8 col-sm-10 col-md-4 col-lg-3 col-xl-3">
+        <button
+          class="btn"
+          (click)="search()"
+          [ngStyle]="{'background-color': config.colorPrimary}">
+          Voir les annonces
+        </button>
       </div>
 
-      <div class="col-1 ">
-        <button class="btn btn-primary" type="button"><i class="far fa-edit"></i></button>
+      <div class="col-4 col-sm-2 col-md-2 col-lg-1 col-xl-1 offset-lg-8 offset-md-6">
+        <button
+          class="btn btn-danger"
+          type="button"
+          (click)="deleteFilter.emit(filter)">
+          <i class="fa fa-trash"></i>
+        </button>
       </div>
+    </div>
+  </div>
 
-      <div class="col-1 offset-md-7">
-          <button class="btn btn-danger" type="button"><i class="fa fa-trash"></i></button>
+  <div class="card-footer">
+    <div class="row ">
+      <div class="col-2 col-sm-1">
+        <p-inputSwitch [(ngModel)]="filter.isAlert"></p-inputSwitch>
       </div>
-
+      <p class="col-10 col-sm-11">Notifications</p>
+    </div>
+    <div [@smoothCollapse]="filter.isAlert ? 'final' : 'initial'">
+      <app-add-alert
+        [filter]="filter"
+        [alertFrequency]="filter.alertType"
+        (saveAlerte)="updateFilter.emit(filter)">
+      </app-add-alert>
     </div>
 
-</div>
-<hr>
+  </div>
 
-<div class="row ">
-      <div class="col-1"><p-inputSwitch [(ngModel)]="checked"></p-inputSwitch></div>
-      <p class="col-1">Alert</p>
 </div>
-
-  <div class="card-body"
-         [@smoothCollapse]="checked ? 'final' : 'initial'">
-      <p>frequency</p>
-</div>
-

@@ -18,6 +18,7 @@ export class FilterMappingService {
 
   filterToApi(model: Model, order: string, page: string, supplier: string): {key: string, value: string}[] {
     const filters: {key: string, value: string}[] = model.modelProperties
+      .filter(p => p.filtrable)
       .map(p => this.asFilter(p))
       .filter(value => value && value.value);
     filters.push({key: 'type', value: model.technicalName});
@@ -48,6 +49,7 @@ export class FilterMappingService {
     const filter = new SavedFilter();
     filter.category = model.technicalName;
     filter.criterias = new Map(model.modelProperties
+      .filter(p => p.filtrable)
       .map(p => {
         return {key: p.id, value: this.filterValue(p)};
       })
@@ -66,6 +68,15 @@ export class FilterMappingService {
     }
     console.log('filter: ', filter)
     return filter;
+  }
+
+  criteriasToUrl(criterias: Map<ModelProperty, string>): string {
+    const array: {key: string, value: string}[] = [];
+    criterias.forEach((value, key) => {
+      array.push({key: key.technicalName, value});
+      console.log(value, key, array)
+    });
+    return array.map(kv => kv.key + '=' + kv.value).join('&');
   }
 
 
