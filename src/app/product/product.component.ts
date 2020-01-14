@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, ParamMap, Params} from '@angular/router';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
@@ -28,7 +28,16 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
+      this.route.queryParamMap.subscribe(queryParams => {
+        this.initFilters(queryParams);
+      });
       this.search({});
+    });
+  }
+
+  initFilters(params: ParamMap) {
+    params.keys.map(value => {
+      this.model.modelProperties.find(p => p.technicalName === value).initFilter(params.get(value));
     });
   }
 
@@ -47,9 +56,9 @@ export class ProductComponent implements OnInit {
   saveFilter(event) {
     this.api.createFilter(this.filterService.filterToSavedFilter(this.model, event.order, event.alert))
       .then(() => {
-        this.messageService.add({severity: 'success', summary: 'Filtre', detail: 'Enregistrement réussi', life: 500});
+        this.messageService.add({severity: 'success', summary: 'Filtre', detail: 'Enregistrement réussi', life: 1000});
       }).catch(() => {
-        this.messageService.add({severity: 'error', summary: 'Filtre', detail: 'Echec de l\'enregirstrement', life: 500});
+        this.messageService.add({severity: 'error', summary: 'Filtre', detail: 'Echec de l\'enregirstrement', life: 1000});
       }
     );
   }

@@ -5,7 +5,6 @@ import {Model} from '../../shared/models/model';
 import {Product} from '../../shared/models/product';
 import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
 import {ActivatedRoute} from '@angular/router';
-import {FilterMappingService} from '../../shared/services/filterMapping.service';
 
 @Component({
   selector: 'app-complete-product',
@@ -15,6 +14,7 @@ export class CompleteProductComponent implements OnInit {
 
   @Input() model: Model;
   product: Product;
+  properties: {key: ModelProperty, value: string}[]
   id: string;
 
   constructor(
@@ -27,7 +27,12 @@ export class CompleteProductComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
       this.id = params.id;
-      this.api.getProductById(this.id).then((p: Product) => this.product = new Product(p));
+      this.api.getProductById(this.id).then((p: Product) => {
+        this.product = new Product(p);
+        this.properties = Object.keys(this.product.properties).map((key: string) => {
+          return {key: this.conf.propertyByModelAndName(this.model.technicalName, key), value: this.product.properties[key]};
+        });
+      });
     });
   }
 

@@ -1,6 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Filter} from '../../shared/models/filter';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
+import {SavedFilter} from '../../shared/models/savedFilter';
+import {ModelProperty} from '../../shared/models/modelProperty';
+import {FilterMappingService} from '../../shared/services/filterMapping.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-detail-filter',
@@ -25,11 +30,34 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class DetailFilterComponent implements OnInit {
 
-  constructor() { }
-  @Input() filter: Filter;
-  checked: boolean;
+  constructor(public config: GlobalConfigurationService,
+              public filterMappingService: FilterMappingService,
+              private router: Router) {
+  }
+
+  @Input() filter: SavedFilter;
+  criterias: Map<ModelProperty, string>;
+  @Output() updateFilter = new EventEmitter();
+  @Output() deleteFilter = new EventEmitter();
 
   ngOnInit() {
+    this.criterias = new Map<ModelProperty, string>();
+    this.filter.criterias.forEach(
+      ((value, key) => this.criterias.set(this.config.propertyByModelAndId(this.filter.category, key), value))
+    );
   }
+
+  get formattedMap() {
+    const formattedCriterias: { key: ModelProperty, value: string }[] = [];
+    this.criterias.forEach(
+      ((value, key) => formattedCriterias.push({key, value}))
+    );
+    return formattedCriterias;
+  }
+
+  search() {
+    this.router.navigateByUrl('/products/' + this.filter.category + '?' + this.filterMappingService.criteriasToUrl(this.criterias));
+  }
+
 
 }

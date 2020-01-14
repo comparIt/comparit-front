@@ -46,5 +46,12 @@
     </div>
   </div>
 
+  <p-dialog header="Ajouter une alerte" [(visible)]="modalSaveAlertVisible" [style]="{width: '300px'}" (onHide)="modalSaveAlertVisible = false">
+    <app-add-alert
+      (saveAlerte)="save($event)"
+      (onClose)="modalSaveAlertVisible = false">
+    </app-add-alert>
+  </p-dialog>
+
 
 </div>

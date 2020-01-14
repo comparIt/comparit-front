@@ -1,15 +1,14 @@
 import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import {GlobalConfigurationService} from '../../services/globalConfiguration.service';
-import {ActivatedRoute} from '@angular/router';
-import {SelectItem} from 'primeng/api';
+import {SavedFilter} from '../../models/savedFilter';
 
 @Component({
   selector: 'app-add-alert',
   template: `
-      <p-radioButton name="groupname" value="AUCUNE" label='Aucune alerte' [(ngModel)]="alertFrequency"></p-radioButton><br/>
-      <p-radioButton name="groupname" value="QUOTIDIENNE" label='Quotidienne' [(ngModel)]="alertFrequency"></p-radioButton><br/>
-      <p-radioButton name="groupname" value="HEBDOMADAIRE" label='Hebdomadaire' [(ngModel)]="alertFrequency"></p-radioButton><br/>
-      <p-radioButton name="groupname" value="MENSUELLE" label='Mensuelle' [(ngModel)]="alertFrequency"></p-radioButton><br/>
+      <p-radioButton name="groupname-{{id}}" value="AUCUNE" label='Aucune alerte' [(ngModel)]="alertFrequency"></p-radioButton><br/>
+      <p-radioButton name="groupname-{{id}}" value="QUOTIDIENNE" label='Quotidienne' [(ngModel)]="alertFrequency"></p-radioButton><br/>
+      <p-radioButton name="groupname-{{id}}" value="HEBDOMADAIRE" label='Hebdomadaire' [(ngModel)]="alertFrequency"></p-radioButton><br/>
+      <p-radioButton name="groupname-{{id}}" value="MENSUELLE" label='Mensuelle' [(ngModel)]="alertFrequency"></p-radioButton><br/>
       <button type="button"
               class="btn  mt-2"
               [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
@@ -20,8 +19,8 @@ import {SelectItem} from 'primeng/api';
 })
 export class AddAlertComponent implements OnInit {
 
+  @Input() filter: SavedFilter;
   @Input() alertFrequency = 'AUCUNE';
-  @Input() visible = false;
   @Output() saveAlerte = new EventEmitter();
   @Output() onClose = new EventEmitter();
 
@@ -34,6 +33,11 @@ export class AddAlertComponent implements OnInit {
 
   save() {
     this.saveAlerte.emit({alert: this.alertFrequency});
+    this.onClose.emit();
+  }
+
+  get id() {
+    return this.filter ? this.filter.id : 0;
   }
 
 }

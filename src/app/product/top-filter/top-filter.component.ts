@@ -50,7 +50,6 @@ export class TopFilterComponent implements OnInit {
 
   alert() {
     this.modalSaveAlertVisible = true;
-    this.router.navigate(['filter']);
   }
 
 }

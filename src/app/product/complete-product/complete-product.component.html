@@ -18,9 +18,9 @@
 
       <table class="table">
         <tbody>
-        <tr *ngFor="let property of product.properties | keyvalue ">
-          <td *ngIf="product.shouldDisplayProperty(property.key)">{{property.key}}</td>
-          <td *ngIf="product.shouldDisplayProperty(property.key)">{{property.value}}</td>
+        <tr *ngFor="let property of properties ">
+          <td *ngIf="product.shouldDisplayProperty(property.key.technicalName)">{{property.key.name}}</td>
+          <td *ngIf="product.shouldDisplayProperty(property.key.technicalName)">{{property.value}}</td>
         </tr>
         </tbody>
       </table>
