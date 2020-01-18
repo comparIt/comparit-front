@@ -44,6 +44,8 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
 import {DropdownModule} from './shared/components/dropdown/dropdown.component';
+import {FilterComponent} from './filter/filter.component';
+import {DetailFilterComponent} from './filter/detail-filter/detail-filter.component';
 import {AddAlertComponent} from './shared/components/add-alert/addAlert';
 import { NgxHotjarModule } from 'ngx-hotjar';
 import { MatomoModule } from 'ngx-matomo';
