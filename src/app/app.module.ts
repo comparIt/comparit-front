@@ -105,7 +105,7 @@ import { NgxHotjarModule } from 'ngx-hotjar';
     AccordionModule,
     ToastModule,
     DialogModule,
-    RadioButtonModule
+    RadioButtonModule,
     NgxHotjarModule.forRoot('1640364'),
   ],
   providers: [
