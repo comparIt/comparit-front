@@ -44,8 +44,9 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
 import {DropdownModule} from './shared/components/dropdown/dropdown.component';
-import {AddAlertComponent} from "./shared/components/add-alert/addAlert";
+import {AddAlertComponent} from './shared/components/add-alert/addAlert';
 import { NgxHotjarModule } from 'ngx-hotjar';
+import { MatomoModule } from 'ngx-matomo';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { NgxHotjarModule } from 'ngx-hotjar';
     DialogModule,
     RadioButtonModule,
     NgxHotjarModule.forRoot('1640364'),
+    MatomoModule,
   ],
   providers: [
     GlobalConfigurationService,
