@@ -93,7 +93,8 @@ export const routes: Routes = [
     component : FilterComponent,
     resolve   : {
       config: GlobalConfigurationService
-    }
+    },
+    canActivate: [CanActivateGuardService]
   }
 ];
 
