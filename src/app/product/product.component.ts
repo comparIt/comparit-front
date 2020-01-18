@@ -5,8 +5,9 @@ import {GlobalConfigurationService} from '../shared/services/globalConfiguration
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
 import {ProductPagineDTO} from '../shared/models/productPagineDTO';
-import {MessageService} from "primeng/api";
+import {MessageService} from 'primeng/api';
 import {NgxHotjarService} from 'ngx-hotjar';
+import {MatomoTracker} from 'ngx-matomo';
 
 @Component({
   selector: 'app-product',
@@ -20,6 +21,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     protected $hotjar: NgxHotjarService,
+    private matomoTracker: MatomoTracker,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
     private conf: GlobalConfigurationService,
@@ -33,6 +35,7 @@ export class ProductComponent implements OnInit {
       this.search({});
     });
     this.$hotjar.virtualPageView('/product');
+    this.matomoTracker.setDocumentTitle('product');
   }
 
   search(event) {
@@ -40,11 +43,14 @@ export class ProductComponent implements OnInit {
     this.api.getProducts(this.filterService.filterToApi(this.model, event.order, undefined, undefined)).then(
       (productPagineDTO: ProductPagineDTO) => {
         this.productPagineDTO = new ProductPagineDTO(productPagineDTO);
+        // Analytics Tracking
+        this.matomoTracker.trackEvent('Product', 'action', 'getProducts');
       }
     ).catch(() => {
         this.productPagineDTO = new ProductPagineDTO({});
       }
     );
+
   }
 
   saveFilter(event) {

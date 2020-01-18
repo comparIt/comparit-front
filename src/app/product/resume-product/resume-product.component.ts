@@ -3,7 +3,8 @@ import {Product} from '../../shared/models/product';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
 import {Router} from '@angular/router';
 import {Model} from '../../shared/models/model';
-import {NgxHotjarService} from "ngx-hotjar";
+import {NgxHotjarService} from 'ngx-hotjar';
+import {MatomoTracker} from 'ngx-matomo';
 
 @Component({
   selector: 'app-resume-product',
@@ -16,6 +17,7 @@ export class ResumeProductComponent implements OnInit {
 
   constructor(
     protected $hotjar: NgxHotjarService,
+    private matomoTracker: MatomoTracker,
     private router: Router,
     private config: GlobalConfigurationService) { }
 
@@ -28,6 +30,8 @@ export class ResumeProductComponent implements OnInit {
   goToProduct(idProduct: string) {
 
     this.router.navigate(['/products/' + this.model.technicalName + '/' + idProduct]);
+    // Analytics Tracking
+    this.matomoTracker.trackEvent('Product', 'action', 'getProduct', Number(idProduct) );
   }
 
 }

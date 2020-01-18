@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatomoInjector } from 'ngx-matomo';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(
+    private matomoInjector: MatomoInjector
+  ) {
+    this.matomoInjector.init('https://compit.northeurope.cloudapp.azure.com/', 1);
+  }
   title = 'compare-it-front';
 }
