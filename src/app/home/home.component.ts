@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.$hotjar.virtualPageView('/home');
-    this.matomoTracker.setUserId('UserId');
     this.matomoTracker.setDocumentTitle('ngx-Matomo home');
   }
 

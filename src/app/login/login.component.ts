@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../shared/services/authentification.service';
 import CRYPTO from 'crypto-js';
 import {tokenize} from '@angular/compiler/src/ml_parser/lexer';
+import {MatomoTracker} from 'ngx-matomo';
 
 
 
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private compareItAPIService: CompareItAPIService,
         private router: Router,
-        public auth: AuthenticationService
+        public auth: AuthenticationService,
+        private matomoTracker: MatomoTracker
 
     ) {
         this.checkoutForm = this.formBuilder.group({
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
           this.auth.login(loginandpwd.login, CRYPTO.SHA256(loginandpwd.pwd).toString())
               .then(() => {
                   this.router.navigate(['home']);
+                  this.matomoTracker.setUserId(loginandpwd.login);
               });
       }
     }

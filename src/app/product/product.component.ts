@@ -44,7 +44,7 @@ export class ProductComponent implements OnInit {
       (productPagineDTO: ProductPagineDTO) => {
         this.productPagineDTO = new ProductPagineDTO(productPagineDTO);
         // Analytics Tracking
-        this.matomoTracker.trackEvent('Product', 'action', 'getProducts');
+        this.matomoTracker.trackEvent('Product', 'getProducts');
       }
     ).catch(() => {
         this.productPagineDTO = new ProductPagineDTO({});
