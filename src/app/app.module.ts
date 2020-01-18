@@ -49,6 +49,7 @@ import {DetailFilterComponent} from './filter/detail-filter/detail-filter.compon
 import {AddAlertComponent} from './shared/components/add-alert/addAlert';
 import {DialogModule} from 'primeng/dialog';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { NgxHotjarModule } from 'ngx-hotjar';
 
 @NgModule({
   declarations: [
@@ -105,6 +106,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     ToastModule,
     DialogModule,
     RadioButtonModule
+    NgxHotjarModule.forRoot('1640364'),
   ],
   providers: [
     GlobalConfigurationService,

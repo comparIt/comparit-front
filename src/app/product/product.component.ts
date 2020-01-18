@@ -6,6 +6,7 @@ import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
 import {ProductPagineDTO} from '../shared/models/productPagineDTO';
 import {MessageService} from 'primeng/api';
+import {NgxHotjarService} from 'ngx-hotjar';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,7 @@ export class ProductComponent implements OnInit {
   productPagineDTO: ProductPagineDTO = new ProductPagineDTO({});
 
   constructor(
+    protected $hotjar: NgxHotjarService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
     private conf: GlobalConfigurationService,
@@ -33,6 +35,7 @@ export class ProductComponent implements OnInit {
       });
       this.search({});
     });
+    this.$hotjar.virtualPageView('/product');
   }
 
   initFilters(params: ParamMap) {
