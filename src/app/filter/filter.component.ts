@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../shared/services/authentification.service';
-import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
-import {SavedFilter} from '../../shared/models/savedFilter';
+import {AuthenticationService} from '../shared/services/authentification.service';
+import {CompareItAPIService} from '../shared/services/compareItAPI.service';
+import {SavedFilter} from '../shared/models/savedFilter';
 import {MessageService} from 'primeng/api';
 
 @Component({
