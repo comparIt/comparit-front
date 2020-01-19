@@ -1,3 +1,5 @@
+import {Filter} from './filter';
+
 export class User {
   authdata: User;
   id: number;
@@ -5,7 +7,7 @@ export class User {
   lastName: string;
   firstName: string;
   password: string;
-  filters: string[];
+  filters: Filter[];
   company: string[];
   typeUser: string[];
   createdAt: Date;

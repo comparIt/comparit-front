@@ -37,20 +37,28 @@
       </div>
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 my-1">
         <button type="button"
-                class="btn mx-1"
-                [ngStyle]="{'background-color': config.colorPrimary}"
+                class="btn mb-2"
+                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
                 (click)="search()"
         >Rechercher
+        </button>
+
+        <button type="button"
+                class="btn"
+                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+                (click)="filters()"
+        >Mes Filtres
         </button>
       </div>
     </div>
   </div>
 
-  <app-add-alert
-    [visible]="modalSaveAlertVisible"
-    [alertFrequency]="'AUCUNE'"
-    (saveAlerte)="save($event)"
-    (onClose)="modalSaveAlertVisible = false">
-  </app-add-alert>
+  <p-dialog header="Ajouter une alerte" [(visible)]="modalSaveAlertVisible" [style]="{width: '300px'}" (onHide)="modalSaveAlertVisible = false">
+    <app-add-alert
+      (saveAlerte)="save($event)"
+      (onClose)="modalSaveAlertVisible = false">
+    </app-add-alert>
+  </p-dialog>
+
 
 </div>

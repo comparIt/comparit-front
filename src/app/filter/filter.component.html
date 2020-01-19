@@ -1,0 +1,12 @@
+<app-detail-filter
+  *ngFor="let filter of filters"
+  [filter]="filter"
+  (deleteFilter)="deleteFilter($event)"
+  (updateFilter)="updateFilter($event)">
+</app-detail-filter>
+
+<div class="card my-1 text-center" *ngIf="filters.length === 0 || !filters">
+  <div class="card-body">
+    Vous n'avez enregistré aucun filtre pour l'instant.
+  </div>
+</div>

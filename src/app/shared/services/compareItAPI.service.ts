@@ -4,7 +4,7 @@ import {Configuration} from '../models/configuration';
 import {User} from '../models/user';
 import {environment} from '../../../environments/environment';
 import {Model} from '../models/model';
-import {SavedFilter} from "../models/savedFilter";
+import {SavedFilter} from '../models/savedFilter';
 
 @Injectable({
   providedIn: 'root',
@@ -66,7 +66,7 @@ export class CompareItAPIService {
   }
 
   private delete(endPoint: string, params: { key: any, value: any }[]): any {
-    return this.http.delete(this.getBuiltUrl(endPoint, params));
+    return this.http.delete(this.getBuiltUrl(endPoint, params)).toPromise();
   }
 
 
@@ -112,5 +112,12 @@ export class CompareItAPIService {
     return this.post(this.filterController, [], filter.toJSON());
   }
 
+  public getUserFilters(): any {
+    return this.get(this.filterController, []);
+  }
+
+  public deleteFilter(filter: SavedFilter): any {
+    return this.delete(this.filterController + '/' + filter.id, []);
+  }
 
 }

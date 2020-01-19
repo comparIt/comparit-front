@@ -36,6 +36,9 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  goToSavedFilter() {
+    this.router.navigate(['/filter']);
+  }
 
   logout() {
     this.auth.logout();

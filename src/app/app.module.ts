@@ -21,7 +21,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
 import {RegisterUserComponent} from './register-user/register-user.component';
-import {ConfirmDialogModule, DialogModule, MessagesModule, RadioButtonModule} from 'primeng/primeng';
+import {ConfirmDialogModule, MessagesModule} from 'primeng/primeng';
 import {MessageModule} from 'primeng/message';
 import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
@@ -44,9 +44,13 @@ import {ConfirmationService, MessageService} from 'primeng/api';
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
 import {DropdownModule} from './shared/components/dropdown/dropdown.component';
+import {FilterComponent} from './filter/filter.component';
+import {DetailFilterComponent} from './filter/detail-filter/detail-filter.component';
 import {AddAlertComponent} from './shared/components/add-alert/addAlert';
-import { NgxHotjarModule } from 'ngx-hotjar';
-import { MatomoModule } from 'ngx-matomo';
+import {DialogModule} from 'primeng/dialog';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {NgxHotjarModule} from 'ngx-hotjar';
+import {MatomoModule} from 'ngx-matomo';
 
 @NgModule({
   declarations: [
@@ -72,7 +76,10 @@ import { MatomoModule } from 'ngx-matomo';
     ErrorComponent,
     CompleteProductComponent,
     FeatureSwitchComponent,
-    AddAlertComponent
+    AddAlertComponent,
+    FeatureSwitchComponent,
+    FilterComponent,
+    DetailFilterComponent,
   ],
   imports: [
     BrowserModule,
