@@ -38,7 +38,7 @@ export class ProductComponent implements OnInit {
       this.search({});
     });
     this.$hotjar.virtualPageView('/product');
-    this.matomoTracker.setDocumentTitle('product');
+    this.matomoTracker.trackPageView(this.constructor.name);
   }
 
   initFilters(params: ParamMap) {

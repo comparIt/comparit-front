@@ -27,6 +27,7 @@ export class CompleteProductComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.matomoTracker.trackPageView(this.constructor.name);
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
       this.id = params.id;

@@ -24,6 +24,7 @@ export class ResumeProductComponent implements OnInit {
 
   ngOnInit() {
     this.$hotjar.virtualPageView('/products/one');
+    this.matomoTracker.trackPageView(this.constructor.name);
   }
 
 

@@ -3,6 +3,7 @@ import {AuthenticationService} from '../shared/services/authentification.service
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {SavedFilter} from '../shared/models/savedFilter';
 import {MessageService} from 'primeng/api';
+import {MatomoTracker} from 'ngx-matomo';
 
 @Component({
   selector: 'app-filter',
@@ -16,11 +17,13 @@ export class FilterComponent implements OnInit {
   constructor(
     private authentification: AuthenticationService,
     private api: CompareItAPIService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private matomoTracker: MatomoTracker
   ) { }
 
   ngOnInit() {
     this.fetchFilters();
+    this.matomoTracker.trackPageView(this.constructor.name);
   }
 
   updateFilter(filterToUpdate: SavedFilter) {

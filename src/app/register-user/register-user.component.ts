@@ -21,11 +21,10 @@ export class RegisterUserComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private userRegistrationService :UserRegistrationService) 
-  {}
+    private userRegistrationService: UserRegistrationService) {}
 
   ngOnInit() {
-    this.user= new User();
+    this.user = new User();
     this.userform = this.fb.group({
       'firstname': new FormControl('', Validators.required),
       'lastname': new FormControl('', Validators.required),

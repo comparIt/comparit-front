@@ -5,6 +5,7 @@ import {GlobalConfigurationService} from '../shared/services/globalConfiguration
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Model} from '../shared/models/model';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {MatomoTracker} from 'ngx-matomo';
 
 @Component({
   selector: 'app-admin',
@@ -23,6 +24,7 @@ export class AdminComponent implements OnInit {
     private compareItAPIService: CompareItAPIService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
+    private matomoTracker: MatomoTracker
   ) {}
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class AdminComponent implements OnInit {
       animation: true
     });
     this.configuration = this.globalconfigurationService.currentConfig;
+    this.matomoTracker.trackPageView(this.constructor.name);
   }
 
   next() {

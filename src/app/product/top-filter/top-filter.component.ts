@@ -5,6 +5,7 @@ import {Model} from '../../shared/models/model';
 import {ModelProperty} from '../../shared/models/modelProperty';
 import {AuthenticationService} from '../../shared/services/authentification.service';
 import {Router} from '@angular/router';
+import {MatomoTracker} from 'ngx-matomo';
 
 @Component({
   selector: 'app-top-filter',
@@ -14,7 +15,8 @@ export class TopFilterComponent implements OnInit {
 
   constructor(public config: GlobalConfigurationService,
               private router: Router,
-              public authenticationService: AuthenticationService) { }
+              public authenticationService: AuthenticationService,
+              private matomoTracker: MatomoTracker) { }
 
   @Input() model: Model;
   @Output() searchEvent = new EventEmitter();
@@ -25,6 +27,7 @@ export class TopFilterComponent implements OnInit {
   orderOptions: SelectItem[];
 
   ngOnInit() {
+    this.matomoTracker.trackPageView(this.constructor.name);
     this.orderOptions =  this.model.filterableProperties.filter((p) => p.isNumeric)
       .map((p) => {
           return  [
