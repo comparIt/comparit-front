@@ -10,9 +10,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngIf="isAuthenticated">
-        <a class="nav-link" (click)="goToSavedFilter()">Mes Filtres</a>
-      </li>
       <li class="nav-item" *ngIf="isAdmin">
         <a class="nav-link" (click)="goToAdmin()">Administration</a>
       </li>
@@ -23,9 +20,21 @@
         <a class="nav-link" (click)="goToUploadURL()">Charger des produits (URL)</a>
       </li>
     </ul>
-    <form class="nav-item">
-      <a *ngIf="!isAuthenticated" class="nav-link" (click)="goToConnexion()">Connexion</a>
-      <a *ngIf="isAuthenticated" class="nav-link" (click)="logout()">Déconnexion</a>
-    </form>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" *ngIf="!isAuthenticated" >
+        <a class="nav-link" (click)="goToConnexion()" *ngIf="config.currentConfig.featUser">Connexion</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="isAuthenticated">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user?.firstName }}</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" (click)="goToSavedFilter()">Mes Filtres</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">Déconnexion</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

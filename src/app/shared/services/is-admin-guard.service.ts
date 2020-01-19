@@ -3,7 +3,7 @@ import {CanActivate, Router} from '@angular/router';
 import {AuthenticationService} from './authentification.service';
 
 @Injectable()
-export class CanActivateGuardService implements CanActivate {
+export class IsAdminGuardService implements CanActivate {
 
     constructor(
         private authService: AuthenticationService,
@@ -11,7 +11,7 @@ export class CanActivateGuardService implements CanActivate {
     ) {}
 
     canActivate(): boolean {
-        const userLogedIn: boolean = this.authService.isAuthenticated();
+        const userLogedIn: boolean = this.authService.isAuthenticated() && this.authService.isAdmin();
         if (!userLogedIn) {
             this.router.navigate(['/login']);
         }

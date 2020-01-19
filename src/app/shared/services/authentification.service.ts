@@ -38,6 +38,7 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.accessToken = null;
     this.currentUserSubject.next(null);
+    this.user = null;
   }
 
   public isAuthenticated(): boolean {

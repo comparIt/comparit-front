@@ -36,7 +36,7 @@ import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
-import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
+import {IsAuthenticatedGuardService} from './shared/services/is-authenticated-guard.service';
 import {PaginatorModule} from './shared/components/paginator/paginator.component';
 import {AccordionModule} from 'primeng/accordion';
 import {ToastModule} from 'primeng/toast';
@@ -49,8 +49,9 @@ import {DetailFilterComponent} from './filter/detail-filter/detail-filter.compon
 import {AddAlertComponent} from './shared/components/add-alert/addAlert';
 import {DialogModule} from 'primeng/dialog';
 import {RadioButtonModule} from 'primeng/radiobutton';
-import {NgxHotjarModule} from 'ngx-hotjar';
 import {MatomoModule} from 'ngx-matomo';
+import { NgxHotjarModule } from 'ngx-hotjar';
+import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import {MatomoModule} from 'ngx-matomo';
       multi: true
     },
     CompareItAPIService,
-    CanActivateGuardService,
+    IsAuthenticatedGuardService,
+    IsAdminGuardService,
     ConfirmationService
   ],
   bootstrap: [AppComponent]

@@ -46,7 +46,7 @@ export class TopFilterComponent implements OnInit {
   }
 
   filters() {
-    this.router.navigate(['filter']);
+    this.router.navigate(['user/filter']);
   }
   save(event) {
     this.modalSaveAlertVisible = false;

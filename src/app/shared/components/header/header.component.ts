@@ -2,6 +2,7 @@ import {Component, OnInit, EventEmitter, Input, Output} from '@angular/core';
 import {GlobalConfigurationService} from '../../services/globalConfiguration.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentification.service';
+import {User} from '../../models/user';
 
 @Component({
   selector: 'app-header',
@@ -33,11 +34,11 @@ export class HeaderComponent implements OnInit {
   }
 
   goToConnexion() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['login']);
   }
 
   goToSavedFilter() {
-    this.router.navigate(['/filter']);
+    this.router.navigate(['user/filter']);
   }
 
   logout() {
@@ -50,5 +51,9 @@ export class HeaderComponent implements OnInit {
 
   get isAuthenticated(): boolean {
     return this.auth.isAuthenticated();
+  }
+
+  get user(): User {
+    return this.auth.currentUserValue;
   }
 }
