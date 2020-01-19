@@ -49,10 +49,8 @@ import {DetailFilterComponent} from './filter/detail-filter/detail-filter.compon
 import {AddAlertComponent} from './shared/components/add-alert/addAlert';
 import {DialogModule} from 'primeng/dialog';
 import {RadioButtonModule} from 'primeng/radiobutton';
-import { NgxHotjarModule } from 'ngx-hotjar';
-import { MatomoModule } from 'ngx-matomo';
-import { FilterComponent } from './product/filter/filter.component';
-import { DetailFilterComponent } from './product/detail-filter/detail-filter.component';
+import {NgxHotjarModule} from 'ngx-hotjar';
+import {MatomoModule} from 'ngx-matomo';
 
 @NgModule({
   declarations: [

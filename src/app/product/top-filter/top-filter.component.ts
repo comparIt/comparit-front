@@ -3,7 +3,6 @@ import {GlobalConfigurationService} from '../../shared/services/globalConfigurat
 import {SelectItem} from 'primeng/api';
 import {Model} from '../../shared/models/model';
 import {ModelProperty} from '../../shared/models/modelProperty';
-import {Router} from '@angular/router';
 import {AuthenticationService} from '../../shared/services/authentification.service';
 import {Router} from '@angular/router';
 

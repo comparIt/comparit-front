@@ -4,10 +4,7 @@ import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../shared/services/authentification.service';
 import CRYPTO from 'crypto-js';
-import {tokenize} from '@angular/compiler/src/ml_parser/lexer';
 import {MatomoTracker} from 'ngx-matomo';
-
-
 
 @Component({
     selector: 'app-login',
@@ -46,7 +43,7 @@ export class LoginComponent implements OnInit {
       }
     }
 
-    onClickGoToRegister(){
+    onClickGoToRegister() {
         this.router.navigate(['register-user']);
     }
 }
