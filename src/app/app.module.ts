@@ -78,10 +78,10 @@ import { DetailFilterComponent } from './product/detail-filter/detail-filter.com
     ErrorComponent,
     CompleteProductComponent,
     FeatureSwitchComponent,
-    AddAlertComponent
+    AddAlertComponent,
     FeatureSwitchComponent,
     FilterComponent,
-    DetailFilterComponent
+    DetailFilterComponent,
   ],
   imports: [
     BrowserModule,
