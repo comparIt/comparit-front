@@ -10,7 +10,7 @@ export class AppComponent {
   constructor(
     private matomoInjector: MatomoInjector
   ) {
-    this.matomoInjector.init('https://compit.northeurope.cloudapp.azure.com/', 1);
+    this.matomoInjector.init('https://compit.northeurope.cloudapp.azure.com/', 2);
   }
   title = 'compare-it-front';
 }
