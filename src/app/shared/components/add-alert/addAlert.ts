@@ -10,12 +10,11 @@ import {SavedFilter} from '../../models/savedFilter';
       <p-radioButton name="groupname-{{id}}" value="HEBDOMADAIRE" label='Hebdomadaire' [(ngModel)]="alertFrequency"></p-radioButton><br/>
       <p-radioButton name="groupname-{{id}}" value="MENSUELLE" label='Mensuelle' [(ngModel)]="alertFrequency"></p-radioButton><br/>
       <button type="button"
-              class="btn"
+              class="btn  mt-2"
               [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
               (click)="save()"
       ><i class="fas fa-save" aria-hidden="true"></i>
       </button>
-    </p-dialog>
   `
 })
 export class AddAlertComponent implements OnInit {

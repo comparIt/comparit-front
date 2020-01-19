@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {GlobalConfigurationService} from './globalConfiguration.service';
 import {Model} from '../models/model';
 import {ModelProperty} from '../models/modelProperty';
-import {SavedFilter} from "../models/savedFilter";
+import {SavedFilter} from '../models/savedFilter';
 
 @Injectable({
   providedIn: 'root',
@@ -66,7 +66,7 @@ export class FilterMappingService {
       filter.isAlert = false;
       filter.alertType = 'AUCUNE';
     }
-    console.log('filter: ', filter)
+    console.log('filter: ', filter);
     return filter;
   }
 

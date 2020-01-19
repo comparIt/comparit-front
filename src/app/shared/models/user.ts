@@ -7,7 +7,7 @@ export class User {
   lastName: string;
   firstName: string;
   password: string;
-  filters: string[];
+  filters: Filter[];
   company: string[];
   typeUser: string[];
   createdAt: Date;
