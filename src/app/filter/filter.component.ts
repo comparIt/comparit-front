@@ -11,7 +11,7 @@ import {MessageService} from 'primeng/api';
 })
 export class FilterComponent implements OnInit {
 
-  filters: SavedFilter[];
+  filters: SavedFilter[] = [];
 
   constructor(
     private authentification: AuthenticationService,
