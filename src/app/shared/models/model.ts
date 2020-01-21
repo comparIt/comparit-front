@@ -7,9 +7,11 @@ export class Model {
   modelProperties: ModelProperty[];
   imageURL: string;
   saved = true;
+  id: number;
 
   static buildModel(model: Model): Model {
     const newModel = new Model();
+    newModel.id = model.id;
     newModel.name = model.name;
     newModel.technicalName = model.technicalName;
     newModel.activated = model.activated;
