@@ -64,7 +64,7 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     });
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
+  fetch() {
     return this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
       if (wsc) {
         this.configuration = Configuration.buildConfiguration(wsc);
@@ -76,6 +76,10 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
       this.configuration = Configuration.defaultConfiguration();
       return this.configuration;
     });
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
+    return this.fetch();
   }
 
 }

@@ -48,8 +48,8 @@ export class AdminComponent implements OnInit {
     this.submitted = true;
     this.globalconfigurationService.putConfiguration(this.configuration).then((configuration: Configuration) => {
       this.submitted = false;
-      this.configuration = configuration;
       this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Configuration enregistrée', life: 1000});
+      return this.globalconfigurationService.fetch();
     }).catch(() => {
       this.submitted = false;
       this.messageService.add({severity: 'error', summary: 'Echec', detail: 'Echec de l\'enregistrement', life: 1000});

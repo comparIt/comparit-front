@@ -37,7 +37,10 @@ export class UploadUrlComponent implements OnInit {
   getUploadUrl(typeProduit: string, url: string) {
     this.httpClient.get(this.compareItAPIService.getUploadUrl(typeProduit) + '?url=' + url)
       .toPromise()
-      .then(() => this.showResult = true)
+      .then(() => {
+        this.showResult = true;
+        return this.globalconfigurationService.fetch();
+      })
       .catch(this.handleError);
   }
 

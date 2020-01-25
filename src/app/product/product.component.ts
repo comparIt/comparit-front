@@ -48,7 +48,7 @@ export class ProductComponent implements OnInit {
   }
 
   search(event) {
-    this.productPagineDTO = new ProductPagineDTO({});
+    this.productPagineDTO = undefined;
     this.api.getProducts(this.filterService.filterToApi(this.model, event.order, undefined, undefined)).then(
       (productPagineDTO: ProductPagineDTO) => {
         this.productPagineDTO = new ProductPagineDTO(productPagineDTO);

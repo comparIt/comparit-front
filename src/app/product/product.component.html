@@ -5,6 +5,16 @@
 </div>
 
 <div class="container my-5">
+
+
+  <div class="d-flex justify-content-center" *ngIf="!productPagineDTO">
+    <div class="spinner-border"
+         [ngStyle]="{'color': this.conf.currentConfig.colorPrimary}"
+         role="status">
+      <span class="sr-only">Chargement...</span>
+    </div>
+  </div>
+
   <section *ngIf="this.productPagineDTO">
     <app-resume-product
       *ngFor="let product of productPagineDTO.productsToDisplay | slice:(productPagineDTO.pageActuelle) * 10 : (productPagineDTO.pageActuelle) * 10 + productPagineDTO.productsPerPage"
