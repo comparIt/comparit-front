@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
     private matomoTracker: MatomoTracker,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
-    private conf: GlobalConfigurationService,
+    public conf: GlobalConfigurationService,
     private filterService: FilterMappingService,
     private messageService: MessageService) {
   }
