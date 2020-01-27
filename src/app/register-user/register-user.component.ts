@@ -5,6 +5,8 @@ import {User} from '../shared/models/user';
 import {UserRegistrationService} from '../shared/services/user-registration.service';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {MessageService} from 'primeng/api';
+import CRYPTO from 'crypto-js';
+import {AuthenticationService} from '../shared/services/authentification.service';
 
 @Component({
   selector: 'app-register-user',
@@ -26,7 +28,9 @@ export class RegisterUserComponent implements OnInit {
     private router: Router,
     private userRegistrationService: UserRegistrationService,
     private messageService: MessageService,
-    public config: GlobalConfigurationService) {}
+    public auth: AuthenticationService,
+    public config: GlobalConfigurationService) {
+  }
 
   ngOnInit() {
     this.user = new User();
@@ -42,19 +46,29 @@ export class RegisterUserComponent implements OnInit {
   }
 
   onClickRegisterUser() {
-    this.userRegistrationService.putUserRegistration(this.user).then(() => {
-      this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Compte créé', life: 2000});
-      this.router.navigate(['login']);
-    }).catch(() => {
-      this.messageService.add({severity: 'error', summary: 'Echec', detail: 'Erreur lors de la création de votre compte', life: 2000});
-    });
+    this.userRegistrationService.putUserRegistration(this.user)
+      .catch(() => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Echec',
+          detail: 'Erreur lors de la création de votre compte',
+          life: 2000
+        });
+      })
+      .then(() => {
+        this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Compte créé', life: 2000});
+        return this.auth.login(this.user.email, CRYPTO.SHA256(this.user.password).toString());
+      })
+      .then(() => {
+        this.router.navigate(['home']);
+      });
   }
 
   checkPasswords(group: FormGroup) {
     const pass = group.get('password').value;
     const confirmPass = group.get('confirmedPassword').value;
 
-    return pass === confirmPass ? false : { notSame: true };
+    return pass === confirmPass ? false : {notSame: true};
   }
 
   onClickGoToLogin() {

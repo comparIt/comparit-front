@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {User} from '../models/user';
 import {CompareItAPIService} from './compareItAPI.service';
 import {Router} from '@angular/router';
+import {MatomoTracker} from 'ngx-matomo';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -15,6 +16,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient,
               private compareItAPIService: CompareItAPIService,
+              private matomoTracker: MatomoTracker,
               private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -32,6 +34,7 @@ export class AuthenticationService {
       this.user = User.buildUser(user);
       this.currentUserSubject = new BehaviorSubject<User>(user);
       this.currentUser = this.currentUserSubject.asObservable();
+      this.matomoTracker.setUserId(this.user.email);
       return this.accessToken;
     });
   }

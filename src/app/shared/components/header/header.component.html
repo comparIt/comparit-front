@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" [ngStyle]="{'background-color': config.colorPrimary}">
   <a class="navbar-brand" (click)="goToHome()">
-    <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" height="30" class="d-inline-block align-top" alt="">
     {{config.currentConfig.name}}
   </a>
 
@@ -37,12 +37,20 @@
           >Inscription</button>
       </li>
       <li class="nav-item dropdown" *ngIf="isAuthenticated">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user?.firstName }}</a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" (click)="goToSavedFilter()">Mes Filtres</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logout()">Déconnexion</a>
-        </div>
+          <button class="btn dropdown-toggle"
+                  [ngStyle]="{'background-color' : 'white', 'width': '100%','color':config.colorPrimary}"
+                  type="button"
+                  id="dropdownMenu2"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+            {{ user?.firstName }}
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" (click)="goToSavedFilter()">Mes Filtres</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">Déconnexion</a>
+          </div>
       </li>
     </ul>
   </div>
