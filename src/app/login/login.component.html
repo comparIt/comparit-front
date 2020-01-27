@@ -2,7 +2,9 @@
 <form [formGroup]="checkoutForm" class="text-center border border-light p-5" (ngSubmit)="onSubmit(checkoutForm.value)">
 
   <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="250" class="mp-2 d-inline-block align-top" alt="">
-
+  <div class="alert alert-danger" role="alert" *ngIf="inError">
+    Identifiant ou mot de passe incorrecte !
+  </div>
 
     <!-- Email -->
     <div >

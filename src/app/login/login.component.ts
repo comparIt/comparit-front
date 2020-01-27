@@ -13,6 +13,7 @@ import {GlobalConfigurationService} from '../shared/services/globalConfiguration
 })
 export class LoginComponent implements OnInit {
   checkoutForm;
+  public inError = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
       this.auth.login(loginandpwd.login, CRYPTO.SHA256(loginandpwd.pwd).toString())
         .then(() => {
           this.router.navigate(['home']);
-        });
+        }).catch(() => this.inError = true);
     }
   }
 

@@ -47,7 +47,7 @@
             {{ user?.firstName }}
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" (click)="goToSavedFilter()">Mes Filtres</a>
+            <a class="dropdown-item" (click)="goToSavedFilter()" *ngIf="config.currentConfig.featSaveFilter">Mes Filtres</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" (click)="logout()">Déconnexion</a>
           </div>
