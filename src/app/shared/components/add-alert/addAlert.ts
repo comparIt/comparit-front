@@ -6,6 +6,7 @@ import {SavedFilter} from '../../models/savedFilter';
   selector: 'app-add-alert',
   template: `
       <p-radioButton name="groupname-{{id}}" value="AUCUNE" label='Aucune alerte' [(ngModel)]="alertFrequency"></p-radioButton><br/>
+      <p-radioButton name="groupname-{{id}}" value="MINUTES" label='Toutes les 5 minutes' [(ngModel)]="alertFrequency"></p-radioButton><br/>
       <p-radioButton name="groupname-{{id}}" value="QUOTIDIENNE" label='Quotidienne' [(ngModel)]="alertFrequency"></p-radioButton><br/>
       <p-radioButton name="groupname-{{id}}" value="HEBDOMADAIRE" label='Hebdomadaire' [(ngModel)]="alertFrequency"></p-radioButton><br/>
       <p-radioButton name="groupname-{{id}}" value="MENSUELLE" label='Mensuelle' [(ngModel)]="alertFrequency"></p-radioButton><br/>
