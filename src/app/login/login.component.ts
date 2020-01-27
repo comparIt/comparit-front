@@ -5,11 +5,11 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '../shared/services/authentification.service';
 import CRYPTO from 'crypto-js';
 import {MatomoTracker} from 'ngx-matomo';
+import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.scss']
+    templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
     checkoutForm;
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
         private compareItAPIService: CompareItAPIService,
         private router: Router,
         public auth: AuthenticationService,
-        private matomoTracker: MatomoTracker
-
+        private matomoTracker: MatomoTracker,
+        public config: GlobalConfigurationService
     ) {
         this.checkoutForm = this.formBuilder.group({
             login: '',
@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
       this.matomoTracker.trackPageView(this.constructor.name);
     }
-
 
     onSubmit(loginandpwd) {
       this.checkoutForm.reset();
@@ -45,6 +44,6 @@ export class LoginComponent implements OnInit {
     }
 
     onClickGoToRegister() {
-        this.router.navigate(['register-user']);
+        this.router.navigate(['register']);
     }
 }

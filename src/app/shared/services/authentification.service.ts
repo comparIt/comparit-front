@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {User} from '../models/user';
 import {CompareItAPIService} from './compareItAPI.service';
+import {Router} from '@angular/router';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -12,7 +13,9 @@ export class AuthenticationService {
   private expiresAt: number;
   accessToken: string;
 
-  constructor(private http: HttpClient, private compareItAPIService: CompareItAPIService) {
+  constructor(private http: HttpClient,
+              private compareItAPIService: CompareItAPIService,
+              private router: Router) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -39,6 +42,7 @@ export class AuthenticationService {
     this.accessToken = null;
     this.currentUserSubject.next(null);
     this.user = null;
+    this.router.navigate(['']);
   }
 
   public isAuthenticated(): boolean {

@@ -37,6 +37,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  goToRegister() {
+    this.router.navigate(['register']);
+  }
+
   goToSavedFilter() {
     this.router.navigate(['user/filter']);
   }

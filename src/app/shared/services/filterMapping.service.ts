@@ -71,10 +71,7 @@ export class FilterMappingService {
     const array: {key: string, value: string}[] = [];
     criterias.forEach((value, key) => {
       array.push({key: key.technicalName, value});
-      console.log(value, key, array)
     });
     return array.map(kv => kv.key + '=' + kv.value).join('&');
   }
-
-
 }
