@@ -28,7 +28,7 @@ export const routes: Routes = [
       {path: 'home', component: HomeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'error/:errorCode', component: ErrorComponent},
-      {path: 'register-user', component: RegisterUserComponent},
+      {path: 'register', component: RegisterUserComponent},
       {
         path: 'products',
         children: [

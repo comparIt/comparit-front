@@ -64,7 +64,7 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     });
   }
 
-  fetch() {
+  fetch(): Configuration {
     return this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
       if (wsc) {
         this.configuration = Configuration.buildConfiguration(wsc);
