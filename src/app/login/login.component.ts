@@ -4,8 +4,8 @@ import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../shared/services/authentification.service';
 import CRYPTO from 'crypto-js';
-import {MatomoTracker} from 'ngx-matomo';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
+import {MatomoService} from '../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private compareItAPIService: CompareItAPIService,
     private router: Router,
     public auth: AuthenticationService,
-    private matomoTracker: MatomoTracker,
+    private matomoTracker: MatomoService,
     public config: GlobalConfigurationService
   ) {
     this.checkoutForm = this.formBuilder.group({

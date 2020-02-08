@@ -52,6 +52,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {MatomoModule} from 'ngx-matomo';
 import { NgxHotjarModule } from 'ngx-hotjar';
 import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
+import {MatomoService} from './shared/services/Matomo.service';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
     CompareItAPIService,
     IsAuthenticatedGuardService,
     IsAdminGuardService,
-    ConfirmationService
+    ConfirmationService,
+    MatomoService
   ],
   bootstrap: [AppComponent]
 })

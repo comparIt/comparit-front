@@ -3,7 +3,7 @@ import {AuthenticationService} from '../shared/services/authentification.service
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {SavedFilter} from '../shared/models/savedFilter';
 import {MessageService} from 'primeng/api';
-import {MatomoTracker} from 'ngx-matomo';
+import {MatomoService} from '../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-filter',
@@ -18,7 +18,7 @@ export class FilterComponent implements OnInit {
     private authentification: AuthenticationService,
     private api: CompareItAPIService,
     private messageService: MessageService,
-    private matomoTracker: MatomoTracker
+    private matomoTracker: MatomoService
   ) { }
 
   ngOnInit() {

@@ -3,7 +3,7 @@ import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../shared/services/authentification.service';
 import {NgxHotjarService} from 'ngx-hotjar';
-import {MatomoTracker} from 'ngx-matomo';
+import {MatomoService} from '../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
       private router: Router,
       public auth: AuthenticationService,
       protected $hotjar: NgxHotjarService,
-      private matomoTracker: MatomoTracker
+      private matomoTracker: MatomoService
   ) {
   }
 

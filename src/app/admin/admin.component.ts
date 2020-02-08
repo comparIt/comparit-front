@@ -5,7 +5,7 @@ import {GlobalConfigurationService} from '../shared/services/globalConfiguration
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Model} from '../shared/models/model';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {MatomoTracker} from 'ngx-matomo';
+import {MatomoService} from '../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-admin',
@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
     private compareItAPIService: CompareItAPIService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private matomoTracker: MatomoTracker
+    private matomoTracker: MatomoService
   ) {}
 
   ngOnInit() {

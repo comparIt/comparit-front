@@ -4,7 +4,7 @@ import {GlobalConfigurationService} from '../../shared/services/globalConfigurat
 import {Router} from '@angular/router';
 import {Model} from '../../shared/models/model';
 import {NgxHotjarService} from 'ngx-hotjar';
-import {MatomoTracker} from 'ngx-matomo';
+import {MatomoService} from "../../shared/services/Matomo.service";
 
 @Component({
   selector: 'app-resume-product',
@@ -17,7 +17,7 @@ export class ResumeProductComponent implements OnInit {
 
   constructor(
     protected $hotjar: NgxHotjarService,
-    private matomoTracker: MatomoTracker,
+    private matomoTracker: MatomoService,
     private router: Router,
     private config: GlobalConfigurationService) { }
 

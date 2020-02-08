@@ -6,7 +6,7 @@ import {Product} from '../../shared/models/product';
 import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
 import {ActivatedRoute} from '@angular/router';
 import {FilterMappingService} from '../../shared/services/filterMapping.service';
-import {MatomoTracker} from 'ngx-matomo';
+import {MatomoService} from '../../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-complete-product',
@@ -20,7 +20,7 @@ export class CompleteProductComponent implements OnInit {
   id: string;
 
   constructor(
-    private matomoTracker: MatomoTracker,
+    private matomoTracker: MatomoService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
     private conf: GlobalConfigurationService) {
