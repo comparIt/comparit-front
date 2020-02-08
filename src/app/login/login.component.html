@@ -1,62 +1,63 @@
-<!-- Default form login -->
-<form [formGroup]="checkoutForm" class="text-center border border-light p-5" (ngSubmit)="onSubmit(checkoutForm.value)">
+<form [formGroup]="checkoutForm"
+      class="text-center border border-light p-5"
+      (ngSubmit)="onSubmit(checkoutForm.value)">
 
-  <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="250" class="mp-2 d-inline-block align-top" alt="">
+  <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="250"
+       class="mp-2 d-inline-block align-top" alt="">
   <div class="alert alert-danger" role="alert" *ngIf="inError">
     Identifiant ou mot de passe incorrecte !
   </div>
 
-    <!-- Email -->
-    <div >
-      <div class="ui-inputgroup text-center p-1 justify-content-center ">
-        <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
-        <input type="email" id="login"  class="col-11" placeholder="E-mail"  formControlName="login">
+  <!-- Email -->
+  <div class="ui-inputgroup text-center p-1 justify-content-center ">
+    <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
+    <input class="col-11" id="float-input-email" type="email" size="30" pInputText formControlName="login"
+           placeholder="E-mail" required>
+  </div>
+  
+  <!-- Password -->
+  <div class="ui-inputgroup text-center p-1 justify-content-center">
+    <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+    <input class="col-11" id="float-input-password" type="password" size="30" pInputText
+           formControlName="pwd"
+           placeholder="Mot de passe" required>
+  </div>
+
+  <div class="d-flex justify-content-around">
+    <div>
+      <!-- Remember me -->
+    </div>
+    <!--
+      <div>
+          Forgot password
+          <a href="">Forgot password?</a>
       </div>
+      -->
+  </div>
+
+  <!-- Sign in button -->
+  <div class="row justify-content-center ">
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+      <button type="submit"
+              class="btn btnNav"
+              [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+      >Se connecter
+      </button>
     </div>
 
-
-    <!-- Password -->
-    <div >
-      <div class="ui-inputgroup text-center p-1 justify-content-center">
-        <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
-        <input type="password" id="pwd" class="col-11" placeholder="Mot de passe" formControlName="pwd" >
-      </div>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+      <button type="button"
+              class="btn btn-outline-light"
+              [ngStyle]="{'border-color': config.colorPrimary, 'width': '100%','color':config.colorPrimary}"
+              (click)="onClickGoToRegister()"
+      >S'inscrire
+      </button>
     </div>
 
+  </div>
 
-    <div class="d-flex justify-content-around">
-        <div>
-            <!-- Remember me -->
-        </div>
-      <!--
-        <div>
-            Forgot password
-            <a href="">Forgot password?</a>
-        </div>
-        -->
-    </div>
-
-    <!-- Sign in button -->
-    <div class="row justify-content-center ">
-
-      <div class="col-2">
-        <button type="submit"
-                class="btn btnNav"
-                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
-        >Se connecter</button>
-      </div>
-
-      <div class="col-2">
-        <button type="button"
-                class="btn btn-outline-light"
-                [ngStyle]="{'border-color': config.colorPrimary, 'width': '100%','color':config.colorPrimary}"
-                (click)="onClickGoToRegister()"
-        >S'inscrire</button>
-      </div>
-
-    </div>
-
-    <!-- Sign in button -->
+  <!-- Sign in button -->
 
 
 </form>

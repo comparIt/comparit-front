@@ -1,117 +1,122 @@
-<form class="text-center border border-light p-5" [formGroup]="userform" (ngSubmit)="onClickRegisterUser()">
+<form class="text-center border border-light p-5"
+      [formGroup]="userform"
+      (ngSubmit)="onClickRegisterUser()"
+      *ngIf="config.currentConfig.featUser">
 
-    <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="250" class="mp-2 d-inline-block align-top" alt="">
-    <!-- first Name  -->
+  <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="250"
+       class="mp-2 d-inline-block align-top" alt="">
+  <!-- first Name  -->
+  <div>
     <div>
-      <div>
-        <div class="ui-inputgroup text-center p-1 justify-content-center">
-          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-          <input class="col-11" id="float-input-fistname" type="text" size="30" pInputText formControlName="firstname"
-                 placeholder="Prénom" required [(ngModel)]="user.firstName">
-        </div>
-      </div>
-      <div *ngIf="userform.controls['firstname'].errors && userform.controls['firstname'].dirty">
-        <p-message severity="error" text="Prénom est nécessaire"
-                   *ngIf="userform.controls['firstname'].errors['required']"></p-message>
+      <div class="ui-inputgroup text-center p-1 justify-content-center">
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        <input class="col-11" id="float-input-fistname" type="text" size="30" pInputText formControlName="firstname"
+               placeholder="Prénom" required [(ngModel)]="user.firstName">
       </div>
     </div>
-    <!-- first Name  -->
+    <div *ngIf="userform.controls['firstname'].errors && userform.controls['firstname'].dirty">
+      <p-message severity="error" text="Prénom est nécessaire"
+                 *ngIf="userform.controls['firstname'].errors['required']"></p-message>
+    </div>
+  </div>
+  <!-- first Name  -->
 
-    <!-- last Name  -->
+  <!-- last Name  -->
+  <div>
     <div>
-      <div>
-        <div class="ui-inputgroup text-center p-1 justify-content-center">
-          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-          <input class="col-11" id="float-input-lastname" type="text" size="30" pInputText formControlName="lastname"
-                 placeholder="Nom" required [(ngModel)]="user.lastName">
-        </div>
-      </div>
-      <div *ngIf="userform.controls['lastname'].errors && userform.controls['lastname'].dirty">
-        <p-message severity="error" text="Nom est nécessaire"
-                   *ngIf="userform.controls['lastname'].errors['required']"></p-message>
+      <div class="ui-inputgroup text-center p-1 justify-content-center">
+        <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+        <input class="col-11" id="float-input-lastname" type="text" size="30" pInputText formControlName="lastname"
+               placeholder="Nom" required [(ngModel)]="user.lastName">
       </div>
     </div>
-    <!-- last Name  -->
+    <div *ngIf="userform.controls['lastname'].errors && userform.controls['lastname'].dirty">
+      <p-message severity="error" text="Nom est nécessaire"
+                 *ngIf="userform.controls['lastname'].errors['required']"></p-message>
+    </div>
+  </div>
+  <!-- last Name  -->
 
-    <!-- Email  -->
+  <!-- Email  -->
+  <div>
     <div>
-      <div>
-        <div class="ui-inputgroup text-center p-1 justify-content-center ">
-          <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
-          <input class="col-11" id="float-input-email" type="email" size="30" pInputText formControlName="email"
-                 placeholder="E-mail" required [(ngModel)]="user.email">
-        </div>
-      </div>
-      <div *ngIf="userform.controls['email'].errors && userform.controls['email'].dirty">
-        <p-message severity="error" text="Adresse email est nécessaire"
-                   *ngIf="userform.controls['email'].errors['required']"></p-message>
-        <p-message severity="error" text="Adresse email est invalide"
-                   *ngIf="userform.controls['email'].errors['email']">
-        </p-message>
+      <div class="ui-inputgroup text-center p-1 justify-content-center ">
+        <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
+        <input class="col-11" id="float-input-email" type="email" size="30" pInputText formControlName="email"
+               placeholder="E-mail" required [(ngModel)]="user.email">
       </div>
     </div>
-    <!-- Email  -->
+    <div *ngIf="userform.controls['email'].errors && userform.controls['email'].dirty">
+      <p-message severity="error" text="Adresse email est nécessaire"
+                 *ngIf="userform.controls['email'].errors['required']"></p-message>
+      <p-message severity="error" text="Adresse email est invalide"
+                 *ngIf="userform.controls['email'].errors['email']">
+      </p-message>
+    </div>
+  </div>
+  <!-- Email  -->
 
-    <!-- Password  -->
+  <!-- Password  -->
+  <div>
     <div>
-      <div>
-        <div class="ui-inputgroup text-center p-1 justify-content-center">
-          <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
-          <input class="col-11" id="float-input-password" type="password" size="30" pInputText
-                 formControlName="password"
-                 placeholder="Mot de passe" required [(ngModel)]="user.password">
-        </div>
-      </div>
-      <div *ngIf="userform.controls['password'].errors && userform.controls['password'].dirty">
-        <p-message severity="error" text="Mot de passe est nécessaire"
-                   *ngIf="userform.controls['password'].errors['required']"></p-message>
-        <p-message severity="error" text="Nombre minimal de caractères requis est de 6"
-                   *ngIf="userform.controls['password'].errors['minlength'] "></p-message>
+      <div class="ui-inputgroup text-center p-1 justify-content-center">
+        <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+        <input class="col-11" id="float-input-password" type="password" size="30" pInputText
+               formControlName="password"
+               placeholder="Mot de passe" required [(ngModel)]="user.password">
       </div>
     </div>
-    <!-- Password  -->
-    <!-- Password  -->
+    <div *ngIf="userform.controls['password'].errors && userform.controls['password'].dirty">
+      <p-message severity="error" text="Mot de passe est nécessaire"
+                 *ngIf="userform.controls['password'].errors['required']"></p-message>
+      <p-message severity="error" text="Nombre minimal de caractères requis est de 6"
+                 *ngIf="userform.controls['password'].errors['minlength'] "></p-message>
+    </div>
+  </div>
+  <!-- Password  -->
+  <!-- Password  -->
+  <div>
     <div>
-      <div>
-        <div class="ui-inputgroup text-center p-1 justify-content-center">
-          <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
-          <input class="col-11" id="float-input-password1" type="password" size="30" pInputText
-                 formControlName="confirmedPassword"
-                 placeholder="Confirmation de mot de passe">
-        </div>
-      </div>
-      <div *ngIf="userform.controls['confirmedPassword'].errors && userform.controls['confirmedPassword'].dirty">
-        <p-message severity="error" text="Confirmation de mot de passe est nécessaire"
-                   *ngIf="userform.controls['confirmedPassword'].errors['required']"></p-message>
-        <p-message severity="error" text="Les mots de passe ne correspondent pas"
-                   *ngIf="userform.hasError('notSame') "></p-message>
+      <div class="ui-inputgroup text-center p-1 justify-content-center">
+        <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+        <input class="col-11" id="float-input-password1" type="password" size="30" pInputText
+               formControlName="confirmedPassword"
+               placeholder="Confirmation de mot de passe">
       </div>
     </div>
-    <!-- Password  -->
-
-
-    <br>
-    <div class="row justify-content-center ">
-
-      <div class="col-2">
-        <button type="button"
-                class="btn"
-                [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
-                (click)="onClickRegisterUser()"
-                [disabled]="!userform.valid"
-        >S'inscrire
-        </button>
-      </div>
-
-      <div class="col-2">
-        <button type="button"
-                class="btn btn-outline-light"
-                [ngStyle]="{'border-color': config.colorPrimary, 'width': '100%','color':config.colorPrimary}"
-                (click)="onClickGoToLogin()"
-        >Se connecter</button>
-      </div>
-
+    <div *ngIf="userform.controls['confirmedPassword'].errors && userform.controls['confirmedPassword'].dirty">
+      <p-message severity="error" text="Confirmation de mot de passe est nécessaire"
+                 *ngIf="userform.controls['confirmedPassword'].errors['required']"></p-message>
+      <p-message severity="error" text="Les mots de passe ne correspondent pas"
+                 *ngIf="userform.hasError('notSame') "></p-message>
     </div>
+  </div>
+  <!-- Password  -->
+
+
+  <br>
+  <div class="row justify-content-center ">
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+      <button type="button"
+              class="btn"
+              [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+              (click)="onClickRegisterUser()"
+              [disabled]="!userform.valid"
+      >S'inscrire
+      </button>
+    </div>
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+      <button type="button"
+              class="btn btn-outline-light"
+              [ngStyle]="{'border-color': config.colorPrimary, 'width': '100%','color':config.colorPrimary}"
+              (click)="onClickGoToLogin()"
+      >Se connecter
+      </button>
+    </div>
+
+  </div>
 
 </form>
 
