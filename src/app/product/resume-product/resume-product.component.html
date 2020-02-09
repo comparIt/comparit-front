@@ -1,24 +1,22 @@
-<section style="">
-  <div class="card mb-3" (click)="goToProduct(product.id)" [ngStyle]="{cursor: 'pointer'}">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="{{ product.properties['img'] }}" class="card-img">
-      </div>
-      <div class="col-md-6">
-        <div class="card-body">
-          <div *ngFor="let property of product.properties | keyvalue" >
-            <p class="card-text" *ngIf="product.shouldDisplayProperty(property.key)">{{property.key}} : {{property.value}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="card-body">
-          <p class="card-text">{{product.properties['price']}} €</p>
+<div class="card mb-3" (click)="goToProduct(product.id)" [ngStyle]="{cursor: 'pointer'}">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ product.properties['img'] }}" class="card-img">
+    </div>
+    <div class="col-md-6">
+      <div class="card-body">
+        <p *ngIf="product.name">{{product.name}}</p>
+        <p *ngIf="product.description">{{product.description}}</p>
+        <div *ngFor="let property of visibleProperties">
+          <p class="card-text">{{property.key.name}} : {{property.value}}</p>
         </div>
       </div>
     </div>
-
+    <div class="col-md-2">
+      <div class="card-body">
+        <p class="card-text">{{product.properties['price']}} €</p>
+      </div>
+    </div>
   </div>
 
-</section>
-
+</div>
