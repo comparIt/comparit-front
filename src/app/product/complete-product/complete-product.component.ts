@@ -24,7 +24,7 @@ export class CompleteProductComponent implements OnInit {
     private matomoTracker: MatomoService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
-    private conf: GlobalConfigurationService) {
+    public conf: GlobalConfigurationService) {
   }
 
   ngOnInit() {
