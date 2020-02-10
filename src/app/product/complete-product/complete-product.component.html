@@ -2,28 +2,41 @@
   <div class="card-body">
 
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6" *ngIf="product.image">
         <img class="rounded" style="max-width: 100%; max-height: 30em" src="{{ product.image }}">
       </div>
       <div class="col-12 col-md-6">
-        <h1> {{ product.name }} </h1>
-        <p style="text-align: justify"> {{ product.description }}</p>
-        <h2 style="text-align: center"> {{ product.price }} €</h2>
+        <h1 *ngIf="product.name"> {{ product.name }} </h1>
+        <p *ngIf="product.description" style="text-align: justify"> {{ product.description }}</p>
+        <h2 *ngIf="product.price" style="text-align: center"> {{ product.price }} €</h2>
       </div>
     </div>
 
 
     <div class="my-4">
-      <p>Informations sur le produit</p>
+      <p>Informations sur le produit :</p>
 
       <table class="table">
         <tbody>
-        <tr *ngFor="let property of properties ">
-          <td *ngIf="product.shouldDisplayProperty(property.key.technicalName)">{{property.key.name}}</td>
-          <td *ngIf="product.shouldDisplayProperty(property.key.technicalName)">{{property.value}}</td>
+        <tr *ngFor="let property of visibleProperties">
+          <td>{{property.key.name}}</td>
+          <td>{{property.value}}</td>
         </tr>
         </tbody>
       </table>
+    </div>
+
+    <div class="card mb-3" *ngIf="(product.url || contact) && conf.currentConfig.featSupplierContact">
+      <div class="row no-gutters">
+        <div class="col-md-4" *ngIf="false">
+          <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <a *ngIf="product.url" target="_blank" href="{{ product.url }}" (click)="hitSupplierLink()">Accéder au site du vendeur <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>

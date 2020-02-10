@@ -5,7 +5,7 @@ import {Model} from '../../shared/models/model';
 import {Product} from '../../shared/models/product';
 import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
 import {ActivatedRoute} from '@angular/router';
-import {FilterMappingService} from '../../shared/services/filterMapping.service';
+import {SupplierContact} from '../../shared/models/supplierContact';
 import {MatomoService} from '../../shared/services/Matomo.service';
 
 @Component({
@@ -16,14 +16,15 @@ export class CompleteProductComponent implements OnInit {
 
   @Input() model: Model;
   product: Product;
-  properties: {key: ModelProperty, value: string}[]
+  properties: {key: ModelProperty, value: string}[];
   id: string;
+  contact: SupplierContact;
 
   constructor(
     private matomoTracker: MatomoService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
-    private conf: GlobalConfigurationService) {
+    public conf: GlobalConfigurationService) {
   }
 
   ngOnInit() {
@@ -36,9 +37,20 @@ export class CompleteProductComponent implements OnInit {
         this.properties = Object.keys(this.product.properties).map((key: string) => {
           return {key: this.conf.propertyByModelAndName(this.model.technicalName, key), value: this.product.properties[key]};
         });
+        return this.api.getContactById('1');
+      }).then((c: SupplierContact) => {
+        this.contact = SupplierContact.build(c);
       });
-      this.matomoTracker.trackEvent('Product', 'showCompletProduct', this.id );
+      this.matomoTracker.trackEvent('Product', 'showCompletProduct', this.id);
     });
+  }
+
+  get visibleProperties() {
+    return this.properties.filter((p: {key: ModelProperty, value: string}) => p.key.activated);
+  }
+
+  hitSupplierLink() {
+    this.matomoTracker.trackEvent('Product', 'hitSupplierLink', this.id);
   }
 
 }

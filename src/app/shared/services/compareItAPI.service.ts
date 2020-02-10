@@ -106,6 +106,9 @@ export class CompareItAPIService {
     return this.get('/product/' + id, []);
   }
 
+  public getContactById(id: string): any {
+    return this.get('/product/' + id, []);
+  }
   // Filters & alerts
 
   public createFilter(filter: SavedFilter): any {

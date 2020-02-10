@@ -7,7 +7,7 @@ import {FilterMappingService} from '../shared/services/filterMapping.service';
 import {ProductPagineDTO} from '../shared/models/productPagineDTO';
 import {MessageService} from 'primeng/api';
 import {NgxHotjarService} from 'ngx-hotjar';
-import {MatomoTracker} from 'ngx-matomo';
+import {MatomoService} from '../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-product',
@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     protected $hotjar: NgxHotjarService,
-    private matomoTracker: MatomoTracker,
+    private matomoTracker: MatomoService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
     public conf: GlobalConfigurationService,
