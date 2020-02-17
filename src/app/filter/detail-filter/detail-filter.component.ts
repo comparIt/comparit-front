@@ -66,4 +66,8 @@ export class DetailFilterComponent implements OnInit {
     ).name + ' ' + (this.filter.orderBy.startsWith('-') ? 'décroissant' : 'croissant');
   }
 
+  update(event: string) {
+    this.filter.alertType = event;
+    this.updateFilter.emit(this.filter);
+  }
 }
