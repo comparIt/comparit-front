@@ -53,6 +53,7 @@ import {MatomoModule} from 'ngx-matomo';
 import { NgxHotjarModule } from 'ngx-hotjar';
 import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
 import {MatomoService} from './shared/services/Matomo.service';
+import {ManageUserComponent} from './admin/components/manager-user/manage-user.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import {MatomoService} from './shared/services/Matomo.service';
     FeatureSwitchComponent,
     FilterComponent,
     DetailFilterComponent,
+    ManageUserComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {User} from '../models/user';
 import {CompareItAPIService} from './compareItAPI.service';
 import {Router} from '@angular/router';
-import {MatomoService} from "./Matomo.service";
+import {MatomoService} from './Matomo.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {

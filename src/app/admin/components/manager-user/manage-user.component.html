@@ -1,0 +1,46 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Prénom</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Email</th>
+    <th scope="col">Rôle</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <th scope="row">{{user.id}}</th>
+    <td><input type="text" [disabled]="!user.editing" [(ngModel)]="user.firstName"></td>
+    <td><input type="text" [disabled]="!user.editing" [(ngModel)]="user.lastName"></td>
+    <td><input type="text" [disabled]="!user.editing" [(ngModel)]="user.email"></td>
+    <td>
+      <p-dropdown [options]="roles" [disabled]="!user.editing" [(ngModel)]="user.role"></p-dropdown>
+    </td>
+
+    <td>
+      <button *ngIf="!user.editing"
+              type="button"
+              class="btn btn-primary"
+              [ngStyle]="{width: '40%'}"
+              (click)="editUser(user, true)"><i class="fas fa-edit" aria-hidden="true"></i></button>
+      <button *ngIf="!user.editing"
+              type="button"
+              class="btn btn-danger"
+              [ngStyle]="{width: '40%'}"
+              (click)="deleteUser(user)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+      <button *ngIf="user.editing"
+              type="button"
+              class="btn btn-primary"
+              [ngStyle]="{width: '40%'}"
+              (click)="saveUser(user)"><i class="fas fa-save" aria-hidden="true"></i></button>
+      <button *ngIf="user.editing"
+              type="button"
+              class="btn btn-danger"
+              [ngStyle]="{width: '40%'}"
+              (click)="cancel()"><i class="fa fa-times" aria-hidden="true"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
