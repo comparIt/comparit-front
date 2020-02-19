@@ -89,6 +89,18 @@ export class CompareItAPIService {
     return this.put(this.userController + '/saveUser', [], user);
   }
 
+  public putUpdateUser(user: User): any {
+    return this.put(this.userController + '/updateUser', [], user);
+  }
+
+  public deleteUser(id: number): any {
+    return this.delete(this.userController + '/' + id, []);
+  }
+
+  public getAllUsers(): any {
+    return this.get(this.userController + '/', []);
+  }
+
   public getCurrentUser(): any {
     return this.get(this.userController + '/currentUser', []);
   }

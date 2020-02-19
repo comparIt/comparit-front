@@ -33,6 +33,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/admin/upload/url']);
   }
 
+  goToManageUsers() {
+    this.router.navigate(['admin/manage/users']);
+  }
+
   goToConnexion() {
     this.router.navigate(['login']);
   }

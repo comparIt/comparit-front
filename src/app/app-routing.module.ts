@@ -15,6 +15,7 @@ import {CompleteProductComponent} from './product/complete-product/complete-prod
 import {FilterComponent} from './filter/filter.component';
 import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
 import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
+import {ManageUserComponent} from "./admin/components/manager-user/manage-user.component";
 
 
 export const routes: Routes = [
@@ -43,6 +44,7 @@ export const routes: Routes = [
           {path: 'website', component: AdminComponent},
           {path: 'upload/url', component: UploadUrlComponent},
           {path: 'upload/csv', component: UploadCsvComponent},
+          {path: 'manage/users', component: ManageUserComponent}
         ]
       },
       {
