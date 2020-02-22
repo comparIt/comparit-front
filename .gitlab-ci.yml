@@ -20,12 +20,14 @@ npm-build:
       - npm install
       - ng build
 
-docker-build:
+
+docker-build image:
   stage: package
   script:
-  - docker build -t registry.gitlab.com/compare-it/compare-it-front .
+  - docker build -t registry.gitlab.com/compare-it/compare-it-front docker/prod/.
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
   - docker push registry.gitlab.com/compare-it/compare-it-front
+
 
 job_deploy_staging:
   image: rastasheep/ubuntu-sshd
@@ -36,7 +38,7 @@ job_deploy_staging:
   - ls
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
   - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@compit.ddns.net './start_project'
-  environment: 
+  environment:
     name: staging
   only:
   - develop
@@ -50,7 +52,7 @@ job_deploy_prod:
   - ls
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
   - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msn@compit2.northeurope.cloudapp.azure.com './start_project'
-  environment: 
+  environment:
     name: production
   only:
   - develop
