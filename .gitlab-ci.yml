@@ -41,7 +41,6 @@ job_deploy_staging:
   only:
   - develop
 
-  
 job_deploy_prod: 
   image: rastasheep/ubuntu-sshd
   stage: production
@@ -53,7 +52,8 @@ job_deploy_prod:
   - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msn@compit2.northeurope.cloudapp.azure.com './start_project'
   environment: 
     name: production
-  only: 
+  only:
   - develop
+  - master
 
 
