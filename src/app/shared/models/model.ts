@@ -7,9 +7,11 @@ export class Model {
   modelProperties: ModelProperty[];
   imageURL: string;
   saved = true;
+  id: number;
 
   static buildModel(model: Model): Model {
     const newModel = new Model();
+    newModel.id = model.id;
     newModel.name = model.name;
     newModel.technicalName = model.technicalName;
     newModel.activated = model.activated;
@@ -33,6 +35,10 @@ export class Model {
     model.modelProperties.push(ModelProperty.createModelProperty( 'Image', 'imgUrl', false, 'ENUMERATIVE' , false, false, false));
 
     return model;
+  }
+
+  get filterableProperties(): ModelProperty[] {
+    return this.modelProperties.filter((p) => p.filtrable);
   }
 
 }

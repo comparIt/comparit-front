@@ -1,32 +1,64 @@
-<!-- Default form login -->
-<form [formGroup]="checkoutForm" class="text-center border border-light p-5" (ngSubmit)="onSubmit(checkoutForm.value)">
+<form [formGroup]="checkoutForm"
+      class="text-center border border-light p-5"
+      (ngSubmit)="onSubmit(checkoutForm.value)">
 
-    <p class="h4 mb-4">Sign in</p>
+  <img *ngIf="config.currentConfig.logo" src="{{config.currentConfig.logo}}" width="250"
+       class="mp-2 d-inline-block align-top" alt="">
+  <div class="alert alert-danger" role="alert" *ngIf="inError">
+    Identifiant ou mot de passe incorrecte !
+  </div>
 
-    <!-- Email -->
-    <input type="email" id="login" class="form-control mb-4" placeholder="E-mail"  formControlName="login">
+  <!-- Email -->
+  <div class="ui-inputgroup text-center p-1 justify-content-center ">
+    <span class="ui-inputgroup-addon"><i class="fa fa-at"></i></span>
+    <input class="col-11" id="float-input-email" type="email" size="30" pInputText formControlName="login"
+           placeholder="E-mail" required>
+  </div>
+  
+  <!-- Password -->
+  <div class="ui-inputgroup text-center p-1 justify-content-center">
+    <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+    <input class="col-11" id="float-input-password" type="password" size="30" pInputText
+           formControlName="pwd"
+           placeholder="Mot de passe" required>
+  </div>
 
-    <!-- Password -->
-    <input type="password" id="pwd" class="form-control mb-4" placeholder="Password" formControlName="pwd" >
+  <div class="d-flex justify-content-around">
+    <div>
+      <!-- Remember me -->
+    </div>
+    <!--
+      <div>
+          Forgot password
+          <a href="">Forgot password?</a>
+      </div>
+      -->
+  </div>
 
-    <div class="d-flex justify-content-around">
-        <div>
-            <!-- Remember me -->
-        </div>
-        <div>
-            <!-- Forgot password -->
-            <a href="">Forgot password?</a>
-        </div>
+  <!-- Sign in button -->
+  <div class="row justify-content-center ">
+
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+      <button type="submit"
+              class="btn btnNav"
+              [ngStyle]="{'background-color': config.colorPrimary, 'width': '100%'}"
+      >Se connecter
+      </button>
     </div>
 
-    <!-- Sign in button -->
-    <button color="info" block="true" class="my-4" type="submit">Sign in</button>
-    <button color="info" block="true" class="my-4" type="submit">Sign in</button>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+      <button type="button"
+              class="btn btn-outline-light"
+              [ngStyle]="{'border-color': config.colorPrimary, 'width': '100%','color':config.colorPrimary}"
+              (click)="onClickGoToRegister()"
+      >S'inscrire
+      </button>
+    </div>
 
-    <!-- Register -->
-    <p>Not a member?
-        <a href="">Register</a>
-    </p>
+  </div>
+
+  <!-- Sign in button -->
+
 
 </form>
 <!-- Default form login -->

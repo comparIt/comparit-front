@@ -1,13 +1,18 @@
 <div class="container">
-  <div class="alert alert-danger" role="alert">
-    ATTENTION: Max File size 10 Mo
+  <div class="alert alert-danger my-1" role="alert">
+    Taille maximale des fichiers : 10Mo
   </div>
-  <p-toast></p-toast>
+
   <p-dropdown [options]="types" [(ngModel)]="selectedType"></p-dropdown>
-  <br>
-  <ng-template [ngIf]="selectedType">
-    <div>
-      <p-fileUpload (onSelect)="clear()" (onUpload)="upload($event)" (onError)="error($event)"name="files" [url]=url() accept="text/csv" maxFileSize="10000000" ></p-fileUpload>
-    </div>
-  </ng-template>
+
+  <div class="my-1" *ngIf="selectedType">
+    <p-fileUpload (onSelect)="clear()"
+                  (onUpload)="upload($event)"
+                  (onError)="error($event)"
+                  name="files"
+                  [url]=url()
+                  accept=".csv"
+                  maxFileSize="10000000">
+    </p-fileUpload>
+  </div>
 </div>

@@ -6,7 +6,11 @@ export class Configuration {
   colorSecondary: string;
   colorSecondary2: string;
   logo: string;
-  featAnalytic: boolean;
+  name: string;
+  featAnalytic = false;
+  featUser = false;
+  featSaveFilter = false;
+  featAlerte = false;
   models: Model[];
 
   static buildConfiguration(configuration: Configuration): Configuration {
@@ -16,7 +20,11 @@ export class Configuration {
     newConfiguration.colorSecondary = configuration.colorSecondary;
     newConfiguration.colorSecondary2 = configuration.colorSecondary2;
     newConfiguration.logo = configuration.logo;
+    newConfiguration.name = configuration.name;
     newConfiguration.featAnalytic = configuration.featAnalytic;
+    newConfiguration.featUser = configuration.featUser;
+    newConfiguration.featSaveFilter = configuration.featSaveFilter;
+    newConfiguration.featAlerte = configuration.featAlerte;
     newConfiguration.models = configuration.models.map(m => Model.buildModel(m));
     return newConfiguration;
   }
@@ -26,7 +34,7 @@ export class Configuration {
     configuration.colorPrimary = '#FFFFFF';
     configuration.colorSecondary = '#FFFFFF';
     configuration.colorSecondary2 = '#FFFFFF';
-    configuration.logo = '';
+    configuration.name = '';
     configuration.featAnalytic = false;
     configuration.models = [];
     return configuration;

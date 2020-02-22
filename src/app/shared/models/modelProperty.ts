@@ -1,5 +1,6 @@
 export class ModelProperty {
 
+  id: number;
   name: string;
   technicalName: string;
   activated: boolean;
@@ -25,11 +26,13 @@ export class ModelProperty {
     return this.type === 'NUMERIC';
   }
 
+
   constructor() {
   }
 
   static buildProperty(property: ModelProperty): ModelProperty {
     const modelProperty = new ModelProperty();
+    modelProperty.id = property.id;
     modelProperty.name = property.name;
     modelProperty.technicalName = property.technicalName;
     modelProperty.activated = property.activated;
@@ -64,6 +67,15 @@ export class ModelProperty {
     return modelProprety;
   }
 
+
+  initFilter(filter: string) {
+    if (this.isNumeric) {
+      this.range = [Number(filter.split('-')[0]), Number(filter.split('-')[1])];
+    } else if (this.isEnum) {
+      this.selectedValues = filter.split(',');
+    }
+    console.log(this);
+  }
 }
 
 

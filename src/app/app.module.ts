@@ -12,7 +12,6 @@ import {NotifComponent} from './user/components/notif/notif.component';
 import {GlobalConfigurationService} from './shared/services/globalConfiguration.service';
 import {CompareItAPIService} from './shared/services/compareItAPI.service';
 import {ModelpropertyComponent} from './admin/components/model-property/model-property.component';
-import {DropdownModule} from 'primeng/dropdown';
 import {ProductComponent} from './product/product.component';
 import {ResumeProductComponent} from './product/resume-product/resume-product.component';
 import {ColorPickerModule} from 'primeng/colorpicker';
@@ -21,10 +20,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {BasicAuthInterceptor} from './_helpers/basic-auth.interceptor';
 import {FileUploadModule} from 'primeng/fileupload';
+import {RegisterUserComponent} from './register-user/register-user.component';
+import {ConfirmDialogModule, MessagesModule} from 'primeng/primeng';
+import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
 import {TopFilterComponent} from './product/top-filter/top-filter.component';
 import {AbstractFilterComponent} from './product/abstract-filter/abstract-filter.component';
-import {MultiSelectModule} from './product/dropdown-filter/multiselect.component';
-import {SliderModule} from './product/slider-filter/slider.component';
+import {MultiSelectModule} from './shared/components/multiselect/multiselect.component';
+import {SliderModule} from './shared/components/slider-filter/slider.component';
 import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
 import {ErrorComponent} from './shared/components/errors/error.component';
 import {LoginComponent} from './login/login.component';
@@ -33,12 +36,23 @@ import {UploadCsvComponent} from './admin/components/upload/csv/csv.component';
 import {UploadUrlComponent} from './admin/components/upload/url/url.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InputSwitchModule} from 'primeng/inputswitch';
-import {CanActivateGuardService} from './shared/services/canActivateGuard.service';
-import {PaginatorModule} from './product/paginator/paginator.component';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
-import {ConfirmationService, MessageService} from 'primeng/api';
+import {IsAuthenticatedGuardService} from './shared/services/is-authenticated-guard.service';
+import {PaginatorModule} from './shared/components/paginator/paginator.component';
+import {AccordionModule} from 'primeng/accordion';
 import {ToastModule} from 'primeng/toast';
-
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {CompleteProductComponent} from './product/complete-product/complete-product.component';
+import {FeatureSwitchComponent} from './admin/components/feature-switch/feature-switch.component';
+import {DropdownModule} from './shared/components/dropdown/dropdown.component';
+import {FilterComponent} from './filter/filter.component';
+import {DetailFilterComponent} from './filter/detail-filter/detail-filter.component';
+import {AddAlertComponent} from './shared/components/add-alert/addAlert';
+import {DialogModule} from 'primeng/dialog';
+import {RadioButtonModule} from 'primeng/radiobutton';
+import {MatomoModule} from 'ngx-matomo';
+import { NgxHotjarModule } from 'ngx-hotjar';
+import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
+import {MatomoService} from './shared/services/Matomo.service';
 
 @NgModule({
   declarations: [
@@ -55,11 +69,19 @@ import {ToastModule} from 'primeng/toast';
     UploadCsvComponent,
     UploadUrlComponent,
     ProductComponent,
+    ResumeProductComponent,
+    RegisterUserComponent,
     TopFilterComponent,
     AbstractFilterComponent,
     CategoryNavigatorComponent,
     ResumeProductComponent,
-    ErrorComponent
+    ErrorComponent,
+    CompleteProductComponent,
+    FeatureSwitchComponent,
+    AddAlertComponent,
+    FeatureSwitchComponent,
+    FilterComponent,
+    DetailFilterComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,12 +98,20 @@ import {ToastModule} from 'primeng/toast';
     CheckboxModule,
     FileUploadModule,
     InputTextModule,
+    MessagesModule,
+    MessageModule,
+    PanelModule,
     MultiSelectModule,
     InputSwitchModule,
     PaginatorModule,
     FileUploadModule,
     ConfirmDialogModule,
+    AccordionModule,
     ToastModule,
+    DialogModule,
+    RadioButtonModule,
+    NgxHotjarModule.forRoot('1640364'),
+    MatomoModule,
   ],
   providers: [
     GlobalConfigurationService,
@@ -92,8 +122,10 @@ import {ToastModule} from 'primeng/toast';
       multi: true
     },
     CompareItAPIService,
-    CanActivateGuardService,
-    ConfirmationService
+    IsAuthenticatedGuardService,
+    IsAdminGuardService,
+    ConfirmationService,
+    MatomoService
   ],
   bootstrap: [AppComponent]
 })

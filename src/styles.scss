@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+  filter: grayscale(20%);
+}
+
+.btn {
+  width: 100%;
+  color: white;
+}

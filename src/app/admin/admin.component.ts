@@ -4,7 +4,8 @@ import {Configuration} from '../shared/models/configuration';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
 import {Model} from '../shared/models/model';
-import {ConfirmationService} from 'primeng/api';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {MatomoService} from '../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-admin',
@@ -17,12 +18,13 @@ export class AdminComponent implements OnInit {
   configuration: Configuration;
   uploadedFiles: any[] = [];
   submitted = false;
-  showResult = false;
 
   constructor(
     private globalconfigurationService: GlobalConfigurationService,
     private compareItAPIService: CompareItAPIService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private matomoTracker: MatomoService
   ) {}
 
   ngOnInit() {
@@ -31,6 +33,7 @@ export class AdminComponent implements OnInit {
       animation: true
     });
     this.configuration = this.globalconfigurationService.currentConfig;
+    this.matomoTracker.trackPageView(this.constructor.name);
   }
 
   next() {
@@ -43,11 +46,15 @@ export class AdminComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.showResult = false;
     this.globalconfigurationService.putConfiguration(this.configuration).then((configuration: Configuration) => {
       this.submitted = false;
-      this.showResult = true;
-      this.configuration = configuration;
+      this.messageService.add({severity: 'success', summary: 'Succès', detail: 'Configuration enregistrée', life: 2000});
+      return this.globalconfigurationService.fetch();
+    }).then((config: Configuration) => {
+      this.configuration = config;
+    }).catch(() => {
+      this.submitted = false;
+      this.messageService.add({severity: 'error', summary: 'Echec', detail: 'Echec de l\'enregistrement', life: 2000});
     });
   }
 

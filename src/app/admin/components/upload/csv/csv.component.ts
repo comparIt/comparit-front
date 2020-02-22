@@ -31,21 +31,22 @@ export class UploadCsvComponent {
   }
 
   error(event) {
-
     console.log(event.error);
     console.log(event.files);
     console.log(' Echec de l\'import du fichier: ' + event.files.toString());
     this.messageService.add({severity: 'error', summary: 'Echec de l\'import du fichier', detail: event.error.error.message, life: 60000});
-
+    this.globalconfigurationService.fetch();
   }
 
   upload(event) {
     console.log(event);
     this.messageService.add({severity: 'success', summary: 'Import terminé', detail: 'Données importées', life: 10000});
+    this.globalconfigurationService.fetch();
   }
 
   showWarn() {
     this.messageService.add({severity: 'warn', summary: 'Warn Message', detail: 'There are unsaved changes', life: 60000});
+    this.globalconfigurationService.fetch();
   }
 
   clear() {

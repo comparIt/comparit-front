@@ -4,6 +4,7 @@ import {Model} from '../models/model';
 import {CompareItAPIService} from './compareItAPI.service';
 import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
+import {ModelProperty} from '../models/modelProperty';
 
 @Injectable({
   providedIn: 'root',
@@ -21,31 +22,39 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
   }
 
   get colorPrimary(): string {
-    return this.configuration ? this.configuration.colorPrimary : Configuration.defaultConfiguration().colorPrimary;
+    return this.currentConfig.colorPrimary;
   }
 
   get colorSecondary(): string {
-    return this.configuration.colorSecondary;
+    return this.currentConfig.colorSecondary;
   }
 
   get colorSecondary2(): string {
-    return this.configuration.colorSecondary;
+    return this.currentConfig.colorSecondary;
   }
 
   get logo(): string {
-    return this.configuration.logo;
+    return this.currentConfig.logo;
   }
 
   get models(): Model[] {
-    return this.configuration.models;
+    return this.currentConfig.models;
   }
 
   get currentConfig(): Configuration {
-    return this.configuration;
+    return this.configuration ? this.configuration : Configuration.defaultConfiguration();
   }
 
   modelByType(type: string): Model {
-    return this.configuration.models.find(e => e.technicalName === type);
+    return this.currentConfig.models.find(e => e.technicalName === type);
+  }
+
+  propertyByModelAndId(type: string, id: number): ModelProperty {
+    return this.modelByType(type).modelProperties.find(e => e.id === id);
+  }
+
+  propertyByModelAndName(type: string, property: string): ModelProperty {
+    return this.modelByType(type).modelProperties.find(e => e.technicalName === property);
   }
 
   putConfiguration(configuration: Configuration): Promise<Configuration> {
@@ -55,7 +64,7 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
     });
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
+  fetch(): Configuration {
     return this.compareItAPIService.getWebsiteConfiguration().then((wsc: Configuration) => {
       if (wsc) {
         this.configuration = Configuration.buildConfiguration(wsc);
@@ -67,6 +76,10 @@ export class GlobalConfigurationService implements Resolve<Configuration> {
       this.configuration = Configuration.defaultConfiguration();
       return this.configuration;
     });
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Configuration> | Promise<Configuration> | Configuration {
+    return this.fetch();
   }
 
 }
