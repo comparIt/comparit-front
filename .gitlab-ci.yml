@@ -52,7 +52,7 @@ docker-build_image_prod:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
     - docker push registry.gitlab.com/compare-it/compare-it-front
   only:
-    -develop
+    - develop
 
 job_deploy_prod:
   image: rastasheep/ubuntu-sshd
