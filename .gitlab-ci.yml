@@ -10,7 +10,8 @@ variables:
 stages:
   - build
   - package
-  - deploy
+  - staging
+  - production
 
 npm-build:
     stage: build
@@ -27,15 +28,34 @@ docker-build:
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
   - docker push registry.gitlab.com/compare-it/compare-it-front
 
-docker-deploy:
+job_deploy_staging:
   image: rastasheep/ubuntu-sshd
-  stage: deploy
+  stage: staging
   script:
+  - echo "deploy the app into test (valserver)"
   - pwd
   - ls
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
-  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@35.180.27.13 './start_project'
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@compit.ddns.net './start_project'
+  environment: 
+    name: staging
   only:
   - develop
+
+  
+job_deploy_prod: 
+  image: rastasheep/ubuntu-sshd
+  stage: production
+  script:
+  - echo "deploy the app into prod"
+  - pwd
+  - ls
+  - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msn@compit2.northeurope.cloudapp.azure.com './start_project'
+  environment: 
+    name: production 
+  when: manual 
+  only: 
+  - master
 
 
