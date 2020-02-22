@@ -36,7 +36,7 @@ job_deploy_staging:
   - pwd
   - ls
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
-  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@35.180.27.13 './start_project'
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@compit.ddns.net './start_project'
   environment: 
     name: staging
   only:
@@ -51,7 +51,7 @@ job_deploy_prod:
   - pwd
   - ls
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
-  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@35.180.27.13 './start_project'
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msn@compit2.northeurope.cloudapp.azure.com './start_project'
   environment: 
     name: production 
   when: manual 
