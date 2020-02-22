@@ -20,7 +20,6 @@ npm-build:
       - npm install
       - ng build
 
-
 docker-build:
   stage: package
   script:
@@ -53,9 +52,8 @@ job_deploy_prod:
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
   - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msn@compit2.northeurope.cloudapp.azure.com './start_project'
   environment: 
-    name: production 
-  when: manual 
+    name: production
   only: 
-  - master
+  - develop
 
 
