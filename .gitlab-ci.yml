@@ -21,14 +21,14 @@ npm-build:
       - ng build
 
 
-docker-build image staging:
+docker-build_image_staging:
   stage: package
   script:
-  - docker build -t registry.gitlab.com/compare-it/compare-it-front docker/staging/.
+  - docker build -t registry.gitlab.com/compare-it/compare-it-front-staging docker/staging/.
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
   - docker push registry.gitlab.com/compare-it/compare-it-front
   only:
-    -develop
+  - develop
 
 
 job_deploy_staging:
@@ -45,10 +45,10 @@ job_deploy_staging:
   only:
   - develop
 
-docker-build image prod:
+docker-build_image_prod:
   stage: package
   script:
-    - docker build -t registry.gitlab.com/compare-it/compare-it-front docker/prod/.
+    - docker build -t registry.gitlab.com/compare-it/compare-it-front-prod docker/prod/.
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
     - docker push registry.gitlab.com/compare-it/compare-it-front
   only:
