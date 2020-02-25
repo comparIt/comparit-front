@@ -32,7 +32,7 @@ export class Model {
     model.modelProperties.push(ModelProperty.createModelProperty( 'Nom', 'name', true, 'ENUMERATIVE' , true, true, true));
     model.modelProperties.push(ModelProperty.createModelProperty( 'Description', 'description', true, 'ENUMERATIVE' , true, true, true));
     model.modelProperties.push(ModelProperty.createModelProperty( 'Prix', 'price', true, 'NUMERIC' , true, true, true));
-    model.modelProperties.push(ModelProperty.createModelProperty( 'Image', 'imgUrl', false, 'ENUMERATIVE' , false, false, false));
+    model.modelProperties.push(ModelProperty.createModelProperty( 'Image', 'img', false, 'ENUMERATIVE' , false, false, false));
 
     return model;
   }
