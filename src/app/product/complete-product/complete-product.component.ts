@@ -29,19 +29,19 @@ export class CompleteProductComponent implements OnInit {
 
   ngOnInit() {
     this.matomoTracker.trackPageView(this.constructor.name);
+
     this.route.params.subscribe(params => {
       this.model = this.conf.modelByType(params.type);
       this.id = params.id;
+
+      this.matomoTracker.trackEvent('Product', 'showCompletProduct', this.id);
+
       this.api.getProductById(this.id).then((p: Product) => {
         this.product = new Product(p);
         this.properties = Object.keys(this.product.properties).map((key: string) => {
           return {key: this.conf.propertyByModelAndName(this.model.technicalName, key), value: this.product.properties[key]};
         });
-        return this.api.getContactById('1');
-      }).then((c: SupplierContact) => {
-        this.contact = SupplierContact.build(c);
       });
-      this.matomoTracker.trackEvent('Product', 'showCompletProduct', this.id);
     });
   }
 

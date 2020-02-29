@@ -24,7 +24,7 @@ export class ManageUserComponent implements OnInit {
       {label: 'Utilisateur', value: 'ROLE_CUSTOMER'},
       {label: 'Fournisseur', value: 'ROLE_SUPPLIER'},
       {label: 'Administrateur', value: 'ROLE_ADMIN'},
-    ]
+    ];
     this.getAllUsers();
   }
 

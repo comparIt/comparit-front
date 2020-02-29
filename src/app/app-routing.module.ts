@@ -15,7 +15,8 @@ import {CompleteProductComponent} from './product/complete-product/complete-prod
 import {FilterComponent} from './filter/filter.component';
 import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
 import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
-import {ManageUserComponent} from "./admin/components/manager-user/manage-user.component";
+import {ManageUserComponent} from './admin/components/manager-user/manage-user.component';
+import {ComparatorComponent} from './comparator/comparator.component';
 
 
 export const routes: Routes = [
@@ -33,6 +34,7 @@ export const routes: Routes = [
       {
         path: 'products',
         children: [
+          {path: 'compare/:type', component: ComparatorComponent},
           {path: ':type', component: ProductComponent},
           {path: ':type/:id', component: CompleteProductComponent},
         ]
