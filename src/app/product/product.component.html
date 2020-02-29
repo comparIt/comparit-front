@@ -16,6 +16,12 @@
   </div>
 
   <section *ngIf="this.productPagineDTO" [ngStyle]="{marginBottom: '6em'}">
+    <div class="alert alert-success" role="alert" *ngIf="this.productPagineDTO.productsToDisplay.length > 0">
+      {{ this.productPagineDTO.productsToDisplay.length }} produits trouvés !
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="this.productPagineDTO.productsToDisplay.length === 0">
+      Aucun résultats :( Modifiez vos filtres pour trouver des produits.
+    </div>
     <app-resume-product
       *ngFor="let product of productPagineDTO.productsToDisplay | slice:(productPagineDTO.pageActuelle) * 10 : (productPagineDTO.pageActuelle) * 10 + productPagineDTO.productsPerPage"
       [product]=product
