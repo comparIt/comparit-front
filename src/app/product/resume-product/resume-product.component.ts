@@ -22,7 +22,7 @@ export class ResumeProductComponent implements OnInit {
     protected $hotjar: NgxHotjarService,
     private matomoTracker: MatomoService,
     private router: Router,
-    private config: GlobalConfigurationService) { }
+    public config: GlobalConfigurationService) { }
 
 
   ngOnInit() {
