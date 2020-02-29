@@ -1,0 +1,47 @@
+
+<div class="row m-1">
+  <div class="col-md-3 col-lg-2">
+    <button type="button"
+            class="btn"
+            [ngStyle]="{'background-color': conf.colorPrimary}"
+            (click)="back()"
+    ><i class="fas fa-arrow-left" aria-hidden="true"></i> Retour
+    </button>
+  </div>
+</div>
+<div style="overflow-x:auto;">
+  <table class="table" >
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <td *ngFor="let product of products" style="text-align: center">
+        <img class="rounded" style="display:block; margin:0 auto; max-width: 15em;" src="{{ product.image }}">
+        <br/>
+        {{ product.name }}
+      </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let property of visibleProperties">
+      <th scope="row">{{ property.name }}</th>
+      <td *ngFor="let product of products">{{ product.getProperty(property.technicalName) }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Prix</th>
+      <td *ngFor="let product of products" style="text-align: center">{{ product.price }}€</td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td *ngFor="let product of products" style="text-align: center">
+        <button type="button"
+                class="btn"
+                [ngStyle]="{'background-color': conf.colorPrimary}"
+                (click)="goToProduct(product.id)"
+        >Fiche produit</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>

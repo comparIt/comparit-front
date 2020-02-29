@@ -5,7 +5,7 @@ import {Model} from '../../shared/models/model';
 import {ModelProperty} from '../../shared/models/modelProperty';
 import {AuthenticationService} from '../../shared/services/authentification.service';
 import {Router} from '@angular/router';
-import {MatomoService} from "../../shared/services/Matomo.service";
+import {MatomoService} from '../../shared/services/Matomo.service';
 
 @Component({
   selector: 'app-top-filter',

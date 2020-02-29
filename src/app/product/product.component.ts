@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CompareItAPIService} from '../shared/services/compareItAPI.service';
-import {ActivatedRoute, ParamMap, Params} from '@angular/router';
+import {ActivatedRoute, ParamMap, Params, Router} from '@angular/router';
 import {GlobalConfigurationService} from '../shared/services/globalConfiguration.service';
 import {Model} from '../shared/models/model';
 import {FilterMappingService} from '../shared/services/filterMapping.service';
@@ -8,6 +8,7 @@ import {ProductPagineDTO} from '../shared/models/productPagineDTO';
 import {MessageService} from 'primeng/api';
 import {NgxHotjarService} from 'ngx-hotjar';
 import {MatomoService} from '../shared/services/Matomo.service';
+import {Product} from '../shared/models/product';
 
 @Component({
   selector: 'app-product',
@@ -18,12 +19,14 @@ export class ProductComponent implements OnInit {
 
   model: Model;
   productPagineDTO: ProductPagineDTO = new ProductPagineDTO({});
+  compareProducts: Product[] = [];
 
   constructor(
     protected $hotjar: NgxHotjarService,
     private matomoTracker: MatomoService,
     private api: CompareItAPIService,
     private route: ActivatedRoute,
+    private router: Router,
     public conf: GlobalConfigurationService,
     private filterService: FilterMappingService,
     private messageService: MessageService) {
@@ -70,6 +73,23 @@ export class ProductComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Filtre', detail: 'Echec de l\'enregirstrement', life: 1000});
       }
     );
+  }
+
+  addProductToComparison(produit: Product) {
+    this.compareProducts.push(produit);
+  }
+
+  resetComparison() {
+    this.compareProducts = [];
+  }
+
+  runComparison() {
+    const params = this.compareProducts
+        .map((value, index) => 'id' + index + '=' + value.id)
+        .reduce((previousValue, currentValue) => previousValue + '&' + currentValue);
+    this.router.navigateByUrl('/products/compare/' + this.model.technicalName + '?' + params);
+    // Analytics Tracking
+    this.matomoTracker.trackEvent('Product', 'runComparison', this.model.technicalName);
   }
 
   paginate(event: any) {

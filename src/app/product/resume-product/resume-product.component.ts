@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../../shared/models/product';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
 import {Router} from '@angular/router';
 import {Model} from '../../shared/models/model';
 import {NgxHotjarService} from 'ngx-hotjar';
-import {MatomoService} from "../../shared/services/Matomo.service";
+import {MatomoService} from '../../shared/services/Matomo.service';
 import {ModelProperty} from '../../shared/models/modelProperty';
 
 @Component({
@@ -15,6 +15,7 @@ export class ResumeProductComponent implements OnInit {
 
   @Input() product: Product;
   @Input() model: Model;
+  @Output() selectForComparison = new EventEmitter();
   properties: {key: ModelProperty, value: string}[];
 
   constructor(
