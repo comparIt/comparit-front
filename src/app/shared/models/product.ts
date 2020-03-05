@@ -23,6 +23,14 @@ export class Product {
     return this.properties['price'];
   }
 
+  get url(): string {
+    return this.properties['linkto'];
+  }
+
+  getProperty(name: string) {
+    return this.properties[name];
+  }
+
   shouldDisplayProperty(property: string): boolean {
     return property !== 'name' && property !== 'image' && property !== 'img' && property !== 'description' && property !== 'price';
   }

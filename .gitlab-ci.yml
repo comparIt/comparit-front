@@ -10,7 +10,8 @@ variables:
 stages:
   - build
   - package
-  - deploy
+  - staging
+  - production
 
 npm-build:
     stage: build
@@ -20,22 +21,53 @@ npm-build:
       - ng build
 
 
-docker-build:
+docker-build_image_staging:
   stage: package
   script:
-  - docker build -t registry.gitlab.com/compare-it/compare-it-front .
+  - docker build -t registry.gitlab.com/compare-it/compare-it-front:staging -f Dockerfile-stage .
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
-  - docker push registry.gitlab.com/compare-it/compare-it-front
+  - docker push registry.gitlab.com/compare-it/compare-it-front:staging
+  only:
+  - develop
 
-docker-deploy:
-  image: rastasheep/ubuntu-sshd
-  stage: deploy
+docker-build_image_prod:
+  stage: package
   script:
+    - docker build -t registry.gitlab.com/compare-it/compare-it-front:prod -f Dockerfile-prod .
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker push registry.gitlab.com/compare-it/compare-it-front:prod
+  only:
+    - develop
+    - master
+
+
+job_deploy_staging:
+  image: rastasheep/ubuntu-sshd
+  stage: staging
+  script:
+  - echo "deploy the app into test (valserver)"
   - pwd
   - ls
   - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
-  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@35.180.27.13 './start_project'
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ec2-user@compit.ddns.net './start_project'
+  environment:
+    name: staging
   only:
   - develop
+
+job_deploy_prod:
+  image: rastasheep/ubuntu-sshd
+  stage: production
+  script:
+  - echo "deploy the app into prod"
+  - pwd
+  - ls
+  - chmod 600 ../compare-it-front.tmp/SSH_PEM_KEY
+  - ssh -i $SSH_PEM_KEY -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null msn@compit2.northeurope.cloudapp.azure.com './start_project'
+  environment:
+    name: production
+  only:
+  - develop
+  - master
 
 

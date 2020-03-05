@@ -52,7 +52,7 @@
       <app-add-alert
         [filter]="filter"
         [alertFrequency]="filter.alertType"
-        (saveAlerte)="updateFilter.emit(filter)">
+        (saveAlerte)="update($event.alert)">
       </app-add-alert>
     </div>
 

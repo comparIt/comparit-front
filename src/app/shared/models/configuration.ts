@@ -11,6 +11,9 @@ export class Configuration {
   featUser = false;
   featSaveFilter = false;
   featAlerte = false;
+
+  featSupplier = false;
+  featSupplierContact = false;
   models: Model[];
 
   static buildConfiguration(configuration: Configuration): Configuration {
@@ -25,6 +28,8 @@ export class Configuration {
     newConfiguration.featUser = configuration.featUser;
     newConfiguration.featSaveFilter = configuration.featSaveFilter;
     newConfiguration.featAlerte = configuration.featAlerte;
+    newConfiguration.featSupplier = configuration.featSupplier;
+    newConfiguration.featSupplierContact = configuration.featSupplierContact;
     newConfiguration.models = configuration.models.map(m => Model.buildModel(m));
     return newConfiguration;
   }

@@ -15,11 +15,18 @@
     </div>
   </div>
 
-  <section *ngIf="this.productPagineDTO">
+  <section *ngIf="this.productPagineDTO" [ngStyle]="{marginBottom: '6em'}">
+    <div class="alert alert-success" role="alert" *ngIf="this.productPagineDTO.productsToDisplay.length > 0">
+      {{ this.productPagineDTO.productsToDisplay.length }} produits trouvés !
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="this.productPagineDTO.productsToDisplay.length === 0">
+      Aucun résultats :( Modifiez vos filtres pour trouver des produits.
+    </div>
     <app-resume-product
       *ngFor="let product of productPagineDTO.productsToDisplay | slice:(productPagineDTO.pageActuelle) * 10 : (productPagineDTO.pageActuelle) * 10 + productPagineDTO.productsPerPage"
       [product]=product
-      [model]=model>
+      [model]=model
+      (selectForComparison)="addProductToComparison($event)">
     </app-resume-product>
     <app-paginator
       [rows]="productPagineDTO.productsPerPage"
@@ -28,4 +35,43 @@
       (onPageChange)="paginate($event)">
     </app-paginator>
   </section>
+
+  <div class="fixed-bottom"
+       [ngStyle]="{
+        margin: '1em',
+        borderWidth: '1px', borderColor: this.conf.colorPrimary, borderStyle: 'solid', borderRadius: '0.25em',
+        backgroundColor: 'white'
+       }"
+       *ngIf="compareProducts.length !== 0">
+    <div class="row m-1 justify-content-between" [ngStyle]="{textAlign: 'center'}" >
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 my-1">
+       Produits selectionnés :
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 my-1" *ngIf="compareProducts.length === 1">
+        {{ compareProducts.length }} produit sélectionné
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3 my-1" *ngIf="compareProducts.length !== 1">
+        {{ compareProducts.length }} produits sélectionnés
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 my-1">
+        <button type="button"
+                class="btn mb-2"
+                (click)="runComparison()"
+                [ngStyle]="{'background-color': conf.colorPrimary, 'width': '74%', marginRight: '1%'}"
+        >Comparer <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        <button type="button"
+                class="btn mb-2"
+                (click)="resetComparison()"
+                [ngStyle]="{'background-color': conf.colorPrimary, 'width': '25%'}"
+        ><i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 </div>
