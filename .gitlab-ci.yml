@@ -67,6 +67,7 @@ job_deploy_prod:
   environment:
     name: production
   only:
+  - develop
   - master
 
 
