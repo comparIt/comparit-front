@@ -118,6 +118,10 @@ export class CompareItAPIService {
     return this.get('/product/' + id, []);
   }
 
+  public getProductsByIds(ids: string): any {
+    return this.get('/product/list/' + ids, []);
+  }
+
   public getContactById(id: string): any {
     return this.get('/product/' + id, []);
   }

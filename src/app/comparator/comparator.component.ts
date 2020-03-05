@@ -39,10 +39,9 @@ export class ComparatorComponent implements OnInit {
 
   fetchProducts() {
     this.route.queryParamMap.subscribe(queryParams => {
-      queryParams.keys.map(key => queryParams.get(key)).forEach((value: string) => {
-        this.api.getProductById(value).then((p: Product) => {
-          this.products.push(new Product(p));
-        });
+      const param = queryParams.keys.map(key => queryParams.get(key)).join(',');
+      this.api.getProductsByIds(param).then((p: Product[]) => {
+        p.forEach(value => this.products.push(new Product(value)));
       });
     });
   }
