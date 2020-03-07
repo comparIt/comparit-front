@@ -63,7 +63,6 @@ export class FilterMappingService {
       filter.isAlert = false;
       filter.alertType = 'AUCUNE';
     }
-    console.log('filter: ', filter);
     return filter;
   }
 

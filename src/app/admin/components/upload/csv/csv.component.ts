@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {GlobalConfigurationService} from '../../../../shared/services/globalConfiguration.service';
 import {CompareItAPIService} from '../../../../shared/services/compareItAPI.service';
 import {Model} from '../../../../shared/models/model';
-import {SelectItem, MessageService} from 'primeng/api';
+import {MessageService, SelectItem} from 'primeng/api';
 
 
 @Component({
@@ -31,15 +31,11 @@ export class UploadCsvComponent {
   }
 
   error(event) {
-    console.log(event.error);
-    console.log(event.files);
-    console.log(' Echec de l\'import du fichier: ' + event.files.toString());
     this.messageService.add({severity: 'error', summary: 'Echec de l\'import du fichier', detail: event.error.error.message, life: 60000});
     this.globalconfigurationService.fetch();
   }
 
   upload(event) {
-    console.log(event);
     this.messageService.add({severity: 'success', summary: 'Import terminé', detail: 'Données importées', life: 10000});
     this.globalconfigurationService.fetch();
   }
