@@ -7,7 +7,7 @@
       </div>
       <div class="col-12 col-md-6">
         <h1 *ngIf="product.name"> {{ product.name }} </h1>
-        <p *ngIf="productRate && productRate !== 0">
+        <p *ngIf="productRate && conf.currentConfig.featAvis && productRate !== 0">
           <ngx-stars [readonly]="true" [size]="3" [initialStars]="productRate" [color]="conf.colorPrimary" ></ngx-stars>
         </p>
         <p *ngIf="!(productRate && productRate !== 0)" style="text-align: justify">
@@ -19,7 +19,7 @@
     </div>
 
 
-    <div class="my-4">
+    <div class="mt-4 mb-1">
       <p>Informations sur le produit :</p>
 
       <table class="table">
@@ -32,25 +32,18 @@
       </table>
     </div>
 
-    <div class="card mb-3" *ngIf="(product.url || contact) && conf.currentConfig.featSupplierContact">
-      <div class="row no-gutters">
-        <div class="col-md-4" *ngIf="false">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <a *ngIf="product.url" target="_blank" href="{{ product.url }}" (click)="hitSupplierLink()">Accéder au site du vendeur <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <ul class="list-group list-group-flush" *ngIf="(product.url || contact) && conf.currentConfig.featSupplierContact">
+      <li class="list-group-item" style="display: inline-block; text-align: center">
+        <a *ngIf="product.url" target="_blank" href="{{ product.url }}" (click)="hitSupplierLink()">Accéder au site du vendeur <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+      </li>
+    </ul>
   </div>
+
 
 
 </div>
 
-<div class="card my-1" *ngIf="product && auth.isAuthenticated()">
+<div class="card my-1" *ngIf="product && auth.isAuthenticated() && conf.currentConfig.featAvis ">
 
   <div class="card-body">
     <div class="row">
@@ -80,7 +73,7 @@
 
 </div>
 
-<div class="d-flex justify-content-center" *ngIf="loadingComments">
+<div class="d-flex justify-content-center" *ngIf="loadingComments && conf.currentConfig.featAvis ">
   <div class="spinner-border"
        [ngStyle]="{'color': this.conf.currentConfig.colorPrimary}"
        role="status">
@@ -88,7 +81,7 @@
   </div>
 </div>
 
-<div class="card my-1" *ngIf="reviews && reviews.length !== 0">
+<div class="card my-1" *ngIf="reviews && reviews.length !== 0  && conf.currentConfig.featAvis ">
   <ul class="list-group list-group-flush">
     <li class="list-group-item" *ngFor="let review of reviews ;let i = index;">
       <app-review-product [review]="review"

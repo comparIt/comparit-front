@@ -10,7 +10,7 @@
          (click)="goToProduct(product.id)">
       <div class="card-body">
         <p *ngIf="product.name">{{product.name}}</p>
-        <p *ngIf="productRate && productRate !== 0">
+        <p *ngIf="productRate && productRate !== 0 && config.currentConfig.featAvis ">
           <ngx-stars [readonly]="true" [size]="3" [initialStars]="productRate" [color]="config.colorPrimary" ></ngx-stars>
         </p>
         <p *ngIf="product.description">{{product.description}}</p>
