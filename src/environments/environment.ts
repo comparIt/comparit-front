@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://comparit.fr/api/'
+  apiUrl: 'http://localhost:8080'
 };
 
 /*

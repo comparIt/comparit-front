@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://www.comparit.fr/api/'
+  apiUrl: 'https://www.comparit.fr/api'
 };
