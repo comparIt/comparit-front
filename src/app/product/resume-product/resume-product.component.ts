@@ -6,6 +6,7 @@ import {Model} from '../../shared/models/model';
 import {NgxHotjarService} from 'ngx-hotjar';
 import {MatomoService} from '../../shared/services/Matomo.service';
 import {ModelProperty} from '../../shared/models/modelProperty';
+import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
 
 @Component({
   selector: 'app-resume-product',
@@ -17,12 +18,14 @@ export class ResumeProductComponent implements OnInit {
   @Input() model: Model;
   @Output() selectForComparison = new EventEmitter();
   properties: {key: ModelProperty, value: string}[];
+  productRate: number;
 
   constructor(
     protected $hotjar: NgxHotjarService,
     private matomoTracker: MatomoService,
     private router: Router,
-    public config: GlobalConfigurationService) { }
+    private api: CompareItAPIService,
+    private config: GlobalConfigurationService) { }
 
 
   ngOnInit() {
@@ -30,6 +33,9 @@ export class ResumeProductComponent implements OnInit {
     this.matomoTracker.trackPageView(this.constructor.name);
     this.properties = Object.keys(this.product.properties).map((key: string) => {
       return {key: this.config.propertyByModelAndName(this.model.technicalName, key), value: this.product.properties[key]};
+    });
+    this.api.getAvgByProductId(this.product.id).then((reviewrate: number) => {
+      this.productRate = reviewrate;
     });
   }
 

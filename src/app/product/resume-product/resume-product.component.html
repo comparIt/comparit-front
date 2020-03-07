@@ -10,6 +10,9 @@
          (click)="goToProduct(product.id)">
       <div class="card-body">
         <p *ngIf="product.name">{{product.name}}</p>
+        <p *ngIf="productRate && productRate !== 0">
+          <ngx-stars [readonly]="true" [size]="3" [initialStars]="productRate" [color]="config.colorPrimary" ></ngx-stars>
+        </p>
         <p *ngIf="product.description">{{product.description}}</p>
         <div *ngFor="let property of visibleProperties">
           <p class="card-text">{{property.key.name}} : {{property.value}}</p>
@@ -31,3 +34,4 @@
   </div>
 
 </div>
+

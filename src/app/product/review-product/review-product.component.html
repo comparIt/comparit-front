@@ -1,0 +1,18 @@
+<div class="card-body">
+  <div class="row">
+    <div class="col-12 col-md-2 col-lg-1">
+      <i class="fas fa-user-circle fa-5x" aria-hidden="true"></i>
+    </div>
+    <div class="col-12 col-md-7 col-lg-8">
+      <p class="card-text"><small class="text-muted">{{ user?.firstName }} {{ user?.lastName }} :</small></p>
+      <p class="card-text" *ngIf="review.comment !== ''">{{ review.comment }}</p>
+      <p class="card-text" *ngIf="review.comment === ''"><i>Pas de commentaire</i></p>
+    </div>
+    <div class="col-12 col-md-3">
+      <ngx-stars [readonly]="true" [size]="2" [initialStars]="review.rate" [color]="conf.colorPrimary"></ngx-stars>
+    </div>
+  </div>
+</div>
+
+
+
