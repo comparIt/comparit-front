@@ -25,7 +25,7 @@ export class ResumeProductComponent implements OnInit {
     private matomoTracker: MatomoService,
     private router: Router,
     private api: CompareItAPIService,
-    private config: GlobalConfigurationService) { }
+    public config: GlobalConfigurationService) { }
 
 
   ngOnInit() {

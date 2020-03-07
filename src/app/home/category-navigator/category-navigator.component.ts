@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GlobalConfigurationService} from '../../shared/services/globalConfiguration.service';
 import {Router} from '@angular/router';
-import {Model} from "../../shared/models/model";
+import {Model} from '../../shared/models/model';
 
 @Component({
   selector: 'app-category-navigator',
