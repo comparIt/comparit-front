@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <section *ngIf="this.productPagineDTO" [ngStyle]="{marginBottom: '6em'}">
+  <section *ngIf="this.productPagineDTO">
     <div class="alert alert-success" role="alert" *ngIf="this.productPagineDTO.productsToDisplay.length > 0">
       {{ this.productPagineDTO.productsToDisplay.length }} produits trouvés !
     </div>

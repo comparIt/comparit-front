@@ -58,6 +58,7 @@ import { ReviewProductComponent } from './product/review-product/review-product.
 import {FieldsetModule} from 'primeng/fieldset';
 import {ComparatorComponent} from './comparator/comparator.component';
 import { NgxStarsModule } from 'ngx-stars';
+import {FooterComponent} from './shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { NgxStarsModule } from 'ngx-stars';
     DetailFilterComponent,
     ReviewProductComponent,
     ManageUserComponent,
-    ComparatorComponent
+    ComparatorComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
