@@ -57,4 +57,8 @@ export class AuthenticationService {
   public isAdmin(): boolean {
     return this.user && this.user.role === 'ROLE_ADMIN';
   }
+
+  public isLoader(): boolean {
+    return this.user && (this.user.role === 'ROLE_SUPPLIER' || this.user.role === 'ROLE_ADMIN');
+  }
 }

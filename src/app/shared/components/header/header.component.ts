@@ -26,11 +26,11 @@ export class HeaderComponent implements OnInit {
   }
 
   goToUploadCSV() {
-    this.router.navigate(['/admin/upload/csv']);
+    this.router.navigate(['/upload/csv']);
   }
 
   goToUploadURL() {
-    this.router.navigate(['/admin/upload/url']);
+    this.router.navigate(['/upload/url']);
   }
 
   goToManageUsers() {
@@ -56,6 +56,11 @@ export class HeaderComponent implements OnInit {
   get isAdmin(): boolean {
     return this.auth.isAdmin();
   }
+
+  get isLoader(): boolean {
+    return this.auth.isLoader();
+  }
+
 
   get isAuthenticated(): boolean {
     return this.auth.isAuthenticated();

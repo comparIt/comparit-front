@@ -14,9 +14,9 @@ import {IsAuthenticatedGuardService} from './shared/services/is-authenticated-gu
 import {CompleteProductComponent} from './product/complete-product/complete-product.component';
 import {FilterComponent} from './filter/filter.component';
 import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
-import {CategoryNavigatorComponent} from './home/category-navigator/category-navigator.component';
 import {ManageUserComponent} from './admin/components/manager-user/manage-user.component';
 import {ComparatorComponent} from './comparator/comparator.component';
+import {IsLoaderGuardService} from './shared/services/is-loader-guard.service';
 
 
 export const routes: Routes = [
@@ -44,8 +44,6 @@ export const routes: Routes = [
         canActivate: [IsAdminGuardService],
         children: [
           {path: 'website', component: AdminComponent},
-          {path: 'upload/url', component: UploadUrlComponent},
-          {path: 'upload/csv', component: UploadCsvComponent},
           {path: 'manage/users', component: ManageUserComponent}
         ]
       },
@@ -57,6 +55,14 @@ export const routes: Routes = [
           {path: ':userid', component: UserComponent},
         ]
       },
+      {
+        path: 'upload',
+        canActivate: [IsLoaderGuardService],
+        children: [
+          {path: 'url', component: UploadUrlComponent},
+          {path: 'csv', component: UploadCsvComponent},
+        ]
+      }
     ]
   },
 
