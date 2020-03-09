@@ -59,7 +59,8 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ComparatorComponent} from './comparator/comparator.component';
 import { NgxStarsModule } from 'ngx-stars';
 import {FooterComponent} from './shared/components/footer/footer.component';
-import {FragmentPolyfillModule} from "./shared/FragmentPolyfillModule";
+import {FragmentPolyfillModule} from './shared/FragmentPolyfillModule';
+import {IsLoaderGuardService} from './shared/services/is-loader-guard.service';
 
 @NgModule({
   declarations: [
@@ -138,6 +139,7 @@ import {FragmentPolyfillModule} from "./shared/FragmentPolyfillModule";
     CompareItAPIService,
     IsAuthenticatedGuardService,
     IsAdminGuardService,
+    IsLoaderGuardService,
     ConfirmationService,
     MatomoService
   ],
