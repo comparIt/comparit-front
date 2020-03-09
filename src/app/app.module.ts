@@ -59,6 +59,7 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {ComparatorComponent} from './comparator/comparator.component';
 import { NgxStarsModule } from 'ngx-stars';
 import {FooterComponent} from './shared/components/footer/footer.component';
+import {FragmentPolyfillModule} from "./shared/FragmentPolyfillModule";
 
 @NgModule({
   declarations: [
@@ -91,7 +92,7 @@ import {FooterComponent} from './shared/components/footer/footer.component';
     ReviewProductComponent,
     ManageUserComponent,
     ComparatorComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,7 +124,8 @@ import {FooterComponent} from './shared/components/footer/footer.component';
     NgxHotjarModule.forRoot('1640364'),
     MatomoModule,
     FieldsetModule,
-    NgxStarsModule
+    NgxStarsModule,
+    FragmentPolyfillModule.forRoot({smooth: true})
   ],
   providers: [
     GlobalConfigurationService,

@@ -4,7 +4,7 @@ import {ModelProperty} from '../../shared/models/modelProperty';
 import {Model} from '../../shared/models/model';
 import {Product} from '../../shared/models/product';
 import {CompareItAPIService} from '../../shared/services/compareItAPI.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {SupplierContact} from '../../shared/models/supplierContact';
 import {MatomoService} from '../../shared/services/Matomo.service';
 import {Review} from '../../shared/models/review';
@@ -34,6 +34,7 @@ export class CompleteProductComponent implements OnInit {
     private route: ActivatedRoute,
     public conf: GlobalConfigurationService,
     private messageService: MessageService,
+    private router: Router,
     public auth: AuthenticationService) {
   }
 
@@ -66,6 +67,12 @@ export class CompleteProductComponent implements OnInit {
         })
         .then(() => this.getReviews());
     });
+
+  }
+
+  goToReviews() {
+    console.log('ishish')
+    this.router.navigate([], { fragment: 'avis' });
   }
 
   getReviews() {
