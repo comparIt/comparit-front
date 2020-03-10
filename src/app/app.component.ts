@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatomoInjector } from 'ngx-matomo';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   constructor(
     private matomoInjector: MatomoInjector
   ) {
-    this.matomoInjector.init('https://demo.comparit.fr/analytics/', 1);
+    this.matomoInjector.init(environment.settings.analyticsUrl, environment.settings.analyticsId);
   }
-  title = 'compare-it-front';
+  title = environment.settings.SiteTitle;
 }

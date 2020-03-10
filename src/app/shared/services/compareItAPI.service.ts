@@ -14,7 +14,7 @@ import {SavedFilter} from '../models/savedFilter';
 
 export class CompareItAPIService {
 
-  private DOMAIN = environment.apiUrl;
+  private DOMAIN = environment.settings.apiUrl;
 
   private alertController = '/alert';
   private companyController = '/company';
