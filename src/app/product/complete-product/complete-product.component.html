@@ -7,13 +7,24 @@
       </div>
       <div class="col-12 col-md-6">
         <h1 *ngIf="product.name"> {{ product.name }} </h1>
+        <div class="row" *ngIf="productRate && conf.currentConfig.featAvis && productRate !== 0">
+          <div class="col-6">
+            <ngx-stars [readonly]="true" [size]="3" [initialStars]="productRate" [color]="conf.colorPrimary"></ngx-stars>
+          </div>
+          <div class="col-6 align-middle" *ngIf="reviews">
+            <a routerLink="." fragment="avis">({{reviews.length}} avis)</a>
+          </div>
+        </div>
+        <p *ngIf="!(productRate && productRate !== 0)" style="text-align: justify">
+          - Aucun avis -
+        </p>
         <p *ngIf="product.description" style="text-align: justify"> {{ product.description }}</p>
         <h2 *ngIf="product.price" style="text-align: center"> {{ product.price }} €</h2>
       </div>
     </div>
 
 
-    <div class="my-4">
+    <div class="mt-4 mb-1">
       <p>Informations sur le produit :</p>
 
       <table class="table">
@@ -26,18 +37,63 @@
       </table>
     </div>
 
-    <div class="card mb-3" *ngIf="(product.url || contact) && conf.currentConfig.featSupplierContact">
-      <div class="row no-gutters">
-        <div class="col-md-4" *ngIf="false">
-          <img src="..." class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <a *ngIf="product.url" target="_blank" href="{{ product.url }}" (click)="hitSupplierLink()">Accéder au site du vendeur <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-          </div>
+    <ul class="list-group list-group-flush" *ngIf="(product.url || contact) && conf.currentConfig.featSupplierContact">
+      <li class="list-group-item" style="display: inline-block; text-align: center">
+        <a *ngIf="product.url" target="_blank" href="{{ product.url }}" (click)="hitSupplierLink()">Accéder au site du vendeur <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+      </li>
+    </ul>
+  </div>
+
+
+
+</div>
+
+<div class="card my-1" *ngIf="product && auth.isAuthenticated() && conf.currentConfig.featAvis ">
+
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 col-md-8">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1" class="sr-only">Votre commentaire</label>
+          <textarea class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                    placeholder="Votre commentaire :"
+                    [(ngModel)]="reviewProduct.comment"></textarea>
         </div>
       </div>
+      <div class="col-12 col-md-4">
+        <ngx-stars [readonly]="false" [size]="2" [initialStars]="0" (ratingOutput)="onRatingSet($event)" [color]="conf.colorPrimary" ></ngx-stars>
+        <br/>
+        <button id="btnAddReview"
+                class="btn"
+                type="button"
+                (click)="addReview()"
+                [ngStyle]="{'background-color': conf.colorPrimary}">
+          Valider
+        </button>
+      </div>
     </div>
+  </div>
 
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="loadingComments && conf.currentConfig.featAvis ">
+  <div class="spinner-border"
+       [ngStyle]="{'color': this.conf.currentConfig.colorPrimary}"
+       role="status">
+    <span class="sr-only">Chargement des commentaires...</span>
   </div>
 </div>
+
+<div class="card my-1" id="avis" *ngIf="reviews && reviews.length !== 0  && conf.currentConfig.featAvis ">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor="let review of reviews ;let i = index;">
+      <app-review-product [review]="review"
+                          id="{{'review'+ i}}"
+      ></app-review-product>
+    </li>
+  </ul>
+</div>
+
+

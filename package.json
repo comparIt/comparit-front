@@ -36,6 +36,7 @@
     "ngx-bootstrap": "^5.3.2",
     "ngx-hotjar": "0.0.5",
     "ngx-matomo": "^0.1.4",
+    "ngx-stars": "^1.4.3",
     "primeflex": "^1.0.0",
     "primeicons": "^2.0.0",
     "primeng": "^8.1.1",

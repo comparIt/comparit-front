@@ -54,7 +54,13 @@ import { NgxHotjarModule } from 'ngx-hotjar';
 import {IsAdminGuardService} from './shared/services/is-admin-guard.service';
 import {MatomoService} from './shared/services/Matomo.service';
 import {ManageUserComponent} from './admin/components/manager-user/manage-user.component';
+import { ReviewProductComponent } from './product/review-product/review-product.component';
+import {FieldsetModule} from 'primeng/fieldset';
 import {ComparatorComponent} from './comparator/comparator.component';
+import { NgxStarsModule } from 'ngx-stars';
+import {FooterComponent} from './shared/components/footer/footer.component';
+import {FragmentPolyfillModule} from './shared/FragmentPolyfillModule';
+import {IsLoaderGuardService} from './shared/services/is-loader-guard.service';
 
 @NgModule({
   declarations: [
@@ -84,8 +90,10 @@ import {ComparatorComponent} from './comparator/comparator.component';
     FeatureSwitchComponent,
     FilterComponent,
     DetailFilterComponent,
+    ReviewProductComponent,
     ManageUserComponent,
-    ComparatorComponent
+    ComparatorComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,6 +124,9 @@ import {ComparatorComponent} from './comparator/comparator.component';
     RadioButtonModule,
     NgxHotjarModule.forRoot('1640364'),
     MatomoModule,
+    FieldsetModule,
+    NgxStarsModule,
+    FragmentPolyfillModule.forRoot({smooth: true})
   ],
   providers: [
     GlobalConfigurationService,
@@ -128,6 +139,7 @@ import {ComparatorComponent} from './comparator/comparator.component';
     CompareItAPIService,
     IsAuthenticatedGuardService,
     IsAdminGuardService,
+    IsLoaderGuardService,
     ConfirmationService,
     MatomoService
   ],

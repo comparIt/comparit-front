@@ -60,6 +60,13 @@
         </div>
       </div>
 
+      <div class="row m-1">
+        <div class="col-2">Email de contact :</div>
+        <div class="col-10">
+          <input style="width: 100%" id="inputMail" type="text" [(ngModel)]="configuration.mail" placeholder="exemple@domain.net">
+        </div>
+      </div>
+
       <div class="row justify-content-end">
         <div class="col-2">
           <button (click)="next()"

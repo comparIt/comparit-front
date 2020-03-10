@@ -4,6 +4,7 @@ import {Configuration} from '../models/configuration';
 import {User} from '../models/user';
 import {environment} from '../../../environments/environment';
 import {Model} from '../models/model';
+import {Review} from '../models/review';
 import {SavedFilter} from '../models/savedFilter';
 
 @Injectable({
@@ -13,7 +14,7 @@ import {SavedFilter} from '../models/savedFilter';
 
 export class CompareItAPIService {
 
-  private DOMAIN = environment.apiUrl;
+  private DOMAIN = environment.settings.apiUrl;
 
   private alertController = '/alert';
   private companyController = '/company';
@@ -23,6 +24,7 @@ export class CompareItAPIService {
   private modelPropertyController = '/modelproperty';
   private userController = '/user';
   private websiteconfigController = '/websiteconfig';
+  private reviewController = '/review';
 
   /*products uploading*/
   private byUrlController = '/company/byUrl';
@@ -105,6 +107,10 @@ export class CompareItAPIService {
     return this.get(this.userController + '/currentUser', []);
   }
 
+  public getUserById(idUser: number): any {
+    return this.get(this.userController + '/' + idUser, []);
+  }
+
 
   public getMockProduct(): any {
     return this.get('/product/search', []);
@@ -138,5 +144,33 @@ export class CompareItAPIService {
   public deleteFilter(filter: SavedFilter): any {
     return this.delete(this.filterController + '/' + filter.id, []);
   }
+
+  public getReviewById(id: number): any {
+    return this.get(this.reviewController + '/' + id, []);
+  }
+
+  public getAllReviewByUserId(): any {
+    return this.get(this.reviewController + '/getAllReviewsFromUser', []);
+  }
+
+  public getAllReview(): any {
+    return this.get(this.reviewController + '/' , []);
+  }
+
+  public getAllReviewByProductId(id: string): any {
+    return this.get(this.reviewController + '/getAllReviewsForAProduct?productId=' + id , []);
+  }
+  public putcreateReview(review: Review): any {
+    return this.put(this.reviewController + '/saveReview' , [], review);
+  }
+
+  public putupdateReview(review: Review): any {
+    return this.put(this.reviewController + '/updateReview' , [], review);
+  }
+
+  public getAvgByProductId(productId: string): any {
+    return this.get(this.reviewController + '/avg/' + productId, []);
+  }
+
 
 }

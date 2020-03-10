@@ -7,10 +7,12 @@ export class Configuration {
   colorSecondary2: string;
   logo: string;
   name: string;
+  mail: string;
   featAnalytic = false;
   featUser = false;
   featSaveFilter = false;
   featAlerte = false;
+  featAvis = false;
 
   featSupplier = false;
   featSupplierContact = false;
@@ -24,12 +26,14 @@ export class Configuration {
     newConfiguration.colorSecondary2 = configuration.colorSecondary2;
     newConfiguration.logo = configuration.logo;
     newConfiguration.name = configuration.name;
+    newConfiguration.mail = configuration.mail;
     newConfiguration.featAnalytic = configuration.featAnalytic;
     newConfiguration.featUser = configuration.featUser;
     newConfiguration.featSaveFilter = configuration.featSaveFilter;
     newConfiguration.featAlerte = configuration.featAlerte;
     newConfiguration.featSupplier = configuration.featSupplier;
     newConfiguration.featSupplierContact = configuration.featSupplierContact;
+    newConfiguration.featAvis = configuration.featAvis;
     newConfiguration.models = configuration.models.map(m => Model.buildModel(m));
     return newConfiguration;
   }
@@ -40,7 +44,6 @@ export class Configuration {
     configuration.colorSecondary = '#FFFFFF';
     configuration.colorSecondary2 = '#FFFFFF';
     configuration.name = '';
-    configuration.featAnalytic = false;
     configuration.models = [];
     return configuration;
   }

@@ -74,7 +74,6 @@ export class ModelProperty {
     } else if (this.isEnum) {
       this.selectedValues = filter.split(',');
     }
-    console.log(this);
   }
 }
 
