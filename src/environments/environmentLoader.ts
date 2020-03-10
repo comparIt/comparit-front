@@ -6,8 +6,6 @@ export const environmentLoader = new Promise<any>((resolve, reject) => {
     url = './assets/environments/environment.json';
   xmlhttp.open(method, url, true);
   xmlhttp.onload = function() {
-    console.log('Status Env get' + xmlhttp.status);
-    console.log(xmlhttp.responseText);
     if (xmlhttp.status === 200) {
       resolve(JSON.parse(xmlhttp.responseText));
     } else {
