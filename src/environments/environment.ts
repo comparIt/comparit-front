@@ -3,8 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  name: 'dev',
   production: false,
-  apiUrl: 'http://localhost:8080'
+  settings: {
+    apiUrl: 'http://localhost:8080',
+    analyticsUrl: 'https://analytics.comparit.fr/',
+    analyticsId: 1,
+    SiteTitle: 'compare-it-front-dev'
+  }
 };
 
 /*
