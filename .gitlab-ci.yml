@@ -27,6 +27,7 @@ docker-build_image_develop:
   - docker build -t registry.gitlab.com/compare-it/compare-it-front:develop .
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
   - docker push registry.gitlab.com/compare-it/compare-it-front:develop
+  - docker push comparit/compare-it-front:develop
   only:
   - develop
 
@@ -36,6 +37,7 @@ docker-build_image_master:
     - docker build -t registry.gitlab.com/compare-it/compare-it-front:master .
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
     - docker push registry.gitlab.com/compare-it/compare-it-front:master
+    - docker push comparit/compare-it-front:master
   only:
     - master
 
