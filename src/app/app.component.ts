@@ -10,7 +10,7 @@ export class AppComponent {
   constructor(
     private matomoInjector: MatomoInjector
   ) {
-    this.matomoInjector.init('https://analytics.comparit.fr/', 1);
+    this.matomoInjector.init('https://demo.comparit.fr/analytics/', 1);
   }
   title = 'compare-it-front';
 }
