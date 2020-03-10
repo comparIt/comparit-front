@@ -11,7 +11,9 @@ import {User} from '../../models/user';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(public config: GlobalConfigurationService, private router: Router, private auth: AuthenticationService) {
+  constructor(
+      public config: GlobalConfigurationService,
+      private auth: AuthenticationService) {
 
   }
 

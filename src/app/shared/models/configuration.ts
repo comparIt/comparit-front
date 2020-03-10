@@ -7,6 +7,7 @@ export class Configuration {
   colorSecondary2: string;
   logo: string;
   name: string;
+  mail: string;
   featAnalytic = false;
   featUser = false;
   featSaveFilter = false;
@@ -25,6 +26,7 @@ export class Configuration {
     newConfiguration.colorSecondary2 = configuration.colorSecondary2;
     newConfiguration.logo = configuration.logo;
     newConfiguration.name = configuration.name;
+    newConfiguration.mail = configuration.mail;
     newConfiguration.featAnalytic = configuration.featAnalytic;
     newConfiguration.featUser = configuration.featUser;
     newConfiguration.featSaveFilter = configuration.featSaveFilter;
