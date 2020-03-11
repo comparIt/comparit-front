@@ -3,6 +3,7 @@ import {GlobalConfigurationService} from '../../services/globalConfiguration.ser
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentification.service';
 import {User} from '../../models/user';
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-footer',
@@ -15,6 +16,10 @@ export class FooterComponent implements OnInit {
       public config: GlobalConfigurationService,
       private auth: AuthenticationService) {
 
+  }
+
+  get apiURL() {
+    return environment.settings.apiUrl + '/swagger-ui.html';
   }
 
   ngOnInit(): void {
