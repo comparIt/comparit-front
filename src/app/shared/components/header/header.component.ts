@@ -3,6 +3,7 @@ import {GlobalConfigurationService} from '../../services/globalConfiguration.ser
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentification.service';
 import {User} from '../../models/user';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-header',
@@ -47,6 +48,10 @@ export class HeaderComponent implements OnInit {
 
   goToSavedFilter() {
     this.router.navigate(['user/filter']);
+  }
+
+  get analyticURL() {
+    return environment.settings.analyticsUrl;
   }
 
   logout() {
