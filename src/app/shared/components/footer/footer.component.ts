@@ -3,7 +3,7 @@ import {GlobalConfigurationService} from '../../services/globalConfiguration.ser
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentification.service';
 import {User} from '../../models/user';
-import {environment} from "../../../../environments/environment";
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-footer',
