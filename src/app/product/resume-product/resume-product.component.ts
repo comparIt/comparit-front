@@ -43,7 +43,7 @@ export class ResumeProductComponent implements OnInit {
   goToProduct(idProduct: string) {
     this.router.navigate(['/products/' + this.model.technicalName + '/' + idProduct]);
     // Analytics Tracking
-    this.matomoTracker.trackEvent('Product',  'goToProduct', idProduct );
+    this.matomoTracker.trackEvent('Product',  'goToProduct', this.product.name );
   }
 
   get visibleProperties() {
