@@ -104,7 +104,7 @@ export class CompleteProductComponent implements OnInit {
   }
 
   hitSupplierLink() {
-    this.matomoTracker.trackEvent('Product', 'hitSupplierLink', this.id);
+    this.matomoTracker.trackEvent('Product', 'hitSupplierLink', this.product.url);
   }
 
 
